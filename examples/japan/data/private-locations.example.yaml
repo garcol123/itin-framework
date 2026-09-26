@@ -1,0 +1,8 @@
+# Copy this file to private-locations.yaml, which is ignored by Git.
+# Add only accommodation or other sensitive locations that need exact map playback.
+schema_version: 1
+locations: {}
+# Example:
+#   tokyo:
+#     longitude: 139.7000
+#     latitude: 35.6900

@@ -1,0 +1,14 @@
+---
+schema_version: 1
+status: migrated-reference
+summary: A relaxed 15-day Japan trip from Sydney for two travelers.
+fixed_requirements:
+- Preserve all confirmed flights and accommodation bookings in data/bookings.yaml.
+- Preserve every hard constraint in data/constraints.yaml.
+- Keep the selected Tokyo, Kanazawa, Yamanaka Onsen, Kyoto, Nara, Uji, Osaka, and Himeji route.
+preferences:
+- History, temples, gardens, museums, architecture, food, matcha, shopping, and one ryokan/onsen night.
+- Favor comfort, geographic coherence, recovery time, and useful slack.
+research_policy:
+- Treat unpublished 2026 facts as provisional.
+- Record authoritative sources and checked dates; never invent schedules or transport times.

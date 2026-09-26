@@ -1,0 +1,2966 @@
+---
+schema_version: 1
+trip:
+  id: japan-2026
+  title: Japan Itinerary
+  subtitle: Fri 23 Oct to Fri 6 Nov
+  timezone: Asia/Tokyo
+  origin_timezone: Australia/Sydney
+  start_date: '2026-10-23'
+  end_date: '2026-11-06'
+  facts:
+  - value: 15
+    label: itinerary days
+  - value: 5
+    label: overnight bases
+  - value: 2
+    label: overnight flights
+  route:
+  - tokyo
+  - kanazawa
+  - yamanaka-onsen
+  - kyoto
+  - nara
+  - uji
+  - kyoto
+  - osaka
+  - himeji
+  - osaka
+  booking_refs:
+  - flight-syd-nrt
+  - flight-kix-syd
+  - sotetsu-fresa-inn-ginza-nanachome-stay
+  - hotel-amanek-kanazawa-stay
+  - kagari-kisshotei-stay
+  - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+  - sotetsu-fresa-inn-osaka-namba-stay
+days:
+- number: 1
+  date: '2026-10-23'
+  label: Fri 23 Oct
+  day_type: overnight_flight
+  planning:
+    route_pattern: single-cluster
+    clusters: []
+  sleep_base:
+  - text: Overnight flight
+  activities:
+  - id: day-01-01
+    time:
+      label: By 18:30
+      end: '18:30'
+      precision: deadline
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Arrive at '
+    - place: sydney-airport-t1-international
+      label: Sydney Airport T1 International
+    - text: ". This is three hours before departure; use any earlier airline-specific reporting time if advised."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-airport-processing
+    title: Airport check-in, security and outbound border processing
+    time:
+      label: 18:30–19:30
+      start: '18:30'
+      end: '19:30'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags:
+    - international-flight-protection
+    content:
+    - text: Check in, drop bags, clear security and outbound border processing.
+        Keep passports, boarding passes and Japan arrival information accessible.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-02
+    time:
+      label: 19:30–20:30
+      start: '19:30'
+      end: '20:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Have dinner airside after completing departure processing. Keep this
+        flight-day meal to a full hour, then move toward the gate without rushing.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-gate-buffer
+    title: Walk to the gate and protect the boarding buffer
+    time:
+      label: 20:30–20:45
+      start: '20:30'
+      end: '20:45'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags:
+    - international-flight-protection
+    content:
+    - text: Walk to the gate and keep the remaining time clear for boarding instructions.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-03
+    time:
+      label: '21:30'
+      start: '21:30'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Depart '
+    - place: syd
+      label: SYD
+    - text: " for "
+    - place: nrt
+      label: NRT
+    - text: ". Overnight flight."
+    booking_refs: []
+    constraint_refs: []
+- number: 2
+  date: '2026-10-24'
+  label: Sat 24 Oct
+  day_type: arrival
+  planning:
+    route_pattern: linear
+    clusters:
+    - shimbashi
+  sleep_base:
+  - place: tokyo
+    label: Tokyo
+  - text: " · "
+  - place: sotetsu-fresa-inn-ginza-nanachome
+    label: Sotetsu Fresa Inn Ginza-Nanachome
+  activities:
+  - id: day-02-01
+    time:
+      label: '12:00'
+      start: '12:00'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Arrive at '
+    - place: narita-international-airport
+      label: Narita International Airport
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-02-02
+    time:
+      label: 12:00–13:45
+      start: '12:00'
+      end: '13:45'
+      precision: scheduled
+    category: visit
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Immigration, baggage collection and customs. Buy or collect any reserved airport-train ticket only after clearing arrivals, so a flight or border-processing delay does not create pressure.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-02-03
+    time:
+      label: 13:45–15:45
+      start: '13:45'
+      end: '15:45'
+      precision: scheduled
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Transfer to '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: '. Use the '
+    - place: narita-express
+      label: Narita Express
+    - text: " for Tokyo Station, then continue locally to Ginza. The "
+    - place: keisei-skyliner
+      label: Keisei Skyliner
+    - text: " remains a fallback through Ueno. Drop bags if the room is not ready."
+    booking_refs: []
+    constraint_refs:
+    - tokyo-hotel-shimbashi-ginza
+  - id: day-02-03-recovery
+    title: Hotel check-in and post-flight recovery
+    time:
+      label: 15:45–17:15
+      start: '15:45'
+      end: '17:15'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Check in, shower and protect 90 minutes of post-flight recovery. If the flight or border processing is late, this absorbs the delay and the YONEX visit shortens or disappears without affecting dinner.
+    booking_refs:
+    - sotetsu-fresa-inn-ginza-nanachome-stay
+    constraint_refs: []
+  - id: day-02-04
+    time:
+      label: 17:15–17:30
+      start: '17:15'
+      end: '17:30'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk about 11 minutes from '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' to the YONEX showroom beside Shimbashi Station; the 15-minute window retains a small navigation buffer.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-02-04-visit
+    time:
+      label: 17:30–18:30
+      start: '17:30'
+      end: '18:30'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: shimbashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: yonex-tokyo-showroom
+      label: YONEX Tokyo Showroom
+    - text: ". Browse Japanese-market racquets, shoes, apparel and accessories without turning the first evening into a cross-city outing. Skip it if arrival is delayed; do not book a timed observation deck on arrival day."
+    booking_refs: []
+    constraint_refs:
+    - arrival-day-no-timed-deck
+  - id: day-02-04-return
+    time:
+      label: 18:30–18:45
+      start: '18:30'
+      end: '18:45'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk about 11 minutes back to '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ', retaining the protected 15-minute window.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-02-05
+    time:
+      label: 18:45–20:15
+      start: '18:45'
+      end: '20:15'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Easy dinner near the hotel, then an early night. Do not cross Tokyo for a specific nightlife district after the overnight flight.
+    booking_refs: []
+    constraint_refs: []
+- number: 3
+  date: '2026-10-25'
+  label: Sun 25 Oct
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - ueno
+    - harajuku-shibuya
+  sleep_base:
+  - place: tokyo
+    label: Tokyo
+  - text: " · "
+  - place: sotetsu-fresa-inn-ginza-nanachome
+    label: Sotetsu Fresa Inn Ginza-Nanachome
+  activities:
+  - id: day-03-breakfast
+    time:
+      label: '08:15–09:15'
+      start: '08:15'
+      end: '09:15'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: '. Take a full hour over breakfast and leave at 09:15 for Ueno.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-hotel-museum
+    time:
+      label: '09:15–09:45'
+      start: '09:15'
+      end: '09:45'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Allow 30 minutes from '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' to Tokyo National Museum via the Ginza Line and the walk through Ueno Park.'
+    booking_refs: []
+    constraint_refs:
+    - tokyo-hotel-shimbashi-ginza
+  - id: day-03-01
+    time:
+      label: '09:45–11:50'
+      start: '09:45'
+      end: '11:50'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: ueno
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: tokyo-national-museum
+      label: Tokyo National Museum
+    - text: ". Prioritise the Honkan Japanese Gallery and one secondary gallery rather than trying to cover the entire campus. Sunday avoids the museum's regular Monday closure."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-02
+    time:
+      label: 11:50–13:05
+      start: '11:50'
+      end: '13:05'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Sit-down lunch and cake at '
+    - place: harbs-ueno
+      label: HARBS Ueno
+    - text: ". Its Ueno location keeps the museum morning geographically compact and provides the day's recovery pause before crossing west."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-03
+    time:
+      label: 13:05–13:50
+      start: '13:05'
+      end: '13:50'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Travel from Ueno to Meiji Shrine, including the park exit, rail journey and forest-approach walk.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-04
+    time:
+      label: 13:50–15:05
+      start: '13:50'
+      end: '15:05'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: harajuku-shibuya
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: meiji-shrine
+      label: Meiji Shrine
+    - text: ". Walk the forest approach and main precinct at a measured pace; October closing is early, so this anchors the west-Tokyo afternoon."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-05
+    time:
+      label: 15:05–15:20
+      start: '15:05'
+      end: '15:20'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Walk from the Meiji Shrine precinct to the Harajuku Station entrance of ＠cosme TOKYO.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-at-cosme
+    time:
+      label: 15:20–17:20
+      start: '15:20'
+      end: '17:20'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: harajuku-shibuya
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Browse '
+    - place: at-cosme-tokyo
+      label: "＠cosme TOKYO"
+    - text: " in "
+    - place: harajuku
+      label: Harajuku
+    - text: ". The two-hour block includes any Sunday entrance, tester and checkout queues, so shorten floor browsing rather than leaving after 17:20."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-06
+    time:
+      label: 17:20–17:40
+      start: '17:20'
+      end: '17:40'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk south from Harajuku into '
+    - place: shibuya
+      label: Shibuya
+    - text: ", continuing directly to the Hikiniku to Come reception point. The route leaves a 20-minute buffer before the required 18:00 registration."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-03-07
+    time:
+      label: 18:00–19:15
+      start: '18:00'
+      end: '19:15'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Dinner at '
+    - place: hikiniku-to-come-shibuya
+      label: Hikiniku to Come Shibuya
+    - text: ". Book the now-open October registration and arrive at least 10 minutes early; late arrival can forfeit the place."
+    booking_refs:
+    - hikiniku-to-come-shibuya
+    constraint_refs: []
+  - id: day-03-return-hotel
+    time:
+      label: 19:15–19:45
+      start: '19:15'
+      end: '19:45'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Return from Shibuya to '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' via the Ginza Line; the 30-minute window includes station access.'
+    booking_refs: []
+    constraint_refs: []
+- number: 4
+  date: '2026-10-26'
+  label: Mon 26 Oct
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - asakusa-kappabashi
+    - azabudai
+  sleep_base:
+  - place: tokyo
+    label: Tokyo
+  - text: " · "
+  - place: sotetsu-fresa-inn-ginza-nanachome
+    label: Sotetsu Fresa Inn Ginza-Nanachome
+  activities:
+  - id: day-04-breakfast
+    time:
+      label: 08:00–08:45
+      start: '08:00'
+      end: '08:45'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' before the east-Tokyo morning. This is an explicit 45-minute
+        exception that preserves both Senso-ji and Kappabashi.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-hotel-sensoji
+    time:
+      label: '08:45–09:15'
+      start: '08:45'
+      end: '09:15'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Allow 30 minutes from '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' to Senso-ji via the Ginza Line and the short approach from Asakusa Station.'
+    booking_refs: []
+    constraint_refs:
+    - tokyo-hotel-shimbashi-ginza
+  - id: day-04-01
+    time:
+      label: '09:15–10:00'
+      start: '09:15'
+      end: '10:00'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: asakusa-kappabashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: asakusa
+      label: Asakusa
+    - text: " + "
+    - place: senso-ji
+      label: Senso-ji
+    - text: ". Keep this focused on the main precinct, then continue west on foot instead of making a separate Asakusa trip."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-02
+    time:
+      label: '10:00–10:15'
+      start: '10:00'
+      end: '10:15'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Walk from Senso-ji through Asakusa to the Kappabashi kitchenware district.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-02-visit
+    time:
+      label: '10:15–11:15'
+      start: '10:15'
+      end: '11:15'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: asakusa-kappabashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kappabashi
+      label: Kappabashi
+    - text: ". Monday is substantially better than Sunday for specialist-shop openings; keep a purchase list so the browse remains focused."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-lunch
+    time:
+      label: 11:15–12:00
+      start: '11:15'
+      end: '12:00'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Seated lunch near Kappabashi, avoiding a famous-shop queue. This is an
+        explicit 45-minute exception that protects the teamLab arrival buffer.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-02-transport
+    time:
+      label: 12:00–12:40
+      start: '12:00'
+      end: '12:40'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Travel from Kappabashi to Azabudai Hills, including station access and the final walk. The 20-minute gap before entry protects the timed ticket.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-03
+    time:
+      label: 13:00–15:30
+      start: '13:00'
+      end: '15:30'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: azabudai
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Pre-book a timed entry for '
+    - place: teamlab-borderless
+      label: teamLab Borderless
+    - text: ". Allow two and a half hours to wander; re-entry is not permitted."
+    booking_refs:
+    - teamlab-borderless
+    constraint_refs: []
+  - id: day-04-04-recovery
+    time:
+      label: 15:30–16:00
+      start: '15:30'
+      end: '16:00'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Return from Azabudai Hills to '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' by metro; the 30-minute window includes the walks at both ends.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-04-05
+    time:
+      label: 16:00–17:30
+      start: '16:00'
+      end: '17:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Simple early dinner and protected recovery around '
+    - place: shimbashi
+      label: Shimbashi
+    - text: ", "
+    - place: ginza
+      label: Ginza
+    - text: ", or near the hotel. Pack for the "
+    - place: kanazawa
+      label: Kanazawa
+    - text: "/"
+    - place: yamanaka-onsen
+      label: Yamanaka Onsen
+    - text: " leg. Keep the rest of the evening empty."
+    booking_refs: []
+    constraint_refs: []
+- number: 5
+  date: '2026-10-27'
+  label: Tue 27 Oct
+  day_type: transfer
+  planning:
+    route_pattern: linear
+    clusters:
+    - kanazawa-central
+    transfer:
+      origin: tokyo
+      destination: kanazawa
+      direct_travel_minutes: 175
+      direction: direct
+  sleep_base:
+  - place: kanazawa
+    label: Kanazawa
+  - text: " · "
+  - place: hotel-amanek-kanazawa
+    label: Hotel Amanek Kanazawa
+  activities:
+  - id: day-05-hotel-tokyo-station
+    time:
+      label: 08:30–09:00
+      start: '08:30'
+      end: '09:00'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel from '
+    - place: sotetsu-fresa-inn-ginza-nanachome
+      label: Sotetsu Fresa Inn Ginza-Nanachome
+    - text: ' to '
+    - place: tokyo-station
+      label: Tokyo Station
+    - text: ' via Ginza or Shimbashi and arrive before the train platform call.'
+    booking_refs:
+    - sotetsu-fresa-inn-ginza-nanachome-stay
+    constraint_refs: []
+  - id: day-05-01
+    time:
+      label: 'Provisional target 09:15–12:10'
+      start: '09:15'
+      end: '12:10'
+      precision: scheduled
+    category: transport
+    rail_types:
+    - high_speed_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: tokyo
+      label: Tokyo
+    - text: " → "
+    - place: kanazawa
+      label: Kanazawa
+    - text: " by Hokuriku Shinkansen. Standard JR sales open at 10:00 JST on 27 September; reserve the first practical service at or after 09:15, then replace this provisional window with the exact timetable before purchase."
+    booking_refs:
+    - tokyo-kanazawa-shinkansen
+    constraint_refs: []
+  - id: day-05-breakfast
+    time:
+      label: '09:15–09:50'
+      start: '09:15'
+      end: '09:50'
+      precision: scheduled
+      concurrent_with_activity_ref: day-05-01
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Portable breakfast aboard the Hokuriku Shinkansen, bought at Tokyo Station before boarding.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-05-02
+    time:
+      label: 12:25–13:40
+      start: '12:25'
+      end: '13:40'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Drop bags, then lunch at '
+    - place: omicho-market
+      label: Omicho Market
+    - text: ". Tuesday is the safer market day."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-05-03
+    time:
+      label: 13:55–15:40
+      start: '13:55'
+      end: '15:40'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: kanazawa-central
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kenrokuen-garden
+      label: Kenrokuen Garden
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-05-04
+    time:
+      label: Untimed alternative · replace the final part of Kenrokuen
+      precision: label_only
+      estimated_duration_minutes: 60
+    category: visit
+    pace_role: minor
+    cluster: kanazawa-central
+    priority: optional
+    optional: true
+    tags: []
+    content:
+    - place: kanazawa-castle-area
+      label: Kanazawa Castle area
+    - text: ". If this matters more than the full garden visit, use the adjoining
+        grounds and exterior route as a replacement, never as an addition that
+        consumes hotel recovery or dinner."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-05-05-recovery
+    title: Hotel check-in and recovery
+    time:
+      label: 15:40–16:40
+      start: '15:40'
+      end: '16:40'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Check in and protect a full hotel recovery block after the intercity transfer and garden route. Do not fill it with another Kanazawa district.
+    booking_refs:
+    - hotel-amanek-kanazawa-stay
+    constraint_refs: []
+  - id: day-05-06
+    time:
+      label: 16:40–18:10
+      start: '16:40'
+      end: '18:10'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Sushi or seafood dinner.
+    booking_refs: []
+    constraint_refs: []
+- number: 6
+  date: '2026-10-28'
+  label: Wed 28 Oct
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - nagamachi
+    - kanazawa-museum
+  sleep_base:
+  - place: kanazawa
+    label: Kanazawa
+  - text: " · "
+  - place: hotel-amanek-kanazawa
+    label: Hotel Amanek Kanazawa
+  activities:
+  - id: day-06-breakfast
+    time:
+      label: 08:30–09:30
+      start: '08:30'
+      end: '09:30'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: hotel-amanek-kanazawa
+      label: Hotel Amanek Kanazawa
+    - text: ' before forwarding the main luggage.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-01
+    title: Forward luggage to Kyoto
+    time:
+      label: '09:30–10:00'
+      start: '09:30'
+      end: '10:00'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Ask the hotel to forward the main luggage to '
+    - place: kyoto
+      label: Kyoto
+    - text: ". Carry only an overnight bag through the mountain transfer and the "
+    - place: onsen
+      label: onsen
+    - text: " "
+    - place: ryokan
+      label: ryokan
+    - text: "."
+    booking_refs:
+    - hotel-amanek-kanazawa-stay
+    constraint_refs:
+    - forward-luggage-to-kyoto
+  - id: day-06-02
+    time:
+      label: '10:15–11:45'
+      start: '10:15'
+      end: '11:45'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: nagamachi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: nagamachi-samurai-district
+      label: Nagamachi Samurai District
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-03
+    time:
+      label: 11:45–13:00
+      start: '11:45'
+      end: '13:00'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch around '
+    - place: korinbo
+      label: Korinbo
+    - text: " or "
+    - place: katamachi
+      label: Katamachi
+    - text: ", not Omicho."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-03-transport
+    time:
+      label: 13:00–13:30
+      start: '13:00'
+      end: '13:30'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Travel from the Nagamachi/Korinbo area to the museum cluster, allowing time for the final walk and orientation.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-04
+    time:
+      label: 13:30–15:00
+      start: '13:30'
+      end: '15:00'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: kanazawa-museum
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: d-t-suzuki-museum
+      label: D.T. Suzuki Museum
+    - text: ". Its regular Wednesday hours and contemplative architecture make it the day's primary museum interior."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-04-transport
+    time:
+      label: 15:00–15:15
+      start: '15:00'
+      end: '15:15'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Walk from the D.T. Suzuki Museum to the adjoining 21st Century Museum area.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-05
+    time:
+      label: 15:15–16:00
+      start: '15:15'
+      end: '16:00'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: kanazawa-museum
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: 21st-century-museum
+      label: 21st Century Museum
+    - text: ": architecture, public zones, and the free Noto and NEUTRAL COLORS programs only. The collection exhibition is between runs, the Swimming Pool is unavailable, and the next main paid exhibition starts on 31 October, after departure from Kanazawa."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-05-recovery
+    title: Hotel rest after the museum route
+    time:
+      label: 16:00–17:00
+      start: '16:00'
+      end: '17:00'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Return to the hotel for protected rest after the two-museum architecture route. Do not add another sightseeing district.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-06-06
+    title: Dinner
+    time:
+      label: 17:00–18:30
+      start: '17:00'
+      end: '18:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Dinner, then an unstructured evening before the east-side Kanazawa morning and
+    - place: onsen
+      label: onsen
+    - text: " transfer."
+    booking_refs: []
+    constraint_refs: []
+- number: 7
+  date: '2026-10-29'
+  label: Thu 29 Oct
+  day_type: transfer
+  planning:
+    route_pattern: linear
+    clusters:
+    - higashi-chaya
+    transfer:
+      origin: kanazawa
+      destination: yamanaka-onsen
+      direct_travel_minutes: 74
+      direction: on-corridor
+  sleep_base:
+  - place: yamanaka-onsen
+    label: Yamanaka Onsen
+  - text: " · "
+  - place: kagari-kisshotei-ryokan
+    label: Kagari Kisshotei
+  activities:
+  - id: day-07-breakfast
+    time:
+      label: '08:00–09:00'
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: hotel-amanek-kanazawa
+      label: Hotel Amanek Kanazawa
+    - text: ' before checkout and the onsen transfer.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-07-02
+    time:
+      label: '09:15–09:45'
+      start: '09:15'
+      end: '09:45'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Check out by 09:15 with only the compact overnight bag, then take the bus from '
+    - place: hotel-amanek-kanazawa
+      label: Hotel Amanek Kanazawa
+    - text: ' to Higashi Chaya. Carry the small bag rather than returning to the hotel.'
+    booking_refs:
+    - hotel-amanek-kanazawa-stay
+    constraint_refs: []
+  - id: day-07-03
+    time:
+      label: 09:45–11:00
+      start: '09:45'
+      end: '11:00'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: higashi-chaya
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: higashi-chaya
+      label: Higashi Chaya
+    - text: " and "
+    - place: shima-chaya
+      label: Shima
+    - text: ", then a brief "
+    - place: kazuemachi
+      label: Kazuemachi
+    - text: " riverside walk. Prioritise the preserved Edo-period teahouse interior and keep browsing light enough to protect the train."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-07-04
+    time:
+      label: 11:00–12:00
+      start: '11:00'
+      end: '12:00'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Early lunch beside Higashi Chaya or Kazuemachi. Finish by noon rather than relying on food at the platform.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-07-craft-alternative
+    time:
+      label: Replacement craft experience · allow 90 minutes
+      precision: label_only
+      estimated_duration_minutes: 90
+    category: visit
+    pace_role: major
+    cluster: higashi-chaya
+    priority: optional
+    optional: true
+    tags:
+    - optional-detour
+    content:
+    - text: A pre-booked gold-leaf or Kaga craft workshop may replace Shima and the Kazuemachi walk. Do not add it to the default route or risk the 12:51 train.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-07-05
+    time:
+      label: 12:00–12:35
+      start: '12:00'
+      end: '12:35'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Allow 35 minutes from the Higashi Chaya/Kazuemachi area to '
+    - place: kanazawa-station
+      label: Kanazawa Station
+    - text: ", including the walk, wait and station navigation. Use a local bus or taxi according to traffic and the final lunch location."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-07-06
+    time:
+      label: Provisional target 12:51–13:05
+      start: '12:51'
+      end: '13:05'
+      precision: approximate
+    category: transport
+    rail_types:
+    - high_speed_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kanazawa-station
+      label: Kanazawa Station
+    - text: " → "
+    - place: kaga-onsen-station
+      label: Kaga-Onsen Station
+    - text: " by Hokuriku Shinkansen. The comparable official timetable supports this target, but the exact 29 October service must be re-checked when sales open."
+    booking_refs:
+    - kanazawa-kaga-onsen-rail
+    constraint_refs: []
+    minimum_buffer_before_minutes: 15
+  - id: day-07-07
+    time:
+      label: 13:30–14:00
+      start: '13:30'
+      end: '14:00'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Reserved complimentary shuttle from '
+    - place: kaga-onsen-station
+      label: Kaga-Onsen Station
+    - text: " to "
+    - place: kagari-kisshotei-ryokan
+      label: Kagari Kisshotei
+    - text: ". The inn requires advance reservation and does not operate an unreserved shuttle."
+    booking_refs:
+    - kagari-arrival-shuttle
+    constraint_refs: []
+    minimum_buffer_before_minutes: 15
+  - id: day-07-08
+    title: Ryokan check-in, onsen and rest
+    time:
+      label: 14:00–17:30
+      start: '14:00'
+      end: '17:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Check in to the confirmed '
+    - place: kagari-kisshotei-ryokan
+      label: Kagari Kisshotei
+    - text: " Hoshi room, with its private indoor natural "
+    - place: onsen
+      label: onsen
+    - text: ". Keep the full afternoon for the in-room bath, communal gorge-side baths and rest before dinner."
+    booking_refs:
+    - kagari-kisshotei-stay
+    constraint_refs:
+    - kagari-checkin
+  - id: day-07-09
+    time:
+      label: 17:30–19:30
+      start: '17:30'
+      end: '19:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: recovery
+    cluster: kagari-kisshotei
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Kaiseki dinner at '
+    - place: kagari-kisshotei
+      label: Kagari Kisshotei
+    - text: ", followed by an unstructured evening in the confirmed Hoshi room."
+    booking_refs:
+    - kagari-kisshotei-stay
+    constraint_refs: []
+- number: 8
+  date: '2026-10-30'
+  label: Fri 30 Oct
+  day_type: transfer
+  planning:
+    route_pattern: linear
+    clusters: []
+    transfer:
+      origin: yamanaka-onsen
+      destination: kyoto
+      direct_travel_minutes: 175
+      direction: on-corridor
+  sleep_base:
+  - place: kyoto
+    label: Kyoto
+  - text: " · "
+  - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+    label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+  activities:
+  - id: day-08-01
+    time:
+      label: 08:00–09:00
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Ryokan breakfast at '
+    - place: kagari-kisshotei
+      label: Kagari Kisshotei
+    - text: ". The published breakfast service runs from 07:30 to 09:30, so use an 08:00 sitting and do not create an earlier wake-up deadline."
+    booking_refs:
+    - kagari-kisshotei-stay
+    constraint_refs: []
+  - id: day-08-02
+    title: Final onsen, pack and wait for shuttle
+    time:
+      label: '09:00–09:30'
+      start: '09:00'
+      end: '09:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Pack and check out by 09:30, then wait at the ryokan for the reserved shuttle rather than adding a town visit. Use the private onsen later the previous evening instead of waking early for it.
+    booking_refs:
+    - kagari-kisshotei-stay
+    constraint_refs: []
+  - id: day-08-03
+    time:
+      label: '09:50–10:15'
+      start: '09:50'
+      end: '10:15'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Reserved complimentary shuttle from '
+    - place: kagari-kisshotei-ryokan
+      label: Kagari Kisshotei
+    - text: " to "
+    - place: kaga-onsen-station
+      label: Kaga-Onsen Station
+    - text: "."
+    booking_refs:
+    - kagari-departure-shuttle
+    constraint_refs: []
+    minimum_buffer_before_minutes: 15
+  - id: day-08-04
+    title: Wait for train at Kaga-Onsen Station
+    time:
+      label: 10:15–11:05
+      start: '10:15'
+      end: '11:05'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Protected indoor wait at Kaga-Onsen Station. Have coffee, buy a snack and keep the 19-minute platform margin after this block.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-08-05
+    time:
+      label: Provisional target 11:24–13:09
+      start: '11:24'
+      end: '13:09'
+      precision: approximate
+    category: transport
+    rail_types:
+    - high_speed_rail
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kaga-onsen-station
+      label: Kaga-Onsen Station
+    - text: " → Tsuruga → "
+    - place: kyoto-station
+      label: Kyoto Station
+    - text: ". The comparable official timetable uses Tsurugi 19 and Thunderbird 20 with a 12-minute Tsuruga connection. Re-check the exact 30 October services when sales open."
+    booking_refs:
+    - kaga-onsen-kyoto-rail
+    constraint_refs: []
+    minimum_buffer_before_minutes: 15
+  - id: day-08-06
+    time:
+      label: 13:10–14:10
+      start: '13:10'
+      end: '14:10'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Slow lunch at Kyoto Station before dealing with the hotel transfer.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-08-07
+    time:
+      label: 14:10–14:55
+      start: '14:10'
+      end: '14:55'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Take a taxi from '
+    - place: kyoto-station
+      label: Kyoto Station
+    - text: ' to '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: '. The official access guide estimates about seven minutes by car; retain the full allowance for the taxi queue, traffic, luggage handling and waiting for the 15:00 check-in.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-08-08
+    title: Kyoto hotel check-in and recovery
+    time:
+      label: 14:55–16:30
+      start: '14:55'
+      end: '16:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Leave bags if needed, check in at 15:00 at '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ", and protect the remaining recovery block. Leave the evening unstructured and eat nearby or use a simple takeaway; Gion and Pontocho are deliberately deferred until a non-transfer day."
+    booking_refs:
+    - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+    constraint_refs: []
+  - id: day-08-09
+    time:
+      label: 16:30–18:00
+      start: '16:30'
+      end: '18:00'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Early dinner near '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ', then keep the evening unstructured.'
+    booking_refs: []
+    constraint_refs: []
+- number: 9
+  date: '2026-10-31'
+  label: Sat 31 Oct
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - nara
+    - uji
+    - fushimi-inari
+  sleep_base:
+  - place: kyoto
+    label: Kyoto
+  - text: " · "
+  - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+    label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+  activities:
+  - id: day-09-01
+    time:
+      label: 08:00–09:15
+      start: '08:00'
+      end: '09:15'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel from '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' to '
+    - place: nara-park
+      label: Nara Park
+    - text: ' / '
+    - place: todai-ji
+      label: Todai-ji
+    - text: ' via Kiyomizu-Gojo, Tofukuji and the JR Nara Line, including the final bus or taxi and a conservative transfer allowance.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-breakfast
+    time:
+      label: 08:00–09:00
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+      concurrent_with_activity_ref: day-09-01
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Portable breakfast bought the previous evening and eaten during the Kyoto-to-Nara journey. Keep the full hour rather than creating another short-meal exception.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-nara
+    time:
+      label: 09:15–11:15
+      start: '09:15'
+      end: '11:15'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: nara
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: nara-park
+      label: Nara Park
+    - text: ' and '
+    - place: todai-ji
+      label: Todai-ji
+    - text: '. Prioritise the park approach and Great Buddha Hall. Nigatsu-do is excluded from this combined day.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-lunch
+    time:
+      label: 11:15–12:15
+      start: '11:15'
+      end: '12:15'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    cluster: nara
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Proper early lunch near '
+    - place: todai-ji
+      label: Todai-ji
+    - text: '. Do not replace lunch with snacks while travelling.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-nara-uji
+    time:
+      label: 12:15–13:15
+      start: '12:15'
+      end: '13:15'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Take a bus or taxi from '
+    - place: todai-ji
+      label: Todai-ji
+    - text: ' to JR Nara, continue to '
+    - place: uji
+      label: Uji
+    - text: ' on the JR Nara Line, then walk to Byodoin.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-byodoin
+    time:
+      label: 13:15–14:45
+      start: '13:15'
+      end: '14:45'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: uji
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: byodoin
+      label: Byodoin
+    - text: ' garden, Phoenix Hall exterior and '
+    - place: hoshokan-museum
+      label: Hoshokan Museum
+    - text: '. Do not queue for the Phoenix Hall interior on this combined day.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-matcha-shopping
+    time:
+      label: 14:45–16:45
+      start: '14:45'
+      end: '16:45'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: uji
+    priority: high
+    optional: false
+    tags:
+    - matcha-block
+    content:
+    - place: byodoin-omotesando
+      label: Byodoin Omotesando
+    - text: ' matcha shopping on a one-way route towards JR Uji, prioritising '
+    - place: fukujuen-uji-kobo
+      label: Fukujuen Uji Kobo
+    - text: ', specialist Omotesando shops and '
+    - place: nakamura-tokichi-uji
+      label: Nakamura Tokichi Uji Honten
+    - text: '. This is a shopping block, not a seated cafe queue. Depart Uji at 16:45; if an earlier delay occurs, contract the shopping time rather than rushing Nara lunch or Fushimi Inari.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-uji-fushimi
+    time:
+      label: 16:45–17:15
+      start: '16:45'
+      end: '17:15'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: uji
+      label: Uji
+    - text: ' → '
+    - place: fushimi-inari
+      label: Fushimi Inari
+    - text: ' by JR Nara Line.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-fushimi
+    time:
+      label: 17:15–18:00
+      start: '17:15'
+      end: '18:00'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: fushimi-inari
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: fushimi-inari
+      label: Fushimi Inari
+    - text: ': visit the lower shrine and Senbon Torii only. Turn back after the lower gates; do not start the mountain circuit.'
+    booking_refs: []
+    constraint_refs:
+    - fushimi-lower-gates-only
+  - id: day-09-fushimi-kyoto
+    time:
+      label: 18:00–18:30
+      start: '18:00'
+      end: '18:30'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: fushimi-inari
+      label: Fushimi Inari
+    - text: ' → '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' via Keihan Fushimi-Inari and Kiyomizu-Gojo, including the walk back towards the hotel or dinner.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-09-dinner
+    time:
+      label: 18:30–20:00
+      start: '18:30'
+      end: '20:00'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Dinner near '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' or on the direct Kiyomizu-Gojo return corridor, followed by an unstructured evening.'
+    booking_refs: []
+    constraint_refs: []
+- number: 10
+  date: '2026-11-01'
+  label: Sun 1 Nov
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - higashiyama
+  sleep_base:
+  - place: kyoto
+    label: Kyoto
+  - text: " · "
+  - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+    label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+  activities:
+  - id: day-10-breakfast
+    time:
+      label: 08:00–09:00
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' before the Kiyomizu-dera transfer.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-hotel-kiyomizu
+    time:
+      label: 09:00–09:30
+      start: '09:00'
+      end: '09:30'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel from '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' to Kiyomizu-dera by taxi; retain the full allowance for traffic, drop-off and the uphill approach.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-01
+    time:
+      label: 09:30–11:00
+      start: '09:30'
+      end: '11:00'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: higashiyama
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kiyomizu-dera
+      label: Kiyomizu-dera
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-02
+    time:
+      label: '11:00–12:15'
+      start: '11:00'
+      end: '12:15'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: higashiyama
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: sannenzaka
+      label: Sannenzaka
+    - text: " / "
+    - place: ninenzaka
+      label: Ninenzaka
+    - text: " / "
+    - place: yasaka-pagoda
+      label: Yasaka Pagoda
+    - text: " area."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-03
+    time:
+      label: 12:15–13:30
+      start: '12:15'
+      end: '13:30'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch in the '
+    - place: higashiyama
+      label: Higashiyama
+    - text: " old-town area."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-04
+    time:
+      label: 13:30–15:00
+      start: '13:30'
+      end: '15:00'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: higashiyama
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: yasaka-shrine
+      label: Yasaka Shrine
+    - text: ", "
+    - place: maruyama-park
+      label: Maruyama Park
+    - text: ", and either "
+    - place: kennin-ji
+      label: Kennin-ji
+    - text: " or "
+    - place: kodai-ji
+      label: Kodai-ji
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-10-05
+    time:
+      label: Alternative to the late Higashiyama/recovery block · allow 90 minutes
+      precision: label_only
+      estimated_duration_minutes: 90
+    category: visit
+    pace_role: major
+    cluster: central-kyoto
+    priority: optional
+    optional: true
+    tags:
+    - optional-detour
+    content:
+    - place: nishiki-market
+      label: Nishiki Market
+    - text: " / "
+    - place: teramachi
+      label: Teramachi
+    - text: ". Choose this central-Kyoto route instead of the later Higashiyama temple and part of the recovery block, not after them. Nishiki has no common business hours: preselect target shops, verify each listing, and finish priority purchases by 16:45."
+    booking_refs: []
+    constraint_refs:
+    - nishiki-before-close
+  - id: day-10-05-luggage
+    title: Forward luggage to Osaka and rest
+    time:
+      label: 15:00–16:30
+      start: '15:00'
+      end: '16:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Return to the hotel, hand the main luggage to the front desk for delivery to '
+    - place: osaka
+      label: Osaka
+    - text: " by 3 November, then rest. Both hotels must confirm service, cutoff and receipt first. Keep passports, medication, valuables and a two-night essentials bag for the remaining Kyoto nights and the direct Osaka transfer."
+    booking_refs:
+    - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+    constraint_refs:
+    - forward-luggage-to-osaka
+  - id: day-10-06
+    time:
+      label: 16:30–18:00
+      start: '16:30'
+      end: '18:00'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Early dinner near the hotel or in one nearby Gion lane, then an unstructured evening.
+    booking_refs: []
+    constraint_refs: []
+- number: 11
+  date: '2026-11-02'
+  label: Mon 2 Nov
+  day_type: sightseeing
+  planning:
+    route_pattern: linear
+    clusters:
+    - arashiyama
+  sleep_base:
+  - place: kyoto
+    label: Kyoto
+  - text: " · "
+  - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+    label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+  activities:
+  - id: day-11-breakfast
+    time:
+      label: 08:00–09:00
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Relaxed breakfast near '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' before the later Arashiyama departure.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-hotel-arashiyama
+    time:
+      label: 09:00–09:30
+      start: '09:00'
+      end: '09:30'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel from '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' directly to Arashiyama by taxi, preserving the 09:30 start without backtracking through Kyoto Station. Confirm the travel time locally.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-01
+    time:
+      label: 09:30–10:30
+      start: '09:30'
+      end: '10:30'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: arashiyama
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: arashiyama-bamboo-grove
+      label: Arashiyama Bamboo Grove
+    - text: ". Accept the later crowds rather than creating an early wake-up."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-02
+    time:
+      label: '10:30–12:30'
+      start: '10:30'
+      end: '12:30'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: arashiyama
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: tenryu-ji
+      label: Tenryu-ji
+    - text: " plus "
+    - place: okochi-sanso
+      label: Okochi Sanso
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-03
+    time:
+      label: 12:30–14:00
+      start: '12:30'
+      end: '14:00'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch in '
+    - place: arashiyama
+      label: Arashiyama
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-04
+    time:
+      label: Separate north-Kyoto route · allow 180 minutes
+      precision: label_only
+      estimated_duration_minutes: 180
+    category: visit
+    pace_role: major
+    cluster: north-kyoto
+    priority: optional
+    optional: true
+    tags:
+    - optional-detour
+    content:
+    - place: kinkaku-ji
+      label: Kinkaku-ji
+    - text: " + "
+    - place: daitoku-ji
+      label: Daitoku-ji
+    - text: " precinct walk. This is a separate half-day route replacing Tenryu-ji/ Okochi Sanso and part of the recovery block, not an add-on after Arashiyama. Enter only a subtemple confirmed open that day."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-04-transport
+    time:
+      label: 14:00–15:00
+      start: '14:00'
+      end: '15:00'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Return from Arashiyama via Hankyu rail to Kyoto-Kawaramachi, then take a short taxi to the hotel. This is the day's only default inter-district movement; do not divert to north Kyoto.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-05-recovery
+    title: Hotel recovery after Arashiyama
+    time:
+      label: 15:00–16:30
+      start: '15:00'
+      end: '16:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Return to the hotel for protected recovery after Arashiyama. The Osaka luggage handoff was completed yesterday.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-11-06
+    time:
+      label: 16:30–18:00
+      start: '16:30'
+      end: '18:00'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kyoto
+      label: Kyoto
+    - text: " dinner."
+    booking_refs: []
+    constraint_refs: []
+- number: 12
+  date: '2026-11-03'
+  label: Tue 3 Nov — Culture Day
+  holiday: Culture Day
+  day_type: transfer
+  planning:
+    route_pattern: linear
+    clusters: []
+    transfer:
+      origin: kyoto
+      destination: osaka
+      direct_travel_minutes: 90
+      direction: direct
+  sleep_base:
+  - place: osaka
+    label: Osaka
+  - text: " · "
+  - place: sotetsu-fresa-inn-osaka-namba
+    label: Sotetsu Fresa Inn Osaka-Namba
+  activities:
+  - id: day-12-breakfast
+    time:
+      label: 08:00–09:00
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Final breakfast near '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' before checkout and the direct Osaka transfer.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-12-checkout
+    title: Final pack and Kyoto hotel checkout
+    time:
+      label: 09:00–09:30
+      start: '09:00'
+      end: '09:30'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Pack the two-night essentials bag, check out and keep passports, medication and valuables with you.
+    booking_refs:
+    - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+    constraint_refs: []
+  - id: day-12-01
+    time:
+      label: 09:30–11:00
+      start: '09:30'
+      end: '11:00'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel directly from '
+    - place: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+      label: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    - text: ' to '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ' with the essentials bag via Kiyomizu-Gojo, Yodoyabashi and Osaka Metro. The allowance includes station access, waiting and the final Namba walk.'
+    booking_refs:
+    - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+    constraint_refs: []
+  - id: day-12-bag-drop
+    title: Leave essentials bag at the Osaka hotel
+    time:
+      label: 11:00–11:30
+      start: '11:00'
+      end: '11:30'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Leave the carried bag at '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ' before lunch. Main luggage is due at the hotel today under the planned delivery arrangement, subject to confirmation by both hotels.'
+    booking_refs:
+    - sotetsu-fresa-inn-osaka-namba-stay
+    constraint_refs: []
+  - id: day-12-lunch
+    time:
+      label: 11:30–12:30
+      start: '11:30'
+      end: '12:30'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch near '
+    - place: namba
+      label: Namba
+    - text: ' before the open Osaka afternoon.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-12-open-afternoon
+    title: Protected open Osaka afternoon — activities TBC
+    time:
+      label: 12:30–16:00
+      start: '12:30'
+      end: '16:00'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Protected unstructured Osaka time. Activities remain deliberately TBC; replace this block and re-audit the day when the preferred Culture Day plan is chosen.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-12-osaka-checkin
+    title: Osaka hotel check-in, collect luggage and reset
+    time:
+      label: 16:00–16:30
+      start: '16:00'
+      end: '16:30'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Check in at '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ', collect the forwarded main luggage and use the remaining time to reset before dinner.'
+    booking_refs:
+    - sotetsu-fresa-inn-osaka-namba-stay
+    constraint_refs:
+    - forward-luggage-to-osaka
+  - id: day-12-dinner
+    time:
+      label: 16:30–18:00
+      start: '16:30'
+      end: '18:00'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Early dinner near '
+    - place: namba
+      label: Namba
+    - text: '. Keep the evening unstructured after the transfer.'
+    booking_refs: []
+    constraint_refs: []
+- number: 13
+  date: '2026-11-04'
+  label: Wed 4 Nov
+  day_type: sightseeing
+  planning:
+    route_pattern: out-and-back
+    clusters:
+    - himeji
+  sleep_base:
+  - place: osaka
+    label: Osaka
+  - text: " · "
+  - place: sotetsu-fresa-inn-osaka-namba
+    label: Sotetsu Fresa Inn Osaka-Namba
+  activities:
+  - id: day-13-01
+    time:
+      label: 08:15–10:00
+      start: '08:15'
+      end: '10:00'
+      precision: scheduled
+    category: transport
+    rail_types:
+    - conventional_rail
+    - high_speed_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: " → "
+    - place: himeji
+      label: Himeji
+    - text: ", via Shin-Osaka, then walk/taxi to the castle. Buy the required 10:00 digital castle ticket now. Standard JR sales open at 10:00 JST on 4 October; reserve a train that protects arrival before the slot and replace this provisional door-to-door window with the exact timetable. Leave luggage at the Osaka hotel."
+    booking_refs:
+    - himeji-rail-and-castle
+    constraint_refs: []
+  - id: day-13-breakfast
+    time:
+      label: 08:45–09:20
+      start: '08:45'
+      end: '09:20'
+      precision: scheduled
+      concurrent_with_activity_ref: day-13-01
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Portable breakfast during the Osaka-to-Himeji journey, bought before boarding and timed within the provisional intercity rail block.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-13-02
+    time:
+      label: '10:00–12:30'
+      start: '10:00'
+      end: '12:30'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: himeji
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: himeji-castle
+      label: Himeji Castle
+    - text: ". Keep the full 2.5-hour block: the digital ticket is not priority entry inside, and the official normal visit estimate is 90–120 minutes. Do not add Koko-en if the keep is delayed."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-13-03
+    time:
+      label: 12:45–13:45
+      start: '12:45'
+      end: '13:45'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch near '
+    - place: himeji
+      label: Himeji
+    - text: " Station."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-13-04
+    time:
+      label: 14:00–15:15
+      start: '14:00'
+      end: '15:15'
+      precision: scheduled
+    category: transport
+    rail_types:
+    - high_speed_rail
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: himeji
+      label: Himeji
+    - text: " → "
+    - place: shin-osaka
+      label: Shin-Osaka
+    - text: " / "
+    - place: osaka
+      label: Osaka
+    - text: ' / '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: '. Return directly to the existing Osaka base.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-13-06-recovery
+    title: Hotel recovery after the Himeji day trip
+    time:
+      label: 15:15–17:00
+      start: '15:15'
+      end: '17:00'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: Protected hotel recovery after the Himeji round trip. Do not convert this block into another Osaka attraction.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-13-07
+    time:
+      label: 17:00–18:30
+      start: '17:00'
+      end: '18:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Easy dinner near '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ". Save Dotonbori, Hozenji Yokocho, Namba and Ura-Namba for tomorrow's compact south-Osaka route."
+    booking_refs: []
+    constraint_refs: []
+- number: 14
+  date: '2026-11-05'
+  label: Thu 5 Nov
+  day_type: sightseeing
+  planning:
+    route_pattern: single-cluster
+    clusters:
+    - horie-shinsaibashi
+  sleep_base:
+  - place: osaka
+    label: Osaka
+  - text: " · "
+  - place: sotetsu-fresa-inn-osaka-namba
+    label: Sotetsu Fresa Inn Osaka-Namba
+  activities:
+  - id: day-14-01
+    time:
+      label: If energy remains · allow 90 minutes
+      precision: label_only
+      estimated_duration_minutes: 90
+    category: visit
+    pace_role: major
+    cluster: osaka-castle
+    priority: optional
+    optional: true
+    tags:
+    - optional-detour
+    content:
+    - place: osaka-castle-park
+      label: Osaka Castle Park
+    - text: ". This is the drop-first choice after the Himeji transfer; skip it by default if rest is more valuable. Himeji is the trip's primary castle, and the reconstructed museum is not required."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-kaiyukan-alternative
+    time:
+      label: Half-day replacement for the retail route · allow 300 minutes
+      precision: label_only
+      estimated_duration_minutes: 300
+    category: visit
+    pace_role: major
+    cluster: tempozan
+    priority: optional
+    optional: true
+    tags:
+    - optional-detour
+    content:
+    - place: osaka-aquarium-kaiyukan
+      label: Osaka Aquarium Kaiyukan
+    - text: ". Use this as a mutually exclusive half-day in place of UES, ZABOU, Orange Street and Amerikamura, never as an addition. If chosen, reserve a morning e-ticket and keep the Namba dinner."
+    booking_refs:
+    - osaka-aquarium-kaiyukan
+    constraint_refs: []
+  - id: day-14-02
+    time:
+      label: 10:00–11:00
+      start: '10:00'
+      end: '11:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Slow breakfast or coffee near the hotel. If Osaka Castle was skipped, keep the morning unstructured rather than adding another attraction.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-hotel-horie
+    time:
+      label: 11:00–11:30
+      start: '11:00'
+      end: '11:30'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk about 20 minutes from '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ' to UES Osaka and keep the remaining time as a navigation buffer before the Horie retail route.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-03
+    time:
+      label: 11:30–12:20
+      start: '11:30'
+      end: '12:20'
+      precision: scheduled
+    category: visit
+    pace_role: major
+    cluster: horie-shinsaibashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: ues-osaka
+      label: UES Osaka
+    - text: " in "
+    - place: kitahorie
+      label: Kitahorie
+    - text: ". Keep this focused."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-04
+    time:
+      label: 12:30–13:20
+      start: '12:30'
+      end: '13:20'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: horie-shinsaibashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: zabou-osaka
+      label: ZABOU Osaka
+    - text: " for an efficient RESOLUTE stop in "
+    - place: minamisenba
+      label: Minamisenba
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-05
+    time:
+      label: 13:20–14:30
+      start: '13:20'
+      end: '14:30'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Lunch around '
+    - place: horie
+      label: Horie
+    - text: " / "
+    - place: shinsaibashi
+      label: Shinsaibashi
+    - text: " / "
+    - place: minamisenba
+      label: Minamisenba
+    - text: "."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-06
+    time:
+      label: 14:30–16:00
+      start: '14:30'
+      end: '16:00'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: horie-shinsaibashi
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: horie
+      label: Horie
+    - text: " / "
+    - place: orange-street
+      label: Orange Street
+    - text: " / "
+    - place: amerikamura
+      label: Amerikamura
+    - text: " for relaxed "
+    - place: osaka
+      label: Osaka
+    - text: " wandering."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-07
+    time:
+      label: 16:00–17:30
+      start: '16:00'
+      end: '17:30'
+      precision: scheduled
+    category: visit
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Hotel rest, drop purchases and finish packing before dinner.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-08
+    time:
+      label: 17:30–18:00
+      start: '17:30'
+      end: '18:00'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk about 9 minutes from '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ' to Dotonbori; the wider 30-minute block leaves time to reset after packing.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-08-dinner
+    time:
+      label: 18:00–19:30
+      start: '18:00'
+      end: '19:30'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Final '
+    - place: osaka
+      label: Osaka
+    - text: " food night: "
+    - place: dotonbori
+      label: Dotonbori
+    - text: ", "
+    - place: hozenji-yokocho
+      label: Hozenji Yokocho
+    - text: ", "
+    - place: ura-namba
+      label: Ura-Namba
+    - text: ", with pork buns from "
+    - place: 551-horai-main-store
+      label: 551 Horai Main Store
+    - text: ". Choose one compact Namba-area route rather than crossing the city to Shinsekai, and finish early enough to protect the departure morning."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-14-return-hotel
+    time:
+      label: 19:30–20:00
+      start: '19:30'
+      end: '20:00'
+      precision: approximate
+    category: transport
+    pace_role: neutral
+    priority: high
+    optional: false
+    tags: []
+    content:
+    - text: 'Walk about 9 minutes back to '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ', retaining the protected 30-minute end-of-evening allowance.'
+    booking_refs: []
+    constraint_refs: []
+- number: 15
+  date: '2026-11-06'
+  label: Fri 6 Nov
+  day_type: departure
+  planning:
+    route_pattern: linear
+    clusters:
+    - namba
+  sleep_base:
+  - text: Overnight flight to Sydney
+  activities:
+  - id: day-15-breakfast
+    time:
+      label: '08:00–09:00'
+      start: '08:00'
+      end: '09:00'
+      precision: scheduled
+    category: meal
+    meal_type: breakfast
+    pace_role: recovery
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Breakfast near '
+    - place: sotetsu-fresa-inn-osaka-namba
+      label: Sotetsu Fresa Inn Osaka-Namba
+    - text: ' before checkout.'
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-01
+    title: Check out and leave bags
+    time:
+      label: '09:00–09:30'
+      start: '09:00'
+      end: '09:30'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Check out and leave bags with the hotel. Keep passports, flight documents and valuables with you.
+    booking_refs:
+    - sotetsu-fresa-inn-osaka-namba-stay
+    constraint_refs: []
+  - id: day-15-02
+    time:
+      label: '09:30–11:00'
+      start: '09:30'
+      end: '11:00'
+      precision: scheduled
+    category: visit
+    pace_role: minor
+    cluster: namba
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - place: kuromon-market
+      label: Kuromon Market
+    - text: " and a final "
+    - place: namba
+      label: Namba
+    - text: " wander. Treat individual stalls as optional because opening hours vary."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-03
+    time:
+      label: 11:00–12:00
+      start: '11:00'
+      end: '12:00'
+      precision: scheduled
+    category: meal
+    meal_type: lunch
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Early lunch near Namba. Avoid a distant final attraction; the confirmed flight makes a local morning much safer than returning to Osaka Castle.
+    booking_refs: []
+    constraint_refs:
+    - departure-day-local
+  - id: day-15-04
+    title: Collect bags and walk to Nankai Namba
+    time:
+      label: 12:00–13:00
+      start: '12:00'
+      end: '13:00'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: Collect bags, complete any tax-free packing checks and walk to Nankai Namba Station.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-05
+    time:
+      label: About 13:15–14:15
+      start: '13:15'
+      end: '14:15'
+      precision: approximate
+    category: transport
+    rail_types:
+    - conventional_rail
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Travel from Nankai Namba to '
+    - place: kansai-international-airport
+      label: Kansai International Airport
+    - text: ". Use a reserved "
+    - place: nankai-rapi-t
+      label: Nankai Rapi:t
+    - text: " or an earlier Airport Express if it better matches the timetable."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-06
+    title: Airport check-in, security and immigration
+    time:
+      label: 14:15–16:00
+      start: '14:15'
+      end: '16:00'
+      precision: scheduled
+    category: logistics
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags:
+    - international-flight-protection
+    content:
+    - text: Check the boarding pass for the terminal, complete airline check-in/bag drop, security and departure immigration. The airport target is almost five hours before departure, protecting against rail disruption or queues.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-06-dinner
+    time:
+      label: 16:00–17:15
+      start: '16:00'
+      end: '17:15'
+      precision: scheduled
+    category: meal
+    meal_type: dinner
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags:
+    - international-flight-protection
+    content:
+    - text: Early dinner after security at Kansai International Airport. Choose a nearby international-airside venue and re-check the terminal directory before travel.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-06-gate-buffer
+    title: Hydrate, charge devices and wait near the gate
+    time:
+      label: 17:15–18:20
+      start: '17:15'
+      end: '18:20'
+      precision: scheduled
+    category: logistics
+    pace_role: recovery
+    priority: high
+    optional: false
+    tags:
+    - international-flight-protection
+    content:
+    - text: Protected post-meal gate buffer. Hydrate, charge devices and keep the final 40 minutes clear for boarding instructions.
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-07
+    time:
+      label: '19:00'
+      start: '19:00'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Depart '
+    - place: kix
+      label: KIX
+    - text: " for Sydney. Overnight flight."
+    booking_refs: []
+    constraint_refs: []
+  - id: day-15-08
+    time:
+      label: Sat 7 Nov · 13:35
+      date: '2026-11-07'
+      start: '13:35'
+      precision: scheduled
+    category: transport
+    pace_role: neutral
+    priority: normal
+    optional: false
+    tags: []
+    content:
+    - text: 'Arrive at '
+    - place: syd
+      label: SYD
+    - text: "."
+    booking_refs: []
+    constraint_refs: []

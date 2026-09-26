@@ -1,0 +1,3917 @@
+---
+schema_version: 1
+places:
+  tokyo:
+    name: Tokyo
+    description: Shimbashi/Ginza planning base for Tokyo's temples, food, fashion, and art
+    url: https://www.google.com/search?q=Tokyo
+    kind: place
+    coordinates:
+      longitude: 139.76
+      latitude: 35.6685
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  kanazawa:
+    name: Kanazawa
+    description: garden, craft, seafood, and samurai-era city
+    url: https://www.google.com/search?q=Kanazawa
+    kind: place
+    coordinates:
+      longitude: 136.6562
+      latitude: 36.5613
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kanazawa-station:
+    name: Kanazawa Station
+    description: Hokuriku Shinkansen station and transport hub
+    url: https://eki.jr-odekake.net/premises?id=0541449
+    kind: station
+    coordinates:
+      longitude: 136.6482
+      latitude: 36.5781
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  kaga-onsen-station:
+    name: Kaga-Onsen Station
+    description: Hokuriku Shinkansen gateway for the Kaga hot-spring districts
+    url: https://eki.jr-odekake.net/premises?id=0541439
+    kind: station
+    coordinates:
+      longitude: 136.3505
+      latitude: 36.3204
+      precision: station
+      status: verified
+      source_url: https://www.openstreetmap.org/node/6641834272
+      checked_on: '2026-09-03'
+  yamanaka-onsen:
+    name: Yamanaka Onsen
+    description: historic Kaga hot-spring town beside Kakusenkei Gorge
+    url: https://www.visitkaga.jp/discover-kaga/onsen/yamanaka-onsen
+    kind: place
+    coordinates:
+      longitude: 136.3747
+      latitude: 36.2501
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  kagari-kisshotei:
+    name: Kagari Kisshotei
+    description: The confirmed Yamanaka Onsen ryokan dining room serving the booked kaiseki dinner and Kaga breakfast.
+    url: https://kagari-kisshotei.com/english/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 136.3714805
+      latitude: 36.2422894
+      precision: exact
+      status: verified
+      source_url: https://kagari-kisshotei.com/english/restaurant/
+      checked_on: '2026-09-11'
+  kagari-kisshotei-ryokan:
+    name: Kagari Kisshotei Ryokan
+    description: The confirmed gorge-side Yamanaka Onsen ryokan; the booked Hoshi room has a private indoor natural hot-spring bath.
+    url: https://kagari-kisshotei.com/english/
+    kind: hotel
+    coordinates:
+      longitude: 136.3714805
+      latitude: 36.2422894
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.2422894&mlon=136.3714805#map=19/36.2422894/136.3714805
+      checked_on: '2026-09-06'
+  sotetsu-fresa-inn-ginza-nanachome:
+    name: Sotetsu Fresa Inn Ginza-Nanachome
+    description: Value-focused private rooms between Ginza and Shimbashi, close to the itinerary's required base.
+    url: https://sotetsu-hotels.com/fresa-inn/ginza7/
+    kind: hotel
+    coordinates:
+      longitude: 139.7632713
+      latitude: 35.66803
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/way/160074469
+      checked_on: '2026-09-06'
+  hotel-amanek-kanazawa:
+    name: Hotel Amanek Kanazawa
+    description: Good-value modern hotel in lively Katamachi, convenient for Nagamachi, Korinbo, restaurants, and the museum district.
+    url: https://amanekhotels.jp/kanazawa/
+    kind: hotel
+    coordinates:
+      longitude: 136.6506593
+      latitude: 36.5607145
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/node/11958253578
+      checked_on: '2026-09-06'
+  sotetsu-fresa-inn-kyoto-kiyomizu-gojo:
+    name: Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo
+    description: Confirmed Kyoto base five minutes on foot from both Gojo and Kiyomizu-Gojo stations, with direct access to Higashiyama and central Kyoto.
+    url: https://sotetsu-hotels.com/fresa-inn/kiyomizugojo/
+    kind: hotel
+    coordinates:
+      longitude: 135.7644089
+      latitude: 34.9963048
+      precision: exact
+      status: verified
+      source_url: https://www.google.com/maps/place/Sotetsu+Fresa+Inn+Kyoto-Kiyomizu+Gojo/@34.9963048,135.7644089,17z
+      checked_on: '2026-09-24'
+  sotetsu-fresa-inn-osaka-namba:
+    name: Sotetsu Fresa Inn Osaka-Namba
+    description: Compact all-private hotel one to two minutes from Namba subway and Nankai rail for direct KIX access.
+    url: https://sotetsu-hotels.com/fresa-inn/namba-ekimae/
+    kind: hotel
+    coordinates:
+      longitude: 135.499242
+      latitude: 34.6648249
+      precision: exact
+      status: verified
+      source_url: https://maps.google.com/?q=34.6648249,135.499242
+      checked_on: '2026-09-06'
+  kyoto:
+    name: Kyoto
+    description: former imperial capital famous for temples and old lanes
+    url: https://www.google.com/search?q=Kyoto
+    kind: place
+    coordinates:
+      longitude: 135.7681
+      latitude: 35.0116
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kyoto-station:
+    name: Kyoto Station
+    description: Kyoto's principal intercity rail terminal
+    url: https://eki.jr-odekake.net/top?id=0610116
+    kind: station
+    coordinates:
+      longitude: 135.7588
+      latitude: 34.9858
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  uji:
+    name: Uji
+    description: matcha-famous tea town with Byodoin and riverside walks
+    url: https://www.google.com/search?q=Uji
+    kind: place
+    coordinates:
+      longitude: 135.8063
+      latitude: 34.8894
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  nara:
+    name: Nara
+    description: ancient capital known for deer, shrines, and giant temples
+    url: https://www.google.com/search?q=Nara
+    kind: place
+    coordinates:
+      longitude: 135.8048
+      latitude: 34.6851
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  himeji:
+    name: Himeji
+    description: castle city west of Kobe
+    url: https://www.google.com/search?q=Himeji
+    kind: place
+    coordinates:
+      longitude: 134.6908
+      latitude: 34.8274
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  osaka:
+    name: Osaka
+    description: food-loving city known for nightlife and street energy
+    url: https://www.google.com/search?q=Osaka
+    kind: place
+    coordinates:
+      longitude: 135.5023
+      latitude: 34.6937
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  sydney-airport-t1-international:
+    name: Sydney Airport T1 International
+    description: Sydney’s international terminal
+    url: https://www.sydneyairport.com.au/
+    kind: place
+    coordinates:
+      longitude: 151.1669
+      latitude: -33.9399
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  syd:
+    name: SYD
+    description: Sydney Kingsford Smith Airport
+    url: https://www.google.com/search?q=Sydney+Kingsford+Smith+Airport
+    kind: place
+  nrt:
+    name: NRT
+    description: Narita International Airport
+    url: https://www.google.com/search?q=Narita+International+Airport
+    kind: place
+  narita-international-airport:
+    name: Narita International Airport
+    description: Tokyo’s major international airport east of the city
+    url: https://www.narita-airport.jp/en/
+    kind: place
+    coordinates:
+      longitude: 140.3929
+      latitude: 35.772
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  narita-express:
+    name: Narita Express
+    description: direct reserved train to Tokyo, Shibuya and Shinjuku
+    url: https://www.jreast.co.jp/en/multi/nex/
+    kind: place
+  keisei-skyliner:
+    name: Keisei Skyliner
+    description: fast reserved train to Ueno/Nippori
+    url: https://www.keisei.co.jp/keisei/tetudou/skyliner/us/
+    kind: place
+  shibuya:
+    name: Shibuya
+    description: famous scramble crossing and youth shopping hub
+    url: https://www.google.com/search?q=Shibuya
+    kind: place
+    coordinates:
+      longitude: 139.7016
+      latitude: 35.6595
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  shinjuku:
+    name: Shinjuku
+    description: neon nightlife, dining, and major transport hub
+    url: https://www.google.com/search?q=Shinjuku
+    kind: place
+  asakusa:
+    name: Asakusa
+    description: old Tokyo temple district
+    url: https://www.google.com/search?q=Asakusa
+    kind: place
+    coordinates:
+      longitude: 139.7967
+      latitude: 35.7148
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  senso-ji:
+    name: Senso-ji
+    description: Tokyo’s oldest Buddhist temple
+    url: https://www.senso-ji.jp/english/
+    kind: place
+    coordinates:
+      longitude: 139.7967
+      latitude: 35.7148
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  tokyo-national-museum:
+    name: Tokyo National Museum
+    description: Japan’s largest museum of art and antiquities
+    url: https://www.tnm.jp/modules/r_free_page/index.php?id=113&lang=en
+    kind: place
+    coordinates:
+      longitude: 139.7765
+      latitude: 35.7188
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+    opening_hours:
+      days:
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '09:30'
+      closes: '17:00'
+      note: Official regular hours; October 2026 temporary notices still require a final check.
+  ueno:
+    name: Ueno
+    description: park, museums, and old-Tokyo food streets
+    url: https://www.google.com/search?q=Ueno
+    kind: place
+  meiji-shrine:
+    name: Meiji Shrine
+    description: forested Shinto shrine beside Harajuku
+    url: https://www.meijijingu.or.jp/en/visit/
+    kind: place
+    coordinates:
+      longitude: 139.6993
+      latitude: 35.6764
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '05:40'
+      closes: '16:40'
+      note: Official October opening and closing times; re-check temporary notices before travel.
+  harajuku:
+    name: Harajuku
+    description: Tokyo youth-fashion and pop-culture district
+    url: https://www.google.com/search?q=Harajuku
+    kind: place
+    coordinates:
+      longitude: 139.7027
+      latitude: 35.6702
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  at-cosme-tokyo:
+    name: "＠cosme TOKYO"
+    description: three-floor Harajuku cosmetics flagship for testing and shopping Japanese and international brands
+    url: https://www.cosme.net/store/flagship/tokyo/
+    kind: shop
+    coordinates:
+      longitude: 139.7031743
+      latitude: 35.6701458
+      precision: entrance
+      status: verified
+      source_url: https://maps.app.goo.gl/2KoQV85hDohGy4vm7
+      checked_on: '2026-09-06'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '11:00'
+      closes: '21:00'
+      note: Official regular hours; re-check temporary closure and hours notices before travel.
+  omotesando:
+    name: Omotesando
+    description: tree-lined avenue of architecture, boutiques, and cafés
+    url: https://www.google.com/search?q=Omotesando
+    kind: place
+  kappabashi:
+    name: Kappabashi
+    description: kitchenware street for knives, ceramics, and food displays
+    url: https://www.google.com/search?q=Kappabashi
+    kind: place
+    coordinates:
+      longitude: 139.788
+      latitude: 35.711
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  teamlab-borderless:
+    name: teamLab Borderless
+    description: map-free immersive digital-art museum at Azabudai Hills
+    url: https://www.teamlab.art/e/tokyo/
+    kind: place
+    coordinates:
+      longitude: 139.7306
+      latitude: 35.6608
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  yonex-tokyo-showroom:
+    name: YONEX Tokyo Showroom
+    description: official Yonex flagship showroom beside Shimbashi Station
+    url: https://www.yonex-showroom.com/tokyo-showroom/en/
+    kind: shop
+    coordinates:
+      longitude: 139.7575
+      latitude: 35.6663
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '11:00'
+      closes: '20:00'
+      note: Official regular hours; closed only over the year-end and New Year period.
+  shimbashi:
+    name: Shimbashi
+    description: lively salaryman dining district
+    url: https://www.google.com/search?q=Shimbashi+dinner
+    kind: place
+    coordinates:
+      longitude: 139.7582
+      latitude: 35.6663
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  ginza:
+    name: Ginza
+    description: upscale shopping district beside Shimbashi and Yurakucho
+    url: https://www.google.com/search?q=Ginza
+    kind: place
+    coordinates:
+      longitude: 139.7669
+      latitude: 35.6717
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  harbs-ueno:
+    name: HARBS Ueno
+    description: HARBS café on the second floor of PARCO_ya Ueno serving fresh cakes, pasta, sandwiches, and tea
+    url: https://www.harbs.co.jp/en/shop_kanto/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7731425
+      latitude: 35.7068359
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/node/5211537225
+      checked_on: '2026-09-11'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '10:00'
+      closes: '20:00'
+      note: Official listed hours for the atré Ueno shop; re-check building notices before travel.
+  hikiniku-to-come-shibuya:
+    name: Hikiniku to Come Shibuya
+    description: charcoal-grilled hamburg set restaurant with required online registration
+    url: https://hikinikutocome.com/en/visit/shibuya/
+    kind: restaurant
+    coordinates:
+      longitude: 139.6976023
+      latitude: 35.659255
+      precision: entrance
+      status: verified
+      source_url: https://hikinikutocome.com/en/visit/shibuya/
+      checked_on: '2026-09-11'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '11:00'
+      closes: '21:00'
+      note: Official service is 11:00–15:00 and 17:00–21:00; Wednesday is closed.
+  omicho-market:
+    name: Omicho Market
+    description: Kanazawa seafood market
+    url: https://www.google.com/search?q=Omicho+Market
+    kind: place
+    coordinates:
+      longitude: 136.6565
+      latitude: 36.5713
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kenrokuen-garden:
+    name: Kenrokuen Garden
+    description: one of Japan’s most celebrated landscape gardens
+    url: https://www.google.com/search?q=Kenrokuen+Garden
+    kind: place
+    coordinates:
+      longitude: 136.6625
+      latitude: 36.562
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kanazawa-castle-area:
+    name: Kanazawa Castle area
+    description: historic castle grounds beside Kenrokuen
+    url: https://www.google.com/search?q=Kanazawa+Castle+area
+    kind: place
+    coordinates:
+      longitude: 136.6595
+      latitude: 36.565
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  higashi-chaya:
+    name: Higashi Chaya
+    description: preserved geisha teahouse district
+    url: https://www.google.com/search?q=Higashi+Chaya
+    kind: place
+    coordinates:
+      longitude: 136.667
+      latitude: 36.5725
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  shima-chaya:
+    name: Shima
+    description: preserved 1820 teahouse and nationally important cultural property
+    url: https://visitkanazawa.jp/en/spot/detail_10094.html
+    kind: attraction
+    coordinates:
+      longitude: 136.6672
+      latitude: 36.5726
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '09:30'
+      closes: '17:30'
+      note: Official March-November hours; re-check temporary notices before travel.
+  onsen:
+    name: onsen
+    description: natural hot-spring bath
+    url: https://www.google.com/search?q=onsen
+    kind: place
+  ryokan:
+    name: ryokan
+    description: traditional Japanese inn
+    url: https://www.google.com/search?q=ryokan
+    kind: place
+  nagamachi-samurai-district:
+    name: Nagamachi Samurai District
+    description: old samurai-house neighborhood with canals
+    url: https://www.google.com/search?q=Nagamachi+Samurai+District
+    kind: place
+    coordinates:
+      longitude: 136.6497
+      latitude: 36.566
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  korinbo:
+    name: Korinbo
+    description: central Kanazawa shopping and dining district
+    url: https://www.google.com/search?q=Korinbo+Kanazawa
+    kind: place
+  katamachi:
+    name: Katamachi
+    description: central restaurant and nightlife district
+    url: https://www.google.com/search?q=Katamachi+Kanazawa
+    kind: place
+  21st-century-museum:
+    name: 21st Century Museum
+    description: contemporary art museum known for its architecture
+    url: https://www.kanazawa21.jp/data_list.php?g=81
+    kind: place
+    coordinates:
+      longitude: 136.6582
+      latitude: 36.5607
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  d-t-suzuki-museum:
+    name: D.T. Suzuki Museum
+    description: quiet architecture and Zen philosophy museum
+    url: https://www.kanazawa-museum.jp/daisetz/english/about.html
+    kind: place
+    coordinates:
+      longitude: 136.6607
+      latitude: 36.5576
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+    opening_hours:
+      days:
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '09:30'
+      closes: '17:00'
+      note: Official regular hours; re-check temporary closures before travel.
+  kazuemachi:
+    name: Kazuemachi
+    description: riverside historic teahouse district
+    url: https://www.google.com/search?q=Kazuemachi
+    kind: place
+    coordinates:
+      longitude: 136.6652
+      latitude: 36.5717
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-03'
+  gion:
+    name: Gion
+    description: Kyoto’s geisha district and atmospheric old lanes
+    url: https://www.google.com/search?q=Gion
+    kind: place
+  pontocho:
+    name: Pontocho
+    description: narrow riverside dining alley
+    url: https://www.google.com/search?q=Pontocho
+    kind: place
+  kiyomizu-dera:
+    name: Kiyomizu-dera
+    description: hilltop temple famous for its wooden stage and views
+    url: https://www.google.com/search?q=Kiyomizu-dera
+    kind: place
+    coordinates:
+      longitude: 135.785
+      latitude: 34.9949
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  sannenzaka:
+    name: Sannenzaka
+    description: historic stone shopping lane near Kiyomizu-dera
+    url: https://www.google.com/search?q=Sannenzaka
+    kind: place
+    coordinates:
+      longitude: 135.782
+      latitude: 34.997
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  ninenzaka:
+    name: Ninenzaka
+    description: picturesque old lane of shops and teahouses
+    url: https://www.google.com/search?q=Ninenzaka
+    kind: place
+    coordinates:
+      longitude: 135.7809
+      latitude: 34.9982
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  yasaka-pagoda:
+    name: Yasaka Pagoda
+    description: five-story pagoda landmark in Higashiyama
+    url: https://www.google.com/search?q=Yasaka+Pagoda
+    kind: place
+    coordinates:
+      longitude: 135.7792
+      latitude: 34.9987
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  higashiyama:
+    name: Higashiyama
+    description: Kyoto’s historic eastern temple district
+    url: https://www.google.com/search?q=Higashiyama
+    kind: place
+  yasaka-shrine:
+    name: Yasaka Shrine
+    description: Gion shrine famous for festivals and lanterns
+    url: https://www.google.com/search?q=Yasaka+Shrine
+    kind: place
+    coordinates:
+      longitude: 135.7786
+      latitude: 35.0037
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  maruyama-park:
+    name: Maruyama Park
+    description: classic park beside Yasaka Shrine
+    url: https://www.google.com/search?q=Maruyama+Park
+    kind: place
+  kennin-ji:
+    name: Kennin-ji
+    description: Kyoto’s oldest Zen temple
+    url: https://www.google.com/search?q=Kennin-ji
+    kind: place
+    coordinates:
+      longitude: 135.7731
+      latitude: 35.0003
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kodai-ji:
+    name: Kodai-ji
+    description: Zen temple known for gardens and night illuminations
+    url: https://www.google.com/search?q=Kodai-ji
+    kind: place
+  nishiki-market:
+    name: Nishiki Market
+    description: Kyoto’s covered food market
+    url: https://www.google.com/search?q=Nishiki+Market
+    kind: place
+  teramachi:
+    name: Teramachi
+    description: covered shopping arcades and temple streets
+    url: https://www.google.com/search?q=Teramachi
+    kind: place
+  kawaramachi:
+    name: Kawaramachi
+    description: central shopping and dining district
+    url: https://www.google.com/search?q=Kawaramachi
+    kind: place
+  arashiyama-bamboo-grove:
+    name: Arashiyama Bamboo Grove
+    description: iconic bamboo path in western Kyoto
+    url: https://www.google.com/search?q=Arashiyama+Bamboo+Grove
+    kind: place
+    coordinates:
+      longitude: 135.6717
+      latitude: 35.017
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  tenryu-ji:
+    name: Tenryu-ji
+    description: major Zen temple with a famous garden
+    url: https://www.google.com/search?q=Tenryu-ji
+    kind: place
+    coordinates:
+      longitude: 135.6735
+      latitude: 35.0158
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  okochi-sanso:
+    name: Okochi Sanso
+    description: former actor’s villa and hilltop garden
+    url: https://www.google.com/search?q=Okochi+Sanso
+    kind: place
+    coordinates:
+      longitude: 135.6697
+      latitude: 35.0172
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  arashiyama:
+    name: Arashiyama
+    description: scenic western Kyoto district by river and mountains
+    url: https://www.google.com/search?q=Arashiyama
+    kind: place
+  kinkaku-ji:
+    name: Kinkaku-ji
+    description: Golden Pavilion temple covered in gold leaf
+    url: https://www.google.com/search?q=Kinkaku-ji
+    kind: place
+  daitoku-ji:
+    name: Daitoku-ji
+    description: large Zen temple complex with subtemple gardens
+    url: https://www.google.com/search?q=Daitoku-ji
+    kind: place
+  fushimi-inari:
+    name: Fushimi Inari
+    description: shrine famous for thousands of red torii gates
+    url: https://inari.jp/en/
+    kind: place
+    coordinates:
+      longitude: 135.7727
+      latitude: 34.9671
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  byodoin:
+    name: Byodoin
+    description: Phoenix Hall temple featured on the 10-yen coin
+    url: https://www.byodoin.or.jp/en/
+    kind: place
+    coordinates:
+      longitude: 135.8074525
+      latitude: 34.8895001
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/332883349
+      checked_on: '2026-09-07'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '08:45'
+      closes: '17:30'
+      note: 'Garden hours; Hoshokan is 09:00–17:00 with last entry at 16:45. Official source checked 2026-09-14: https://www.byodoin.or.jp/en/guide/'
+  hoshokan-museum:
+    name: Hoshokan Museum
+    description: Byodoin museum displaying national treasures from the temple complex
+    url: https://www.byodoin.or.jp/en/museum/
+    kind: place
+  byodoin-omotesando:
+    name: Byodoin Omotesando
+    description: tea shops and sweets street leading to Byodoin
+    url: https://www.google.com/search?q=Byodoin+Omotesando
+    kind: place
+    coordinates:
+      longitude: 135.8065226
+      latitude: 34.8909939
+      precision: neighborhood
+      status: verified
+      source_url: https://www.openstreetmap.org/way/332886304
+      checked_on: '2026-09-07'
+  uji-river:
+    name: Uji River
+    description: scenic riverside walk through central Uji
+    url: https://www.google.com/search?q=Uji+River
+    kind: place
+    coordinates:
+      longitude: 135.805996
+      latitude: 34.8928016
+      precision: neighborhood
+      status: verified
+      source_url: https://www.openstreetmap.org/way/174839484
+      checked_on: '2026-09-07'
+  matcha:
+    name: matcha
+    description: powdered green tea
+    url: https://www.google.com/search?q=Uji+matcha
+    kind: place
+  nara-park:
+    name: Nara Park
+    description: deer park surrounding major temples and shrines
+    url: https://www.google.com/search?q=Nara+Park
+    kind: place
+    coordinates:
+      longitude: 135.843
+      latitude: 34.685
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  todai-ji:
+    name: Todai-ji
+    description: giant Buddha temple and Nara landmark
+    url: https://www.todaiji.or.jp/en/information/haikan/
+    kind: place
+    coordinates:
+      longitude: 135.8398
+      latitude: 34.689
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '07:30'
+      closes: '17:30'
+      note: 'April–October Great Buddha Hall hours. Official source checked 2026-09-14: https://www.todaiji.or.jp/en/information/haikan/'
+  himeji-castle:
+    name: Himeji Castle
+    description: UNESCO-listed original white castle
+    url: https://himejicastle.jp/en/
+    kind: place
+    coordinates:
+      longitude: 134.6939
+      latitude: 34.8394
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '09:00'
+      closes: '17:00'
+      note: Current 2026 hours; last entry is 16:00 and temporary changes still require a final check.
+  shin-osaka:
+    name: Shin-Osaka
+    description: Osaka’s main bullet-train station
+    url: https://www.google.com/search?q=Shin-Osaka
+    kind: place
+    coordinates:
+      longitude: 135.5006
+      latitude: 34.7335
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  dotonbori:
+    name: Dotonbori
+    description: neon canal food district
+    url: https://www.google.com/search?q=Dotonbori
+    kind: place
+    coordinates:
+      longitude: 135.5019
+      latitude: 34.6687
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  hozenji-yokocho:
+    name: Hozenji Yokocho
+    description: narrow stone-paved dining alley
+    url: https://www.google.com/search?q=Hozenji+Yokocho
+    kind: place
+  namba:
+    name: Namba
+    description: southern Osaka shopping and dining hub
+    url: https://www.google.com/search?q=Namba
+    kind: place
+    coordinates:
+      longitude: 135.5019
+      latitude: 34.6639
+      precision: station
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  ura-namba:
+    name: Ura-Namba
+    description: busy local food alleys behind Namba
+    url: https://www.google.com/search?q=Ura-Namba
+    kind: place
+  osaka-castle-park:
+    name: Osaka Castle Park
+    description: large city park around Osaka Castle
+    url: https://www.google.com/search?q=Osaka+Castle+Park
+    kind: place
+  horie:
+    name: Horie
+    description: design, café, and boutique neighborhood
+    url: https://www.google.com/search?q=Horie
+    kind: place
+    coordinates:
+      longitude: 135.491
+      latitude: 34.674
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  shinsaibashi:
+    name: Shinsaibashi
+    description: major central shopping district
+    url: https://www.google.com/search?q=Shinsaibashi
+    kind: place
+  ues-osaka:
+    name: UES Osaka
+    description: Japanese denim and workwear store
+    url: https://www.google.com/search?q=UES+Osaka
+    kind: place
+    coordinates:
+      longitude: 135.4937
+      latitude: 34.6744
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kitahorie:
+    name: Kitahorie
+    description: boutique-heavy area within Horie
+    url: https://www.google.com/search?q=Kitahorie
+    kind: place
+  zabou-osaka:
+    name: ZABOU Osaka
+    description: menswear shop known for Japanese denim/workwear
+    url: https://www.google.com/search?q=ZABOU+Osaka
+    kind: place
+    coordinates:
+      longitude: 135.5005
+      latitude: 34.676
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  minamisenba:
+    name: Minamisenba
+    description: central fashion and café area
+    url: https://www.google.com/search?q=Minamisenba
+    kind: place
+  orange-street:
+    name: Orange Street
+    description: design and furniture shopping street
+    url: https://www.google.com/search?q=Orange+Street
+    kind: place
+    coordinates:
+      longitude: 135.49
+      latitude: 34.671
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  amerikamura:
+    name: Amerikamura
+    description: youth fashion and streetwear neighborhood
+    url: https://www.google.com/search?q=Amerikamura
+    kind: place
+    coordinates:
+      longitude: 135.498
+      latitude: 34.671
+      precision: neighborhood
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  shinsekai:
+    name: Shinsekai
+    description: retro nightlife and kushikatsu area
+    url: https://www.google.com/search?q=Shinsekai
+    kind: place
+  kuromon-market:
+    name: Kuromon Market
+    description: Osaka food market
+    url: https://www.google.com/search?q=Kuromon+Market
+    kind: place
+    coordinates:
+      longitude: 135.5064
+      latitude: 34.6654
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  kansai-international-airport:
+    name: Kansai International Airport
+    description: Osaka Bay’s main international airport
+    url: https://www.kansai-airport.or.jp/en/
+    kind: place
+    coordinates:
+      longitude: 135.244
+      latitude: 34.4347
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-08-31'
+  nankai-rapi-t:
+    name: Nankai Rapi:t
+    description: limited express airport train
+    url: https://www.nankai.co.jp/en_railway/traffic/express/rapit.html
+    kind: place
+  kix:
+    name: KIX
+    description: Kansai International Airport
+    url: https://www.google.com/search?q=Kansai+International+Airport
+    kind: place
+  shimokitazawa:
+    name: Shimokitazawa
+    description: A compact west-Tokyo neighborhood for vintage clothing, tiny live houses, curry, cafés, record shops, and aimless side-street wandering.
+    url: https://www.google.com/search?q=Shimokitazawa+Tokyo
+    kind: attraction
+  kichijoji-inokashira:
+    name: Kichijoji and Inokashira Park
+    description: A relaxed neighborhood pairing a large wooded pond park with independent shops, coffee, food alleys, and an easy local-Tokyo atmosphere.
+    url: https://www.google.com/search?q=Kichijoji+Inokashira+Park+Tokyo
+    kind: attraction
+  nakamura-tokichi-uji:
+    name: Nakamura Tokichi Uji Honten
+    description: A historic Uji tea house serving matcha noodles, tea, and signature desserts.
+    url: https://www.tokichi.jp/english/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8017106
+      latitude: 34.8894104
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.8894104&mlon=135.8017106#map=19/34.8894104/135.8017106
+      checked_on: '2026-09-06'
+  itoh-kyuemon-uji:
+    name: Itoh Kyuemon Uji Honten
+    description: A Uji tea shop and restaurant serving matcha soba, sweets, and tea drinks.
+    url: https://www.itohkyuemon.co.jp/site/honten/
+    kind: restaurant
+    coordinates:
+      longitude: 135.807
+      latitude: 34.89037
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.8903700&mlon=135.8070000#map=19/34.8903700/135.8070000
+      checked_on: '2026-09-06'
+  den-den-town:
+    name: Den Den Town
+    description: Osaka’s electronics, anime, manga, retro-game, model, and hobby-shop district, rewarding a loose browse more than a fixed checklist.
+    url: https://www.google.com/search?q=Den+Den+Town+Osaka
+    kind: attraction
+  osaka-aquarium-kaiyukan:
+    name: Osaka Aquarium Kaiyukan
+    description: A large spiral-route aquarium centered on the Pacific Ocean, with whale sharks, rays, jellyfish, and deep-water habitats.
+    url: https://www.kaiyukan.com/language/eng/
+    kind: attraction
+    coordinates:
+      longitude: 135.429
+      latitude: 34.6545
+      precision: entrance
+      status: provisional
+      source_url: https://www.openstreetmap.org/
+      checked_on: '2026-09-05'
+  551-horai-main-store:
+    name: 551 Horai Main Store
+    description: Namba flagship for Osaka-style pork buns, shumai, and Chinese dishes
+    url: https://www.551horai.co.jp/shop/list/13/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5013457
+      latitude: 34.6664051
+      precision: entrance
+      status: verified
+      source_url: https://www.551horai.co.jp/shop/list/13/
+      checked_on: '2026-09-11'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '10:00'
+      closes: '21:30'
+      note: Official regular hours; first and third Tuesdays are normally closed, and 5 November 2026 is a Thursday.
+  tokyo-skytree:
+    name: TOKYO SKYTREE
+    description: Tokyo’s 634-metre broadcasting tower has two panoramic observation levels plus shopping, dining, an aquarium, and a planetarium at its base.
+    url: https://www.gotokyo.org/en/spot/6/index.html
+    kind: attraction
+  shibuya-sky:
+    name: SHIBUYA SKY
+    description: An open-air rooftop observatory 229 metres above Shibuya Station, looking directly over the scramble crossing and across the Tokyo skyline.
+    url: https://www.gotokyo.org/en/spot/1749/index.html
+    kind: attraction
+  tsukiji-outer-market:
+    name: Tsukiji Outer Market
+    description: The still-lively outer market is an early-day destination for sushi, seafood, pantry goods, kitchen tools, and compact street-food tastings.
+    url: https://www.gotokyo.org/en/destinations/central-tokyo/tsukiji/index.html
+    kind: attraction
+  imperial-palace-east-gardens:
+    name: Imperial Palace East Gardens
+    description: Free public gardens occupy part of the former Edo Castle grounds, combining lawns and seasonal planting with surviving walls, gates, and foundations.
+    url: https://www.gotokyo.org/en/guide-services/imperial-palace-outer-garden/index.html
+    kind: attraction
+  tokyo-tower:
+    name: Tokyo Tower
+    description: The orange-and-white 333-metre landmark offers two observation levels and a classic postwar Tokyo silhouette, especially striking after dark.
+    url: https://www.gotokyo.org/en/spot/4/index.html
+    kind: attraction
+  nomura-samurai-residence:
+    name: Nomura Samurai Residence
+    description: A restored Nagamachi residence with finely worked interiors, fusuma paintings, and an intimate garden of old trees, rocks, flowing water, and koi.
+    url: https://visitkanazawa.jp/en/attractions/detail_50073.html
+    kind: attraction
+  myoryuji-ninja-temple:
+    name: Myoryuji Temple (Ninja Temple)
+    description: This defensive temple is packed with concealed stairs, pitfalls, and lookout features; guided admission requires an advance reservation.
+    url: https://visitkanazawa.jp/en/spot/detail_50022.html
+    kind: attraction
+  oyama-jinja-shrine:
+    name: Oyama Jinja Shrine
+    description: A central Kanazawa shrine best known for its unusual three-storey gate blending Japanese, Chinese, and European design with stained glass.
+    url: https://visitkanazawa.jp/en/attractions/detail_50021.html
+    kind: attraction
+  kanazawa-craft-workshop:
+    name: Kanazawa Gold-Leaf or Kaga Craft Workshop
+    description: A hands-on session focused on Kanazawa’s gold leaf, lacquerware, ceramics, or another local craft tradition, chosen according to interest and availability.
+    url: https://visitkanazawa.jp/en/activities/
+    kind: experience
+  kakusenkei-gorge:
+    name: Kakusenkei Gorge
+    description: A 1.3-kilometre riverside path follows the Daishoji River through cedar woods, waterfalls, and rock pools between three distinctive bridges.
+    url: https://visitkaga.jp/attractions/kakusenkei-gorge
+    kind: attraction
+  kakusenkei-kawadoko:
+    name: Kakusenkei Kawadoko Riverside Cafe
+    description: Tatami platforms and red parasols form a seasonal clear-weather café directly beside the gorge, serving tea and sweets near Ayatori Bridge.
+    url: https://visitkaga.jp/attractions/kakusenkei-kawadoko-cafe
+    kind: experience
+  kiku-no-yu:
+    name: Kiku no Yu Public Bathhouse
+    description: Separate historic men’s and women’s bathhouses offer communal hot-spring bathing and a free outdoor footbath in the centre of Yamanaka.
+    url: https://visitkaga.jp/attractions/kikunoyu-public-bathhouse
+    kind: experience
+  yuge-kaido:
+    name: Yuge Kaido Street
+    description: Yamanaka’s compact main street gathers cafés, snacks, sake, souvenirs, and specialist shops for the town’s centuries-old lacquerware tradition.
+    url: https://visitkaga.jp/attractions/yuge-kaido-street
+    kind: attraction
+  yamanaka-za:
+    name: Yamanaka-za Theatre
+    description: A cypress-stage theatre preserving Yamanaka-bushi folk song and dance inside an interior decorated with local lacquerwork.
+    url: https://visitkaga.jp/attractions/yamanakaza-theater
+    kind: experience
+  basho-no-yakata:
+    name: Basho no Yakata
+    description: A preserved former ryokan displays books and lacquerware connected with haiku poet Matsuo Basho, with quiet rooms, tea, and a small garden.
+    url: https://visitkaga.jp/attractions/basho-no-yakata-museum
+    kind: attraction
+  mugen-an:
+    name: Mugen-an Samurai House
+    description: A high-status samurai residence moved from Kanazawa, retaining formal shoin-style interiors, a tea room, and gorge views toward Korogi Bridge.
+    url: https://visitkaga.jp/attractions/mugen-an-samurai-house
+    kind: attraction
+  ioji-temple:
+    name: Ioji Temple
+    description: Tradition links this hillside temple to the discovery of Yamanaka’s hot spring; its elevated grounds also look across the onsen town.
+    url: https://visitkaga.jp/attractions/ioji-temple
+    kind: attraction
+  rokuro-no-sato:
+    name: Rokuro-no-Sato Arts and Crafts Hall
+    description: A traditional-house atelier demonstrates Yamanaka lacquerware woodturning and offers a short hands-on bowl-making session outside the town centre.
+    url: https://visitkaga.jp/attractions/rokuro-no-sato-arts-and-crafts-hall
+    kind: experience
+  nijo-jo-castle:
+    name: Nijo-jo Castle
+    description: The Tokugawa shoguns’ Kyoto residence combines massive defenses with richly painted palace rooms, famous sounding floors, and broad gardens.
+    url: https://kyoto.travel/en/destinations/nijojo-castle/
+    kind: attraction
+  ginkaku-ji:
+    name: Ginkaku-ji Temple (Silver Pavilion)
+    description: An understated pavilion within an exceptionally composed landscape of raked sand, moss, ponds, and wooded viewpoints.
+    url: https://kyoto.travel/en/destinations/ginkakuji-templethe-silver-pavilion/
+    kind: attraction
+  philosophers-path:
+    name: Philosopher’s Path
+    description: A canal-side walking path linking the Ginkaku-ji area with quieter eastern temples and seasonal neighborhood scenery.
+    url: https://kyoto.travel/en/destinations/philosophers-path-tetsugakunomichi/
+    kind: attraction
+  ujigami-shrine:
+    name: Ujigami Shrine
+    description: A quiet World Heritage shrine across the river from Byodoin, preserving some of Japan’s oldest surviving shrine architecture.
+    url: https://www.kyoto-uji-kankou.or.jp/tourism-en.html
+    kind: attraction
+  tale-of-genji-museum-uji:
+    name: The Tale of Genji Museum, Uji
+    description: Immersive displays and original films introduce Heian court culture and the final Uji chapters of The Tale of Genji.
+    url: https://www.city.uji.kyoto.jp/site/genji/index.html
+    kind: attraction
+  taihoan-tea-room:
+    name: Taihoan Municipal Tea Room
+    description: A traditional municipal tea house that makes a formal Uji-tea service approachable for first-time visitors, with seated and reservable formats.
+    url: https://www.kyoto-uji-kankou.or.jp/taihoan-en.html
+    kind: experience
+  chazuna:
+    name: Historical Park of Tea and Uji Town, Chazuna
+    description: Exhibits and hands-on programs explain Uji’s tea and town history, making this a deeper option than a café tasting alone.
+    url: https://www.kyoto-uji-kankou.or.jp/course.html
+    kind: attraction
+  nigatsu-do:
+    name: Nigatsu-do Hall
+    description: An elevated wooden hall within Todaiji with a dramatic veranda and westward views across the roofs and green slopes of Nara.
+    url: https://narashikanko.or.jp/en/spot/detail_10001.html
+    kind: attraction
+  kasuga-taisha:
+    name: Kasugataisha Shrine
+    description: Vermilion shrine buildings, long lantern-lined approaches, and a sacred forest connect directly to Nara’s divine-deer tradition.
+    url: https://narashikanko.or.jp/en/spot/detail_10058.html
+    kind: attraction
+  kofuku-ji:
+    name: Kofuku-ji Temple
+    description: The Fujiwara clan’s great temple holds an exceptional concentration of Buddhist national treasures; its pagoda is concealed by long-term repair work.
+    url: https://narashikanko.or.jp/en/spot/detail_10029.html
+    kind: attraction
+  nara-national-museum:
+    name: Nara National Museum
+    description: One of Japan’s strongest collections of Buddhist sculpture and painting, housed in galleries that are themselves historically notable.
+    url: https://narashikanko.or.jp/en/spot/detail_10043.html
+    kind: attraction
+  isuien-garden:
+    name: Isui-en Garden and Neiraku Museum
+    description: Two linked strolling gardens use Todaiji’s gate and the eastern hills as borrowed scenery, with a compact East Asian art collection alongside.
+    url: https://narashikanko.or.jp/en/spot/detail_10050.html
+    kind: attraction
+  yoshikien-garden:
+    name: Yoshiki-en Garden
+    description: A classical garden beside Isui-en combining pond, moss, and tea-ceremony garden sections with borrowed views of the nearby hills.
+    url: https://narashikanko.or.jp/en/spot/detail_10087.html
+    kind: attraction
+  naramachi:
+    name: Naramachi Historic District
+    description: A former temple town of machiya streets, small shrines, craft shops, cafés, and traditional red talismans south of Nara Park.
+    url: https://narashikanko.or.jp/en/feature/naramachi/
+    kind: attraction
+  koko-en:
+    name: Koko-en Garden
+    description: Nine Edo-style gardens occupy former samurai-residence land beside Himeji Castle, with a tea house and strong castle backdrop.
+    url: https://visit-himeji.com/en/sightseeing/koko-en-garden/
+    kind: attraction
+  hyogo-prefectural-museum-history:
+    name: Hyogo Prefectural Museum of History
+    description: A museum beside the former castle compound interpreting Hyogo and castle history through models, objects, and hands-on cultural displays.
+    url: https://visit-himeji.com/en/sightseeing/hyogo-prefectural-museum-of-history/
+    kind: attraction
+  miki-museum:
+    name: Miki Museum
+    description: A small central museum of Bizen ceramics and Japanese and Western painting, with upper-level views toward Himeji Castle.
+    url: https://visit-himeji.com/en/sightseeing/miki-museum/
+    kind: attraction
+  himeji-city-museum-art-garden:
+    name: Himeji City Museum of Art Garden
+    description: The registered red-brick exterior and sculpture garden remain visitable, while the indoor museum is closed for major works through December 2027.
+    url: https://www.city.himeji.lg.jp/art/0000032163.html
+    kind: attraction
+  otemae-miyuki-dori:
+    name: Otemae-dori and Miyuki-dori
+    description: The station-to-castle axis supplies the classic frontal view, while the parallel covered arcade adds local food, leather goods, and souvenirs.
+    url: https://visit-himeji.com/en/trip-ideas/himeji-castle-amazing-history-and-tips-on-how-to-enjoy-your-visit/
+    kind: attraction
+  shoshazan-engyoji:
+    name: Shoshazan Engyo-ji Temple
+    description: A ropeway reaches this large forested Tendai complex, whose cliff-supported Mani-den and three grand halls reward a separate half-day visit.
+    url: https://www.hyogo-tourism.jp/world/spot/detail_1050.html
+    kind: attraction
+  osaka-museum-history:
+    name: Osaka Museum of History
+    description: Full-scale reconstructions, models, archaeological remains, and upper-floor castle views trace Osaka from the ancient Naniwa capital onward.
+    url: https://www.osaka-info.jp/en/special/universal/tourism/%E5%A4%A7%E9%98%AA%E6%AD%B4%E5%8F%B2%E5%8D%9A%E7%89%A9%E9%A4%A8/
+    kind: attraction
+  shitennoji:
+    name: Shitennoji Temple
+    description: Founded in 593, Japan’s first state-sponsored Buddhist temple recreates an ancient axial precinct and also contains a garden and treasure house.
+    url: https://osaka-info.jp/en/spot/shitennoji/
+    kind: attraction
+  umeda-sky-building:
+    name: Umeda Sky Building Floating Garden Observatory
+    description: Transparent escalators lead to indoor and open-air viewing levels 173 metres above Osaka, making the architecture as notable as the skyline.
+    url: https://osaka-info.jp/en/spot/umeda-sky-building/
+    kind: attraction
+  tsutenkaku:
+    name: Tsutenkaku Tower
+    description: Osaka’s landmark observation tower rises above Shinsekai’s nostalgic entertainment streets and kushikatsu restaurants.
+    url: https://osaka-info.jp/en/spot/tsutenkaku/
+    kind: attraction
+  tokyo-station:
+    name: Tokyo Station
+    description: Tokyo's principal intercity rail terminal
+    url: https://www.jreast.co.jp/e/stations/e1039.html
+    kind: station
+    coordinates:
+      longitude: 139.7671
+      latitude: 35.6812
+      precision: station
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6812&mlon=139.7671#map=18/35.6812/139.7671
+      checked_on: '2026-09-06'
+  hikari-ramen-sydney-airport:
+    name: Hikari Ramen & Donburi — Sydney Airport T1
+    description: Japanese ramen and donburi beside Gate 10 after security in Sydney International Terminal 1.
+    url: https://www.sydneyairport.com/eat
+    kind: restaurant
+    coordinates:
+      longitude: 151.16664
+      latitude: -33.94023
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=-33.9402300&mlon=151.1666400#map=19/-33.9402300/151.1666400
+      checked_on: '2026-09-06'
+  kitchen-by-mike-sydney-airport:
+    name: Kitchen by Mike — Sydney Airport T1
+    description: Australian casual dining near Gate 30 after security in Sydney International Terminal 1.
+    url: https://www.sydneyairport.com/eat
+    kind: restaurant
+    coordinates:
+      longitude: 151.1687415
+      latitude: -33.9368397
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=-33.9368397&mlon=151.1687415#map=19/-33.9368397/151.1687415
+      checked_on: '2026-09-06'
+  bistro-wolfgang-puck-sydney-airport:
+    name: The Bistro by Wolfgang Puck — Sydney Airport T1
+    description: A seated international-terminal bistro near Gate 10 after security.
+    url: https://www.sydneyairport.com/eat
+    kind: restaurant
+    coordinates:
+      longitude: 151.1669
+      latitude: -33.94001
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=-33.9400100&mlon=151.1669000#map=19/-33.9400100/151.1669000
+      checked_on: '2026-09-06'
+  ootoya-shimbashi-ginza:
+    name: Ootoya Shimbashi Ginza-guchi
+    description: A dependable teishoku restaurant for balanced grilled-fish, chicken, and vegetable set meals.
+    url: https://www.ootoya.com/menu/
+    kind: restaurant
+    coordinates:
+      longitude: 139.75807
+      latitude: 35.66663
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=35.6666300&mlon=139.7580700#map=19/35.6666300/139.7580700
+      checked_on: '2026-09-06'
+  uogashi-nihonichi-shimbashi:
+    name: Uogashi Nihon-Ichi Shimbashi Ekimae
+    description: A standing-sushi counter near Shimbashi Station designed for a compact meal.
+    url: https://www.susinippan.co.jp/brands/uogashi/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7582
+      latitude: 35.66597
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=35.6659700&mlon=139.7582000#map=19/35.6659700/139.7582000
+      checked_on: '2026-09-06'
+  ginza-kagari-honten:
+    name: Ginza Kagari Honten
+    description: A Ginza ramen specialist known for creamy chicken paitan bowls.
+    url: https://ginzakagari.com/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7615129
+      latitude: 35.6711341
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6711341&mlon=139.7615129#map=19/35.6711341/139.7615129
+      checked_on: '2026-09-06'
+  yoshinoya-shimbashi-karasumori:
+    name: Yoshinoya Shimbashi Karasumori
+    description: A quick-service beef-bowl branch useful for an early or low-friction meal near Shimbashi Station.
+    url: https://www.yoshinoya.com/menu/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7561178
+      latitude: 35.6648171
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6648171&mlon=139.7561178#map=19/35.6648171/139.7561178
+      checked_on: '2026-09-06'
+  sukiya-shimbashi-sanchome:
+    name: Sukiya Shimbashi 3-chome
+    description: A round-the-clock-style gyudon branch with breakfast sets and fast table turnover in Shimbashi.
+    url: https://www.sukiya.jp/menu/in/asa/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7555817
+      latitude: 35.6659498
+      precision: exact
+      status: verified
+      source_url: https://map.yahoo.co.jp/v3/place/IKtMrXp3OBo/map
+      checked_on: '2026-09-06'
+  komeda-shimbashi-karasumori:
+    name: Komeda's Coffee Shimbashi Karasumori
+    description: A kissaten-style chain café serving toast, coffee, and morning sets near Shimbashi Station.
+    url: https://www.komeda.co.jp/menu/category.html?cat=1-2
+    kind: restaurant
+    coordinates:
+      longitude: 139.7561698
+      latitude: 35.6664018
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6664018&mlon=139.7561698#map=19/35.6664018/139.7561698
+      checked_on: '2026-09-06'
+  inshotei:
+    name: Inshotei
+    description: A traditional Ueno Park restaurant serving seasonal Japanese meals in a garden setting.
+    url: https://www.innsyoutei.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 139.772539
+      latitude: 35.7140225
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.7140225&mlon=139.7725390#map=19/35.7140225/139.7725390
+      checked_on: '2026-09-06'
+  hachiya-curry-shibuya:
+    name: HACHIYA Curry
+    description: A small Shibuya Japanese curry shop suited to a compact dinner.
+    url: https://www.instagram.com/hachiyacurry/
+    kind: restaurant
+    coordinates:
+      longitude: 139.6945357
+      latitude: 35.663487
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6634870&mlon=139.6945357#map=19/35.6634870/139.6945357
+      checked_on: '2026-09-06'
+  kiku-sushi-kappabashi:
+    name: Kiku Sushi Kappabashi
+    description: A Kappabashi sushi restaurant with practical lunch sets, chirashi, and cooked options.
+    url: https://kikuzushi-kappabashi.com/en/lunch/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7878608
+      latitude: 35.7121413
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.7121413&mlon=139.7878608#map=19/35.7121413/139.7878608
+      checked_on: '2026-09-06'
+  katsuya-asakusa:
+    name: Katsuya Asakusa
+    description: A fast, inexpensive tonkatsu counter close to the Asakusa and Kappabashi route.
+    url: https://www.arclandservice.co.jp/katsuya/menu/
+    kind: restaurant
+    coordinates:
+      longitude: 139.793235
+      latitude: 35.7145475
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.7145475&mlon=139.7932350#map=19/35.7145475/139.7932350
+      checked_on: '2026-09-06'
+  asakusa-imahan-kokusai:
+    name: Asakusa Imahan Kokusai-dori Honten
+    description: A historic sukiyaki and shabu-shabu restaurant offering a more leisurely premium lunch.
+    url: https://www.asakusaimahan.co.jp/english/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7922648
+      latitude: 35.7125812
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.7125812&mlon=139.7922648#map=19/35.7125812/139.7922648
+      checked_on: '2026-09-06'
+  honnoriya-tokyo-station:
+    name: Honnoriya Tokyo Station
+    description: A station onigiri shop for portable rice balls and side dishes before boarding.
+    url: https://www.gransta.jp/en/
+    kind: shop
+    coordinates:
+      longitude: 139.7671
+      latitude: 35.68142
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=35.6814200&mlon=139.7671000#map=19/35.6814200/139.7671000
+      checked_on: '2026-09-06'
+  ekibenya-matsuri:
+    name: Ekibenya Matsuri
+    description: Tokyo Station's large ekiben counter with regional rail bento suitable for onboard breakfast.
+    url: https://www.gransta.jp/en/
+    kind: shop
+    coordinates:
+      longitude: 139.766844
+      latitude: 35.6813413
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.6813413&mlon=139.7668440#map=19/35.6813413/139.7668440
+      checked_on: '2026-09-06'
+  five-crossties-coffee-tokyo:
+    name: 5 CROSSTIES COFFEE Gransta
+    description: An in-station café for coffee, sandwiches, and a quick breakfast set.
+    url: https://www.gransta.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7630902
+      latitude: 35.6815318
+      precision: exact
+      status: verified
+      source_url: https://www.gransta.jp/mall/gransta_tokyo/5crosstiescoffee/
+      checked_on: '2026-09-11'
+  iki-iki-tei-omicho:
+    name: Iki-iki-tei Omicho
+    description: A compact Omicho seafood counter known for rice bowls and a callback system when seats are full.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/omicho
+    kind: restaurant
+    coordinates:
+      longitude: 136.65594
+      latitude: 36.57058
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5705800&mlon=136.6559400#map=19/36.5705800/136.6559400
+      checked_on: '2026-09-06'
+  omicho-market-sushi:
+    name: Omicho Market Sushi
+    description: A market sushi restaurant serving nigiri and seafood bowls from the morning onward.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/omicho
+    kind: restaurant
+    coordinates:
+      longitude: 136.6561709
+      latitude: 36.5707886
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5707886&mlon=136.6561709#map=19/36.5707886/136.6561709
+      checked_on: '2026-09-06'
+  kanazawa-curry-lab:
+    name: Kanazawa Curry Laboratory
+    description: A casual Omicho curry counter offering the city's dark, rich curry style.
+    url: https://ohmicho-ichiba.com/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6562006
+      latitude: 36.5708357
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5708357&mlon=136.6562006#map=19/36.5708357/136.6562006
+      checked_on: '2026-09-06'
+  kourin-sushi:
+    name: Kourin Sushi
+    description: A small central Kanazawa sushi counter valued for friendly service and local fish.
+    url: https://visitkanazawa.jp/en/feature/detail_410.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.6585899
+      latitude: 36.5694167
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5694167&mlon=136.6585899#map=19/36.5694167/136.6585899
+      checked_on: '2026-09-06'
+  kuroyuri-kanazawa:
+    name: Kuroyuri Kanazawa Station
+    description: A station restaurant specialising in Kanazawa oden and regional dishes.
+    url: https://www.kanazawabiyori.com/contents/wp-content/uploads/2025/03/kanazawabiyori.en_.pdf
+    kind: restaurant
+    coordinates:
+      longitude: 136.6585543
+      latitude: 36.5582894
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5582894&mlon=136.6585543#map=19/36.5582894/136.6585543
+      checked_on: '2026-09-06'
+  takasago-kanazawa:
+    name: Oden Takasago
+    description: A long-running Kakinokibatake oden shop with curry oden and doteyaki.
+    url: https://visitkanazawa.jp/en/feature/detail_490.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.6527179
+      latitude: 36.5587376
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5587376&mlon=136.6527179#map=19/36.5587376/136.6527179
+      checked_on: '2026-09-06'
+  yutaka-suisan-omicho:
+    name: Yutaka Suisan
+    description: An early-opening Omicho seafood restaurant serving generous fish and meat rice bowls.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/omicho
+    kind: restaurant
+    coordinates:
+      longitude: 136.65607
+      latitude: 36.57047
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5704700&mlon=136.6560700#map=19/36.5704700/136.6560700
+      checked_on: '2026-09-06'
+  noka-banzai-tonariya:
+    name: Noka Banzai Tonariya
+    description: An early Omicho restaurant known for rice-cooked nodoguro and breakfast-friendly local dishes.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/omicho
+    kind: restaurant
+    coordinates:
+      longitude: 136.6562
+      latitude: 36.57058
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5705800&mlon=136.6562000#map=19/36.5705800/136.6562000
+      checked_on: '2026-09-06'
+  higashide-coffee:
+    name: Higashide Coffee
+    description: A retro local coffee shop near Omicho Market with house-roasted coffee and toast.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/omicho
+    kind: restaurant
+    coordinates:
+      longitude: 136.6570453
+      latitude: 36.5705952
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5705952&mlon=136.6570453#map=19/36.5705952/136.6570453
+      checked_on: '2026-09-06'
+  turban-curry-honten:
+    name: Turban Curry Main Store
+    description: A compact counter for classic Kanazawa curry near Korinbo.
+    url: https://visitkanazawa.jp/lsc/upfile/info/0000/0426/426_d001_file.pdf
+    kind: restaurant
+    coordinates:
+      longitude: 136.65646
+      latitude: 36.5708
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5708000&mlon=136.6564600#map=19/36.5708000/136.6564600
+      checked_on: '2026-09-06'
+  shunsai-grill-korin:
+    name: Shunsai Grill Korin
+    description: A Korinbo Daiwa restaurant serving Hanton rice and Kanazawa-style set meals.
+    url: https://visitkanazawa.jp/en/feature/detail_577.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.65594
+      latitude: 36.57091
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5709100&mlon=136.6559400#map=19/36.5709100/136.6559400
+      checked_on: '2026-09-06'
+  ginza-tenichi-kanazawa:
+    name: Ginza Ten-Ichi Kanazawa
+    description: A department-store tempura restaurant using local seafood and vegetables.
+    url: https://visitkanazawa.jp/en/feature/detail_577.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.65607
+      latitude: 36.57102
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5710200&mlon=136.6560700#map=19/36.5710200/136.6560700
+      checked_on: '2026-09-06'
+  jiyuken-higashi-chaya:
+    name: Jiyuken Higashi Chaya
+    description: A compact yoshoku restaurant in Higashi Chaya known for omurice and Western-Japanese plates.
+    url: https://visitkanazawa.jp/lsc/upfile/pamphlet/0000/0093/93_201_file.pdf
+    kind: restaurant
+    coordinates:
+      longitude: 136.6666756
+      latitude: 36.5725559
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5725559&mlon=136.6666756#map=19/36.5725559/136.6666756
+      checked_on: '2026-09-06'
+  kanazawa-tamura:
+    name: Kanazawa Tamura
+    description: A restaurant near Higashi Chaya serving local seafood, buri rolls, and Tamura udon.
+    url: https://www.kanazawabiyori.com/contents/wp-content/uploads/2025/03/kanazawabiyori.en_.pdf
+    kind: restaurant
+    coordinates:
+      longitude: 136.65633
+      latitude: 36.57047
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=36.5704700&mlon=136.6563300#map=19/36.5704700/136.6563300
+      checked_on: '2026-09-06'
+  cafe-tamon:
+    name: Cafe Tamon
+    description: A Higashi Chaya café known for fluffy pancakes and lighter brunch-style plates.
+    url: https://visitkanazawa.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6678337
+      latitude: 36.5730321
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=36.5730321&mlon=136.6678337#map=19/36.5730321/136.6678337
+      checked_on: '2026-09-06'
+  katsukura-kyoto-porta:
+    name: Katsukura Kyoto Porta
+    description: A Kyoto Station underground tonkatsu restaurant with complete set meals.
+    url: https://www.katsukura.jp/en/shop/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7576766
+      latitude: 34.9859374
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9859374&mlon=135.7576766#map=19/34.9859374/135.7576766
+      checked_on: '2026-09-06'
+  kyoto-ramen-koji-masutani:
+    name: Masutani — Kyoto Ramen Koji
+    description: A Kyoto Station ramen counter in Kyoto Ramen Koji suited to a quick transfer-day lunch.
+    url: https://www.kyoto-ramen-koji.com/english/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75867
+      latitude: 34.9858
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.9858000&mlon=135.7586700#map=19/34.9858000/135.7586700
+      checked_on: '2026-09-06'
+  honke-daiichi-asahi:
+    name: Honke Daiichi-Asahi
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.honke-daiichiasahi.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7624885
+      latitude: 34.986687
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.986687&mlon=135.7624885#map=19/34.986687/135.7624885
+      checked_on: '2026-09-24'
+  menya-inoichi:
+    name: Men-ya Inoichi
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://menyainoichi.net/about
+    kind: restaurant
+    coordinates:
+      longitude: 135.7669452
+      latitude: 35.0013284
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0013284&mlon=135.7669452#map=19/35.0013284/135.7669452
+      checked_on: '2026-09-24'
+  gion-tanto:
+    name: Gion Tanto
+    description: A small Gion okonomiyaki restaurant suited to sharing savoury pancakes and yakisoba.
+    url: https://kyoto.travel/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7745738
+      latitude: 35.0055299
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0055299&mlon=135.7745738#map=19/35.0055299/135.7745738
+      checked_on: '2026-09-06'
+  katsukura-shijo-teramachi:
+    name: Katsukura Shijo Teramachi
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.katsukura.jp/en/shop/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7667923
+      latitude: 35.003883
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.003883&mlon=135.7667923#map=19/35.003883/135.7667923
+      checked_on: '2026-09-24'
+  seven-eleven-kyoto-station-central:
+    name: 7-Eleven Heart-in JR Kyoto Station Central
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sej.co.jp/products/
+    kind: shop
+    coordinates:
+      longitude: 135.75893
+      latitude: 34.9858
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.9858000&mlon=135.7589300#map=19/34.9858000/135.7589300
+      checked_on: '2026-09-06'
+  lawson-kyoto-station-hachijo:
+    name: Lawson Kyoto Station Hachijo East Exit
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.lawson.co.jp/recommend/
+    kind: shop
+    coordinates:
+      longitude: 135.75906
+      latitude: 34.98591
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.9859100&mlon=135.7590600#map=19/34.9859100/135.7590600
+      checked_on: '2026-09-06'
+  familymart-kyoto-station-hachijo:
+    name: FamilyMart Kyoto Station Hachijo Exit
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.family.co.jp/goods.html
+    kind: shop
+    coordinates:
+      longitude: 135.75854
+      latitude: 34.98602
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.9860200&mlon=135.7585400#map=19/34.9860200/135.7585400
+      checked_on: '2026-09-06'
+  tsuen-tea:
+    name: Tsuen Tea
+    description: A historic tea house beside Uji Bridge with matcha, tea sweets, and light noodle dishes.
+    url: https://tsuentea.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8072475
+      latitude: 34.8932519
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.8932519&mlon=135.8072475#map=19/34.8932519/135.8072475
+      checked_on: '2026-09-06'
+  mimikou-gion:
+    name: Mimikou Gion
+    description: A Gion restaurant specialising in Kyoto-style curry udon and compact rice dishes.
+    url: https://mimikou.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7773204
+      latitude: 35.0028566
+      precision: exact
+      status: verified
+      source_url: https://mimikou.jp/aboutmimiko/
+      checked_on: '2026-09-06'
+  ootoya-kyoto-shijo:
+    name: Ootoya Kyoto Shijo
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.ootoya.com/menu/
+    kind: restaurant
+    coordinates:
+      longitude: 135.769608
+      latitude: 35.0037633
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0037633&mlon=135.769608#map=19/35.0037633/135.769608
+      checked_on: '2026-09-24'
+  omen-kodaiji:
+    name: Omen Kodaiji
+    description: A Higashiyama udon restaurant serving noodles with vegetables and sesame condiments.
+    url: https://www.omen.co.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7805956
+      latitude: 35.0003033
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0003033&mlon=135.7805956#map=19/35.0003033/135.7805956
+      checked_on: '2026-09-06'
+  hisago-higashiyama:
+    name: Hisago
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://kyoto.travel/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7764641
+      latitude: 34.9970931
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9970931&mlon=135.7764641#map=19/34.9970931/135.7764641
+      checked_on: '2026-09-24'
+  tempura-endo-yasaka:
+    name: Tempura Yasaka Endo
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.endo.kyoto/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7755416
+      latitude: 34.9988738
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9988738&mlon=135.7755416#map=19/34.9988738/135.7755416
+      checked_on: '2026-09-24'
+  arashiyama-yoshimura:
+    name: Arashiyama Yoshimura
+    description: A riverside soba restaurant near Togetsukyo with handmade noodles and set meals.
+    url: https://www.arashiyamayoshimura.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.677248
+      latitude: 35.013648
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0136480&mlon=135.6772480#map=19/35.0136480/135.6772480
+      checked_on: '2026-09-06'
+  shigetsu-arashiyama:
+    name: Shigetsu
+    description: Tenryu-ji's temple restaurant serving traditional vegetarian shojin cuisine.
+    url: https://www.tenryuji.com/en/shigetsu/
+    kind: restaurant
+    coordinates:
+      longitude: 135.6736022
+      latitude: 35.0151336
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.0151336&mlon=135.6736022#map=19/35.0151336/135.6736022
+      checked_on: '2026-09-06'
+  kyo-arashiyama-nishiki:
+    name: Kyo-Arashiyama Nishiki
+    description: A refined Arashiyama restaurant offering seasonal Kyoto cuisine near Nakanoshima.
+    url: https://kyoto.travel/en/restaurants/21.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.679495
+      latitude: 35.011926
+      precision: exact
+      status: verified
+      source_url: https://ja.kyoto.travel/tourism/single01.php?category_id=4&tourism_id=1824
+      checked_on: '2026-09-11'
+  maguro-koya:
+    name: Maguro Koya
+    description: A small central Nara tuna specialist serving bowls, sashimi, and cooked tuna dishes.
+    url: https://www.visitnara.jp/venues/A00542/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8288577
+      latitude: 34.6854796
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6854796&mlon=135.8288577#map=19/34.6854796/135.8288577
+      checked_on: '2026-09-06'
+  mizuya-chaya:
+    name: Mizuya Chaya
+    description: A traditional tea-house restaurant near Kasugano serving udon and seasonal rice dishes.
+    url: https://narashikanko.or.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.846791
+      latitude: 34.683491
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6834910&mlon=135.8467910#map=19/34.6834910/135.8467910
+      checked_on: '2026-09-06'
+  edogawa-naramachi:
+    name: Edogawa Naramachi
+    description: A calm machiya restaurant specialising in grilled eel and Japanese set meals.
+    url: https://www.unagi-edogawa.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8291255
+      latitude: 34.6786362
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6786362&mlon=135.8291255#map=19/34.6786362/135.8291255
+      checked_on: '2026-09-06'
+  maneki-ekisoba-himeji:
+    name: Maneki Ekisoba Himeji Station
+    description: Himeji's station noodle counter serving Chinese-style noodles in Japanese dashi.
+    url: https://www.maneki-co.com/ekisoba/
+    kind: restaurant
+    coordinates:
+      longitude: 134.69093
+      latitude: 34.82751
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.8275100&mlon=134.6909300#map=19/34.8275100/134.6909300
+      checked_on: '2026-09-06'
+  totoro-himeji:
+    name: Totoro
+    description: A small Himeji seafood restaurant known for local fish and set meals near the station route.
+    url: https://visit-himeji.com/en/
+    kind: restaurant
+    coordinates:
+      longitude: 134.6924295
+      latitude: 34.8260785
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.8260785&mlon=134.6924295#map=19/34.8260785/134.6924295
+      checked_on: '2026-09-06'
+  tamagoya-himeji:
+    name: Tamagoya
+    description: A station-to-castle-route restaurant specialising in egg rice bowls and compact set meals.
+    url: https://visit-himeji.com/en/
+    kind: restaurant
+    coordinates:
+      longitude: 134.692366
+      latitude: 34.835265
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.8352650&mlon=134.6923660#map=19/34.8352650/134.6923660
+      checked_on: '2026-09-06'
+  daiki-suisan-namba-city:
+    name: Daiki Suisan Kaiten Sushi Namba CITY
+    description: A Namba CITY conveyor-sushi restaurant offering broad seafood choice and predictable service.
+    url: https://www.daiki-suisan.co.jp/shop/
+    kind: restaurant
+    coordinates:
+      longitude: 135.50137
+      latitude: 34.66767
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.6676700&mlon=135.5013700#map=19/34.6676700/135.5013700
+      checked_on: '2026-09-06'
+  chiyomatsu-dotonbori:
+    name: Katsudon Chiyomatsu Dotonbori
+    description: A Dotonbori counter known for thick-cut pork cutlet rice bowls.
+    url: https://osaka-info.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5026051
+      latitude: 34.6681574
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6681574&mlon=135.5026051#map=19/34.6681574/135.5026051
+      checked_on: '2026-09-06'
+  jiyuken-namba:
+    name: Jiyuken Namba Honten
+    description: A historic Namba yoshoku restaurant known for its mixed curry with raw egg.
+    url: https://www.jiyuken.co.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5023918
+      latitude: 34.666316
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6663160&mlon=135.5023918#map=19/34.6663160/135.5023918
+      checked_on: '2026-09-06'
+  marufuku-sennichimae:
+    name: Marufuku Coffee Sennichimae Honten
+    description: A classic Osaka kissaten serving dark coffee, toast, hotcakes, and sandwiches.
+    url: https://marufukucoffeeten.com/store/sennichimae/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5035062
+      latitude: 34.6638293
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6638293&mlon=135.5035062#map=19/34.6638293/135.5035062
+      checked_on: '2026-09-06'
+  namba-udon:
+    name: Namba Udon
+    description: A fast-standing noodle shop near Nankai Namba suited to an inexpensive morning meal.
+    url: https://osaka-info.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5019568
+      latitude: 34.6652444
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6652444&mlon=135.5019568#map=19/34.6652444/135.5019568
+      checked_on: '2026-09-06'
+  matsuya-namba-sennichimae:
+    name: Matsuya Namba Sennichimae
+    description: A quick-service branch offering Japanese breakfast sets, curry, and beef bowls.
+    url: https://www.matsuyafoods.co.jp/english/menu/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5018462
+      latitude: 34.6664443
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6664443&mlon=135.5018462#map=19/34.6664443/135.5018462
+      checked_on: '2026-09-06'
+  critters-burger:
+    name: Critters Burger
+    description: A compact Shinsaibashi burger shop known for soft house buns and freshly cooked patties.
+    url: https://www.critters.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.498711
+      latitude: 34.6743592
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6743592&mlon=135.4987110#map=19/34.6743592/135.4987110
+      checked_on: '2026-09-06'
+  hokkyokusei-shinsaibashi:
+    name: Hokkyokusei Shinsaibashi Honten
+    description: The historic birthplace-style setting for Osaka omurice in Shinsaibashi.
+    url: https://www.hokkyokusei.online/
+    kind: restaurant
+    coordinates:
+      longitude: 135.4987392
+      latitude: 34.6696265
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6696265&mlon=135.4987392#map=19/34.6696265/135.4987392
+      checked_on: '2026-09-06'
+  udon-kyutaro:
+    name: Udon Kyutaro
+    description: A standing udon shop in Minamisenba serving handmade noodles and tempura toppings.
+    url: https://osaka-info.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5050807
+      latitude: 34.6809776
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6809776&mlon=135.5050807#map=19/34.6809776/135.5050807
+      checked_on: '2026-09-06'
+  ajino-ya-honten:
+    name: Ajinoya Honten
+    description: A popular Namba okonomiyaki restaurant with griddle-cooked Osaka classics.
+    url: https://ajinoya-okonomiyaki.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5009834
+      latitude: 34.6681036
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6681036&mlon=135.5009834#map=19/34.6681036/135.5009834
+      checked_on: '2026-09-06'
+  takoyaki-wanaka-sennichimae:
+    name: Takoyaki Wanaka Sennichimae
+    description: A famous Sennichimae takoyaki stand suitable as one stop on a compact Namba food route.
+    url: https://takoyaki-wanaka.com/
+    kind: shop
+    coordinates:
+      longitude: 135.5034015
+      latitude: 34.6652095
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6652095&mlon=135.5034015#map=19/34.6652095/135.5034015
+      checked_on: '2026-09-06'
+  oretachino-curryya:
+    name: Oretachino Curry Ya
+    description: A compact Namba curry counter known for rich curry and tonkatsu combinations.
+    url: https://osaka-info.jp/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.5043908
+      latitude: 34.6801787
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.6801787&mlon=135.5043908#map=19/34.6801787/135.5043908
+      checked_on: '2026-09-06'
+  tempura-makino-namba:
+    name: Tempura Makino Namba Sennichimae
+    description: Meal-window-specific restaurant candidate researched for day-12-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://stores.toridoll.com/110983
+    kind: restaurant
+    coordinates:
+      longitude: 135.502872
+      latitude: 34.666092
+      precision: entrance
+      status: provisional
+      source_url: https://stores.toridoll.com/110983
+      checked_on: '2026-09-14'
+  japan-restaurant-kix:
+    name: JAPANESE RESTAURANT — KIX T1
+    description: An international-airside restaurant serving set meals, noodles, and tempura.
+    url: https://www.kansai-airport.or.jp/en/shop-and-dine/dine/d098
+    kind: restaurant
+    coordinates:
+      longitude: 135.24436
+      latitude: 34.43453
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.4345300&mlon=135.2443600#map=19/34.4345300/135.2443600
+      checked_on: '2026-09-06'
+  sakaiya-kix:
+    name: Sakaiya — KIX T1
+    description: An international-airside set-meal restaurant offering grilled, fried, and sashimi combinations.
+    url: https://www.kansai-airport.or.jp/en/dine/d113
+    kind: restaurant
+    coordinates:
+      longitude: 135.24384
+      latitude: 34.43387
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.4338700&mlon=135.2438400#map=19/34.4338700/135.2438400
+      checked_on: '2026-09-06'
+  mensho-kix:
+    name: MENSHO — KIX T1
+    description: An international-airside ramen counter operating around the flight schedule.
+    url: https://www.kansai-airport.or.jp/en/shop-and-dine/dine
+    kind: restaurant
+    coordinates:
+      longitude: 135.24397
+      latitude: 34.43398
+      precision: exact
+      status: provisional
+      source_url: https://www.openstreetmap.org/?mlat=34.4339800&mlon=135.2439700#map=19/34.4339800/135.2439700
+      checked_on: '2026-09-06'
+  ueno-yoshoku-toyama:
+    name: Ueno Yōshoku Tōyama
+    description: A bistro-style yoshoku restaurant beside Ueno Park, known for demi-glace hamburg and Gandhi curry.
+    url: https://ueno-tooyama.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 139.774528
+      latitude: 35.712111
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.712111&mlon=139.774528#map=19/35.712111/139.774528
+      checked_on: '2026-09-11'
+    opening_hours:
+      days:
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '11:00'
+      closes: '23:00'
+      note: Official hours; lunch ends at 15:00 and the restaurant is normally closed Monday.
+  uobei-shibuya-dogenzaka:
+    name: Uobei Shibuya Dogenzaka
+    description: A fast, fully ordered sushi counter on Dogenzaka with dishes delivered by high-speed lane.
+    url: https://www.genkisushi.co.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 139.697995
+      latitude: 35.65945
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=35.659450&mlon=139.697995#map=19/35.659450/139.697995
+      checked_on: '2026-09-11'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '11:00'
+      closes: '23:00'
+      note: Current hours should be rechecked shortly before travel.
+  papparich-sydney-t1:
+    name: PappaRich Sydney T1
+    description: Meal-window-specific restaurant candidate researched for day-01-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sydneyairport.com.au/eat/papparich/
+    kind: restaurant
+    coordinates:
+      longitude: 151.16625
+      latitude: -33.94015
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=PappaRich+Sydney+T1
+      checked_on: '2026-09-12'
+  barista-sydney-t1:
+    name: BARista Sydney T1
+    description: Meal-window-specific restaurant candidate researched for day-01-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sydneyairport.com.au/eat/BARista
+    kind: restaurant
+    coordinates:
+      longitude: 151.1666
+      latitude: -33.9399
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=BARista+Sydney+T1
+      checked_on: '2026-09-12'
+  coopers-alehouse-sydney-t1:
+    name: Coopers Alehouse Sydney T1
+    description: Meal-window-specific restaurant candidate researched for day-01-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sydneyairport.com.au/eat/coopers-alehouse
+    kind: restaurant
+    coordinates:
+      longitude: 151.16695
+      latitude: -33.93965
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Coopers+Alehouse+Sydney+T1
+      checked_on: '2026-09-12'
+  beer-hall-lion-ginza:
+    name: Beer Hall Lion Ginza 7-chome
+    description: Meal-window-specific restaurant candidate researched for day-02-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.ginzalion.jp/shop/brand/lion/shop1.html
+    kind: restaurant
+    coordinates:
+      longitude: 139.76315
+      latitude: 35.66875
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Beer+Hall+Lion+Ginza+7-chome
+      checked_on: '2026-09-12'
+  sato-yosuke-ginza:
+    name: Sato Yosuke Ginza
+    description: Meal-window-specific restaurant candidate researched for day-02-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sato-yoske.co.jp/shop/ginza/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7614869
+      latitude: 35.6714196
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/13378191701
+      checked_on: '2026-09-12'
+  ginza-shabutsu-honten:
+    name: Ginza Shabutsu Honten
+    description: Meal-window-specific restaurant candidate researched for day-02-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://shabutsu.com/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76385
+      latitude: 35.66925
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ginza+Shabutsu+Honten
+      checked_on: '2026-09-12'
+  katsuki-fresa-ginza:
+    name: Katsuki at Sotetsu Fresa Inn Ginza-Nanachome
+    description: Meal-window-specific restaurant candidate researched for day-03-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://sotetsu-hotels.com/fresa-inn/ginza7/cuisine/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76295
+      latitude: 35.66805
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Katsuki+at+Sotetsu+Fresa+Inn+Ginza-Nanachome
+      checked_on: '2026-09-12'
+  sakura-gracery-ginza:
+    name: SAKURA at Hotel Gracery Ginza
+    description: Meal-window-specific restaurant candidate researched for day-03-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://gracery.com/ginza/breakfast/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7633
+      latitude: 35.6683
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=SAKURA+at+Hotel+Gracery+Ginza
+      checked_on: '2026-09-12'
+  ginza-breakfast-lab:
+    name: Ginza Breakfast Lab
+    description: Meal-window-specific restaurant candidate researched for day-03-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://choshoku.neu-inc.tokyo/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76365
+      latitude: 35.66855
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ginza+Breakfast+Lab
+      checked_on: '2026-09-12'
+  ginza-granbell-breakfast:
+    name: GINZA HOTEL by GRANBELL breakfast
+    description: Meal-window-specific restaurant candidate researched for day-04-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://granbellhotel.jp/ginza/breakfast/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76305
+      latitude: 35.66855
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=GINZA+HOTEL+by+GRANBELL+breakfast
+      checked_on: '2026-09-12'
+  tricolore-ginza-honten:
+    name: Tricolore Ginza Honten
+    description: Meal-window-specific restaurant candidate researched for day-04-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.ginza.jp/shop/10123
+    kind: restaurant
+    coordinates:
+      longitude: 139.7634
+      latitude: 35.6688
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Tricolore+Ginza+Honten
+      checked_on: '2026-09-12'
+  celestine-ginza-casita:
+    name: GINZA CASITA at Hotel The Celestine Ginza
+    description: Meal-window-specific restaurant candidate researched for day-04-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.celestinehotels.jp/ginza/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76375
+      latitude: 35.66905
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=GINZA+CASITA+at+Hotel+The+Celestine+Ginza
+      checked_on: '2026-09-12'
+  pelican-cafe-asakusa:
+    name: Pelican Cafe Asakusa
+    description: Meal-window-specific restaurant candidate researched for day-04-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://asakusa.pelicancafe.jp/menu.html
+    kind: restaurant
+    coordinates:
+      longitude: 139.78865
+      latitude: 35.71025
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Pelican+Cafe+Asakusa
+      checked_on: '2026-09-12'
+  ichome-ichiban-tawaramachi:
+    name: Ichome Ichiban-chi Nishi-Asakusa
+    description: Meal-window-specific restaurant candidate researched for day-04-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://tawaramachi1-chome1-banchi.com/lunch/
+    kind: restaurant
+    coordinates:
+      longitude: 139.789
+      latitude: 35.7105
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ichome+Ichiban-chi+Nishi-Asakusa
+      checked_on: '2026-09-12'
+  asakusa-unana:
+    name: Asakusa Unana
+    description: Meal-window-specific restaurant candidate researched for day-04-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://unana.jp/map/
+    kind: restaurant
+    coordinates:
+      longitude: 139.78935
+      latitude: 35.71075
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Asakusa+Unana
+      checked_on: '2026-09-12'
+  ginza-bairin-honten:
+    name: Ginza Bairin Honten
+    description: Meal-window-specific restaurant candidate researched for day-04-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.ginzabairin.com/menu/index.php
+    kind: restaurant
+    coordinates:
+      longitude: 139.76315
+      latitude: 35.66875
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ginza+Bairin+Honten
+      checked_on: '2026-09-12'
+  mugi-to-olive-ginza:
+    name: Mugi to Olive Ginza
+    description: Meal-window-specific restaurant candidate researched for day-04-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.instagram.com/mugitooribu/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7635
+      latitude: 35.669
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Mugi+to+Olive+Ginza
+      checked_on: '2026-09-12'
+  ginza-swiss-honten:
+    name: Ginza Swiss Honten
+    description: Meal-window-specific restaurant candidate researched for day-04-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://ginza-swiss.com/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76385
+      latitude: 35.66925
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ginza+Swiss+Honten
+      checked_on: '2026-09-12'
+  ekibenya-odori:
+    name: Ekibenya Odori
+    description: Meal-window-specific restaurant candidate researched for day-05-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.gransta.jp/mall/gransta_tokyo/ekibenyaodori/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76675
+      latitude: 35.68095
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ekibenya+Odori
+      checked_on: '2026-09-12'
+  tetote-gransta:
+    name: TeToTe Gransta Tokyo
+    description: Meal-window-specific restaurant candidate researched for day-05-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.gransta.jp/mall/gransta_tokyo/tetote/
+    kind: restaurant
+    coordinates:
+      longitude: 139.7671
+      latitude: 35.6812
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=TeToTe+Gransta+Tokyo
+      checked_on: '2026-09-12'
+  curlys-croissant:
+    name: Curly's Croissant Tokyo Bake Stand
+    description: Meal-window-specific restaurant candidate researched for day-05-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.gransta.jp/mall/gransta_tokyo/tokyo_bake_stand/
+    kind: restaurant
+    coordinates:
+      longitude: 139.76745
+      latitude: 35.68145
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Curly%27s+Croissant+Tokyo+Bake+Stand
+      checked_on: '2026-09-12'
+  yamasan-sushi-omicho:
+    name: Yamasan Sushi Honten
+    description: Meal-window-specific restaurant candidate researched for day-05-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://ohmicho-ichiba.com/gourmet/shop71401/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65585
+      latitude: 36.57115
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Yamasan+Sushi+Honten
+      checked_on: '2026-09-12'
+  kaisen-hirai-ichibakan:
+    name: Kaisen Hirai Ichibakan
+    description: Meal-window-specific restaurant candidate researched for day-05-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kaisen-hirai.com/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6562
+      latitude: 36.5714
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kaisen+Hirai+Ichibakan
+      checked_on: '2026-09-12'
+  ichinokura-omicho:
+    name: Ichinokura Omicho Market
+    description: Meal-window-specific restaurant candidate researched for day-05-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.ichi-no-kura.jp/menu_ohmicho-ichiba/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65655
+      latitude: 36.57165
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ichinokura+Omicho+Market
+      checked_on: '2026-09-12'
+  akadama-honten:
+    name: Akadama Honten
+    description: Meal-window-specific restaurant candidate researched for day-05-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.oden-akadama.com/pages/83
+    kind: restaurant
+    coordinates:
+      longitude: 136.65065
+      latitude: 36.56095
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Akadama+Honten
+      checked_on: '2026-09-12'
+  morimori-sushi-katamachi:
+    name: Morimori Sushi Katamachi
+    description: Meal-window-specific restaurant candidate researched for day-05-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.morimorisushi.com/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6514426
+      latitude: 36.5594041
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/6393701685
+      checked_on: '2026-09-12'
+  hachiban-ramen-katamachi:
+    name: Hachiban Ramen Katamachi
+    description: Meal-window-specific restaurant candidate researched for day-05-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.hachiban.jp/shop/ishikawa/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6508885
+      latitude: 36.5589791
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/3750657292
+      checked_on: '2026-09-12'
+  amanek-kanazawa-breakfast:
+    name: Hotel Amanek Kanazawa breakfast
+    description: Meal-window-specific restaurant candidate researched for day-06-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://amanekhotels.jp/kanazawa/meal/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65035
+      latitude: 36.56095
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Hotel+Amanek+Kanazawa+breakfast
+      checked_on: '2026-09-12'
+  isotope-cafe-kanazawa:
+    name: isotope cafe
+    description: Meal-window-specific restaurant candidate researched for day-06-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/article/detail_475.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.6493652
+      latitude: 36.5628415
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/13588737601
+      checked_on: '2026-09-12'
+  omo5-kanazawa-cafe:
+    name: OMO5 Kanazawa Katamachi Cafe
+    description: Meal-window-specific restaurant candidate researched for day-06-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://hoshinoresorts.com/ja/hotels/omo5kanazawakatamachi/dining/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65105
+      latitude: 36.56145
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=OMO5+Kanazawa+Katamachi+Cafe
+      checked_on: '2026-09-12'
+  nanahoshi-curry:
+    name: Kanazawa Nanahoshi Curry
+    description: Meal-window-specific restaurant candidate researched for day-06-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://nanahoshicurry.shop/shopinfo/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6572571
+      latitude: 36.5617027
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/10690256604
+      checked_on: '2026-09-12'
+  fusion21-kanazawa:
+    name: Fusion21
+    description: Meal-window-specific restaurant candidate researched for day-06-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kanazawa21.jp/data_list.php?d=2&g=10
+    kind: restaurant
+    coordinates:
+      longitude: 136.655
+      latitude: 36.5605
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Fusion21
+      checked_on: '2026-09-12'
+  paul-bocuse-kanazawa:
+    name: Cafe and Brasserie Paul Bocuse
+    description: Meal-window-specific restaurant candidate researched for day-06-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.hiramatsurestaurant.jp/paulbocuse-cafe/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65535
+      latitude: 36.56075
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Cafe+and+Brasserie+Paul+Bocuse
+      checked_on: '2026-09-12'
+  oozeki-kanazawa:
+    name: Oozeki
+    description: Meal-window-specific restaurant candidate researched for day-06-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/article/detail_490.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.65165
+      latitude: 36.56055
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Oozeki
+      checked_on: '2026-09-12'
+  amatsubo-kakinokibatake:
+    name: Amatsubo Kakinokibatake
+    description: Meal-window-specific restaurant candidate researched for day-06-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://amatsubo-honten.owst.jp/foods
+    kind: restaurant
+    coordinates:
+      longitude: 136.6522486
+      latitude: 36.5599903
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/6371736786
+      checked_on: '2026-09-12'
+  itachan-katamachi:
+    name: Itachan Katamachi
+    description: Meal-window-specific restaurant candidate researched for day-06-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kanazawa-kankoukyoukai.or.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 136.65235
+      latitude: 36.56105
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Itachan+Katamachi
+      checked_on: '2026-09-12'
+  hiramipan:
+    name: Hiramipan
+    description: Meal-window-specific restaurant candidate researched for day-07-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://hiramipan.co.jp/news/hiramipan/
+    kind: restaurant
+    coordinates:
+      longitude: 136.651034
+      latitude: 36.5663406
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/1916715848
+      checked_on: '2026-09-12'
+  mare-dor-kanazawa:
+    name: Mare d'Or at Kanazawa Tokyu Hotel
+    description: Meal-window-specific restaurant candidate researched for day-07-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.tokyuhotels.co.jp/kanazawa-h/breakfast/index.html
+    kind: restaurant
+    coordinates:
+      longitude: 136.6518
+      latitude: 36.5618
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Mare+d%27Or+at+Kanazawa+Tokyu+Hotel
+      checked_on: '2026-09-12'
+  starbucks-korinbo:
+    name: Starbucks Coffee CLASO PLACE Korinbo
+    description: Meal-window-specific restaurant candidate researched for day-07-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.starbucks.co.jp/store/search/detail.php?id=2253
+    kind: restaurant
+    coordinates:
+      longitude: 136.65215
+      latitude: 36.56205
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Starbucks+Coffee+CLASO+PLACE+Korinbo
+      checked_on: '2026-09-12'
+  higashiyama-mizuho:
+    name: Higashiyama Mizuho
+    description: Meal-window-specific restaurant candidate researched for day-07-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.h-mizuho.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 136.66315
+      latitude: 36.57025
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Higashiyama+Mizuho
+      checked_on: '2026-09-12'
+  yae-higashiyama:
+    name: YAE Higashiyama
+    description: Meal-window-specific restaurant candidate researched for day-07-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://yae-higashiyama.com/
+    kind: restaurant
+    coordinates:
+      longitude: 136.6635
+      latitude: 36.5705
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=YAE+Higashiyama
+      checked_on: '2026-09-12'
+  sizhitang-kanazawa:
+    name: Sizhitang Kanazawa
+    description: Meal-window-specific restaurant candidate researched for day-07-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.tua-kanazawa.jp/sizhitang
+    kind: restaurant
+    coordinates:
+      longitude: 136.66385
+      latitude: 36.57075
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Sizhitang+Kanazawa
+      checked_on: '2026-09-12'
+  hashitate-kyoto:
+    name: Hashitate
+    description: Meal-window-specific restaurant candidate researched for day-08-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/restaurant_cafe/039/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75765
+      latitude: 34.98545
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Hashitate
+      checked_on: '2026-09-12'
+  kamado-doi-kyoto:
+    name: Kamado Takitate Gohan Doi Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-08-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.758
+      latitude: 34.9857
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kamado+Takitate+Gohan+Doi+Kyoto+Station
+      checked_on: '2026-09-12'
+  sushi-musashi-kyoto:
+    name: Sushi no Musashi Kyoto Station Hachijo
+    description: Meal-window-specific restaurant candidate researched for day-08-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75835
+      latitude: 34.98595
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Sushi+no+Musashi+Kyoto+Station+Hachijo
+      checked_on: '2026-09-12'
+  ganko-kyoto-station:
+    name: Ganko Kyoto Station Building
+    description: Meal-window-specific restaurant candidate researched for day-08-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75765
+      latitude: 34.98625
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ganko+Kyoto+Station+Building
+      checked_on: '2026-09-12'
+  seppourai-kyoto-station:
+    name: Kyoyasai Seppourai Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-08-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/restaurant_cafe/006/
+    kind: restaurant
+    coordinates:
+      longitude: 135.758
+      latitude: 34.9865
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyoyasai+Seppourai+Kyoto+Station
+      checked_on: '2026-09-12'
+  tokubei-kyoto-station:
+    name: Soba Shubo Tokubei Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-08-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75835
+      latitude: 34.98675
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Soba+Shubo+Tokubei+Kyoto+Station
+      checked_on: '2026-09-12'
+  kurasu-kyoto-stand:
+    name: Kurasu Kyoto Stand
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://kurasu.kyoto/pages/kurasu-kyoto-stand-cafe
+    kind: restaurant
+    coordinates:
+      longitude: 135.75565
+      latitude: 34.98675
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kurasu+Kyoto+Stand
+      checked_on: '2026-09-12'
+  inoda-coffee-porta:
+    name: Inoda Coffee Porta
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.inoda-coffee.co.jp/shop/poruta/
+    kind: restaurant
+    coordinates:
+      longitude: 135.756
+      latitude: 34.987
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Inoda+Coffee+Porta
+      checked_on: '2026-09-12'
+  ogawa-coffee-kyoto-station:
+    name: Ogawa Coffee Kyoto Station Central Gate
+    description: Meal-window-specific restaurant candidate researched for day-09-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.oc-ogawa.co.jp/shop/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75635
+      latitude: 34.98725
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Ogawa+Coffee+Kyoto+Station+Central+Gate
+      checked_on: '2026-09-12'
+  aiso-uji:
+    name: Aiso Uji
+    description: Meal-window-specific restaurant candidate researched for day-09-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.wao.or.jp/aiso/menu/index.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.806
+      latitude: 34.889
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Aiso+Uji
+      checked_on: '2026-09-12'
+  fukujuen-uji-chatei:
+    name: Fukujuen Uji Chatei
+    description: Meal-window-specific restaurant candidate researched for day-09-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.fukujuen.com/shop/uji/
+    kind: restaurant
+    coordinates:
+      longitude: 135.80635
+      latitude: 34.88925
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Fukujuen+Uji+Chatei
+      checked_on: '2026-09-12'
+  seven-taps-tavern-kyoto:
+    name: 7 TAPS TAVERN
+    description: Meal-window-specific restaurant candidate researched for day-09-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/restaurant_cafe/002/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75785
+      latitude: 34.98645
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=7+TAPS+TAVERN
+      checked_on: '2026-09-12'
+  nikutei-shin-porta:
+    name: Nikutei Shin Kyoto Porta
+    description: Meal-window-specific restaurant candidate researched for day-09-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/restaurant_cafe/078/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7582
+      latitude: 34.9867
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Nikutei+Shin+Kyoto+Porta
+      checked_on: '2026-09-12'
+  niwa-kyoto-station:
+    name: NIWA Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-09-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75855
+      latitude: 34.98695
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=NIWA+Kyoto+Station
+      checked_on: '2026-09-12'
+  sizuya-kyoto-station:
+    name: SIZUYA Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-10-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.sizuya.co.jp/shop/kyotost.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.75765
+      latitude: 34.98525
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=SIZUYA+Kyoto+Station
+      checked_on: '2026-09-12'
+  hoshino-coffee-asty-kyoto:
+    name: Hoshino Coffee ASTY Kyoto
+    description: Meal-window-specific restaurant candidate researched for day-10-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.758
+      latitude: 34.9855
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Hoshino+Coffee+ASTY+Kyoto
+      checked_on: '2026-09-12'
+  donq-kyoto-station:
+    name: DONQ Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-10-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75835
+      latitude: 34.98575
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=DONQ+Kyoto+Station
+      checked_on: '2026-09-12'
+  kodaiji-hashiba:
+    name: Kodaiji Hashiba
+    description: Meal-window-specific restaurant candidate researched for day-10-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kodaiji-hashiba.co.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.77765
+      latitude: 34.99925
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kodaiji+Hashiba
+      checked_on: '2026-09-12'
+  izuju-gion:
+    name: Izuju Gion
+    description: Meal-window-specific restaurant candidate researched for day-10-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://izuju.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.778
+      latitude: 34.9995
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Izuju+Gion
+      checked_on: '2026-09-12'
+  kyotofu-fujino-higashiyama:
+    name: Kyotofu Fujino Higashiyama
+    description: Meal-window-specific restaurant candidate researched for day-10-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyotofu.co.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.77835
+      latitude: 34.99975
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyotofu+Fujino+Higashiyama
+      checked_on: '2026-09-12'
+  tajimaya-kyoto-yodobashi:
+    name: Tajimaya Kyoto Yodobashi
+    description: Meal-window-specific restaurant candidate researched for day-10-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.tajimaya-shabu.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75665
+      latitude: 34.98575
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Tajimaya+Kyoto+Yodobashi
+      checked_on: '2026-09-12'
+  kyoto-kotokoto-station:
+    name: Kyoto Kotokoto Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-10-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.porta.co.jp/shopguide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.757
+      latitude: 34.986
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyoto+Kotokoto+Kyoto+Station
+      checked_on: '2026-09-12'
+  kyoto-katsugyu-station:
+    name: Kyoto Katsugyu Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-10-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://gyukatsu-kyotokatsugyu.com/store/kyoto/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75735
+      latitude: 34.98625
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyoto+Katsugyu+Kyoto+Station
+      checked_on: '2026-09-12'
+  le-temps-kyoto:
+    name: Le Temps at Hotel Granvia Kyoto
+    description: Meal-window-specific restaurant candidate researched for day-11-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.granvia-kyoto.co.jp/restaurant/letemps/breakfast/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75715
+      latitude: 34.98575
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Le+Temps+at+Hotel+Granvia+Kyoto
+      checked_on: '2026-09-12'
+  vie-de-france-kyoto-porta:
+    name: Vie de France Rêve de Paris Kyoto
+    description: Meal-window-specific restaurant candidate researched for day-11-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/restaurant_cafe/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7575
+      latitude: 34.986
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Vie+de+France+R%C3%AAve+de+Paris+Kyoto
+      checked_on: '2026-09-12'
+  shinshindo-kyoto-porta:
+    name: Shinshindo Kyoto Porta
+    description: Meal-window-specific restaurant candidate researched for day-11-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.shinshindo.jp/branches/porta.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.75785
+      latitude: 34.98625
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Shinshindo+Kyoto+Porta
+      checked_on: '2026-09-12'
+  taisho-hanana:
+    name: Taisho HANANA Arashiyama
+    description: Meal-window-specific restaurant candidate researched for day-11-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://hanana-kyoto.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.67115
+      latitude: 35.01495
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Taisho+HANANA+Arashiyama
+      checked_on: '2026-09-12'
+  itsukichaya-arashiyama:
+    name: Arashiyama Itsukichaya
+    description: Meal-window-specific restaurant candidate researched for day-11-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://itsukichaya.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.6715
+      latitude: 35.0152
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Arashiyama+Itsukichaya
+      checked_on: '2026-09-12'
+  kameyamaya-arashiyama:
+    name: Kameyamaya Arashiyama
+    description: Meal-window-specific restaurant candidate researched for day-11-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.arashiyama-kameyamaya.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.67185
+      latitude: 35.01545
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kameyamaya+Arashiyama
+      checked_on: '2026-09-12'
+  moritaya-kyoto-isetan:
+    name: Moritaya JR Kyoto Isetan
+    description: Meal-window-specific restaurant candidate researched for day-11-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.moritaya-net.com/restaurant/isetan.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.75765
+      latitude: 34.98595
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Moritaya+JR+Kyoto+Isetan
+      checked_on: '2026-09-12'
+  ikkousha-kyoto-ramen-koji:
+    name: Hakata Ikkousha Kyoto Ramen Koji
+    description: Meal-window-specific restaurant candidate researched for day-11-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-station-building.co.jp/ramen_koji/
+    kind: restaurant
+    coordinates:
+      longitude: 135.758
+      latitude: 34.9862
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Hakata+Ikkousha+Kyoto+Ramen+Koji
+      checked_on: '2026-09-12'
+  kyo-dining-hachijo:
+    name: Kyo Dining Hachijo
+    description: Meal-window-specific restaurant candidate researched for day-11-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75835
+      latitude: 34.98645
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyo+Dining+Hachijo
+      checked_on: '2026-09-12'
+  trattoria-m-mercure-kyoto:
+    name: Trattoria M at Mercure Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-12-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.mercure-kyoto-station.com/restaurant-bar/breakfast/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75415
+      latitude: 34.98725
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Trattoria+M+at+Mercure+Kyoto+Station
+      checked_on: '2026-09-12'
+  kaza-rihga-kyoto:
+    name: KAZA at Rihga Royal Hotel Kyoto
+    description: Meal-window-specific restaurant candidate researched for day-12-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.rihga.co.jp/kyoto/restaurant/list/kaza
+    kind: restaurant
+    coordinates:
+      longitude: 135.7545
+      latitude: 34.9875
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=KAZA+at+Rihga+Royal+Hotel+Kyoto
+      checked_on: '2026-09-12'
+  tower-terrace-kyoto:
+    name: Tower Terrace at Kyoto Tower Hotel
+    description: Meal-window-specific restaurant candidate researched for day-12-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kyoto-towerhotel.jp/restaurant/tower-terrace/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75485
+      latitude: 34.98775
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Tower+Terrace+at+Kyoto+Tower+Hotel
+      checked_on: '2026-09-12'
+  tonkatsu-ichiban-kyoto:
+    name: Tonkatsu Ichiban Kyoto
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://tonkatsu-ichiban.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7500277
+      latitude: 34.9883258
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/4674886592
+      checked_on: '2026-09-12'
+  kyo-chabana-kyoto-station:
+    name: Kyo Chabana Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://chabana.com/shop/kyoto/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7545
+      latitude: 34.988
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kyo+Chabana+Kyoto+Station
+      checked_on: '2026-09-12'
+  yakiniku-hiro-kyoto-station:
+    name: Yakiniku Hiro Kyoto Station
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://yakiniku-hiro.com/shop/kyotoeki/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75485
+      latitude: 34.98825
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Yakiniku+Hiro+Kyoto+Station
+      checked_on: '2026-09-12'
+  delica-station-kyoto:
+    name: Delica Station Kyoto Shinkansen Gate
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.jr-plus.co.jp/station/kyoto/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75865
+      latitude: 34.98455
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Delica+Station+Kyoto+Shinkansen+Gate
+      checked_on: '2026-09-12'
+  starbucks-kyoto-shinkansen:
+    name: Starbucks Kyoto Station Inside Shinkansen Gates
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_kyoto/inbound_guide/
+    kind: restaurant
+    coordinates:
+      longitude: 135.759
+      latitude: 34.9848
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Starbucks+Kyoto+Station+Inside+Shinkansen+Gates
+      checked_on: '2026-09-12'
+  plusta-kyoto-shinkansen:
+    name: PLUSTA Kyoto Shinkansen Central Gate
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.jr-plus.co.jp/station/kyoto/
+    kind: restaurant
+    coordinates:
+      longitude: 135.75935
+      latitude: 34.98505
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=PLUSTA+Kyoto+Shinkansen+Central+Gate
+      checked_on: '2026-09-12'
+  harikai-himeji-castle:
+    name: Harikai Himeji Castle Branch
+    description: Meal-window-specific restaurant candidate researched for day-13-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.himeji-kanko.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 134.69215
+      latitude: 34.83275
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Harikai+Himeji+Castle+Branch
+      checked_on: '2026-09-12'
+  kineya-himeji:
+    name: Kineya Himeji Main Store
+    description: Meal-window-specific restaurant candidate researched for day-13-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.himeji-kanko.jp/en-pamphlet/pdf/e.pdf
+    kind: restaurant
+    coordinates:
+      longitude: 134.6925
+      latitude: 34.833
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kineya+Himeji+Main+Store
+      checked_on: '2026-09-12'
+  rikimaru-himeji-station:
+    name: Rikimaru JR Himeji Station
+    description: Meal-window-specific restaurant candidate researched for day-13-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.himeji-kanko.jp/gourmet/
+    kind: restaurant
+    coordinates:
+      longitude: 134.69285
+      latitude: 34.83325
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Rikimaru+JR+Himeji+Station
+      checked_on: '2026-09-12'
+  harijyu-dotonbori:
+    name: Harijyu Dotonbori Grill
+    description: Meal-window-specific restaurant candidate researched for day-13-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.harijyu.co.jp/restaurant/grill/
+    kind: restaurant
+    coordinates:
+      longitude: 135.50165
+      latitude: 34.66675
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Harijyu+Dotonbori+Grill
+      checked_on: '2026-09-12'
+  daruma-hozenji:
+    name: Kushikatsu Daruma Hozenji
+    description: Meal-window-specific restaurant candidate researched for day-13-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kushikatu-daruma.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.502
+      latitude: 34.667
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Hozenji
+      checked_on: '2026-09-12'
+  ichiran-dotonbori:
+    name: ICHIRAN Dotonbori
+    description: Meal-window-specific restaurant candidate researched for day-13-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://ichiran.com/shop/kinki/dotonbori-minamikan/
+    kind: restaurant
+    coordinates:
+      longitude: 135.503214
+      latitude: 34.668449
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/4488318892
+      checked_on: '2026-09-12'
+  rikuro-namba-cafe:
+    name: Rikuro's Namba Main Store Cafe
+    description: Meal-window-specific restaurant candidate researched for day-14-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.rikuro.co.jp/shoplist/134.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.50015
+      latitude: 34.66655
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Rikuro%27s+Namba+Main+Store+Cafe
+      checked_on: '2026-09-12'
+  micasadeco-namba:
+    name: Micasadeco and Cafe Osaka
+    description: Meal-window-specific restaurant candidate researched for day-14-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://micasadecoandcafe.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.50085
+      latitude: 34.66705
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Micasadeco+and+Cafe+Osaka
+      checked_on: '2026-09-12'
+  craft-burger-kitahorie:
+    name: Craft Burger Kitahorie
+    description: Meal-window-specific restaurant candidate researched for day-14-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://craftburger.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.4962704
+      latitude: 34.6741505
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/4913961421
+      checked_on: '2026-09-12'
+  el-zocalo-burrito:
+    name: El Zocalo Burrito
+    description: Meal-window-specific restaurant candidate researched for day-14-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.instagram.com/elzocaloburrito/
+    kind: restaurant
+    coordinates:
+      longitude: 135.4958723
+      latitude: 34.6742181
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/4306882607
+      checked_on: '2026-09-12'
+  mothers-kitahorie:
+    name: Mothers Kitahorie
+    description: Meal-window-specific restaurant candidate researched for day-14-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.mothersgroup.jp/shop/mothers-kitahorie/
+    kind: restaurant
+    coordinates:
+      longitude: 135.49735
+      latitude: 34.67525
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Mothers+Kitahorie
+      checked_on: '2026-09-12'
+  brooklyn-roasting-namba:
+    name: Brooklyn Roasting Company Namba
+    description: Meal-window-specific restaurant candidate researched for day-15-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://brooklynroasting.jp/pages/shops
+    kind: restaurant
+    coordinates:
+      longitude: 135.49965
+      latitude: 34.66475
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Brooklyn+Roasting+Company+Namba
+      checked_on: '2026-09-12'
+  bread-espresso-sakai-suji:
+    name: Bread Espresso and Sakaisuji Club
+    description: Meal-window-specific restaurant candidate researched for day-15-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://bread-espresso.jp/shop/sakaisuji.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.5
+      latitude: 34.665
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Bread+Espresso+and+Sakaisuji+Club
+      checked_on: '2026-09-12'
+  komeda-namba-city:
+    name: Komeda Coffee Namba CITY
+    description: Meal-window-specific restaurant candidate researched for day-15-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.komeda.co.jp/shop/detail.html?id=952
+    kind: restaurant
+    coordinates:
+      longitude: 135.5018961
+      latitude: 34.6664815
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/3175928499
+      checked_on: '2026-09-12'
+  kuromon-sanpei:
+    name: Kuromon Sanpei
+    description: Meal-window-specific restaurant candidate researched for day-15-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://kuromon.com/jp/shop/sanpei/
+    kind: restaurant
+    coordinates:
+      longitude: 135.507092
+      latitude: 34.666051
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/node/2320437665
+      checked_on: '2026-09-12'
+  sakae-sushi-kuromon:
+    name: Sakae Sushi Kuromon
+    description: Meal-window-specific restaurant candidate researched for day-15-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://kuromon.com/jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.505
+      latitude: 34.665
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Sakae+Sushi+Kuromon
+      checked_on: '2026-09-12'
+  fukutaro-namba:
+    name: Fukutaro Namba
+    description: Meal-window-specific restaurant candidate researched for day-15-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://2951.jp/
+    kind: restaurant
+    coordinates:
+      longitude: 135.50535
+      latitude: 34.66525
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Fukutaro+Namba
+      checked_on: '2026-09-12'
+  onigiri-burger-kix:
+    name: OnigiriBurger KIX
+    description: Meal-window-specific restaurant candidate researched for day-15-preflight; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kansai-airport.or.jp/en/dine/d074
+    kind: restaurant
+    coordinates:
+      longitude: 135.24365
+      latitude: 34.43445
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=OnigiriBurger+KIX
+      checked_on: '2026-09-12'
+  kix-beer:
+    name: KIX BEER
+    description: Meal-window-specific restaurant candidate researched for day-15-preflight; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kansai-airport.or.jp/en/dine/d076
+    kind: restaurant
+    coordinates:
+      longitude: 135.244
+      latitude: 34.4347
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=KIX+BEER
+      checked_on: '2026-09-12'
+  wasakura-kix:
+    name: Cafe and Bar WASAKURA KIX
+    description: Meal-window-specific restaurant candidate researched for day-15-preflight; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.kansai-airport.or.jp/en/dine/d075
+    kind: restaurant
+    coordinates:
+      longitude: 135.24435
+      latitude: 34.43495
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Cafe+and+Bar+WASAKURA+KIX
+      checked_on: '2026-09-12'
+  satori-uji:
+    name: Satori Uji
+    description: Route-compliant replacement researched for day-09-lunch; see meal_options.yaml for evidence.
+    url: https://satori-uji.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8067
+      latitude: 34.8882
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=Satori+Uji
+      checked_on: '2026-09-12'
+  happy-pancake-namba:
+    name: A Happy Pancake Namba
+    description: Route-compliant replacement researched for day-14-breakfast; see meal_options.yaml for evidence.
+    url: https://magia.tokyo/shop/namba
+    kind: restaurant
+    coordinates:
+      longitude: 135.501
+      latitude: 34.6672
+      precision: entrance
+      status: provisional
+      source_url: https://www.google.com/maps/search/?api=1&query=A+Happy+Pancake+Namba
+      checked_on: '2026-09-12'
+  tsurutontan-soemoncho:
+    name: Tsurutontan Soemoncho
+    description: Meal-window-specific restaurant candidate researched for day-12-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.tsurutontan.co.jp/shop/soemoncho/
+    kind: restaurant
+    coordinates:
+      longitude: 135.505964
+      latitude: 34.66927
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/node/2349204695
+      checked_on: '2026-09-14'
+  table-nice-namba-parks:
+    name: Table Nice Namba Parks
+    description: Meal-window-specific restaurant candidate researched for day-12-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://nambaparks.com/shopresearch/159
+    kind: restaurant
+    coordinates:
+      longitude: 135.5022883
+      latitude: 34.6616196
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/451572345
+      checked_on: '2026-09-14'
+  yasaiya-mei-namba-parks:
+    name: Yasaiya Mei Namba Parks
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://nambaparks.com/shopresearch/141
+    kind: restaurant
+    coordinates:
+      longitude: 135.5022883
+      latitude: 34.6616196
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/451572345
+      checked_on: '2026-09-14'
+  to-the-herbs-namba-parks:
+    name: To The Herbs Namba Parks
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://nambaparks.com/shopresearch/177
+    kind: restaurant
+    coordinates:
+      longitude: 135.5022883
+      latitude: 34.6616196
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/451572345
+      checked_on: '2026-09-14'
+  eighth-sea-oyster-namba-parks:
+    name: Eighth Sea Oyster Bar Namba Parks
+    description: Meal-window-specific restaurant candidate researched for day-12-dinner; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://nambaparks.com/shopresearch/179
+    kind: restaurant
+    coordinates:
+      longitude: 135.5022883
+      latitude: 34.6616196
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/451572345
+      checked_on: '2026-09-14'
+  plusta-bento-shinosaka-central:
+    name: PLUSTA Bento Shin-Osaka Central Gate
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/asty_osaka/store/195/
+    kind: shop
+    coordinates:
+      longitude: 135.5006
+      latitude: 34.7335
+      precision: entrance
+      status: provisional
+      source_url: https://www.asty-kyoto.co.jp/asty_osaka/store/195/
+      checked_on: '2026-09-14'
+  plusta-bento-shinosaka-transfer:
+    name: PLUSTA Bento Shin-Osaka Transfer Gate
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.asty-kyoto.co.jp/en/asty_osaka/store/202/
+    kind: shop
+    coordinates:
+      longitude: 135.5006
+      latitude: 34.7335
+      precision: entrance
+      status: provisional
+      source_url: https://www.asty-kyoto.co.jp/en/asty_osaka/store/202/
+      checked_on: '2026-09-14'
+  delica-station-shinosaka-south:
+    name: DELiCA STATiON Shin-Osaka South
+    description: Meal-window-specific restaurant candidate researched for day-13-breakfast; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.jr-plus.co.jp/news/2024/08/000183/
+    kind: shop
+    coordinates:
+      longitude: 135.5006
+      latitude: 34.7335
+      precision: entrance
+      status: provisional
+      source_url: https://www.jr-plus.co.jp/news/2024/08/000183/
+      checked_on: '2026-09-14'
+  fukujuen-uji-kobo:
+    name: Fukujuen Uji Kobo
+    description: Uji tea workshop and shop on Byodoin Omotesando for comparing matcha and tea gifts
+    url: https://experience.fukujuen.com/en/shopping/
+    kind: shop
+    coordinates:
+      longitude: 135.80635
+      latitude: 34.88925
+      precision: entrance
+      status: provisional
+      source_url: https://experience.fukujuen.com/en/shopping/
+      checked_on: '2026-09-14'
+    opening_hours:
+      days:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
+      opens: '10:00'
+      closes: '17:00'
+      note: 'Official shopping source checked 2026-09-14: https://experience.fukujuen.com/en/shopping/'
+  izasa-yumekaze:
+    name: Izasa YumeKaze Hiroba
+    description: Meal-window-specific restaurant candidate researched for day-09-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.yume-kaze.com/shop/izasa/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8389973
+      latitude: 34.6842468
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/476517327
+      checked_on: '2026-09-14'
+  warabe-yorokobian-yumekaze:
+    name: Warabe Yorokobian YumeKaze Hiroba
+    description: Meal-window-specific restaurant candidate researched for day-09-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.yume-kaze.com/shop/yorokobian/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8389973
+      latitude: 34.6842468
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/476517327
+      checked_on: '2026-09-14'
+  yamato-beef-ramen-jo-yumekaze:
+    name: Yamato Beef Ramen Jo YumeKaze Hiroba
+    description: Meal-window-specific restaurant candidate researched for day-09-lunch; see meal_options.yaml for route, hours, order, and price evidence.
+    url: https://www.yume-kaze.com/shop/yamatobeeframen-jo/
+    kind: restaurant
+    coordinates:
+      longitude: 135.8389973
+      latitude: 34.6842468
+      precision: entrance
+      status: verified
+      source_url: https://www.openstreetmap.org/way/476517327
+      checked_on: '2026-09-14'
+  yayoiken-gojo-karasuma:
+    name: Yayoiken Gojo Karasuma
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.yayoiken.com/en_files/shop_pdf/26_26_26_KYOTO_en.pdf?id=40
+    kind: restaurant
+    coordinates:
+      longitude: 135.760399
+      latitude: 34.996317
+      precision: exact
+      status: provisional
+      source_url: https://www.yayoiken.com/en_files/shop_pdf/26_26_26_KYOTO_en.pdf?id=40
+      checked_on: '2026-09-24'
+  sugarhill-kyoto:
+    name: Sugar Hill Kyoto
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://sugarhill-kyoto.orwst.com/en
+    kind: restaurant
+    coordinates:
+      longitude: 135.7671004
+      latitude: 34.9981769
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9981769&mlon=135.7671004#map=19/34.9981769/135.7671004
+      checked_on: '2026-09-24'
+  burisho-kyoto:
+    name: Burisho
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.burisho.com/en/
+    kind: restaurant
+    coordinates:
+      longitude: 135.763306
+      latitude: 34.998932
+      precision: exact
+      status: provisional
+      source_url: https://www.burisho.com/en/
+      checked_on: '2026-09-24'
+  kiyamachi-suehiro:
+    name: Kyou no Fuguya Kiyamachi Suehiro
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.suehiro-kiyamachi.com/english.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.7684128
+      latitude: 34.9982339
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9982339&mlon=135.7684128#map=19/34.9982339/135.7684128
+      checked_on: '2026-09-24'
+  cicon-restaurant-dinner:
+    name: CICON Restaurant
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.nohgahotel.com/kiyomizu/en/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7740116
+      latitude: 34.9949397
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9949397&mlon=135.7740116#map=19/34.9949397/135.7740116
+      checked_on: '2026-09-24'
+  the-taste-kyoto-dinner:
+    name: THE TASTE
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.sequencehotels.com/kyoto-gojo/eng/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7594394
+      latitude: 34.997947
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.997947&mlon=135.7594394#map=19/34.997947/135.7594394
+      checked_on: '2026-09-24'
+  kissa-nana-kyoto:
+    name: Kissa Nana
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.kyotokan.jp/read/morning-010/
+    kind: restaurant
+    coordinates:
+      longitude: 135.776639
+      latitude: 34.994844
+      precision: exact
+      status: provisional
+      source_url: https://www.kyotokan.jp/read/morning-010/
+      checked_on: '2026-09-24'
+  kissa-kishin-kyoto:
+    name: Kissa Kishin Kyoto
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.kishin.world/kissa
+    kind: restaurant
+    coordinates:
+      longitude: 135.7733814
+      latitude: 34.9915595
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9915595&mlon=135.7733814#map=19/34.9915595/135.7733814
+      checked_on: '2026-09-24'
+  cicon-bakery-kyoto:
+    name: CICON Bakery
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.nohgahotel.com/kiyomizu/en/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7740116
+      latitude: 34.9949397
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9949397&mlon=135.7740116#map=19/34.9949397/135.7740116
+      checked_on: '2026-09-24'
+  the-taste-kyoto-breakfast:
+    name: THE TASTE breakfast
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.sequencehotels.com/kyoto-gojo/eng/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7594394
+      latitude: 34.997947
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.997947&mlon=135.7594394#map=19/34.997947/135.7594394
+      checked_on: '2026-09-24'
+  gyumeshi-gojo-breakfast:
+    name: Gyumeshi Gojo
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://global.hennnahotel.com/en/kyoto-gojo/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7579439
+      latitude: 34.9959337
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9959337&mlon=135.7579439#map=19/34.9959337/135.7579439
+      checked_on: '2026-09-24'
+  m-and-maison-kyoto:
+    name: M&Maison Kyoto
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://mandmaison.com/
+    kind: restaurant
+    coordinates:
+      longitude: 135.76107
+      latitude: 34.993764
+      precision: exact
+      status: provisional
+      source_url: https://mandmaison.com/
+      checked_on: '2026-09-24'
+  cicon-restaurant-breakfast:
+    name: CICON Restaurant breakfast
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.nohgahotel.com/kiyomizu/en/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7740116
+      latitude: 34.9949397
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9949397&mlon=135.7740116#map=19/34.9949397/135.7740116
+      checked_on: '2026-09-24'
+  kyoto-gojo-ono-breakfast:
+    name: Kyoto Gojo Ono
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://www.jrk-hotels.co.jp/Kyoto/restaurant/
+    kind: restaurant
+    coordinates:
+      longitude: 135.7620439
+      latitude: 34.9965701
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9965701&mlon=135.7620439#map=19/34.9965701/135.7620439
+      checked_on: '2026-09-24'
+  walden-woods-kyoto:
+    name: Walden Woods Kyoto
+    description: Hotel-area meal candidate researched after confirming the Kyoto base; see meal_options.yaml for route, hours, and order evidence.
+    url: https://eng.walden-woods.com/smt/lp02.html
+    kind: restaurant
+    coordinates:
+      longitude: 135.7631743
+      latitude: 34.9933451
+      precision: exact
+      status: verified
+      source_url: https://www.openstreetmap.org/?mlat=34.9933451&mlon=135.7631743#map=19/34.9933451/135.7631743
+      checked_on: '2026-09-24'

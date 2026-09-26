@@ -1,0 +1,964 @@
+---
+schema_version: 1
+checked_on: '2026-09-14'
+image_sources:
+  tokyo-fallback: https://en.wikipedia.org/wiki/Tokyo
+  shibuya: https://en.wikipedia.org/wiki/Shibuya_Crossing
+  senso-ji: https://en.wikipedia.org/wiki/Sens%C5%8D-ji
+  tokyo-national-museum: https://en.wikipedia.org/wiki/Tokyo_National_Museum
+  kappabashi: https://en.wikipedia.org/wiki/Kappabashi-dori
+  teamlab-borderless: https://www.mori.co.jp/en/press/release/teamlab_borderless_mori_buildi/
+  meiji-shrine: https://en.wikipedia.org/wiki/Meiji_Shrine
+  harajuku: https://en.wikipedia.org/wiki/Harajuku
+  omotesando: https://en.wikipedia.org/wiki/Omotesand%C5%8D
+  tokyo-skytree: https://en.wikipedia.org/wiki/Tokyo_Skytree
+  tsukiji-outer-market: https://en.wikipedia.org/wiki/Tsukiji_fish_market
+  imperial-palace-east-gardens: https://en.wikipedia.org/wiki/Tokyo_Imperial_Palace
+  tokyo-tower: https://en.wikipedia.org/wiki/Tokyo_Tower
+  kanazawa-fallback: https://en.wikipedia.org/wiki/Kanazawa
+  kenrokuen-garden: https://en.wikipedia.org/wiki/Kenroku-en
+  kanazawa-castle-area: https://en.wikipedia.org/wiki/Kanazawa_Castle
+  d-t-suzuki-museum: https://en.wikipedia.org/wiki/D._T._Suzuki_Museum
+  21st-century-museum: https://en.wikipedia.org/wiki/21st_Century_Museum_of_Contemporary_Art,_Kanazawa
+  myoryuji-ninja-temple: https://en.wikipedia.org/wiki/My%C5%8Dry%C5%AB-ji
+  oyama-jinja-shrine: https://en.wikipedia.org/wiki/Oyama_Shrine_(Kanazawa)
+  yamanaka-fallback: https://en.wikipedia.org/wiki/Yamanaka_Onsen
+  kakusenkei-gorge: https://www.tabimati.net/photo/detail_403.html
+  kyoto-fallback: https://en.wikipedia.org/wiki/Kyoto
+  kiyomizu-dera: https://en.wikipedia.org/wiki/Kiyomizu-dera
+  sannenzaka: https://en.wikipedia.org/wiki/Sannenzaka
+  ninenzaka: https://en.wikipedia.org/wiki/Ninenzaka
+  yasaka-pagoda: https://en.wikipedia.org/wiki/Yasaka_Pagoda
+  yasaka-shrine: https://en.wikipedia.org/wiki/Yasaka_Shrine
+  maruyama-park: https://en.wikipedia.org/wiki/Maruyama_Park
+  kennin-ji: https://en.wikipedia.org/wiki/Kennin-ji
+  kodai-ji: https://en.wikipedia.org/wiki/K%C5%8Ddai-ji
+  arashiyama-bamboo-grove: https://en.wikipedia.org/wiki/Bamboo_Forest_(Kyoto)
+  tenryu-ji: https://en.wikipedia.org/wiki/Tenry%C5%AB-ji
+  okochi-sanso: https://en.wikipedia.org/wiki/%C5%8Ck%C5%8Dchi_Sans%C5%8D
+  nishiki-market: https://en.wikipedia.org/wiki/Nishiki_Market
+  teramachi: https://en.wikipedia.org/wiki/Teramachi_Street
+  kinkaku-ji: https://en.wikipedia.org/wiki/Kinkaku-ji
+  daitoku-ji: https://en.wikipedia.org/wiki/Daitoku-ji
+  nijo-jo-castle: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
+  ginkaku-ji: https://en.wikipedia.org/wiki/Ginkaku-ji
+  philosophers-path: https://en.wikipedia.org/wiki/Philosopher%27s_Walk
+  uji-fallback: https://en.wikipedia.org/wiki/Uji
+  byodoin: https://en.wikipedia.org/wiki/By%C5%8Dd%C5%8D-in
+  fushimi-inari: https://en.wikipedia.org/wiki/Fushimi_Inari-taisha
+  ujigami-shrine: https://en.wikipedia.org/wiki/Ujigami_Shrine
+  tale-of-genji-museum-uji: https://en.wikipedia.org/wiki/The_Tale_of_Genji_Museum
+  nara-fallback: https://en.wikipedia.org/wiki/Nara_(city)
+  nara-park: https://en.wikipedia.org/wiki/Nara_Park
+  todai-ji: https://en.wikipedia.org/wiki/T%C5%8Ddai-ji
+  nigatsu-do: https://en.wikipedia.org/wiki/Nigatsu-d%C5%8D
+  kasuga-taisha: https://en.wikipedia.org/wiki/Kasuga-taisha
+  kofuku-ji: https://en.wikipedia.org/wiki/K%C5%8Dfuku-ji
+  nara-national-museum: https://en.wikipedia.org/wiki/Nara_National_Museum
+  isuien-garden: https://en.wikipedia.org/wiki/Isui-en
+  yoshikien-garden: https://en.wikipedia.org/wiki/Yoshiki-en
+  himeji-fallback: https://en.wikipedia.org/wiki/Himeji
+  himeji-castle: https://en.wikipedia.org/wiki/Himeji_Castle
+  koko-en: https://en.wikipedia.org/wiki/K%C5%8Dko-en
+  hyogo-prefectural-museum-history: https://en.wikipedia.org/wiki/Hy%C5%8Dgo_Prefectural_Museum_of_History
+  shoshazan-engyoji: https://en.wikipedia.org/wiki/Engy%C5%8D-ji
+  osaka-fallback: https://en.wikipedia.org/wiki/Osaka
+  osaka-castle-park: https://en.wikipedia.org/wiki/Osaka_Castle_Park
+  amerikamura: https://en.wikipedia.org/wiki/Amerikamura
+  dotonbori: https://en.wikipedia.org/wiki/D%C5%8Dtonbori
+  hozenji-yokocho: https://en.wikipedia.org/wiki/H%C5%8Dzen-ji_(Osaka)
+  namba: https://en.wikipedia.org/wiki/Namba
+  osaka-museum-history: https://en.wikipedia.org/wiki/Osaka_Museum_of_History
+  shitennoji: https://en.wikipedia.org/wiki/Shitenn%C5%8D-ji
+  umeda-sky-building: https://en.wikipedia.org/wiki/Umeda_Sky_Building
+  shinsekai: https://en.wikipedia.org/wiki/Shinsekai
+  tsutenkaku: https://en.wikipedia.org/wiki/Ts%C5%ABtenkaku
+relaxed_visits:
+  shibuya:
+    duration: 60–90 minutes
+    description: Enough for the crossing from two viewpoints, a slow loop through Center-gai, photos, and one snack or shop stop; add time for serious shopping.
+  senso-ji:
+    duration: 75–105 minutes
+    description: Covers Kaminarimon, an unhurried pass along Nakamise, the main hall, incense and fortune rituals, plus the quieter side grounds.
+  tokyo-national-museum:
+    duration: 3–4 hours
+    description: Lets you explore one major collection building properly, sample a second gallery, and pause in the grounds; seeing the whole museum requires much longer.
+  kappabashi:
+    duration: 2–3 hours
+    description: Allows a full street wander, comparison-shopping for knives or ceramics, visits to specialist stores, and time to arrange engraving or careful packing.
+  teamlab-borderless:
+    duration: 2½–3½ hours
+    description: Includes entry formalities, revisiting rooms as the art changes, finding less-obvious installations, and a drink break without racing between projections.
+  meiji-shrine:
+    duration: 75–105 minutes
+    description: Covers the long forest approach, purification and worship, the main precinct, sake-barrel displays, and a quiet pause; the inner garden needs extra time.
+  harajuku:
+    duration: 2–3 hours
+    description: Enough for Takeshita-dori, several side streets, browsing fashion and character shops, and one crêpe or café stop without treating it as a march-through.
+  at-cosme-tokyo:
+    duration: 2 hours
+    description: Includes Sunday entrance, tester and checkout queues within the fixed block; protect the dinner departure by shortening browsing if queues consume more time.
+  omotesando:
+    duration: 90–150 minutes
+    description: Allows time to notice the architecture, enter a few flagship or design stores, explore one backstreet pocket, and stop for coffee.
+  yonex-tokyo-showroom:
+    duration: 45–75 minutes
+    description: Covers a deliberate look at current racquets, shoes and apparel, questions or fitting help from staff, and a purchase without lingering over every model.
+  tokyo-skytree:
+    duration: 90–150 minutes
+    description: Includes ticketing and lifts, both main viewing areas, photos from several sides, and a short Solamachi browse; sunset queues can push this longer.
+  shibuya-sky:
+    duration: 75–120 minutes
+    description: Allows for timed entry, lockers, the indoor transition spaces, an unrushed rooftop circuit, and changing-light photos; allow the upper end around sunset.
+  tsukiji-outer-market:
+    duration: 90–150 minutes
+    description: Enough for one complete market pass, three or four small tastings, browsing pantry and knife shops, and tolerating a worthwhile food queue.
+  imperial-palace-east-gardens:
+    duration: 90–120 minutes
+    description: Covers a comfortable garden loop, surviving Edo Castle structures, lawns and seasonal planting, with time to sit rather than only photograph gates.
+  tokyo-tower:
+    duration: 75–120 minutes
+    description: Includes entry, the main observation deck, skyline photos, the glass floor and a brief FootTown browse; add time for the higher deck or sunset.
+  shimokitazawa:
+    duration: 2–3 hours
+    description: Lets you browse several vintage and record shops, follow side streets, stop for curry or coffee, and catch the neighborhood’s rhythm instead of chasing landmarks.
+  kichijoji-inokashira:
+    duration: 3–4 hours
+    description: Covers a broad Inokashira Park loop, the pond and shrine, Kichijoji’s shopping lanes, Harmonica Yokocho, and a relaxed meal or coffee.
+  omicho-market:
+    duration: 90–120 minutes
+    description: Allows a full market circuit, seafood and produce browsing, two or three tastings, and a seated bowl or sushi stop without optimizing every minute.
+  kenrokuen-garden:
+    duration: 90–120 minutes
+    description: Enough for the complete main garden circuit, major viewpoints, seasonal details, photos, and a tea-house pause; keen garden lovers may want another hour.
+  kanazawa-castle-area:
+    duration: 90–120 minutes
+    description: Covers the gates, reconstructed turrets and long storehouse, central grounds, and garden connections; add time if entering every exhibition space.
+  higashi-chaya:
+    duration: 90–150 minutes
+    description: Lets you walk the main and back lanes, enter one historic house, browse gold-leaf or craft shops, and take a tea or sweets break.
+  shima-chaya:
+    duration: 45–60 minutes
+    description: Covers both floors, performance and guest rooms, exhibits and architectural details at a measured pace, with a little time for the shop or tea.
+  kazuemachi:
+    duration: 45–75 minutes
+    description: Allows a slow riverbank and lane wander, bridge views, architecture and photos; extend it by stopping at a café or returning after dusk.
+  nagamachi-samurai-district:
+    duration: 75–105 minutes
+    description: Covers the earthen-wall lanes, canals, small public displays and side streets; add another hour if pairing it with a residence interior.
+  d-t-suzuki-museum:
+    duration: 75–105 minutes
+    description: Allows time for the small exhibition, architecture, water garden and the intended contemplative pauses; rushing through would miss much of its purpose.
+  21st-century-museum:
+    duration: 2–3 hours
+    description: Enough for the main ticketed exhibition, free public zones, architecture and one pause; special exhibitions or queues for signature works can require longer.
+  nomura-samurai-residence:
+    duration: 45–75 minutes
+    description: Covers the rooms, objects and compact garden slowly enough to notice details, with time for photos or tea rather than cycling through in a crowd.
+  myoryuji-ninja-temple:
+    duration: 60–90 minutes
+    description: Includes early arrival for the reservation, the guided interior route and explanations, then a short look around the grounds; the tour itself is tightly controlled.
+  oyama-jinja-shrine:
+    duration: 45–60 minutes
+    description: Covers the unusual gate, main shrine, garden and pond, with time to appreciate the mixed architecture before continuing into the castle grounds.
+  kanazawa-craft-workshop:
+    duration: 90–150 minutes
+    description: Allows for instruction, designing and completing one gold-leaf, lacquer or ceramic piece, drying or packing, and browsing finished work afterward.
+  kagari-kisshotei:
+    duration: Overnight, roughly 18 hours
+    description: Treat this as a stay from afternoon check-in through breakfast, including two bath sessions, room downtime, kaiseki dinner and an unhurried morning.
+  kakusenkei-gorge:
+    duration: 75–105 minutes
+    description: Covers the 1.3-kilometre riverside path at a gentle pace, all three bridge areas, photo stops and uneven sections without turning it into a fitness walk.
+  kakusenkei-kawadoko:
+    duration: 45–75 minutes
+    description: Allows time to reach the riverside platform, settle in, enjoy tea and sweets, and absorb the gorge setting; waits and weather may alter this.
+  kiku-no-yu:
+    duration: 60–90 minutes
+    description: Includes changing, washing properly, several short soaks, cooling down and rehydrating; first-time public-bath visitors should use the longer end.
+  yuge-kaido:
+    duration: 75–120 minutes
+    description: Enough for the compact street in both directions, lacquerware and ceramic browsing, local sweets or sake, and one café stop.
+  yamanaka-za:
+    duration: 60–90 minutes
+    description: Covers arrival, the scheduled folk-song or dance performance, appreciation of the lacquered interior, and a little post-show browsing; verify the performance timetable.
+  basho-no-yakata:
+    duration: 45–75 minutes
+    description: Allows a quiet look through the literary and lacquerware displays, rooms and garden, plus tea without requiring deep prior knowledge of Basho.
+  mugen-an:
+    duration: 45–75 minutes
+    description: Covers the formal rooms, tea-space details and gorge outlook at a measured pace; use the upper end if an explanation or tea service is available.
+  ioji-temple:
+    duration: 45–75 minutes
+    description: Includes the uphill approach, temple grounds, town views and a quiet pause; add buffer for the slope or if walking from the far end of Yamanaka.
+  rokuro-no-sato:
+    duration: 2–3 hours door to door
+    description: Includes taxi travel from town, instruction, a hands-on woodturning session, finishing decisions and browsing the craft hall; transport coordination drives the range.
+  kiyomizu-dera:
+    duration: 90–120 minutes
+    description: Covers the approach, main terrace, halls, viewpoints and Otowa waterfall without rushing; shopping streets and seasonal illuminations are separate time commitments.
+  sannenzaka:
+    duration: 60–90 minutes
+    description: Allows a slow downhill wander, architectural details, photos, several shop entries and one snack, rather than using the historic street purely as transit.
+  ninenzaka:
+    duration: 45–75 minutes
+    description: Enough for the preserved slope and side lanes, craft or food browsing and a short café pause; combine with Sannenzaka for a longer continuous walk.
+  yasaka-pagoda:
+    duration: 30–45 minutes
+    description: Covers the classic street viewpoints, a close look at the pagoda exterior and patient photos; interior access is limited and should not be assumed.
+  yasaka-shrine:
+    duration: 45–75 minutes
+    description: Allows for the gates, main precinct, lantern hall, worship and smaller sub-shrines, with extra atmosphere if visited again after dark.
+  maruyama-park:
+    duration: 45–75 minutes
+    description: Covers a relaxed park loop, pond, seasonal planting and a seated break; festivals, blossom crowds or a meal stall can easily extend it.
+  kennin-ji:
+    duration: 75–105 minutes
+    description: Enough for the Zen gardens, painted screens, wind-and-thunder imagery and dragon ceiling, with time to sit and absorb the quieter rooms.
+  kodai-ji:
+    duration: 75–105 minutes
+    description: Covers the main buildings, gardens, bamboo path, memorial spaces and elevation changes; seasonal night illumination needs a separate evening allowance.
+  arashiyama-bamboo-grove:
+    duration: 30–45 minutes
+    description: Allows one slow pass, photos and patience with crowds; the grove itself is short, so longer Arashiyama time is better spent on temples and riverside scenery.
+  tenryu-ji:
+    duration: 75–105 minutes
+    description: Covers the garden circuit, pond viewpoints and key halls at a calm pace; add time if seasonal interiors are open or you linger over the borrowed scenery.
+  okochi-sanso:
+    duration: 75–105 minutes
+    description: Allows the full hillside garden circuit, multiple Kyoto viewpoints, the villa grounds and the included tea without racing the climbs.
+  nishiki-market:
+    duration: 90–120 minutes
+    description: Enough for one full arcade pass, several tastings, ingredient and cookware browsing, and busy-foot-traffic delays; a sit-down meal pushes it longer.
+  teramachi:
+    duration: 90–150 minutes
+    description: Lets you browse a representative mix of shops, side temples and connecting arcades, plus coffee or lunch; serious shopping can absorb half a day.
+  kinkaku-ji:
+    duration: 60–90 minutes
+    description: Covers the prescribed garden route, multiple pavilion viewpoints, upper garden details and tea or souvenirs; the route is compact but crowd flow can slow it.
+  daitoku-ji:
+    duration: 2–3 hours
+    description: Allows a calm precinct walk and two or three open subtemples with distinct gardens; attempting every accessible subtemple would take considerably longer.
+  nijo-jo-castle:
+    duration: 2–2½ hours
+    description: Covers Ninomaru Palace, major painted rooms, defensive grounds and gardens with context; seasonal exhibitions or the full outer circuit add time.
+  ginkaku-ji:
+    duration: 75–105 minutes
+    description: Allows the sand garden, moss garden, pond and wooded viewpoint loop, with time to appreciate composition rather than only photograph the pavilion.
+  philosophers-path:
+    duration: 90–120 minutes
+    description: Covers the canal path at a genuinely relaxed walking pace, small detours, photos and one café or temple pause; major temple visits require extra time.
+  byodoin:
+    duration: 90–120 minutes
+    description: Includes the Phoenix Hall exterior circuit, garden views, temple context and a measured museum visit; add buffer if joining the limited interior viewing.
+  hoshokan-museum:
+    duration: 45–60 minutes
+    description: Allows close attention to the temple treasures, original phoenixes and interpretation without museum fatigue; this estimate assumes it accompanies Byodoin.
+  byodoin-omotesando:
+    duration: 75–120 minutes
+    description: Enough to browse tea and sweet shops, compare souvenirs, sample one or two items and sit for a drink instead of only walking to the temple.
+  fukujuen-uji-kobo:
+    duration: 30–60 minutes
+    description: Allows a deliberate comparison of matcha grades and gifts with staff help; the combined day excludes a workshop or seated tea service.
+  uji-river:
+    duration: 60–90 minutes
+    description: Covers both-bank views around the central bridges, islands and photo stops at a gentle pace, with time to sit beside the water.
+  fushimi-inari:
+    duration: 2½–3½ hours
+    description: Allows the full shrine-and-mountain circuit beyond the crowded lower gates, shrine stops, steady climbing, photos and rests; a lower-gates-only visit takes about an hour.
+  ujigami-shrine:
+    duration: 45–60 minutes
+    description: Covers the quiet approach, ancient shrine buildings, spring and nearby lanes slowly enough to notice the architecture without over-allocating the small site.
+  tale-of-genji-museum-uji:
+    duration: 75–105 minutes
+    description: Allows the principal galleries, recreated settings and one film, with time to connect the Uji chapters to the town rather than skim labels.
+  taihoan-tea-room:
+    duration: 45–75 minutes
+    description: Includes waiting, an introductory tea service, observing the utensils and etiquette, drinking slowly and asking a few questions; a private format may run longer.
+  chazuna:
+    duration: 90–150 minutes
+    description: Covers the tea-and-town exhibition plus one hands-on program or tasting; workshops, grinding and shopping determine whether you need the upper end.
+  nakamura-tokichi-uji:
+    duration: 60–90 minutes
+    description: Allows for a likely café wait, a matcha dessert or tea set, time in the garden setting and thoughtful souvenir browsing.
+  itoh-kyuemon-uji:
+    duration: 60–90 minutes
+    description: Covers choosing and enjoying a parfait, tea or light meal, comparing tea products and sweets, and queue time without turning the stop into lunch plus shopping.
+  nara-park:
+    duration: 90–150 minutes
+    description: Allows a broad park walk, careful deer interaction, quieter lawns, photos and unplanned detours; temple and museum interiors are additional blocks.
+  todai-ji:
+    duration: 75–105 minutes
+    description: Covers Nandaimon, the Great Buddha Hall and its interior details, worship, photos and the immediate grounds without compressing the scale of the place.
+  nigatsu-do:
+    duration: 45–75 minutes
+    description: Includes the uphill walk from Todaiji, the veranda, city views and a quiet return through the temple lanes; mobility and heat affect the range.
+  kasuga-taisha:
+    duration: 75–105 minutes
+    description: Allows the lantern-lined forest approach, main shrine precinct and nearby paths; add time for the inner garden, museum or a long walk from Todaiji.
+  kofuku-ji:
+    duration: 60–90 minutes
+    description: Covers the principal grounds and open treasure or hall interiors with time for Buddhist sculpture; construction visibility and ticket choices can shorten it.
+  nara-national-museum:
+    duration: 2–3 hours
+    description: Enough for the core Buddhist-art galleries, close viewing of major works and a short break; special exhibitions can justify another hour.
+  isuien-garden:
+    duration: 75–105 minutes
+    description: Covers both garden sections, borrowed scenery, tea-house viewpoints and the compact museum at a contemplative pace rather than a photo-only loop.
+  yoshikien-garden:
+    duration: 45–75 minutes
+    description: Allows all three garden styles, moss and pond details, photos and a quiet pause; the compact scale makes it a natural calm interlude.
+  naramachi:
+    duration: 90–150 minutes
+    description: Lets you wander several machiya streets, enter one small museum or merchant house, browse crafts, and stop for coffee or sweets.
+  himeji-castle:
+    duration: 2½–3½ hours
+    description: Covers the defensive approach, keep climb, original timber interiors, long gallery and grounds without sprinting; queues and steep stairs push toward the upper end.
+  koko-en:
+    duration: 75–105 minutes
+    description: Allows all nine themed garden areas, castle-backdrop photos and tea-house time; use the shorter end only if skipping tea and detailed photography.
+  hyogo-prefectural-museum-history:
+    duration: 90–150 minutes
+    description: Covers the castle and Hyogo history displays, models and hands-on sections with context; families or deep readers should allow the upper end.
+  miki-museum:
+    duration: 45–75 minutes
+    description: Enough for the ceramic and painting collections plus upper-level castle views, without assuming the small museum must fill a whole morning.
+  himeji-city-museum-art-garden:
+    duration: 30–45 minutes
+    description: Covers the red-brick exterior, sculpture garden and castle-area photos only while the indoor galleries remain closed for major works.
+  otemae-miyuki-dori:
+    duration: 75–120 minutes
+    description: Allows the station-to-castle vista, a return through the covered arcade, local snack or lunch, and several shop stops rather than direct transit.
+  shoshazan-engyoji:
+    duration: 4–5 hours door to door
+    description: Includes city transport, ropeway, the forest approach, Mani-den and the three great halls, plus rests and a meal; it is a half-day commitment.
+  osaka-castle-park:
+    duration: 90–150 minutes
+    description: Covers a broad park and moat circuit, exterior viewpoints and a relaxed break; entering the reconstructed keep and museum adds roughly another hour.
+  ues-osaka:
+    duration: 45–75 minutes
+    description: Allows careful denim and workwear browsing, fabric and sizing questions, trying several pieces and completing tax-free or alteration arrangements.
+  zabou-osaka:
+    duration: 45–75 minutes
+    description: Enough to discuss fit, compare Japanese and imported menswear, try a focused selection and make a considered purchase without browsing the whole district.
+  orange-street:
+    duration: 2–3 hours
+    description: Lets you explore the full street and side blocks, enter furniture and fashion stores, people-watch, and stop for coffee or lunch.
+  amerikamura:
+    duration: 90–150 minutes
+    description: Covers Triangle Park, murals, vintage and streetwear shops, side lanes and a snack; dedicated fashion shopping can easily take half a day.
+  dotonbori:
+    duration: 2–3 hours
+    description: Allows the river walk, neon and sign photos, several street-food tastes, side lanes and one proper meal; evening crowds make quick progress unrealistic.
+  hozenji-yokocho:
+    duration: 45–75 minutes
+    description: Covers the moss-covered statue, narrow stone lanes and atmosphere, with time for one bar, dessert or small dish rather than a full multi-stop dinner.
+  ura-namba:
+    duration: 2–3 hours
+    description: Treat this as an evening food-and-drink session with one full meal and a second small bar or izakaya, including waiting and wandering between choices.
+  kuromon-market:
+    duration: 90–120 minutes
+    description: Enough for a complete arcade pass, two or three seafood or snack tastes, produce browsing and a short seated stop without sampling everything.
+  namba:
+    duration: 2–3 hours
+    description: Allows a broad shopping-street loop, department or specialty stores, back lanes and a meal; a targeted transit-and-photo visit can be much shorter.
+  osaka-museum-history:
+    duration: 2–3 hours
+    description: Covers the top-down historical route, full-scale reconstructions, archaeology and castle views with time to understand Osaka beyond the headline eras.
+  shitennoji:
+    duration: 75–105 minutes
+    description: Allows the central precinct, halls, worship and grounds at a measured pace; add time for the garden or treasure house when open.
+  umeda-sky-building:
+    duration: 90–120 minutes
+    description: Includes the architectural approach, transparent escalators, indoor exhibits, open-air observatory and skyline photos; sunset and night transitions favor the upper end.
+  shinsekai:
+    duration: 2–3 hours
+    description: Lets you wander the retro streets, photograph Tsutenkaku, browse arcades and eat kushikatsu; combining the tower interior needs additional queue time.
+  tsutenkaku:
+    duration: 75–105 minutes
+    description: Covers ticketing, observation levels, exhibits and photos, with some time for the immediate tower base; slides, special decks or queues extend it.
+  den-den-town:
+    duration: 2–3 hours
+    description: Allows several anime, retro-game, electronics and model shops, price comparison, a patient treasure hunt, and ramen or a café break.
+  osaka-aquarium-kaiyukan:
+    duration: 3–4 hours
+    description: Covers the complete spiral route, unhurried time at the central Pacific tank, jellyfish and touch areas, plus a short break without skipping habitats.
+destinations:
+- place_id: tokyo
+  summary: Three nights for old-Tokyo streets, major museums, contemporary art, food, fashion, and skyline views.
+  planning_note: Tokyo is already full, with Day 3 rated AMBER. Treat extra picks as swaps for current blocks, not automatic additions.
+  recommendation_source:
+    name: GO TOKYO
+    url: https://www.gotokyo.org/en/see-and-do/attractions/
+  fallback_image_id: tokyo-fallback
+  options:
+  - place_id: shibuya
+    category: urban-landmark
+    source_url: https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/index.html
+    image_id: shibuya
+  - place_id: senso-ji
+    category: temple
+    source_url: https://www.gotokyo.org/en/spot/15/index.html
+    image_id: senso-ji
+  - place_id: tokyo-national-museum
+    category: museum
+    source_url: https://www.gotokyo.org/en/spot/123/index.html
+    image_id: tokyo-national-museum
+  - place_id: kappabashi
+    category: specialty-shopping
+    source_url: https://www.gotokyo.org/en/spot/59/index.html
+    image_id: kappabashi
+  - place_id: teamlab-borderless
+    category: immersive-art-museum
+    source_url: https://www.gotokyo.org/en/spot/1742/index.html
+    image_id: teamlab-borderless
+  - place_id: meiji-shrine
+    category: shrine
+    source_url: https://www.gotokyo.org/en/spot/76/index.html
+    image_id: meiji-shrine
+  - place_id: harajuku
+    category: neighborhood-and-shopping
+    source_url: https://www.gotokyo.org/en/story/walks-and-tours/tokyo-itinerary/index.html
+    image_id: harajuku
+  - place_id: at-cosme-tokyo
+    category: specialty-shopping
+    source_url: https://www.cosme.net/store/flagship/tokyo/
+    image_id: harajuku
+    note: The scheduled two-hour Sunday visit replaces the broader Harajuku–Shibuya browsing block; queue time is included.
+  - place_id: omotesando
+    category: architecture-and-shopping
+    source_url: https://www.gotokyo.org/en/destinations/western-tokyo/aoyama-and-omotesando/index.html
+    image_id: omotesando
+  - place_id: yonex-tokyo-showroom
+    category: specialty-shopping
+    source_url: https://www.yonex-showroom.com/tokyo-showroom/en/
+  - place_id: tokyo-skytree
+    category: observation-tower
+    source_url: https://www.gotokyo.org/en/spot/6/index.html
+    image_id: tokyo-skytree
+  - place_id: shibuya-sky
+    category: observation-deck
+    source_url: https://www.gotokyo.org/en/spot/1749/index.html
+    image_id: shibuya
+    note: The itinerary’s hard arrival-day rule excludes a timed deck on Day 2; this would need a different Tokyo slot.
+  - place_id: tsukiji-outer-market
+    category: food-market
+    source_url: https://www.gotokyo.org/en/destinations/central-tokyo/tsukiji/index.html
+    image_id: tsukiji-outer-market
+  - place_id: imperial-palace-east-gardens
+    category: historic-garden
+    source_url: https://www.gotokyo.org/en/guide-services/imperial-palace-outer-garden/index.html
+    image_id: imperial-palace-east-gardens
+  - place_id: tokyo-tower
+    category: observation-tower
+    source_url: https://www.gotokyo.org/en/spot/4/index.html
+    image_id: tokyo-tower
+  - place_id: shimokitazawa
+    category: neighborhood-vintage-and-music
+    source_url: https://www.google.com/search?q=Shimokitazawa+Tokyo
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1eijebh/what_are_your_favourite_tokyo_neighbourhoods/
+      note: Travelers repeatedly single it out for thrift shops, cafés, small restaurants, and simply wandering without a landmark checklist.
+  - place_id: kichijoji-inokashira
+    category: neighborhood-park-and-food
+    source_url: https://www.google.com/search?q=Kichijoji+Inokashira+Park+Tokyo
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1eijebh/what_are_your_favourite_tokyo_neighbourhoods/
+      note: Redditors recommend the neighborhood for its atmosphere and call Inokashira Park a standout place to slow down.
+- place_id: kanazawa
+  summary: Two nights for one of Japan’s great gardens, castle-town history, geisha districts, craft culture, seafood, and contemporary design.
+  planning_note: The selected route already fills two relaxed days. A new museum or workshop should replace a selected block rather than extend it.
+  recommendation_source:
+    name: VISIT KANAZAWA
+    url: https://visitkanazawa.jp/en/attractions/
+  fallback_image_id: kanazawa-fallback
+  options:
+  - place_id: omicho-market
+    category: food-market
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10030.html
+  - place_id: kenrokuen-garden
+    category: landscape-garden
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10106.html
+    image_id: kenrokuen-garden
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravel/comments/1u5hxzb/trip_report_kanazawa_nagano_and_sendai/
+      note: A recent trip report called it the Kanazawa highlight and recommends arriving early enough to enjoy it before crowds build.
+  - place_id: kanazawa-castle-area
+    category: castle-and-garden
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10060.html
+    image_id: kanazawa-castle-area
+  - place_id: higashi-chaya
+    category: historic-district
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10212.html
+  - place_id: shima-chaya
+    category: historic-house
+    source_url: https://visitkanazawa.jp/en/spot/detail_10094.html
+  - place_id: kazuemachi
+    category: historic-district
+    source_url: https://visitkanazawa.jp/en/attractions/detail_52358.html
+  - place_id: nagamachi-samurai-district
+    category: historic-district
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10195.html
+  - place_id: d-t-suzuki-museum
+    category: museum-and-architecture
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10156.html
+    image_id: d-t-suzuki-museum
+  - place_id: 21st-century-museum
+    category: contemporary-art-museum
+    source_url: https://visitkanazawa.jp/en/attractions/detail_10066.html
+    image_id: 21st-century-museum
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravel/comments/1sdv7va/things_to_do_in_kanazawa_and_nagano_for_7_days/
+      note: Community recommendations repeatedly elevate this museum beyond a generic sightseeing stop, especially for art and architecture fans.
+  - place_id: nomura-samurai-residence
+    category: historic-house-and-garden
+    source_url: https://visitkanazawa.jp/en/attractions/detail_50073.html
+  - place_id: myoryuji-ninja-temple
+    category: temple-and-architecture
+    source_url: https://visitkanazawa.jp/en/spot/detail_50022.html
+    image_id: myoryuji-ninja-temple
+    note: Guided admission requires an advance telephone reservation.
+  - place_id: oyama-jinja-shrine
+    category: shrine-and-architecture
+    source_url: https://visitkanazawa.jp/en/attractions/detail_50021.html
+    image_id: oyama-jinja-shrine
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravel/comments/1sdv7va/things_to_do_in_kanazawa_and_nagano_for_7_days/
+      note: Travelers recommend starting here, then walking through the garden into Kanazawa Castle and onward to Kenrokuen.
+  - place_id: kanazawa-craft-workshop
+    category: craft-workshop
+    source_url: https://visitkanazawa.jp/en/activities/
+    note: The itinerary already mentions an untimed gold-leaf or Kaga craft workshop as a replacement idea on Day 7.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravel/comments/1sdv7va/things_to_do_in_kanazawa_and_nagano_for_7_days/
+      note: Redditors specifically recommend a hands-on gold-leaf workshop as a way to engage with Kanazawa’s craft identity rather than only view it.
+- place_id: yamanaka-onsen
+  summary: One protected ryokan night beside Kakusenkei Gorge, with hot-spring culture, lacquerware, small museums, and a compact town centre nearby.
+  planning_note: Only the Kagari Kisshotei stay is selected. Town sightseeing would trade against the deliberately protected baths, dinner, breakfast, and recovery time.
+  recommendation_source:
+    name: Visit Kaga
+    url: https://visitkaga.jp/
+  fallback_image_id: yamanaka-fallback
+  options:
+  - place_id: kagari-kisshotei
+    category: ryokan-and-onsen
+    source_url: https://kagari-kisshotei.com/english/
+  - place_id: kakusenkei-gorge
+    category: nature-walk
+    source_url: https://visitkaga.jp/attractions/kakusenkei-gorge
+    image_id: kakusenkei-gorge
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1w5hf5y/yamanaka_onsen/
+      note: 'Recent visitors repeatedly describe the riverside walk as the town’s defining experience: quiet, gorgeous, and atmospheric after dark.'
+  - place_id: kakusenkei-kawadoko
+    category: seasonal-cafe
+    source_url: https://visitkaga.jp/attractions/kakusenkei-kawadoko-cafe
+    image_id: kakusenkei-gorge
+    note: Seasonal and weather-dependent; re-check the 2026 operating notice.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1w5hf5y/yamanaka_onsen/
+      note: A visitor explicitly says not to miss the kawadoko at the end of the gorge promenade.
+  - place_id: kiku-no-yu
+    category: public-onsen
+    source_url: https://visitkaga.jp/attractions/kikunoyu-public-bathhouse
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/travel/comments/1v3nlkf/yamanaka_onsen_japan_for_two_nights_in_july_2026/
+      note: A highly discussed stay report recommends the old public bath as a memorable counterpoint to a private ryokan onsen.
+  - place_id: yuge-kaido
+    category: shopping-and-food-street
+    source_url: https://visitkaga.jp/attractions/yuge-kaido-street
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/travel/comments/1v3nlkf/yamanaka_onsen_japan_for_two_nights_in_july_2026/
+      note: Visitors praise Yamanaka’s lacquerware, ceramics, food, and sake shops as just enough low-key wandering between baths.
+  - place_id: yamanaka-za
+    category: performing-arts
+    source_url: https://visitkaga.jp/attractions/yamanakaza-theater
+    note: Performances are normally on weekends and public holidays, which does not align with the current Thursday stay.
+  - place_id: basho-no-yakata
+    category: literary-museum-and-garden
+    source_url: https://visitkaga.jp/attractions/basho-no-yakata-museum
+  - place_id: mugen-an
+    category: historic-house
+    source_url: https://visitkaga.jp/attractions/mugen-an-samurai-house
+  - place_id: ioji-temple
+    category: temple-and-viewpoint
+    source_url: https://visitkaga.jp/attractions/ioji-temple
+  - place_id: rokuro-no-sato
+    category: craft-workshop
+    source_url: https://visitkaga.jp/attractions/rokuro-no-sato-arts-and-crafts-hall
+    note: About five minutes from town by taxi, so it needs its own transport allowance.
+- place_id: kyoto
+  summary: Four nights spanning Higashiyama, Arashiyama, central food streets, landmark temples, gardens, and quieter Zen precincts.
+  planning_note: The itinerary protects afternoon recovery on several days. New picks should be explicit replacements, especially across distant Kyoto districts.
+  recommendation_source:
+    name: Kyoto City Official Travel Guide
+    url: https://kyoto.travel/en/destinations
+  fallback_image_id: kyoto-fallback
+  options:
+  - place_id: kiyomizu-dera
+    category: temple-and-viewpoint
+    source_url: https://kyoto.travel/en/destinations/kiyomizudera-temple/
+    image_id: kiyomizu-dera
+  - place_id: sannenzaka
+    category: historic-street
+    source_url: https://kyoto.travel/en/itineraries/higashiyama-at-dawn/
+    image_id: sannenzaka
+  - place_id: ninenzaka
+    category: historic-street
+    source_url: https://kyoto.travel/en/itineraries/higashiyama-at-dawn/
+    image_id: ninenzaka
+  - place_id: yasaka-pagoda
+    category: temple-and-architecture
+    source_url: https://kyoto.travel/en/destinations/hokanji-templeyasaka-pagoda/
+    image_id: yasaka-pagoda
+  - place_id: yasaka-shrine
+    category: shrine
+    source_url: https://kyoto.travel/en/destinations/yasakajinja-shrine/
+    image_id: yasaka-shrine
+  - place_id: maruyama-park
+    category: park-and-scenery
+    source_url: https://kyoto.travel/en/destinations/maruyama-park/
+    image_id: maruyama-park
+  - place_id: kennin-ji
+    category: zen-temple
+    source_url: https://kyoto.travel/en/destinations/kenninjitemple/
+    image_id: kennin-ji
+    note: The current Day 10 block says to choose either Kennin-ji or Kodai-ji, not both.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1bgqmun/when_it_comes_to_temples_and_shrines_in_kyoto/
+      note: Reddit travelers call Kennin-ji underrated, highlighting its painted screens, famous wind-and-thunder imagery, and dramatic dragon ceiling.
+  - place_id: kodai-ji
+    category: temple-and-garden
+    source_url: https://kyoto.travel/en/destinations/kodaiji-temple/
+    image_id: kodai-ji
+    note: The current Day 10 block says to choose either Kodai-ji or Kennin-ji, not both.
+  - place_id: arashiyama-bamboo-grove
+    category: nature-and-scenic-walk
+    source_url: https://www.japan.travel/en/spot/1141/
+    image_id: arashiyama-bamboo-grove
+  - place_id: tenryu-ji
+    category: zen-temple-and-garden
+    source_url: https://kyoto.travel/en/destinations/tenryuji-temple/
+    image_id: tenryu-ji
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1ug728j/is_nara_a_mustsee/
+      note: Travelers who found the bamboo grove underwhelming repeatedly point to Tenryu-ji’s garden as the more rewarding Arashiyama experience.
+  - place_id: okochi-sanso
+    category: garden-and-viewpoint
+    source_url: https://www.japan.travel/en/spot/1141/
+    image_id: okochi-sanso
+  - place_id: nishiki-market
+    category: food-market
+    source_url: https://kyoto.travel/en/destinations/kyoto-nishiki-food-market/
+    image_id: nishiki-market
+  - place_id: teramachi
+    category: covered-shopping-street
+    source_url: https://kyoto.travel/en/destinations/kyoto-nishiki-food-market/
+    image_id: teramachi
+  - place_id: kinkaku-ji
+    category: temple-and-garden
+    source_url: https://kyoto.travel/en/shrine_temple/165.html?wovnDisableTranslation=true
+    image_id: kinkaku-ji
+  - place_id: daitoku-ji
+    category: zen-precinct
+    source_url: https://kyoto.travel/en/destinations/daitokuji-temple/
+    image_id: daitoku-ji
+  - place_id: nijo-jo-castle
+    category: castle-palace-and-history
+    source_url: https://kyoto.travel/en/destinations/nijojo-castle/
+    image_id: nijo-jo-castle
+  - place_id: ginkaku-ji
+    category: temple-and-garden
+    source_url: https://kyoto.travel/en/destinations/ginkakuji-templethe-silver-pavilion/
+    image_id: ginkaku-ji
+  - place_id: philosophers-path
+    category: scenic-walk
+    source_url: https://kyoto.travel/en/destinations/philosophers-path-tetsugakunomichi/
+    image_id: philosophers-path
+- place_id: nara
+  summary: A half-day excursion anchored by deer, monumental Buddhist art, World Heritage shrines, classical gardens, and old merchant streets.
+  planning_note: The combined push day leaves Nara after lunch for Uji. Anything beyond Nara Park and Todaiji must replace part of the protected route.
+  recommendation_source:
+    name: Nara City Tourism Association
+    url: https://narashikanko.or.jp/en/
+  fallback_image_id: nara-fallback
+  options:
+  - place_id: nara-park
+    category: park-and-nature
+    source_url: https://narashikanko.or.jp/en/spot/detail_10089.html
+    image_id: nara-park
+  - place_id: todai-ji
+    category: temple-and-world-heritage
+    source_url: https://narashikanko.or.jp/en/spot/detail_10001.html
+    image_id: todai-ji
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1gujl6i/is_nara_worth_it_for_a_day_trip/
+      note: Travelers consistently describe the Great Buddha and hall as genuinely astonishing rather than a box-ticking temple stop.
+  - place_id: nigatsu-do
+    category: temple-and-viewpoint
+    source_url: https://narashikanko.or.jp/en/spot/detail_10001.html
+    image_id: nigatsu-do
+    note: The Day 12 prose mentions this only if the morning is running smoothly; it is not a fixed stop.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1gujl6i/is_nara_worth_it_for_a_day_trip/
+      note: A widely shared community walking route singles out the uphill continuation to Nigatsu-do after Todaiji.
+  - place_id: kasuga-taisha
+    category: shrine-and-world-heritage
+    source_url: https://narashikanko.or.jp/en/spot/detail_10058.html
+    image_id: kasuga-taisha
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1gujl6i/is_nara_worth_it_for_a_day_trip/
+      note: Reddit’s recommended Nara loop links this lantern-lined shrine with Todaiji, Nigatsu-do, and the quieter park paths.
+  - place_id: kofuku-ji
+    category: temple-and-world-heritage
+    source_url: https://narashikanko.or.jp/en/spot/detail_10029.html
+    image_id: kofuku-ji
+    note: The five-storey pagoda is concealed by long-term repair work; verify the 2026 visitor view before choosing it for architecture.
+  - place_id: nara-national-museum
+    category: buddhist-art-museum
+    source_url: https://narashikanko.or.jp/en/spot/detail_10043.html
+    image_id: nara-national-museum
+  - place_id: isuien-garden
+    category: garden-and-museum
+    source_url: https://narashikanko.or.jp/en/spot/detail_10050.html
+    image_id: isuien-garden
+  - place_id: yoshikien-garden
+    category: classical-garden
+    source_url: https://narashikanko.or.jp/en/spot/detail_10087.html
+    image_id: yoshikien-garden
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1gujl6i/is_nara_worth_it_for_a_day_trip/
+      note: Travelers recommend slipping through Yoshikien on the walk toward Todaiji for a calmer garden interlude.
+  - place_id: naramachi
+    category: historic-district
+    source_url: https://narashikanko.or.jp/en/feature/naramachi/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1gujl6i/is_nara_worth_it_for_a_day_trip/
+      note: Multiple visitors say wandering Naramachi’s shops and small streets was a highlight beyond the deer-and-temple circuit.
+- place_id: uji
+  summary: A focused stop for Pure Land architecture and a protected two-hour matcha-shopping route within the combined Nara–Uji–Fushimi push day.
+  planning_note: Byodoin, Hoshokan and the matcha-shopping block are the complete default. Phoenix Hall interior, the river and further tea experiences must replace default time.
+  recommendation_source:
+    name: Uji City Tourist Association
+    url: https://www.kyoto-uji-kankou.or.jp/tourism-en.html
+  fallback_image_id: uji-fallback
+  options:
+  - place_id: byodoin
+    category: temple-and-world-heritage
+    source_url: https://www.byodoin.or.jp/en/guide/
+    image_id: byodoin
+  - place_id: hoshokan-museum
+    category: temple-museum
+    source_url: https://www.byodoin.or.jp/en/
+    image_id: byodoin
+  - place_id: byodoin-omotesando
+    category: tea-food-and-shopping
+    source_url: https://www.kyoto-uji-kankou.or.jp/course.html
+  - place_id: fukujuen-uji-kobo
+    category: tea-shop-and-workshop
+    source_url: https://experience.fukujuen.com/en/shopping/
+    note: The combined day allocates part of the protected 14:45–16:45 shopping window here; seated tea service is outside the default scope.
+  - place_id: uji-river
+    category: riverside-scenic-walk
+    source_url: https://www.kyoto-uji-kankou.or.jp/course.html
+  - place_id: fushimi-inari
+    category: shrine-and-scenic-walk
+    source_url: https://kyoto.travel/en/destinations/fushimi-inaritaisha-shrine/
+    image_id: fushimi-inari
+    note: This is in Kyoto’s Fushimi Ward. The combined day visits only the lower shrine and Senbon Torii after leaving Uji at 16:45.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1bgqmun/when_it_comes_to_temples_and_shrines_in_kyoto/
+      note: Community advice favors the longer climb for thinner crowds, but the selected lower-gates scope protects the fixed Uji departure and Kyoto dinner.
+  - place_id: ujigami-shrine
+    category: shrine-and-world-heritage
+    source_url: https://www.kyoto-uji-kankou.or.jp/tourism-en.html
+    image_id: ujigami-shrine
+  - place_id: tale-of-genji-museum-uji
+    category: literature-museum
+    source_url: https://www.city.uji.kyoto.jp/site/genji/index.html
+    image_id: tale-of-genji-museum-uji
+  - place_id: taihoan-tea-room
+    category: tea-ceremony
+    source_url: https://www.kyoto-uji-kankou.or.jp/taihoan-en.html
+  - place_id: chazuna
+    category: tea-museum-and-experience
+    source_url: https://www.kyoto-uji-kankou.or.jp/course.html
+  - place_id: nakamura-tokichi-uji
+    category: matcha-cafe-and-tea-shop
+    source_url: https://global.tokichi.jp/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1h5gbke/whats_the_best_area_in_uji_for_a_matcha_lover/
+      note: Matcha-focused travelers repeatedly recommend the historic main shop and its café, with particularly strong praise for the tea and sweets.
+  - place_id: itoh-kyuemon-uji
+    category: matcha-cafe-and-tea-shop
+    source_url: https://www.itohkyuemon.co.jp/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1h5gbke/whats_the_best_area_in_uji_for_a_matcha_lover/
+      note: Reddit’s Uji matcha discussion puts this alongside Nakamura Tokichi, with one traveler preferring its parfaits and tea.
+- place_id: osaka
+  summary: Three nights and a final morning for an open Culture Day afternoon, denim, independent retail, street fashion, markets, neon food districts, history, and skyline options.
+  planning_note: The new Culture Day afternoon remains deliberately unstructured. The later default route stays compact from Horie to Namba; new cross-city picks require re-auditing.
+  recommendation_source:
+    name: OSAKA-INFO
+    url: https://www.osaka-info.jp/en/spot/
+  fallback_image_id: osaka-fallback
+  options:
+  - place_id: osaka-castle-park
+    category: park-and-history
+    source_url: https://osaka-info.jp/en/spot/osaka-castle-park/
+    image_id: osaka-castle-park
+    note: Already listed as the drop-first alternative because Himeji is the itinerary’s primary castle experience.
+  - place_id: ues-osaka
+    category: denim-and-workwear-shopping
+    source_url: https://ues.co.jp/store/index.html?language=en
+  - place_id: zabou-osaka
+    category: menswear-and-denim-shopping
+    source_url: https://shop.zabou.org/?mode=f43
+  - place_id: orange-street
+    category: design-fashion-and-shopping
+    source_url: https://osaka-info.jp/en/spot/tachibana-dori-orange-street/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1fph5j5/what_is_a_must_do_in_osaka/
+      note: Redditors call out Orange Street for independent shops and stylish people-watching away from the loudest Osaka landmarks.
+  - place_id: amerikamura
+    category: fashion-and-youth-culture
+    source_url: https://osaka-info.jp/en/spot/america-mura-american-village/
+    image_id: amerikamura
+  - place_id: dotonbori
+    category: food-nightlife-and-cityscape
+    source_url: https://osaka-info.jp/en/spot/dotonbori/
+    image_id: dotonbori
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1fph5j5/what_is_a_must_do_in_osaka/
+      note: 'Community consensus accepts the crowds: the riverfront neon and Glico-sign ritual remain part of the Osaka experience.'
+  - place_id: hozenji-yokocho
+    category: historic-alley-and-food
+    source_url: https://www.osaka-info.jp/en/spot/hozenji-yokocho/
+    image_id: hozenji-yokocho
+  - place_id: ura-namba
+    category: food-and-bar-district
+    source_url: https://osaka-info.jp/en/spot/gastronomy-urananba/
+  - place_id: kuromon-market
+    category: food-market
+    source_url: https://osaka-info.jp/en/spot/kuromon-market/
+  - place_id: namba
+    category: district-and-shopping
+    source_url: https://osaka-info.jp/en/spot/ebisubashisuji-shopping-street/
+    image_id: namba
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1fph5j5/what_is_a_must_do_in_osaka/
+      note: A highly saved community route uses Namba as the hinge between Dotonbori, Den Den Town, and Shinsekai.
+  - place_id: osaka-museum-history
+    category: history-museum
+    source_url: https://www.osaka-info.jp/en/special/universal/tourism/%E5%A4%A7%E9%98%AA%E6%AD%B4%E5%8F%B2%E5%8D%9A%E7%89%A9%E9%A4%A8/
+    image_id: osaka-museum-history
+  - place_id: shitennoji
+    category: temple-and-history
+    source_url: https://osaka-info.jp/en/spot/shitennoji/
+    image_id: shitennoji
+  - place_id: umeda-sky-building
+    category: architecture-and-viewpoint
+    source_url: https://osaka-info.jp/en/spot/umeda-sky-building/
+    image_id: umeda-sky-building
+  - place_id: shinsekai
+    category: retro-district-and-food
+    source_url: https://osaka-info.jp/en/spot/shinsekai/
+    image_id: shinsekai
+    note: The current itinerary explicitly keeps the default dinner in Namba rather than crossing to Shinsekai.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1fph5j5/what_is_a_must_do_in_osaka/
+      note: Reddit recommends reaching Shinsekai on foot through Den Den Town for a long, gritty, food-heavy urban walk rather than treating it as an isolated photo stop.
+  - place_id: tsutenkaku
+    category: observation-tower
+    source_url: https://osaka-info.jp/en/spot/tsutenkaku/
+    image_id: tsutenkaku
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1fph5j5/what_is_a_must_do_in_osaka/
+      note: Community itineraries pair the tower with Shinsekai and the walk south from Namba, not as a standalone cross-city detour.
+  - place_id: den-den-town
+    category: anime-games-and-electronics
+    source_url: https://www.nippombashi.jp/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1t481t8/what_to_do_in_osaka/
+      note: Travelers say they can happily lose half a day browsing its nerd shops, retro games, figures, electronics, and side streets.
+  - place_id: osaka-aquarium-kaiyukan
+    category: aquarium
+    source_url: https://www.kaiyukan.com/language/eng/
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1t481t8/what_to_do_in_osaka/
+      note: Multiple travelers call Kaiyukan amazing and recommend allowing three to four hours rather than squeezing it into a spare hour.
+- place_id: himeji
+  summary: A time-boxed stop built around Japan’s finest surviving castle, with gardens, local museums, shopping streets, and a mountain temple as alternatives.
+  planning_note: The castle owns the protected morning. Koko-en is the only plausible nearby add-on if the keep runs early; Engyo-ji is a separate half-day choice.
+  recommendation_source:
+    name: Visit Himeji
+    url: https://visit-himeji.com/en/sightseeing/
+  fallback_image_id: himeji-fallback
+  options:
+  - place_id: himeji-castle
+    category: castle-and-world-heritage
+    source_url: https://visit-himeji.com/en/sightseeing/himeji-castle/
+    image_id: himeji-castle
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1vm3l3k/is_himeji_worth_visiting_with_the_2500_yen_cost/
+      note: A recent high-engagement discussion overwhelmingly calls Himeji special and worth visiting even for travelers who have already seen other castles.
+  - place_id: koko-en
+    category: garden-and-tea
+    source_url: https://visit-himeji.com/en/sightseeing/koko-en-garden/
+    image_id: koko-en
+    note: The itinerary mentions this only as an option not to add if the castle keep runs late.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1vm3l3k/is_himeji_worth_visiting_with_the_2500_yen_cost/
+      note: Travelers repeatedly call the adjoining garden top-tier, with several saying they enjoyed it as much as or more than the castle interior.
+  - place_id: hyogo-prefectural-museum-history
+    category: history-museum
+    source_url: https://visit-himeji.com/en/sightseeing/hyogo-prefectural-museum-of-history/
+    image_id: hyogo-prefectural-museum-history
+  - place_id: miki-museum
+    category: art-ceramics-and-viewpoint
+    source_url: https://visit-himeji.com/en/sightseeing/miki-museum/
+  - place_id: himeji-city-museum-art-garden
+    category: architecture-and-outdoor-art
+    source_url: https://www.city.himeji.lg.jp/art/0000032163.html
+    note: Indoor galleries are officially closed from April 2026 through December 2027; this option is the exterior and sculpture garden only.
+  - place_id: otemae-miyuki-dori
+    category: city-walk-and-shopping
+    source_url: https://visit-himeji.com/en/trip-ideas/himeji-castle-amazing-history-and-tips-on-how-to-enjoy-your-visit/
+  - place_id: shoshazan-engyoji
+    category: mountain-temple
+    source_url: https://www.hyogo-tourism.jp/world/spot/detail_1050.html
+    image_id: shoshazan-engyoji
+    note: This requires substantial restructuring and cannot be added before the current 13:00 departure.
+    community_source:
+      platform: Reddit
+      url: https://www.reddit.com/r/JapanTravelTips/comments/1vm3l3k/is_himeji_worth_visiting_with_the_2500_yen_cost/
+      note: Visitors recommend the mountain temple as Himeji’s peaceful, forested counterweight to the crowded castle complex.

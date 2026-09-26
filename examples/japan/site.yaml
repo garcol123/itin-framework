@@ -1,0 +1,90 @@
+---
+schema_version: 1
+trip_slug: japan-2026
+storage_namespace: japan-2026
+locale: en-AU
+title: Japan Itinerary
+subtitle: Fri 23 Oct to Fri 6 Nov
+destination:
+  name: Japan
+  search_hint: Japan
+  timezones:
+  - Asia/Tokyo
+currencies:
+  base: AUD
+  quote: JPY
+  display:
+    AUD:
+      symbol: A$
+      decimals: 2
+      symbol_position: before
+    JPY:
+      symbol: "¥"
+      decimals: 0
+      symbol_position: before
+metadata:
+  site_url: https://rogers-japan-2026-activity-chooser.muddy-puppy-8706.chatgpt.site
+  social_image: public/og.png
+  pages:
+    itinerary:
+      title: Japan Itinerary — Fri 23 Oct to Fri 6 Nov 2026
+      description: A traveler-controlled Japan activity shortlist showing what is scheduled and what else is nearby.
+      social_title: Choose what matters. — Japan 2026 activity shortlist
+      social_description: Compare the itinerary with highly recommended nearby activities, then make your own picks.
+    activities:
+      title: Choose your Japan experiences — Fri 23 Oct to Fri 6 Nov
+      description: Compare the activities already in the Japan itinerary with highly recommended nearby alternatives.
+      social_title: Choose what matters. — Japan 2026 activity shortlist
+      social_description: See what is already scheduled, compare standout nearby alternatives, and make your own picks.
+    map:
+      title: Journey map — Japan Itinerary
+      description: Explore the route, days, and movement behind a traveler-controlled Japan itinerary.
+      social_title: Choose what matters. — Japan 2026 activity shortlist
+      social_description: Explore the itinerary route and compare the activities selected for each stop.
+branding:
+  wordmark_primary: Japan
+  wordmark_secondary: '2026'
+  chooser_export_title: Japan 2026 — activity draft
+  chooser_export_filename: japan-2026-activity-draft.txt
+transport:
+  classifications:
+    high_speed_rail:
+      icon: "🚅"
+      label: Shinkansen (bullet train)
+      short_label: Shinkansen
+      map_label: "🚅 Shinkansen · bullet train"
+      legend_label: Shinkansen whoosh
+      color: '#00bde3'
+      playback_ms: 850
+      emphasis: true
+    conventional_rail:
+      icon: "🚂"
+      label: regular train
+      short_label: regular train
+      map_label: "🚂 Regular train"
+      legend_label: Regular-train rhythm
+      color: '#6559c7'
+      playback_ms: 1250
+map:
+  provider_name: OpenFreeMap
+  style_url: https://tiles.openfreemap.org/styles/liberty
+  library_css_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css
+  library_js_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.js
+  library_module_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.mjs
+  fallback_geography: data/japan-fallback.geojson
+  initial_place_id: sydney-airport-t1-international
+  initial_label: Sydney Airport
+  initial_center:
+  - 137.2
+  - 35.5
+  initial_zoom: 4.2
+route_authoring:
+  user_agent: itin-framework-japan-2026/1.0
+validation:
+  expected_strict_blockers:
+  - pace-active-span
+  - pace-commitment
+  - pace-transport
+  - pace-major-anchors
+  - pace-clusters
+  - pace-too-many-amber

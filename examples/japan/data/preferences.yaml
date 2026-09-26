@@ -1,0 +1,21 @@
+---
+schema_version: 1
+preferences:
+  pace: relaxed
+  minimum_transfer_buffer_minutes: 15
+  priorities:
+  - Japanese history, temples, gardens, museums, and architecture
+  - Regional food, seafood, matcha, markets, and relaxed dinners
+  - Japanese cosmetics and distinctive beauty-shopping flagships
+  - Japanese denim, workwear, kitchenware, and Yonex sporting goods
+  - One traditional ryokan and onsen night
+  - No waking before 07:30, with at least 30 minutes before the first commitment
+  optimization_rules:
+  - Preserve confirmed bookings and hard constraints.
+  - Prefer geographically coherent days and explicit travel time.
+  - Protect arrival and departure days from fragile timed commitments.
+  - Treat optional activities as the first candidates to remove when a day becomes
+    infeasible.
+  - Do not silently replace stated interests; record alternatives explicitly.
+  - Give ordinary meals at least 60 minutes and ordinary dinners 90 minutes; use
+    only the explicit exceptions recorded in constraints.yaml.

@@ -1,0 +1,165 @@
+---
+schema_version: 1
+bookings:
+- id: flight-syd-nrt
+  status: confirmed
+  kind: flight
+  departure_date: '2026-10-23'
+  arrival_date: '2026-10-24'
+  date_label: Fri 23 → Sat 24 Oct 2026
+  origin: SYD
+  departure_time: '21:30'
+  destination: NRT
+  arrival_time: '12:00'
+  description: Sydney Kingsford Smith Airport to Narita International Airport · overnight
+  all_times_local: true
+  activity_refs:
+  - day-01-03
+  - day-02-01
+- id: flight-kix-syd
+  status: confirmed
+  kind: flight
+  departure_date: '2026-11-06'
+  arrival_date: '2026-11-07'
+  date_label: Fri 6 → Sat 7 Nov 2026
+  origin: KIX
+  departure_time: '19:00'
+  destination: SYD
+  arrival_time: '13:35'
+  description: Kansai International Airport to Sydney Kingsford Smith Airport · overnight
+  all_times_local: true
+  activity_refs:
+  - day-15-07
+  - day-15-08
+- id: sotetsu-fresa-inn-ginza-nanachome-stay
+  kind: accommodation
+  status: confirmed
+  place_id: sotetsu-fresa-inn-ginza-nanachome
+  date_label: Sat 24 → Tue 27 Oct 2026
+  activity_refs:
+  - day-02-03-recovery
+  - day-05-hotel-tokyo-station
+  instructions: Confirmed for three nights from 24 to 27 October. Keep the booking
+    terms accessible and use the Ginza-Nanachome property as the fixed Tokyo base.
+- id: hotel-amanek-kanazawa-stay
+  kind: accommodation
+  status: confirmed
+  place_id: hotel-amanek-kanazawa
+  date_label: Tue 27 → Thu 29 Oct 2026
+  activity_refs:
+  - day-05-05-recovery
+  - day-06-01
+  - day-07-02
+  instructions: Confirmed for two nights from 27 to 29 October. Confirm the luggage-forwarding
+    cutoff before sending the main bags to Kyoto.
+- id: sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+  kind: accommodation
+  status: confirmed
+  place_id: sotetsu-fresa-inn-kyoto-kiyomizu-gojo
+  date_label: Fri 30 Oct → Tue 3 Nov 2026
+  activity_refs:
+  - day-08-08
+  - day-10-05-luggage
+  - day-12-checkout
+  - day-12-01
+  instructions: Confirmed for four nights from 30 October to 3 November. Breakfast
+    is not included; use the separate nearby meal shortlist. Confirm luggage receipt
+    from Kanazawa and the outbound Sagawa procedure to Osaka.
+- id: sotetsu-fresa-inn-osaka-namba-stay
+  kind: accommodation
+  status: confirmed
+  place_id: sotetsu-fresa-inn-osaka-namba
+  date_label: Tue 3 → Fri 6 Nov 2026
+  activity_refs:
+  - day-12-bag-drop
+  - day-12-osaka-checkin
+  - day-15-01
+  instructions: Confirmed for three nights from 3 to 6 November at the Osaka-Namba
+    Station/Namba-Ekimae property. Confirm receipt timing for the forwarded luggage.
+- id: teamlab-borderless
+  kind: timed_entry
+  status: required
+  activity_id: day-04-03
+  place_id: teamlab-borderless
+  instructions: Pre-book the 13:00 timed entry for Monday 26 October. Tickets are
+    date-and-time specific and may sell out; the itinerary protects a 20-minute
+    arrival buffer and re-entry is not permitted.
+- id: hikiniku-to-come-shibuya
+  kind: timed_entry
+  status: required
+  activity_id: day-03-07
+  place_id: hikiniku-to-come-shibuya
+  instructions: Book the 18:00 dinner on Sunday 25 October now; October registration
+    opened on 1 September. Arrive at least 10 minutes early; the official
+    instructions warn that late arrivals may lose their place. The priority ticket
+    is currently ¥1,000 per seat and should be re-checked before booking.
+- id: osaka-aquarium-kaiyukan
+  kind: timed_entry
+  status: optional
+  activity_id: day-14-kaiyukan-alternative
+  place_id: osaka-aquarium-kaiyukan
+  instructions: Only book if choosing Kaiyukan instead of the Day 14 retail route.
+    Target a morning e-ticket for Thursday 5 November; official online sales normally
+    open 30 days ahead, so check from 6 October and confirm the published 2026 hours.
+- id: tokyo-kanazawa-shinkansen
+  kind: rail
+  status: planned
+  activity_id: day-05-01
+  instructions: Standard JR sales open at 10:00 JST on 27 September, one month before
+    travel. Reserve the first practical service at or after 09:15, then replace the
+    provisional 09:15-12:10 window with the exact timetable before purchase.
+- id: kagari-kisshotei-stay
+  kind: accommodation
+  status: confirmed
+  place_id: kagari-kisshotei-ryokan
+  date_label: Thu 29 → Fri 30 Oct 2026
+  activity_refs:
+  - day-07-08
+  - day-07-09
+  - day-08-01
+  - day-08-02
+  instructions: Confirmed Hoshi Japanese-Western room with its private indoor natural
+    hot-spring bath, dinner and breakfast for 29 October. Keep the booking terms
+    accessible and notify the inn promptly if the arrival plan changes.
+- id: kanazawa-kaga-onsen-rail
+  kind: rail
+  status: planned
+  activity_id: day-07-06
+  instructions: Standard JR sales open at 10:00 JST on 29 September, one month before
+    travel. Re-check the exact 29 October timetable and reserve a service compatible
+    with the 13:30 Kagari shuttle; the current provisional target is 12:51-13:05.
+- id: kagari-arrival-shuttle
+  kind: shuttle
+  status: planned
+  activity_id: day-07-07
+  depends_on:
+  - kagari-kisshotei-stay
+  instructions: Reserve Kagari's official 13:30 Kaga-Onsen Station pickup, arriving
+    at the ryokan at 14:00. The inn requires reservation at least one day ahead and
+    does not operate an unreserved shuttle.
+- id: kagari-departure-shuttle
+  kind: shuttle
+  status: planned
+  activity_id: day-08-03
+  depends_on:
+  - kagari-kisshotei-stay
+  instructions: Reserve Kagari's official 09:50 departure, arriving at Kaga-Onsen
+    Station at 10:15 and preserving a 69-minute margin before the provisional train.
+- id: kaga-onsen-kyoto-rail
+  kind: rail
+  status: planned
+  activity_id: day-08-05
+  instructions: Standard JR sales open at 10:00 JST on 30 September, one month before
+    travel. Re-check the exact 30 October timetable and reserve the Kaga-Onsen-Tsuruga-Kyoto
+    journey together; the comparable target is 11:24-13:09 with a 12-minute Tsuruga
+    connection.
+- id: himeji-rail-and-castle
+  kind: rail_and_entry
+  status: required
+  activity_id: day-13-01
+  instructions: Buy the 10:00 digital castle ticket for 4 November now. Standard JR
+    rail sales open at 10:00 JST on 4 October; then reserve an Osaka-Himeji journey that
+    protects arrival before the slot and replace the provisional 08:15-10:00
+    door-to-door window with the exact timetable. The ticket organizes admission but
+    does not provide priority inside; allow the full 10:00-12:30 block. Return directly
+    to the existing Osaka base after lunch.

@@ -1,0 +1,139 @@
+---
+schema_version: 1
+constraints:
+- id: no-wake-before-0730
+  kind: daily_start
+  severity: hard
+  wake_not_before: '07:30'
+  readiness_minutes: 30
+  description: Do not schedule a default activity before 08:00, preserving a 07:30
+    earliest wake time and 30 minutes to get ready.
+- id: meals-minimum-60
+  kind: minimum_duration
+  severity: hard
+  activity_category: meal
+  minimum_duration_minutes: 60
+  exceptions:
+  - activity_ref: day-04-breakfast
+    reason: User-approved 45-minute breakfast preserves comfortable Senso-ji and
+      Kappabashi visits before the fixed teamLab entry.
+  - activity_ref: day-04-lunch
+    reason: User-approved 45-minute lunch preserves comfortable Senso-ji and
+      Kappabashi visits plus the teamLab arrival buffer.
+  - activity_ref: day-05-breakfast
+    reason: Portable breakfast eaten concurrently aboard the Tokyo-Kanazawa
+      intercity train.
+  - activity_ref: day-13-breakfast
+    reason: Portable breakfast eaten concurrently during the Osaka-Himeji
+      intercity journey.
+  description: Give every default breakfast, lunch and dinner at least 60 minutes,
+    except the four explicit user-approved activities.
+- id: dinners-prefer-90
+  kind: minimum_duration
+  severity: soft
+  activity_category: meal
+  meal_type: dinner
+  minimum_duration_minutes: 90
+  exceptions:
+  - activity_ref: day-01-02
+    reason: Flight-day dinner retains the international departure processing and
+      gate buffer.
+  - activity_ref: day-03-07
+    reason: Hikiniku to Come is a fixed-format registered sitting.
+  - activity_ref: day-15-06-dinner
+    reason: Flight-day dinner retains the protected international gate buffer.
+  description: Reserve 90 minutes for ordinary dinners; shorter fixed-format and
+    flight-day meals remain acceptable.
+- id: confirmed-flights-fixed
+  kind: fixed_booking
+  severity: hard
+  booking_refs:
+  - flight-syd-nrt
+  - flight-kix-syd
+  description: Confirmed flight dates and times must not move.
+- id: confirmed-hotels-fixed
+  kind: fixed_booking
+  severity: hard
+  booking_refs:
+  - sotetsu-fresa-inn-ginza-nanachome-stay
+  - hotel-amanek-kanazawa-stay
+  - kagari-kisshotei-stay
+  - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+  - sotetsu-fresa-inn-osaka-namba-stay
+  description: The five confirmed hotel properties and their check-in and checkout
+    dates must not move.
+- id: arrival-day-no-timed-deck
+  kind: avoid_booking
+  severity: hard
+  activity_refs:
+  - day-02-04-visit
+  description: Do not book a timed observation deck on the arrival day.
+- id: tokyo-hotel-shimbashi-ginza
+  kind: scope_limit
+  severity: hard
+  activity_refs:
+  - day-02-03
+  - day-03-hotel-museum
+  - day-04-hotel-sensoji
+  booking_refs:
+  - sotetsu-fresa-inn-ginza-nanachome-stay
+  description: Keep the confirmed Sotetsu Fresa Inn Ginza-Nanachome stay fixed in
+    the required Shimbashi/Ginza corridor.
+- id: fushimi-lower-gates-only
+  kind: scope_limit
+  severity: hard
+  activity_refs:
+  - day-09-fushimi
+  description: Keep Fushimi Inari to the lower shrine and Senbon Torii on the Uji day;
+    do not start the mountain circuit or displace the fixed 16:45 Uji departure.
+- id: forward-luggage-to-kyoto
+  kind: luggage
+  severity: hard
+  activity_refs:
+  - day-06-01
+  booking_refs:
+  - hotel-amanek-kanazawa-stay
+  - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+  description: After Hotel Amanek and Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo confirm
+    acceptance and delivery timing, forward main luggage to the Kyoto hotel and
+    carry a compact one-night essentials bag through the Kanazawa sightseeing
+    morning and Yamanaka Onsen stay.
+- id: forward-luggage-to-osaka
+  kind: luggage
+  severity: hard
+  activity_refs:
+  - day-10-05-luggage
+  - day-12-osaka-checkin
+  booking_refs:
+  - sotetsu-fresa-inn-kyoto-kiyomizu-gojo-stay
+  - sotetsu-fresa-inn-osaka-namba-stay
+  description: After Sotetsu Fresa Inn Kyoto-Kiyomizu Gojo and Sotetsu Fresa Inn
+    Osaka-Namba confirm acceptance and delivery timing, forward main luggage to
+    Osaka for arrival by 3 November and carry a two-night essentials bag through
+    the remaining Kyoto nights and the direct Osaka transfer.
+- id: kagari-checkin
+  kind: deadline
+  severity: hard
+  activity_refs:
+  - day-07-08
+  deadline: '18:00'
+  description: Kagari accepts check-in from 14:00 to 18:00. Reserve the 13:30 station
+    shuttle, protect the 17:30 dinner, and notify the inn immediately if delayed.
+- id: nishiki-before-close
+  kind: opening_hours
+  severity: soft
+  activity_refs:
+  - day-10-05
+  description: Nishiki has no market-wide hours; select target shops, re-check each
+    official listing, and finish priority purchases by 16:45.
+- id: culture-day
+  kind: holiday
+  severity: soft
+  date: '2026-11-03'
+  description: Culture Day may affect crowds, availability, and opening hours.
+- id: departure-day-local
+  kind: scope_limit
+  severity: hard
+  activity_refs:
+  - day-15-03
+  description: Keep the final morning local to Namba and avoid distant attractions.
