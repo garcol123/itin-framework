@@ -1,0 +1,7 @@
+---
+schema_version: 1
+preferences:
+  pace: relaxed
+  minimum_transfer_buffer_minutes: 15
+  priorities: [TODO traveler priorities]
+  optimization_rules: [Preserve confirmed bookings and hard constraints]

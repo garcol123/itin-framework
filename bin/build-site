@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require "rbconfig"
+require "optparse"
+require_relative "../lib/itinerary/cli"
+
+options = {}
+parser = OptionParser.new do |option_parser|
+  option_parser.banner = "Usage: ruby bin/build-site --trip TRIP_PATH"
+  Itinerary::CLI.add_trip_option(option_parser, options)
+end
+parser.parse!
+abort parser.to_s unless ARGV.empty?
+
+framework_root = Itinerary::CLI.framework_root
+root = Itinerary::CLI.resolve_trip(options[:trip])
+abort "Static page build failed." unless system(RbConfig.ruby, File.join(framework_root, "bin", "build"), "--trip", root)
+
+dist = File.join(root, "dist")
+client = File.join(dist, "client")
+server = File.join(dist, "server")
+
+FileUtils.rm_rf(dist)
+FileUtils.mkdir_p([client, server])
+
+%w[index.html journey-map.html activity-options.html].each do |filename|
+  FileUtils.cp(File.join(root, filename), File.join(client, filename))
+end
+FileUtils.cp_r(File.join(root, "assets"), client)
+FileUtils.cp_r(File.join(root, "public"), client)
+FileUtils.cp(File.join(framework_root, "src", "site-worker.js"), File.join(server, "index.js"))
+
+puts "Prepared #{dist} for Sites hosting."

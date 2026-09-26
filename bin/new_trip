@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "fileutils"
+require_relative "../lib/itinerary/cli"
+
+slug = ARGV.shift
+abort "Usage: ruby bin/new_trip TRIP_SLUG" unless slug && ARGV.empty?
+abort "Invalid trip slug #{slug.inspect}; use lowercase letters, numbers, and single hyphens." unless slug.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+
+framework_root = Itinerary::CLI.framework_root
+destination = File.join(framework_root, "trips", slug)
+abort "Trip already exists: #{destination}" if File.exist?(destination)
+
+FileUtils.cp_r(File.join(framework_root, "starter"), destination)
+Dir[File.join(destination, "**", "*")].select { |path| File.file?(path) && %w[.md .txt .yaml .yml].include?(File.extname(path)) }.each do |path|
+  content = File.read(path, encoding: "UTF-8")
+  next unless content.include?("TRIP_SLUG")
+
+  File.write(path, content.gsub("TRIP_SLUG", slug), encoding: "UTF-8")
+end
+puts "Created #{destination} from starter."
+puts "Next: fill in #{File.join(destination, 'trip-brief.yaml')}, then follow docs/CREATE_TRIP.md."

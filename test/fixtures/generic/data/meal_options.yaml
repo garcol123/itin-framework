@@ -1,0 +1,64 @@
+---
+schema_version: 3
+checked_on: '2026-09-26'
+exchange_rate:
+  base_currency: USD
+  quote_currency: EUR
+  quote_per_base_rate: 0.92
+  as_of: '2026-09-26'
+  source_name: Fixture exchange source
+  source_url: https://example.com/exchange
+  source_rates: {eur_per_usd: 0.92}
+  derivation: Direct fixture rate.
+  status: verified
+image_sources:
+  lunch: https://example.com/lunch-photo
+days:
+- day: 1
+  summary: The fixed lunch is represented once.
+  slots:
+  - id: day-01-lunch-slot
+    meal: lunch
+    time_label: '12:00–13:00'
+    location: Sample City waterfront
+    status: fixed
+    itinerary_activity_ref: day-01-lunch
+    context: This fictional venue is fixed for the fixture.
+    options:
+    - id: sample-bistro-lunch
+      rank: 1
+      place_id: sample-bistro
+      category: local
+      best_for: Fixed fixture lunch
+      reason: Demonstrates a fixed canonical restaurant.
+      price_tier: midrange
+      image_id: lunch
+      stay_minutes: {minimum: 45, recommended: 60, maximum: 90}
+      queue_minutes: {typical: 0, maximum: 10}
+      route_fit:
+        anchor_place_id: sample-lodge
+        walking_minutes: 5
+        incremental_detour_minutes: 0
+        status: verified
+        source_url: https://example.com/route
+        checked_on: '2026-09-26'
+      order_for_two:
+        strategy: balanced-variety
+        items:
+        - {name: Seasonal plate, quantity: 2, sharing: individual}
+        popularity_basis: A fictional order used only by the test fixture.
+        estimated_total_spend: {amount: 40, currency: EUR, status: verified, includes: recommended-food-order, note: Fixture value only.}
+        note: A simple complete order for the renderer contract.
+      reservation: required
+      evidence:
+      - {kind: official-venue, url: https://example.com/bistro, checked_on: '2026-09-26', status: verified}
+ranking:
+  route_fit_percent: 45
+  service_reliability_percent: 25
+  food_preference_fit_percent: 20
+  evidence_confidence_percent: 10
+  tie_breakers: [incremental_detour_minutes, maximum_queue_minutes]
+  routine_detour_maximum_minutes: 15
+  distinctive_third_detour_maximum_minutes: 15
+  absolute_detour_maximum_minutes: 20
+  global_venue_reuse: forbidden-except-protected

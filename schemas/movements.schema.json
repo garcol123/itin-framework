@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/movements.schema.json",
+  "title": "Map stops and movement legs",
+  "type": "object",
+  "required": ["schema_version", "days", "transitions", "alternatives"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/day" }
+    },
+    "transitions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transition" }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/alternative" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "clock": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
+    "coordinates": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "items": { "type": "number" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "LineString" },
+        "coordinates": { "$ref": "#/$defs/coordinates" }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["provider", "url", "checked_on"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "profile": { "type": "string", "minLength": 1 },
+        "checked_on": { "type": "string", "format": "date" }
+      },
+      "additionalProperties": false
+    },
+    "stop": {
+      "type": "object",
+      "required": ["id", "place_id", "start_time", "end_time", "activity_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "place_id": { "$ref": "#/$defs/id" },
+        "role": { "enum": ["activity", "lodging_base"] },
+        "start_time": { "$ref": "#/$defs/clock" },
+        "end_time": { "$ref": "#/$defs/clock" },
+        "activity_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "resolved_leg": {
+      "type": "object",
+      "required": ["id", "from_stop", "to_stop", "mode", "start_time", "end_time", "duration_minutes", "geometry_kind", "status", "geometry", "source"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "from_stop": { "$ref": "#/$defs/id" },
+        "to_stop": { "$ref": "#/$defs/id" },
+        "mode": { "enum": ["walk", "rail", "bus", "taxi", "shuttle", "ferry", "flight"] },
+        "rail_types": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$" },
+          "uniqueItems": true
+        },
+        "start_time": { "$ref": "#/$defs/clock" },
+        "end_time": { "$ref": "#/$defs/clock" },
+        "duration_minutes": { "type": "integer", "minimum": 1 },
+        "duration_basis": { "enum": ["routed", "scheduled"] },
+        "distance_meters": { "type": "integer", "minimum": 1 },
+        "geometry_kind": { "enum": ["routed", "schematic"] },
+        "status": { "enum": ["verified", "provisional"] },
+        "geometry": { "$ref": "#/$defs/geometry" },
+        "source": { "$ref": "#/$defs/source" }
+      },
+      "additionalProperties": false
+    },
+    "unresolved_leg": {
+      "type": "object",
+      "required": ["id", "from_stop", "to_stop", "mode", "start_time", "end_time", "duration_minutes", "duration_basis", "status", "activity_ref"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "from_stop": { "$ref": "#/$defs/id" },
+        "to_stop": { "$ref": "#/$defs/id" },
+        "mode": { "const": "local_transit" },
+        "start_time": { "$ref": "#/$defs/clock" },
+        "end_time": { "$ref": "#/$defs/clock" },
+        "duration_minutes": { "type": "integer", "minimum": 1 },
+        "duration_basis": { "const": "allowance" },
+        "status": { "const": "unresolved" },
+        "activity_ref": { "$ref": "#/$defs/id" }
+      },
+      "additionalProperties": false
+    },
+    "leg": {
+      "oneOf": [
+        { "$ref": "#/$defs/resolved_leg" },
+        { "$ref": "#/$defs/unresolved_leg" }
+      ]
+    },
+    "transition": {
+      "type": "object",
+      "required": ["id", "kind", "after_day", "from_place_id", "to_place_id", "booking_ref", "geometry_kind", "status", "geometry"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "flight" },
+        "after_day": { "type": "integer", "minimum": 1 },
+        "before_day": { "type": "integer", "minimum": 1 },
+        "from_place_id": { "$ref": "#/$defs/id" },
+        "to_place_id": { "$ref": "#/$defs/id" },
+        "booking_ref": { "$ref": "#/$defs/id" },
+        "geometry_kind": { "const": "schematic" },
+        "status": { "const": "verified" },
+        "geometry": { "$ref": "#/$defs/geometry" }
+      },
+      "additionalProperties": false
+    },
+    "day": {
+      "type": "object",
+      "required": ["day", "window_start", "window_end", "stops", "legs"],
+      "properties": {
+        "day": { "type": "integer", "minimum": 1 },
+        "window_start": { "$ref": "#/$defs/clock" },
+        "window_end": { "$ref": "#/$defs/clock" },
+        "stops": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/stop" } },
+        "legs": { "type": "array", "items": { "$ref": "#/$defs/leg" } }
+      },
+      "additionalProperties": false
+    },
+    "alternative_leg": {
+      "type": "object",
+      "required": ["id", "from_place_id", "to_place_id", "mode", "geometry_kind", "status", "geometry", "source"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "from_place_id": { "$ref": "#/$defs/id" },
+        "to_place_id": { "$ref": "#/$defs/id" },
+        "mode": { "enum": ["walk", "rail", "bus", "taxi", "shuttle", "ferry"] },
+        "rail_types": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$" },
+          "uniqueItems": true
+        },
+        "distance_meters": { "type": "integer", "minimum": 1 },
+        "duration_minutes": { "type": "integer", "minimum": 1 },
+        "geometry_kind": { "enum": ["routed", "schematic"] },
+        "status": { "enum": ["verified", "provisional"] },
+        "geometry": { "$ref": "#/$defs/geometry" },
+        "source": { "$ref": "#/$defs/source" }
+      },
+      "additionalProperties": false
+    },
+    "alternative": {
+      "type": "object",
+      "required": ["id", "day", "label", "legs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "day": { "type": "integer", "minimum": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "legs": { "type": "array", "items": { "$ref": "#/$defs/alternative_leg" } }
+      },
+      "additionalProperties": false
+    }
+  }
+}

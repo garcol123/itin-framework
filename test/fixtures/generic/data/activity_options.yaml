@@ -1,0 +1,23 @@
+---
+schema_version: 1
+checked_on: '2026-09-26'
+image_sources:
+  placeholder: https://example.com/photo-source
+relaxed_visits:
+  option-one: {duration: 60–90 minutes, description: Enough time for an unhurried walk.}
+  option-two: {duration: 60–90 minutes, description: Enough time for a focused visit.}
+  option-three: {duration: 45–60 minutes, description: Enough time for a gentle circuit.}
+  option-four: {duration: 60–90 minutes, description: Enough time to see the studios.}
+  option-five: {duration: 45–75 minutes, description: Enough time to browse without rushing.}
+destinations:
+- place_id: sample-city
+  summary: Five fictional options demonstrate a destination catalogue.
+  planning_note: Replace a scheduled block rather than extending the day.
+  recommendation_source: {name: Fixture guide, url: https://example.com/guide}
+  fallback_image_id: placeholder
+  options:
+  - {place_id: option-one, category: waterfront, source_url: https://example.com/one}
+  - {place_id: option-two, category: museum, source_url: https://example.com/two}
+  - {place_id: option-three, category: garden, source_url: https://example.com/three}
+  - {place_id: option-four, category: crafts, source_url: https://example.com/four}
+  - {place_id: option-five, category: market, source_url: https://example.com/five}

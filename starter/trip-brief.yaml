@@ -1,0 +1,15 @@
+---
+schema_version: 1
+status: incomplete
+travelers: TODO
+origin: TODO
+destination: TODO
+dates: TODO
+confirmed_bookings: []
+hard_constraints: []
+preferences: []
+open_questions: []
+research_policy:
+- Research only facts needed to complete the itinerary.
+- Prefer authoritative first-party sources and record URL plus checked date.
+- Mark unpublished facts provisional; never invent schedules or transport times.

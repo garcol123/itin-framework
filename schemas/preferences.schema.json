@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/preferences.schema.json",
+  "title": "Traveler preferences and optimization policy",
+  "type": "object",
+  "required": ["schema_version", "preferences"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "preferences": {
+      "type": "object",
+      "required": ["pace", "minimum_transfer_buffer_minutes", "priorities", "optimization_rules"],
+      "properties": {
+        "pace": { "enum": ["relaxed", "balanced", "intensive"] },
+        "minimum_transfer_buffer_minutes": { "type": "integer", "minimum": 0 },
+        "priorities": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "optimization_rules": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

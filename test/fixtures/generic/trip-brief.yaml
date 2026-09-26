@@ -1,0 +1,7 @@
+---
+schema_version: 1
+status: complete-test-fixture
+summary: A one-day fictional trip used to exercise framework contracts.
+fixed_requirements: []
+preferences: [Relaxed pacing]
+research_policy: [Use only fixture facts]

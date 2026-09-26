@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/site.schema.json",
+  "title": "Trip presentation and destination configuration",
+  "type": "object",
+  "required": ["schema_version", "trip_slug", "storage_namespace", "locale", "title", "subtitle", "destination", "currencies", "metadata", "branding", "transport", "map", "route_authoring"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "trip_slug": { "$ref": "#/$defs/id" },
+    "storage_namespace": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "locale": { "type": "string", "minLength": 2 },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string", "minLength": 1 },
+    "destination": {
+      "type": "object",
+      "required": ["name", "search_hint", "timezones"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "search_hint": { "type": "string", "minLength": 1 },
+        "timezones": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "currencies": {
+      "type": "object",
+      "required": ["base", "quote", "display"],
+      "properties": {
+        "base": { "$ref": "#/$defs/currency" },
+        "quote": { "$ref": "#/$defs/currency" },
+        "display": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/currency" },
+          "additionalProperties": { "$ref": "#/$defs/currency_display" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["pages"],
+      "properties": {
+        "site_url": { "type": "string", "format": "uri" },
+        "social_image": { "type": "string", "minLength": 1 },
+        "pages": {
+          "type": "object",
+          "required": ["itinerary", "activities", "map"],
+          "properties": {
+            "itinerary": { "$ref": "#/$defs/page_metadata" },
+            "activities": { "$ref": "#/$defs/page_metadata" },
+            "map": { "$ref": "#/$defs/page_metadata" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "branding": {
+      "type": "object",
+      "required": ["wordmark_primary", "wordmark_secondary", "chooser_export_title", "chooser_export_filename"],
+      "properties": {
+        "wordmark_primary": { "type": "string", "minLength": 1 },
+        "wordmark_secondary": { "type": "string", "minLength": 1 },
+        "chooser_export_title": { "type": "string", "minLength": 1 },
+        "chooser_export_filename": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.txt$" }
+      },
+      "additionalProperties": false
+    },
+    "transport": {
+      "type": "object",
+      "required": ["classifications"],
+      "properties": {
+        "classifications": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/snake_id" },
+          "additionalProperties": { "$ref": "#/$defs/transport_presentation" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "map": {
+      "type": "object",
+      "required": ["provider_name", "style_url", "library_css_url", "library_js_url", "library_module_url"],
+      "properties": {
+        "provider_name": { "type": "string", "minLength": 1 },
+        "style_url": { "type": "string", "format": "uri" },
+        "library_css_url": { "type": "string", "format": "uri" },
+        "library_js_url": { "type": "string", "format": "uri" },
+        "library_module_url": { "type": "string", "format": "uri" },
+        "fallback_geography": { "type": "string", "minLength": 1 },
+        "initial_place_id": { "$ref": "#/$defs/id" },
+        "initial_label": { "type": "string", "minLength": 1 },
+        "initial_center": { "type": "array", "minItems": 2, "items": { "type": "number" } },
+        "initial_zoom": { "type": "number", "minimum": 0, "maximum": 24 }
+      },
+      "additionalProperties": false
+    },
+    "route_authoring": {
+      "type": "object",
+      "required": ["user_agent"],
+      "properties": { "user_agent": { "type": "string", "minLength": 3 } },
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "expected_strict_blockers": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "snake_id": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$" },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "currency_display": {
+      "type": "object",
+      "required": ["symbol", "decimals", "symbol_position"],
+      "properties": {
+        "symbol": { "type": "string", "minLength": 1 },
+        "decimals": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "symbol_position": { "enum": ["before", "after"] }
+      },
+      "additionalProperties": false
+    },
+    "page_metadata": {
+      "type": "object",
+      "required": ["title", "description", "social_title", "social_description"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "social_title": { "type": "string", "minLength": 1 },
+        "social_description": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "transport_presentation": {
+      "type": "object",
+      "required": ["icon", "label", "short_label", "map_label", "legend_label", "color", "playback_ms"],
+      "properties": {
+        "icon": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "short_label": { "type": "string", "minLength": 1 },
+        "map_label": { "type": "string", "minLength": 1 },
+        "legend_label": { "type": "string", "minLength": 1 },
+        "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "playback_ms": { "type": "integer", "minimum": 100, "maximum": 10000 },
+        "emphasis": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,6 @@
+---
+schema_version: 1
+checked_on: '2099-01-01'
+image_sources: {placeholder: https://example.com/replace-with-real-photo-source}
+relaxed_visits: {}
+destinations: []

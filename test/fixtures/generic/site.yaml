@@ -1,0 +1,70 @@
+---
+schema_version: 1
+trip_slug: example-coast-2027
+storage_namespace: example-coast-2027
+locale: en-US
+title: Example Coast Itinerary
+subtitle: Mon 10 May
+destination:
+  name: Example Coast
+  search_hint: Example Coast
+  timezones: [UTC]
+currencies:
+  base: USD
+  quote: EUR
+  display:
+    USD: {symbol: '$', decimals: 2, symbol_position: before}
+    EUR: {symbol: '€', decimals: 2, symbol_position: before}
+metadata:
+  social_image: public/og.svg
+  pages:
+    itinerary:
+      title: Example Coast Itinerary — Mon 10 May 2027
+      description: A compact example itinerary.
+      social_title: Example Coast itinerary
+      social_description: A complete destination-neutral fixture.
+    activities:
+      title: Choose Example Coast activities
+      description: Compare activities for the example trip.
+      social_title: Example Coast activity choices
+      social_description: Compare a small set of example activities.
+    map:
+      title: Journey map — Example Coast Itinerary
+      description: Explore the example route and timing.
+      social_title: Example Coast journey map
+      social_description: Explore a small example journey.
+branding:
+  wordmark_primary: Example Coast
+  wordmark_secondary: '2027'
+  chooser_export_title: Example Coast 2027 — activity draft
+  chooser_export_filename: example-coast-2027-activity-draft.txt
+transport:
+  classifications:
+    high_speed_rail:
+      icon: "🚄"
+      label: high-speed rail
+      short_label: high-speed rail
+      map_label: "🚄 High-speed rail"
+      legend_label: High-speed rail
+      color: '#247ba0'
+      playback_ms: 900
+      emphasis: true
+    conventional_rail:
+      icon: "🚆"
+      label: conventional rail
+      short_label: conventional rail
+      map_label: "🚆 Conventional rail"
+      legend_label: Conventional rail
+      color: '#6559c7'
+      playback_ms: 1250
+map:
+  provider_name: OpenFreeMap
+  style_url: https://tiles.openfreemap.org/styles/liberty
+  library_css_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css
+  library_js_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.js
+  library_module_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.mjs
+  initial_place_id: sample-lodge
+route_authoring:
+  user_agent: itin-framework-example-coast-2027/1.0
+validation:
+  expected_strict_blockers: []

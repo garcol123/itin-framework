@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "optparse"
+require_relative "../lib/itinerary/cli"
+
+options = { strict_pace: false, json: false }
+parser = OptionParser.new do |option_parser|
+  option_parser.banner = "Usage: ruby bin/validate --trip TRIP_PATH [--strict-pace] [--json]"
+  Itinerary::CLI.add_trip_option(option_parser, options)
+  option_parser.on("--strict-pace", "Fail when relaxed-pace blockers remain") { options[:strict_pace] = true }
+  option_parser.on("--json", "Emit machine-readable findings") { options[:json] = true }
+end
+parser.parse!
+abort parser.to_s unless ARGV.empty?
+
+root = Itinerary::CLI.resolve_trip(options[:trip])
+store = Itinerary::CLI.store(root)
+validator = Itinerary::Validator.new(store)
+issues = validator.validate
+
+if options[:json]
+  puts JSON.pretty_generate(issues.map(&:to_h))
+else
+  issues.each { |issue| puts issue }
+  errors = issues.count { |issue| issue.severity == :error }
+  warnings = issues.count { |issue| issue.severity == :warning }
+  puts "Validation finished: #{errors} error(s), #{warnings} warning(s)."
+  puts "Strict pace blockers: #{validator.strict_blockers.length}." if options[:strict_pace]
+end
+
+exit(validator.errors? || (options[:strict_pace] && validator.strict_blockers.any?) ? 1 : 0)

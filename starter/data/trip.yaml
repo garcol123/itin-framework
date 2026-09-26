@@ -1,0 +1,14 @@
+---
+schema_version: 1
+trip:
+  id: TRIP_SLUG
+  title: TODO Trip Title
+  subtitle: TODO Date Range
+  timezone: UTC
+  origin_timezone: UTC
+  start_date: '2099-01-01'
+  end_date: '2099-01-01'
+  facts: []
+  route: []
+  booking_refs: []
+days: []

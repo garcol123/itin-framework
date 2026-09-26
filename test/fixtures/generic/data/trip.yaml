@@ -1,0 +1,68 @@
+---
+schema_version: 1
+trip:
+  id: example-coast-2027
+  title: Example Coast Itinerary
+  subtitle: Mon 10 May
+  timezone: UTC
+  origin_timezone: UTC
+  start_date: '2027-05-10'
+  end_date: '2027-05-10'
+  facts:
+  - {value: 1, label: itinerary day}
+  - {value: 1, label: overnight base}
+  route: [sample-city]
+  booking_refs: []
+days:
+- number: 1
+  date: '2027-05-10'
+  label: Mon 10 May
+  day_type: sightseeing
+  planning:
+    route_pattern: single-cluster
+    clusters: [waterfront]
+  sleep_base:
+  - {place: sample-lodge, label: Sample Lodge}
+  activities:
+  - id: day-01-walk
+    time: {label: '09:00–10:00', start: '09:00', end: '10:00', precision: scheduled}
+    category: visit
+    priority: normal
+    optional: false
+    pace_role: major
+    cluster: waterfront
+    tags: []
+    content:
+    - {text: 'Walk through '}
+    - {place: option-one, label: Harbour Promenade}
+    - {text: '.'}
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-lunch
+    time: {label: '12:00–13:00', start: '12:00', end: '13:00', precision: scheduled}
+    category: meal
+    meal_type: lunch
+    priority: normal
+    optional: false
+    pace_role: recovery
+    tags: []
+    content:
+    - {text: 'Lunch at '}
+    - {place: sample-bistro, label: Sample Bistro}
+    - {text: '.'}
+    booking_refs: []
+    constraint_refs: []
+  - id: day-01-checkin
+    title: Check in and rest
+    time: {label: '17:00–18:00', start: '17:00', end: '18:00', precision: scheduled}
+    category: logistics
+    priority: normal
+    optional: false
+    pace_role: recovery
+    tags: []
+    content:
+    - {text: 'Check in at '}
+    - {place: sample-lodge, label: Sample Lodge}
+    - {text: ' and rest.'}
+    booking_refs: []
+    constraint_refs: []

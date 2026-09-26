@@ -1,0 +1,42 @@
+---
+schema_version: 1
+trip_slug: TRIP_SLUG
+storage_namespace: TRIP_SLUG
+locale: en
+title: TODO Trip Title
+subtitle: TODO Date Range
+destination:
+  name: TODO Destination
+  search_hint: TODO Destination Search Hint
+  timezones: [UTC]
+currencies:
+  base: XXX
+  quote: YYY
+  display:
+    XXX: {symbol: BASE, decimals: 2, symbol_position: before}
+    YYY: {symbol: QUOTE, decimals: 2, symbol_position: before}
+metadata:
+  social_image: public/og.svg
+  pages:
+    itinerary: {title: TODO Itinerary Page Title, description: TODO Itinerary Description, social_title: TODO Social Title, social_description: TODO Social Description}
+    activities: {title: TODO Activities Page Title, description: TODO Activities Description, social_title: TODO Activities Social Title, social_description: TODO Activities Social Description}
+    map: {title: TODO Map Page Title, description: TODO Map Description, social_title: TODO Map Social Title, social_description: TODO Map Social Description}
+branding:
+  wordmark_primary: TODO Trip
+  wordmark_secondary: TODO Year
+  chooser_export_title: TODO activity draft
+  chooser_export_filename: TRIP_SLUG-activity-draft.txt
+transport:
+  classifications:
+    high_speed_rail: {icon: "🚄", label: high-speed rail, short_label: high-speed rail, map_label: "🚄 High-speed rail", legend_label: High-speed rail, color: '#247ba0', playback_ms: 900, emphasis: true}
+    conventional_rail: {icon: "🚆", label: conventional rail, short_label: conventional rail, map_label: "🚆 Conventional rail", legend_label: Conventional rail, color: '#6559c7', playback_ms: 1250}
+map:
+  provider_name: OpenFreeMap
+  style_url: https://tiles.openfreemap.org/styles/liberty
+  library_css_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css
+  library_js_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.js
+  library_module_url: https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.mjs
+route_authoring:
+  user_agent: itin-framework-TRIP_SLUG/1.0
+validation:
+  expected_strict_blockers: []

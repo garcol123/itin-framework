@@ -1,0 +1,25 @@
+---
+schema_version: 3
+checked_on: '2099-01-01'
+exchange_rate:
+  base_currency: XXX
+  quote_currency: YYY
+  quote_per_base_rate: 1
+  as_of: '2099-01-01'
+  source_name: TODO exchange-rate source
+  source_url: https://example.com/replace-with-real-source
+  source_rates: {placeholder_rate: 1}
+  derivation: TODO explain the rate derivation.
+  status: verified
+image_sources: {placeholder: https://example.com/replace-with-real-photo-source}
+days: []
+ranking:
+  route_fit_percent: 45
+  service_reliability_percent: 25
+  food_preference_fit_percent: 20
+  evidence_confidence_percent: 10
+  tie_breakers: [incremental_detour_minutes, maximum_queue_minutes]
+  routine_detour_maximum_minutes: 15
+  distinctive_third_detour_maximum_minutes: 15
+  absolute_detour_maximum_minutes: 20
+  global_venue_reuse: forbidden-except-protected

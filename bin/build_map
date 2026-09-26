@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "optparse"
+require "yaml"
+require_relative "../lib/itinerary/cli"
+
+options = { private: false }
+OptionParser.new do |parser|
+  parser.banner = "Usage: ruby bin/build_map --trip TRIP_PATH [--private]"
+  Itinerary::CLI.add_trip_option(parser, options)
+  parser.on("--private", "Use ignored exact-location overrides and create journey-map.private.html") do
+    options[:private] = true
+  end
+end.parse!
+
+root = Itinerary::CLI.resolve_trip(options[:trip])
+store = Itinerary::CLI.store(root)
+validator = Itinerary::Validator.new(store)
+validator.validate.each { |issue| warn issue }
+abort "Map build stopped because itinerary data has validation errors." if validator.errors?
+
+overrides = {}
+if options[:private]
+  private_path = File.join(root, "data", "private-locations.yaml")
+  abort "Missing #{private_path}; copy data/private-locations.example.yaml and add exact coordinates." unless File.file?(private_path)
+
+  document = YAML.safe_load_file(private_path, permitted_classes: [Date], permitted_symbols: [], aliases: false)
+  abort "Private locations must have schema_version: 1 and a locations mapping." unless document.is_a?(Hash) && document["schema_version"] == 1 && document["locations"].is_a?(Hash)
+
+  overrides = document.fetch("locations")
+  overrides.each do |place_id, coordinates|
+    abort "Unknown private place ID #{place_id.inspect}." unless store.place_catalog.key?(place_id)
+    abort "Private location #{place_id.inspect} must contain only longitude and latitude." unless coordinates.is_a?(Hash) && coordinates.keys.sort == %w[latitude longitude]
+
+    longitude = coordinates["longitude"]
+    latitude = coordinates["latitude"]
+    unless longitude.is_a?(Numeric) && longitude.between?(-180, 180) && latitude.is_a?(Numeric) && latitude.between?(-90, 90)
+      abort "Private location #{place_id.inspect} is outside valid coordinate bounds."
+    end
+  end
+end
+
+filename = options[:private] ? "journey-map.private.html" : "journey-map.html"
+output = Itinerary::JourneyMapRenderer.new(store, location_overrides: overrides, private_output: options[:private]).render
+destination = File.join(root, filename)
+File.write(destination, output, encoding: "UTF-8")
+puts "Generated #{destination} (#{output.bytesize} bytes)."

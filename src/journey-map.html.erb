@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE: edit data/*.yaml or src/*, then run ruby bin/build. -->
+<html lang="<%= h(site.fetch("locale")) %>">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="<%= h(page_metadata.fetch("description")) %>" name="description"/>
+<meta content="<%= h(page_metadata.fetch("social_title")) %>" property="og:title"/>
+<meta content="<%= h(page_metadata.fetch("social_description")) %>" property="og:description"/>
+<meta content="website" property="og:type"/>
+<% if social_image_url -%><meta content="<%= h(social_image_url) %>" property="og:image"/><% end -%>
+<meta content="summary_large_image" name="twitter:card"/>
+<title><%= h(page_metadata.fetch("title")) %></title>
+<link href="<%= h(site.dig("map", "library_css_url")) %>" rel="stylesheet"/>
+<style>
+<%= styles %>
+</style>
+</head>
+<body>
+<a class="map-skip-link" href="#journey-controls">Skip to journey controls</a>
+<main class="journey-shell">
+<header class="journey-header">
+<div>
+<p class="journey-kicker"><%= h(trip.fetch("subtitle")) %> <%= h(site.dig("branding", "wordmark_secondary")) %></p>
+<h1>Journey map</h1>
+</div>
+<nav aria-label="Page navigation" class="journey-nav">
+<span class="private-indicator"<%= @private_output ? "" : ' hidden="hidden"' %>>Private locations</span>
+<a href="index.html">Itinerary</a>
+<a href="activity-options.html">Activities</a>
+</nav>
+</header>
+
+<section class="journey-stage" aria-label="Journey map and selected movement">
+<div class="journey-map-wrap">
+<div id="journey-map" role="application" aria-label="Interactive map of the selected itinerary day"></div>
+<svg aria-hidden="true" class="journey-route-overlay" id="journey-route-overlay"></svg>
+<div aria-hidden="true" class="overnight-wash"></div>
+<div aria-atomic="true" aria-hidden="true" class="overnight-status" id="overnight-status" role="status">
+<span aria-hidden="true" class="overnight-status__moon">☾</span>
+<span class="overnight-status__copy">
+<strong id="overnight-status-title"></strong>
+<small id="overnight-status-next"></small>
+</span>
+</div>
+<div class="map-loading" id="map-loading" role="status">Loading street map…</div>
+<div class="map-warning" id="map-warning" role="status" hidden>Street map unavailable. Route geometry and timing remain available.</div>
+<button class="map-recenter" id="map-recenter" type="button" hidden>Recenter route</button>
+</div>
+
+<aside class="journey-detail" aria-live="polite">
+<div class="journey-detail__top">
+<h2 id="selected-route-title"><%= h(site.dig("map", "initial_label") || initial_place_name) %></h2>
+</div>
+
+<section class="day-stops" aria-labelledby="day-stops-heading">
+<div class="day-stops__heading">
+<h3 class="journey-eyebrow" id="day-stops-heading">Itinerary</h3>
+<button class="show-current-row" id="show-current-row" type="button" hidden>Show current row</button>
+<span class="day-stops__hint">Select a row to jump</span>
+</div>
+<div class="day-stop-viewport" id="day-stop-viewport" tabindex="0" aria-label="Scrollable selected day itinerary">
+<ol class="day-stop-list" id="day-stop-list" aria-label="Selected day itinerary"></ol>
+</div>
+</section>
+</aside>
+</section>
+
+<section class="journey-controls" id="journey-controls" aria-label="Journey playback controls">
+<div class="control-heading">
+<div>
+<p class="journey-eyebrow">Trip</p>
+<strong id="trip-position">Day 1 of <%= h(days.length) %></strong>
+</div>
+<div class="control-actions">
+<label class="alternative-toggle" id="alternative-control" hidden><input id="show-alternatives" type="checkbox"/> Show alternatives</label>
+<button aria-keyshortcuts="Space" aria-pressed="false" class="play-control" id="play-journey" title="Play or pause trip (Spacebar)" type="button">Play trip</button>
+</div>
+</div>
+
+<label class="range-label" for="trip-range"><span>Trip timeline</span><span>Drag smoothly through all <%= h(days.length) %> days and confirmed flights</span></label>
+<div class="trip-range-shell">
+<div class="trip-segments" id="trip-segments" aria-hidden="true"></div>
+<input class="journey-range journey-range--trip" id="trip-range" min="0" max="1" step="0.001" type="range" value="0"/>
+</div>
+<div class="trip-ticks" id="trip-ticks" role="group" aria-label="Jump to day"></div>
+
+<label class="range-label" for="day-range"><span id="day-range-title">Day timeline</span><span id="day-range-window">18:30–21:30</span></label>
+<input class="journey-range journey-range--day" id="day-range" min="1110" max="1290" step="0.1" type="range" value="1110"/>
+<div class="day-ticks" id="day-ticks" aria-hidden="true"></div>
+<div class="mode-legend" aria-label="Trail progress legend">
+<% site.dig("transport", "classifications").each do |classification, presentation| -%><span><i class="mode-swatch mode-swatch--<%= h(classification.tr("_", "-")) %>" style="--transport-color: <%= h(presentation.fetch("color")) %>"></i><span aria-hidden="true"><%= h(presentation.fetch("icon")) %></span> <%= h(presentation.fetch("legend_label")) %></span><% end -%>
+<span><i class="mode-swatch mode-swatch--bus"></i><span aria-hidden="true">🚌</span> Bus road crawl</span>
+<span><i class="mode-swatch mode-swatch--upcoming"></i>Upcoming trail</span>
+<span><i class="mode-swatch mode-swatch--travelled"></i>Travelled trail</span>
+<span><i class="mode-swatch mode-swatch--unresolved"></i>Route TBD · location unknown</span>
+<span><i class="mode-dot"></i>Verified position</span>
+<span><i class="mode-dot mode-dot--schematic"></i>Schematic position</span>
+<span><i aria-hidden="true" class="mode-meal">1</i>Planned / recommended restaurant</span>
+<span><i aria-hidden="true" class="mode-meal mode-meal--alternative">2</i>Nearby alternative</span>
+</div>
+</section>
+</main>
+<noscript>This journey map requires JavaScript for timeline scrubbing.</noscript>
+<script id="journey-data" type="application/json"><%= map_json %></script>
+<script type="module">
+<%= script %>
+</script>
+</body>
+</html>

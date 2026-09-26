@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/activity_options.schema.json",
+  "title": "Curated activity options",
+  "type": "object",
+  "required": ["schema_version", "checked_on", "image_sources", "relaxed_visits", "destinations"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "checked_on": { "type": "string", "format": "date" },
+    "image_sources": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "additionalProperties": { "type": "string", "format": "uri" }
+    },
+    "relaxed_visits": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["duration", "description"],
+        "properties": {
+          "duration": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "destinations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["place_id", "summary", "planning_note", "recommendation_source", "fallback_image_id", "options"],
+        "properties": {
+          "place_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "summary": { "type": "string", "minLength": 1 },
+          "planning_note": { "type": "string", "minLength": 1 },
+          "recommendation_source": {
+            "type": "object",
+            "required": ["name", "url"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "url": { "type": "string", "format": "uri" }
+            },
+            "additionalProperties": false
+          },
+          "fallback_image_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "options": {
+            "type": "array",
+            "minItems": 5,
+            "items": {
+              "type": "object",
+              "required": ["place_id", "category", "source_url"],
+              "properties": {
+                "place_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                "category": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                "source_url": { "type": "string", "format": "uri" },
+                "image_id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                "note": { "type": "string", "minLength": 1 },
+                "community_source": {
+                  "type": "object",
+                  "required": ["platform", "url", "note"],
+                  "properties": {
+                    "platform": { "type": "string", "minLength": 1 },
+                    "url": { "type": "string", "format": "uri" },
+                    "note": { "type": "string", "minLength": 1 }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

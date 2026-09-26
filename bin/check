@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "digest"
+require "optparse"
+require "rbconfig"
+require_relative "../lib/itinerary/cli"
+
+options = {}
+parser = OptionParser.new do |option_parser|
+  option_parser.banner = "Usage: ruby bin/check --trip TRIP_PATH"
+  Itinerary::CLI.add_trip_option(option_parser, options)
+end
+parser.parse!
+abort parser.to_s unless ARGV.empty?
+
+root = Itinerary::CLI.resolve_trip(options[:trip])
+store = Itinerary::CLI.store(root)
+validator = Itinerary::Validator.new(store)
+issues = validator.validate
+issues.each { |issue| puts issue }
+abort "Check failed: normal validation has errors." if validator.errors?
+puts "Normal validation passed: 0 errors, #{issues.count { |issue| issue.severity == :warning }} warning(s)."
+
+actual_blockers = validator.strict_blockers.map(&:code)
+expected_blockers = store.site.dig("validation", "expected_strict_blockers") || []
+unless actual_blockers == expected_blockers
+  abort "Check failed: strict-pace blockers #{actual_blockers.inspect}; expected #{expected_blockers.inspect}."
+end
+if actual_blockers.empty?
+  puts "Strict-pace validation passed with no blockers."
+else
+  puts "Strict-pace findings match the documented compatibility baseline: #{actual_blockers.join(', ')}."
+end
+
+framework_root = Itinerary::CLI.framework_root
+abort "Check failed: test suite failed." unless system(RbConfig.ruby, "-Itest", File.join(framework_root, "test", "all_test.rb"), chdir: framework_root)
+
+build = File.join(framework_root, "bin", "build")
+abort "Check failed: first build failed." unless system(RbConfig.ruby, build, "--trip", root)
+files = %w[index.html journey-map.html activity-options.html]
+first = files.to_h { |filename| [filename, Digest::SHA256.file(File.join(root, filename)).hexdigest] }
+abort "Check failed: second build failed." unless system(RbConfig.ruby, build, "--trip", root)
+second = files.to_h { |filename| [filename, Digest::SHA256.file(File.join(root, filename)).hexdigest] }
+abort "Check failed: generated pages are not deterministic." unless first == second
+
+puts "All relevant tests passed."
+puts "Deterministic build passed for #{root}."

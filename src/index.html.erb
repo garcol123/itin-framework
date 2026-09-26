@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE: edit data/*.yaml or src/*, then run ruby bin/build. -->
+<html lang="<%= h(site.fetch("locale")) %>">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="<%= h(page_metadata.fetch("description")) %>" name="description"/>
+<meta content="<%= h(page_metadata.fetch("social_title")) %>" property="og:title"/>
+<meta content="<%= h(page_metadata.fetch("social_description")) %>" property="og:description"/>
+<meta content="website" property="og:type"/>
+<% if social_image_url -%><meta content="<%= h(social_image_url) %>" property="og:image"/><% end -%>
+<meta content="summary_large_image" name="twitter:card"/>
+<title><%= h(page_metadata.fetch("title")) %></title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<style>
+<%= styles %>
+</style>
+</head>
+<body>
+<a class="skip-link" href="#itinerary">Skip to itinerary</a>
+<main class="page">
+<header class="hero" id="top">
+<div class="kicker"><%= h(trip.fetch("subtitle")) %></div>
+<h1><%= h(trip.fetch("title")) %></h1>
+<div class="hero-actions"><a class="button primary" href="activity-options.html">Choose activities</a><a class="button" href="journey-map.html">Explore journey map</a></div>
+</header>
+<section aria-label="Trip summary" class="stats">
+<% trip.fetch("facts").each do |fact| -%>
+<div class="stat"><strong><%= h(fact.fetch("value")) %></strong><span><%= h(fact.fetch("label")) %></span></div>
+<% end -%>
+</section>
+<section aria-label="Confirmed flights" class="route-card flight-card">
+<h2>Confirmed flights <span class="flight-local">All times local</span></h2>
+<div class="flight-grid">
+<% flights.each do |flight| -%>
+<div class="flight-leg">
+<div class="flight-date"><%= h(flight.fetch("date_label")) %></div>
+<strong><%= h(flight.fetch("origin")) %> <%= h(flight.fetch("departure_time")) %> <span class="route-arrow">→</span> <%= h(flight.fetch("destination")) %> <%= h(flight.fetch("arrival_time")) %></strong>
+<span><%= h(flight.fetch("description")) %></span>
+</div>
+<% end -%>
+</div>
+</section>
+<section aria-label="Route overview" class="route-card">
+<h2>Route overview</h2>
+<div class="route"><% trip.fetch("route").each_with_index do |place_id, index| -%><%= index.zero? ? "" : ' <span class="route-arrow">→</span> ' %><%= render_route_place(place_id) %><% end -%></div>
+</section>
+<aside class="rail-legend" aria-label="Train symbol key"><strong>Train key</strong><% site.dig("transport", "classifications").each_value do |presentation| -%><span><span aria-hidden="true"><%= h(presentation.fetch("icon")) %></span> <%= h(presentation.fetch("label").sub(/\A[a-z]/) { |letter| letter.upcase }) %></span><% end -%></aside>
+<nav aria-label="Jump to day" class="day-nav">
+<% days.each do |day| -%>
+<a href="#day-<%= day.fetch("number") %>"><span><%= day.fetch("number") %></span> <%= h(day.fetch("label")) %></a>
+<% end -%>
+</nav>
+<section class="itinerary" id="itinerary" aria-label="Daily itinerary">
+<% days.each do |day| -%>
+<article class="day-card" id="day-<%= day.fetch("number") %>">
+<div class="day-card__topline">
+<div><p class="eyebrow">Day <%= day.fetch("number") %></p><h2><%= h(day.fetch("label")) %></h2><div class="pace-summary"><span class="pace-badge pace-badge--<%= h(pace_for(day).fetch("classification").downcase) %>"><%= h(pace_for(day).fetch("classification")) %></span><span><%= h(format_minutes(pace_for(day).fetch("active_span_minutes"))) %> span</span><span><%= h(format_minutes(pace_for(day).fetch("transport_minutes"))) %> travel</span><span><%= h(pace_for(day).fetch("major_anchors")) %> major anchors</span><span><%= h(format_minutes(pace_for(day).fetch("discretionary_slack_minutes"))) %> slack</span></div></div>
+<div class="sleep-badge"><span>Sleep base</span><%= render_content(day.fetch("sleep_base")) %></div>
+</div>
+<ol class="timeline">
+<% default_activities(day).each do |activity| -%>
+<li class="<%= activity_classes(activity) %>" data-activity-id="<%= h(activity.fetch("id")) %>"><time datetime="<%= h(machine_time(day, activity)) %>"><%= h(activity.dig("time", "label")) %></time><div class="timeline-content"><div class="activity-text"><%= render_rail_badge(activity) %><%= render_content(activity.fetch("content")) %></div>
+<% if (slot = meal_slot_for(activity)) -%>
+<% lead = slot.fetch("options").min_by { |option| option.fetch("rank") } -%>
+<details class="meal-recommendations">
+<summary><span class="meal-summary-count"><%= h(meal_panel_label(slot)) %></span><strong><%= h(meal_venue(lead).fetch("name")) %></strong><span><%= h(lead.dig("route_fit", "walking_minutes")) %> min walk · <%= h(lead.dig("stay_minutes", "recommended")) %> min stay</span></summary>
+<div class="meal-recommendations__body">
+<ol class="meal-pick-list">
+<% slot.fetch("options").sort_by { |option| option.fetch("rank") }.each do |option| -%>
+<% place = meal_venue(option) -%>
+<li class="meal-pick">
+<div class="meal-pick__rank" aria-label="Rank <%= h(option.fetch("rank")) %>"><%= h(option.fetch("rank")) %></div>
+<div class="meal-pick__content">
+<div class="meal-pick__title"><strong><%= h(place.fetch("name")) %></strong><% if option.fetch("rank") == 1 -%><span class="best-chip"><%= canonical_meal_place_id(slot) ? "Planned" : "Recommended" %></span><% end -%><span class="meal-pick__links"><a href="<%= h(meal_map_url(place)) %>" rel="noopener noreferrer" target="_blank">Map ↗</a><a href="<%= h(meal_source_url(option)) %>" rel="noopener noreferrer" target="_blank">Menu/source ↗</a></span></div>
+<div class="meal-chips"><span><%= h(option.dig("route_fit", "walking_minutes")) %> min walk<% if option.dig("route_fit", "walking_distance_meters") -%> · <%= h(option.dig("route_fit", "walking_distance_meters")) %> m<% end -%></span><span>+<%= h(option.dig("route_fit", "incremental_detour_minutes")) %> min detour</span><span>Queue ~<%= h(option.dig("queue_minutes", "typical")) %> min</span><span><%= h(option.fetch("price_tier")) %></span><span><%= h(option.fetch("reservation").tr("-", " ")) %></span></div>
+<p><%= h(option.fetch("reason")) %></p>
+<% if option["operating_hours"] -%><p class="meal-hours"><strong>Window check:</strong> <%= h(option.dig("operating_hours", "published_window")) %> · <%= h(option.dig("operating_hours", "status")) %></p><% end -%>
+<p class="meal-order"><strong>Order for two:</strong> <%= h(meal_order_summary(option)) %></p>
+<p class="meal-spend"><strong><%= h(meal_spend_summary(option)) %></strong><span>Food only · <%= h(option.dig("order_for_two", "estimated_total_spend", "status")) %></span></p>
+<p class="meal-evidence meal-evidence--<%= h(option.dig("route_fit", "status")) %>"><%= h(meal_evidence_status(option)) %></p>
+</div>
+</li>
+<% end -%>
+</ol>
+</div>
+</details>
+<% end -%>
+</div></li>
+<% end -%>
+</ol>
+<% if optional_activities(day).any? -%>
+<section class="alternatives" aria-label="Only if energy remains">
+<h3>Only if energy remains</h3>
+<ul>
+<% optional_activities(day).each do |activity| -%>
+<li data-activity-id="<%= h(activity.fetch("id")) %>"><span class="alternative-time"><%= h(activity.dig("time", "label")) %></span><div class="activity-text"><%= render_content(activity.fetch("content")) %></div></li>
+<% end -%>
+</ul>
+</section>
+<% end -%>
+</article>
+<% end -%>
+</section>
+</main>
+<script>
+<%= script %>
+</script>
+</body>
+</html>

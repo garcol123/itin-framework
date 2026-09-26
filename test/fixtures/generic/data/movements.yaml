@@ -1,0 +1,16 @@
+---
+schema_version: 2
+days:
+- day: 1
+  window_start: '09:00'
+  window_end: '18:00'
+  stops:
+  - id: day-01-base
+    place_id: sample-lodge
+    role: lodging_base
+    start_time: '09:00'
+    end_time: '18:00'
+    activity_refs: [day-01-walk, day-01-lunch, day-01-checkin]
+  legs: []
+transitions: []
+alternatives: []

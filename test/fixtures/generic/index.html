@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE: edit data/*.yaml or src/*, then run ruby bin/build. -->
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="A compact example itinerary." name="description"/>
+<meta content="Example Coast itinerary" property="og:title"/>
+<meta content="A complete destination-neutral fixture." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="public/og.svg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/>
+<title>Example Coast Itinerary — Mon 10 May 2027</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<style>
+:root {
+      --ink: #050505;
+      --muted: #555555;
+      --paper: #ffffff;
+      --card: #ffffff;
+      --line: #111111;
+      --line-soft: #d9d9d9;
+      --accent: #000000;
+      --accent-2: #000000;
+      --gold: #000000;
+      --shadow: none;
+      --radius: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      background: var(--paper);
+      text-rendering: geometricPrecision;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 700;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    a:focus-visible,
+    .button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 84px 0 42px;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+
+    .hero::after { display: none; }
+
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 0;
+      color: var(--ink);
+      background: transparent;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    h1 {
+      margin: 22px 0 0;
+      max-width: 920px;
+      font-family: inherit;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      font-weight: 760;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 15px;
+      border-radius: 0;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: none;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin: 0 0 28px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 18px;
+      background: var(--card);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+      font-weight: 760;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+    }
+
+    .route-card {
+      margin: 0 0 30px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .route-card h2 {
+      margin: 0 0 14px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: inherit;
+      font-weight: 760;
+    }
+
+    .route {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .route .descriptor { display: none; }
+
+    .route-arrow {
+      color: var(--ink);
+      opacity: 0.45;
+    }
+
+    .rail-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      align-items: center;
+      margin: 0 0 18px;
+      padding: 10px 12px;
+      border: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .rail-legend strong {
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+    }
+
+    .day-nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0;
+      margin: 0 0 22px;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line-soft);
+      backdrop-filter: blur(10px);
+      scrollbar-width: thin;
+    }
+
+    .day-nav a {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 11px;
+      border-radius: 0;
+      border: 1px solid var(--line-soft);
+      background: var(--paper);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--ink);
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+
+    .day-nav a:hover {
+      border-color: var(--line);
+      background: #f7f7f7;
+    }
+
+    .day-nav span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.72rem;
+      font-weight: 760;
+    }
+
+    .notice {
+      margin: 0 0 22px;
+      padding: 14px 16px;
+      background: #f7f7f7;
+      border: 1px solid var(--line-soft);
+      border-radius: 0;
+      color: var(--ink);
+    }
+
+    .itinerary {
+      display: grid;
+      gap: 18px;
+      padding-bottom: 56px;
+    }
+
+    .day-card {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .day-card__topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 24px;
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 760;
+      font-size: 0.72rem;
+    }
+
+    .day-card h2 {
+      margin: 0;
+      font-family: inherit;
+      font-size: clamp(1.5rem, 3vw, 2.05rem);
+      letter-spacing: -0.045em;
+      font-weight: 740;
+    }
+
+    .pace-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 12px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 650;
+    }
+
+    .pace-badge {
+      display: inline-flex;
+      padding: 0.2em 0.58em;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      font-weight: 820;
+    }
+
+    .pace-badge--green { color: #356a3b; background: #edf7ef; }
+    .pace-badge--amber { color: #8a5a00; background: #fff7df; }
+    .pace-badge--red { color: #9a3030; background: #fff0f0; }
+    .pace-badge--logistics { color: var(--muted); background: #f4f4f4; }
+
+    .sleep-badge {
+      flex: 0 1 390px;
+      padding: 0 0 0 18px;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      border-left: 1px solid var(--line-soft);
+      text-align: right;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .sleep-badge > span:first-child {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 760;
+    }
+
+    .sleep-badge .descriptor {
+      display: block;
+      margin-left: 0;
+      font-weight: 450;
+      font-size: 0.82rem;
+    }
+
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 6px 24px 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 20px;
+      position: relative;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-item.matcha-block {
+      margin: 0 -12px;
+      padding: 18px 12px;
+      background: #edf6e5;
+      border-left: 4px solid #5f7f2a;
+    }
+
+    .timeline-item.matcha-block time { color: #3f5f1f; }
+
+    .timeline-item.matcha-block .place-link { border-bottom-color: #3f5f1f; }
+
+    .timeline-item time {
+      color: var(--ink);
+      font-weight: 760;
+      letter-spacing: -0.02em;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .activity-text { min-width: 0; }
+
+    .rail-symbols {
+      display: inline-block;
+      margin-right: 0.45em;
+      white-space: nowrap;
+    }
+
+    .timeline-content { min-width: 0; }
+
+    .meal-recommendations {
+      margin-top: 10px;
+      border: 1px solid var(--line-soft);
+      background: #fafafa;
+    }
+    .meal-recommendations summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 5px 10px;
+      padding: 9px 11px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      list-style-position: inside;
+    }
+    .meal-recommendations summary:hover { background: #f1f1f1; }
+    .meal-recommendations summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+    .meal-recommendations summary strong { font-size: 0.84rem; }
+    .meal-recommendations summary > span:last-child { color: var(--muted); }
+    .meal-summary-count { font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.66rem; }
+    .meal-recommendations__body { padding: 0 11px 11px; border-top: 1px solid var(--line-soft); }
+    .meal-pick-list { margin: 0; padding: 0; list-style: none; }
+    .meal-pick { display: grid; grid-template-columns: 24px 1fr; gap: 9px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+    .meal-pick:last-child { border-bottom: 0; }
+    .meal-pick__rank { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid var(--line); font-size: 0.72rem; font-weight: 850; }
+    .meal-pick__content { min-width: 0; }
+    .meal-pick__content p { margin: 5px 0 0; color: var(--muted); font-size: 0.76rem; line-height: 1.42; }
+    .meal-pick__title { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 8px; }
+    .meal-pick__links { display: inline-flex; gap: 8px; margin-left: auto; }
+    .meal-pick__links a { font-size: 0.7rem; font-weight: 750; }
+    .best-chip { padding: 2px 5px; color: #356a3b; border: 1px solid #79a67e; background: #edf7ef; font-size: 0.62rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+    .meal-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .meal-chips span { padding: 2px 6px; border: 1px solid var(--line-soft); background: white; color: var(--muted); font-size: 0.65rem; text-transform: capitalize; }
+    .meal-order strong { color: var(--ink); }
+    .meal-spend { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 9px; }
+    .meal-spend strong { color: var(--accent); font-size: 0.78rem; }
+    .meal-spend span { font-size: 0.68rem; text-transform: capitalize; }
+    .meal-evidence { font-weight: 750; }
+    .meal-evidence--verified::before { content: "✓ "; color: #356a3b; }
+    .meal-evidence--provisional::before { content: "△ "; color: #8a5a00; }
+
+    .place-link {
+      color: var(--ink);
+      font-weight: 760;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .place-link:hover {
+      color: var(--ink);
+      border-color: transparent;
+      background: #eeeeee;
+    }
+
+    .descriptor {
+      margin-left: 0.28em;
+      color: var(--muted);
+      font-size: 0.93em;
+      font-weight: 430;
+    }
+
+    .activity-text .descriptor,
+    .sleep-badge .descriptor {
+      display: none;
+    }
+
+    .activity-text .descriptor.is-open,
+    .sleep-badge .descriptor.is-open {
+      display: inline-block;
+      margin: 0.12em 0.15em 0.12em 0.35em;
+      padding: 0.16em 0.6em;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background: #f7f7f7;
+      color: var(--muted);
+      font-size: 0.78em;
+      line-height: 1.35;
+      vertical-align: baseline;
+    }
+
+    .place-note-trigger {
+      display: inline;
+    }
+
+    .place-note-trigger .place-link {
+      overflow-wrap: anywhere;
+    }
+
+    .info-button {
+      display: inline-grid;
+      place-items: center;
+      width: 1.15em;
+      height: 1.15em;
+      margin-left: 0.22em;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.9em;
+      line-height: 1;
+      cursor: pointer;
+      vertical-align: -0.08em;
+    }
+
+    .info-button .fa-circle-info { display: block; }
+
+    .info-button:hover,
+    .info-button:focus-visible {
+      color: var(--ink);
+    }
+
+    .info-button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .official-link {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .official-link:hover {
+      background: #eeeeee;
+      border-color: transparent;
+    }
+
+    .footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.88rem;
+      border-top: 1px solid var(--line-soft);
+    }
+
+
+    @media (max-width: 640px) {
+      .page {
+        width: calc(100% - 24px);
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .day-card__topline {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .sleep-badge {
+        flex: 1 1 auto;
+        width: 100%;
+        padding-left: 0;
+        border-left: 0;
+        text-align: left;
+      }
+
+      .timeline {
+        padding: 4px 16px 14px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .timeline-item time {
+        white-space: normal;
+      }
+
+      .meal-recommendations summary { display: grid; grid-template-columns: auto 1fr; }
+      .meal-recommendations summary > span:last-child { grid-column: 2; }
+      .meal-pick__links { width: 100%; margin-left: 0; }
+
+      .activity-text,
+      .sleep-badge {
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media print {
+      body { background: white; }
+      .hero-actions, .day-nav { display: none; }
+      .hero { padding-top: 28px; }
+      .day-card { break-inside: avoid; box-shadow: none; }
+      .place-link, .official-link { border-bottom: none; }
+    }
+    .alternatives {
+      margin: 0 24px 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--line-soft);
+      border-left: 4px solid var(--muted);
+      background: #f7f7f7;
+    }
+
+    .alternatives h3 {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .alternatives ul {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .alternative-time {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .alternatives { margin: 0 16px 18px; }
+    }
+
+
+    .flight-card h2 {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .flight-local {
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      font-weight: 600;
+    }
+
+    .flight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line-soft);
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .flight-leg {
+      padding: 16px;
+      border-right: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .flight-leg strong,
+    .flight-leg span {
+      display: block;
+    }
+
+    .flight-leg strong {
+      margin: 3px 0 4px;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .flight-leg > span {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .flight-date {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 760;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .flight-grid { grid-template-columns: 1fr; }
+      .flight-card h2 { align-items: flex-start; flex-direction: column; gap: 3px; }
+    }
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#itinerary">Skip to itinerary</a>
+<main class="page">
+<header class="hero" id="top">
+<div class="kicker">Mon 10 May</div>
+<h1>Example Coast Itinerary</h1>
+<div class="hero-actions"><a class="button primary" href="activity-options.html">Choose activities</a><a class="button" href="journey-map.html">Explore journey map</a></div>
+</header>
+<section aria-label="Trip summary" class="stats">
+<div class="stat"><strong>1</strong><span>itinerary day</span></div>
+<div class="stat"><strong>1</strong><span>overnight base</span></div>
+</section>
+<section aria-label="Confirmed flights" class="route-card flight-card">
+<h2>Confirmed flights <span class="flight-local">All times local</span></h2>
+<div class="flight-grid">
+</div>
+</section>
+<section aria-label="Route overview" class="route-card">
+<h2>Route overview</h2>
+<div class="route"><a class="place-link" href="https://example.com/city" rel="noopener noreferrer" target="_blank">Sample City</a><span class="descriptor">(The fictional center of this framework fixture.)</span></div>
+</section>
+<aside class="rail-legend" aria-label="Train symbol key"><strong>Train key</strong><span><span aria-hidden="true">🚄</span> High-speed rail</span><span><span aria-hidden="true">🚆</span> Conventional rail</span></aside>
+<nav aria-label="Jump to day" class="day-nav">
+<a href="#day-1"><span>1</span> Mon 10 May</a>
+</nav>
+<section class="itinerary" id="itinerary" aria-label="Daily itinerary">
+<article class="day-card" id="day-1">
+<div class="day-card__topline">
+<div><p class="eyebrow">Day 1</p><h2>Mon 10 May</h2><div class="pace-summary"><span class="pace-badge pace-badge--green">GREEN</span><span>9h span</span><span>0m travel</span><span>1 major anchors</span><span>7h 30m slack</span></div></div>
+<div class="sleep-badge"><span>Sleep base</span><span class="place-note-trigger"><a class="place-link" href="https://example.com/lodge" rel="noopener noreferrer" target="_blank">Sample Lodge</a><button class="info-button" type="button" aria-label="About Sample Lodge" aria-expanded="false" aria-controls="place-note-1"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></button></span><span class="descriptor" id="place-note-1" role="tooltip">(A fictional lodging base.)</span></div>
+</div>
+<ol class="timeline">
+<li class="timeline-item" data-activity-id="day-01-walk"><time datetime="2027-05-10T09:00">09:00–10:00</time><div class="timeline-content"><div class="activity-text">Walk through <span class="place-note-trigger"><a class="place-link" href="https://example.com/one" rel="noopener noreferrer" target="_blank">Harbour Promenade</a><button class="info-button" type="button" aria-label="About Harbour Promenade" aria-expanded="false" aria-controls="place-note-2"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></button></span><span class="descriptor" id="place-note-2" role="tooltip">(A fictional waterside walk.)</span>.</div>
+</div></li>
+<li class="timeline-item" data-activity-id="day-01-lunch"><time datetime="2027-05-10T12:00">12:00–13:00</time><div class="timeline-content"><div class="activity-text">Lunch at <span class="place-note-trigger"><a class="place-link" href="https://example.com/bistro" rel="noopener noreferrer" target="_blank">Sample Bistro</a><button class="info-button" type="button" aria-label="About Sample Bistro" aria-expanded="false" aria-controls="place-note-3"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></button></span><span class="descriptor" id="place-note-3" role="tooltip">(A fictional fixed lunch venue.)</span>.</div>
+<details class="meal-recommendations">
+<summary><span class="meal-summary-count">Confirmed meal</span><strong>Sample Bistro</strong><span>5 min walk · 60 min stay</span></summary>
+<div class="meal-recommendations__body">
+<ol class="meal-pick-list">
+<li class="meal-pick">
+<div class="meal-pick__rank" aria-label="Rank 1">1</div>
+<div class="meal-pick__content">
+<div class="meal-pick__title"><strong>Sample Bistro</strong><span class="best-chip">Planned</span><span class="meal-pick__links"><a href="https://www.openstreetmap.org/?mlat=1.002&amp;mlon=1.002#map=19/1.002/1.002" rel="noopener noreferrer" target="_blank">Map ↗</a><a href="https://example.com/bistro" rel="noopener noreferrer" target="_blank">Menu/source ↗</a></span></div>
+<div class="meal-chips"><span>5 min walk</span><span>+0 min detour</span><span>Queue ~0 min</span><span>midrange</span><span>required</span></div>
+<p>Demonstrates a fixed canonical restaurant.</p>
+<p class="meal-order"><strong>Order for two:</strong> 2× Seasonal plate</p>
+<p class="meal-spend"><strong>Est. €40.00 · $43.48 total</strong><span>Food only · verified</span></p>
+<p class="meal-evidence meal-evidence--verified">Verified sources</p>
+</div>
+</li>
+</ol>
+</div>
+</details>
+</div></li>
+<li class="timeline-item" data-activity-id="day-01-checkin"><time datetime="2027-05-10T17:00">17:00–18:00</time><div class="timeline-content"><div class="activity-text">Check in at <span class="place-note-trigger"><a class="place-link" href="https://example.com/lodge" rel="noopener noreferrer" target="_blank">Sample Lodge</a><button class="info-button" type="button" aria-label="About Sample Lodge" aria-expanded="false" aria-controls="place-note-4"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></button></span><span class="descriptor" id="place-note-4" role="tooltip">(A fictional lodging base.)</span> and rest.</div>
+</div></li>
+</ol>
+</article>
+</section>
+</main>
+<script>
+(() => {
+  const buttons = [...document.querySelectorAll('.info-button')];
+
+  const close = (button) => {
+    const note = document.getElementById(button.getAttribute('aria-controls'));
+    note?.classList.remove('is-open');
+    button.setAttribute('aria-expanded', 'false');
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const note = document.getElementById(button.getAttribute('aria-controls'));
+      const isOpen = !note.classList.contains('is-open');
+      buttons.forEach(close);
+      note.classList.toggle('is-open', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    buttons.forEach(close);
+  });
+})();
+
+</script>
+</body>
+</html>

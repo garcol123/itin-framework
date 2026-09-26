@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/trip.schema.json",
+  "title": "Itinerary schedule",
+  "type": "object",
+  "required": ["schema_version", "trip", "days"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "trip": {
+      "type": "object",
+      "required": ["id", "title", "subtitle", "timezone", "origin_timezone", "start_date", "end_date", "facts", "route", "booking_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string", "minLength": 1 },
+        "timezone": { "type": "string", "minLength": 1 },
+        "origin_timezone": { "type": "string", "minLength": 1 },
+        "start_date": { "$ref": "#/$defs/date" },
+        "end_date": { "$ref": "#/$defs/date" },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["value", "label"],
+            "properties": {
+              "value": { "type": "integer", "minimum": 0 },
+              "label": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "route": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "booking_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/day" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "date": { "type": "string", "format": "date" },
+    "clock": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" },
+    "content_token": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["text"],
+          "properties": { "text": { "type": "string" } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["place", "label"],
+          "properties": {
+            "place": { "$ref": "#/$defs/id" },
+            "label": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "time": {
+      "type": "object",
+      "required": ["label", "precision"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "date": { "$ref": "#/$defs/date" },
+        "start": { "$ref": "#/$defs/clock" },
+        "end": { "$ref": "#/$defs/clock" },
+        "precision": { "enum": ["scheduled", "approximate", "deadline", "label_only"] },
+        "estimated_duration_minutes": { "type": "integer", "minimum": 1 },
+        "concurrent_with_activity_ref": { "$ref": "#/$defs/id" }
+      },
+      "additionalProperties": false
+    },
+    "activity": {
+      "type": "object",
+      "required": ["id", "time", "category", "priority", "optional", "pace_role", "tags", "content", "booking_refs", "constraint_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "time": { "$ref": "#/$defs/time" },
+        "category": { "enum": ["visit", "meal", "transport", "logistics"] },
+        "meal_type": { "enum": ["breakfast", "lunch", "dinner"] },
+        "rail_types": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$" },
+          "uniqueItems": true
+        },
+        "priority": { "enum": ["normal", "high", "optional"] },
+        "optional": { "type": "boolean" },
+        "pace_role": { "enum": ["major", "minor", "recovery", "neutral"] },
+        "cluster": { "$ref": "#/$defs/id" },
+        "tags": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "content": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/content_token" } },
+        "booking_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "constraint_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "minimum_buffer_before_minutes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "day": {
+      "type": "object",
+      "required": ["number", "date", "label", "day_type", "planning", "sleep_base", "activities"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "date": { "$ref": "#/$defs/date" },
+        "label": { "type": "string", "minLength": 1 },
+        "holiday": { "type": "string", "minLength": 1 },
+        "day_type": { "enum": ["overnight_flight", "arrival", "sightseeing", "transfer", "departure", "recovery"] },
+        "planning": { "$ref": "#/$defs/day_planning" },
+        "sleep_base": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/content_token" } },
+        "activities": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/activity" } }
+      },
+      "additionalProperties": false
+    },
+    "transfer_planning": {
+      "type": "object",
+      "required": ["origin", "destination", "direct_travel_minutes", "direction"],
+      "properties": {
+        "origin": { "$ref": "#/$defs/id" },
+        "destination": { "$ref": "#/$defs/id" },
+        "direct_travel_minutes": { "type": "integer", "minimum": 0 },
+        "direction": { "enum": ["direct", "on-corridor", "lateral", "reverse"] }
+      },
+      "additionalProperties": false
+    },
+    "day_planning": {
+      "type": "object",
+      "required": ["route_pattern", "clusters"],
+      "properties": {
+        "route_pattern": { "enum": ["single-cluster", "linear", "loop", "out-and-back", "lateral-detour", "reverse-direction"] },
+        "clusters": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "transfer": { "$ref": "#/$defs/transfer_planning" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

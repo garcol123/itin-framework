@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "json"
+require "net/http"
+require "optparse"
+require "uri"
+require "yaml"
+require_relative "../lib/itinerary/cli"
+
+options = { dry_run: false }
+OptionParser.new do |parser|
+  parser.banner = "Usage: ruby bin/refresh_routes --trip TRIP_PATH [--day N] [--leg ID] [--dry-run]"
+  Itinerary::CLI.add_trip_option(parser, options)
+  parser.on("--day NUMBER", Integer, "Refresh walking legs for one itinerary day") { |value| options[:day] = value }
+  parser.on("--leg ID", "Refresh one walking leg") { |value| options[:leg] = value }
+  parser.on("--dry-run", "Query and report without writing") { options[:dry_run] = true }
+end.parse!
+
+root = Itinerary::CLI.resolve_trip(options[:trip])
+site = Itinerary::CLI.store(root).site_metadata
+movements_path = File.join(root, "data", "movements.yaml")
+places_path = File.join(root, "data", "places.yaml")
+movements = YAML.safe_load_file(movements_path, permitted_classes: [Date], permitted_symbols: [], aliases: false)
+places = YAML.safe_load_file(places_path, permitted_classes: [Date], permitted_symbols: [], aliases: false).fetch("places")
+base_url = ENV.fetch("ITIN_FOOT_ROUTER_URL", "https://routing.openstreetmap.de/routed-foot/route/v1/driving")
+checked_on = Date.today.iso8601
+
+selected = []
+movements.fetch("days").each do |day|
+  next if options[:day] && day.fetch("day") != options[:day]
+
+  stops = day.fetch("stops").to_h { |stop| [stop.fetch("id"), stop] }
+  day.fetch("legs").each do |leg|
+    next unless leg.fetch("mode") == "walk"
+    next if options[:leg] && leg.fetch("id") != options[:leg]
+
+    selected << [day, stops, leg]
+  end
+end
+abort "No matching walking legs." if selected.empty?
+
+failures = []
+selected.each_with_index do |(day, stops, leg), index|
+  from = places.fetch(stops.fetch(leg.fetch("from_stop")).fetch("place_id")).fetch("coordinates")
+  to = places.fetch(stops.fetch(leg.fetch("to_stop")).fetch("place_id")).fetch("coordinates")
+  pair = "#{from.fetch('longitude')},#{from.fetch('latitude')};#{to.fetch('longitude')},#{to.fetch('latitude')}"
+  uri = URI("#{base_url}/#{pair}")
+  uri.query = URI.encode_www_form(overview: "full", geometries: "geojson", steps: "false")
+  request = Net::HTTP::Get.new(uri)
+  request["User-Agent"] = site.dig("route_authoring", "user_agent")
+
+  begin
+    response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https", open_timeout: 10, read_timeout: 30) do |http|
+      http.request(request)
+    end
+    raise "HTTP #{response.code}" unless response.is_a?(Net::HTTPSuccess)
+
+    payload = JSON.parse(response.body)
+    route = payload.fetch("routes").first or raise "router returned no route"
+    geometry = route.fetch("geometry")
+    raise "router did not return a LineString" unless geometry["type"] == "LineString" && geometry.fetch("coordinates").length >= 2
+
+    leg["distance_meters"] = route.fetch("distance").round
+    leg["duration_minutes"] = [(route.fetch("duration") / 60.0).ceil, 1].max
+    leg["geometry_kind"] = "routed"
+    leg["status"] = "verified"
+    leg["geometry"] = geometry
+    leg["source"] = {
+      "provider" => "OSM routed-foot",
+      "url" => "https://routing.openstreetmap.de/routed-foot/",
+      "profile" => "foot",
+      "checked_on" => checked_on
+    }
+    puts "Day #{day.fetch('day')} #{leg.fetch('id')}: #{leg.fetch('distance_meters')} m, #{leg.fetch('duration_minutes')} min"
+  rescue StandardError => error
+    failures << "#{leg.fetch('id')}: #{error.message}"
+  end
+
+  sleep 0.5 if index < selected.length - 1
+end
+
+abort "Route refresh failed; no data written:\n- #{failures.join("\n- ")}" unless failures.empty?
+exit if options[:dry_run]
+
+temporary_path = "#{movements_path}.tmp"
+File.write(temporary_path, YAML.dump(movements), encoding: "UTF-8")
+File.rename(temporary_path, movements_path)
+puts "Updated #{movements_path}."

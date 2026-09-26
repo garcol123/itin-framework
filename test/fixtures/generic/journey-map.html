@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE: edit data/*.yaml or src/*, then run ruby bin/build. -->
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Explore the example route and timing." name="description"/>
+<meta content="Example Coast journey map" property="og:title"/>
+<meta content="Explore a small example journey." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="public/og.svg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/>
+<title>Journey map — Example Coast Itinerary</title>
+<link href="https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css" rel="stylesheet"/>
+<style>
+:root {
+  --map-ink: #111111;
+  --map-muted: #626262;
+  --map-paper: #f5f2ea;
+  --map-panel: #fffefb;
+  --map-line: #cfcac0;
+  --map-route: #c7442f;
+  --map-meal: #246c50;
+  --map-past: #245f73;
+  --map-future: #a96b42;
+  --map-green: #246c50;
+  --map-amber: #94600f;
+  --map-high-speed-rail: #00bde3;
+  --map-high-speed-rail-bright: #69efff;
+  --map-conventional: #6559c7;
+  --map-conventional-bright: #b8b0ff;
+  --map-bus: #d96524;
+  --map-bus-bright: #ffc07a;
+  --map-shadow: rgba(30, 27, 21, 0.14);
+}
+
+@property --timer-progress {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 360deg;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  color: var(--map-ink);
+  background: var(--map-paper);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+
+button, input { font: inherit; }
+a { color: inherit; }
+
+.map-skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 8px;
+  left: 8px;
+  padding: 8px 11px;
+  color: var(--map-panel);
+  background: var(--map-ink);
+  transform: translateY(-160%);
+}
+
+.map-skip-link:focus { transform: translateY(0); }
+
+.journey-shell {
+  width: min(1280px, calc(100% - 32px));
+  margin: 16px auto 32px;
+  overflow: hidden;
+  background: var(--map-panel);
+  border: 1px solid var(--map-line);
+  box-shadow: 0 22px 60px var(--map-shadow);
+}
+
+.journey-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--map-line);
+}
+
+.journey-header > div {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.journey-kicker,
+.journey-eyebrow {
+  margin: 0;
+  color: var(--map-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.journey-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  letter-spacing: -0.04em;
+}
+
+.journey-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.journey-nav a,
+.private-indicator {
+  padding: 5px 8px;
+  border: 1px solid var(--map-ink);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.private-indicator {
+  color: var(--map-panel);
+  background: var(--map-ink);
+}
+
+.journey-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 2.15fr) minmax(300px, 1fr);
+  height: 610px;
+}
+
+.journey-map-wrap {
+  position: relative;
+  min-width: 0;
+  min-height: 610px;
+  overflow: hidden;
+  background: #dce8e8;
+}
+
+#journey-map {
+  position: absolute;
+  inset: 0;
+}
+
+.journey-route-overlay {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, filter 240ms ease;
+}
+
+.overnight-wash {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  visibility: hidden;
+  background: linear-gradient(180deg, rgba(10, 20, 48, 0.3), rgba(8, 17, 43, 0.48));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease, visibility 0s linear 320ms;
+}
+
+.overnight-status {
+  position: absolute;
+  z-index: 4;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+  max-width: calc(100% - 36px);
+  gap: 10px;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  color: #fffefb;
+  background: rgba(12, 23, 52, 0.92);
+  box-shadow: 0 8px 28px rgba(5, 10, 28, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 240ms ease, transform 240ms ease, visibility 0s linear 240ms;
+}
+
+.overnight-status__moon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 50%;
+  color: #ffe8a3;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.overnight-status__copy { min-width: 0; }
+
+.overnight-status__copy strong,
+.overnight-status__copy small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overnight-status__copy strong { font-size: 0.82rem; }
+.overnight-status__copy small { margin-top: 1px; color: rgba(255, 254, 251, 0.76); font-size: 0.68rem; }
+
+.journey-map-wrap.is-overnight .overnight-wash,
+.journey-map-wrap.is-overnight .overnight-status {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.journey-map-wrap.is-overnight .overnight-status { transform: translateY(0); }
+.journey-map-wrap.is-overnight .journey-route-overlay { opacity: 0.56; filter: saturate(0.62); }
+
+.journey-route-overlay .trail-upcoming,
+.journey-route-overlay .trail-travelled,
+.journey-route-overlay .trail-active {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.journey-route-overlay .trail-upcoming { stroke: var(--map-future); stroke-width: 4; opacity: 0.78; }
+.journey-route-overlay .trail-travelled { stroke: var(--map-past); stroke-width: 5; opacity: 0.96; }
+.journey-route-overlay .trail-active { stroke: var(--map-past); stroke-width: 7; }
+.journey-route-overlay .trail-high-speed-rail,
+.journey-fallback .trail-high-speed-rail {
+  stroke: var(--map-high-speed-rail) !important;
+  stroke-width: 7 !important;
+  stroke-dasharray: 24 7 3 7;
+  filter: drop-shadow(0 0 3px var(--map-high-speed-rail-bright)) drop-shadow(0 0 8px var(--map-high-speed-rail));
+  animation: high-speed-rail-whoosh 520ms linear infinite;
+}
+.journey-route-overlay .trail-active.trail-high-speed-rail,
+.journey-fallback .trail-high-speed-rail.trail-active {
+  stroke-width: 10 !important;
+  animation-duration: 260ms;
+}
+.journey-route-overlay .trail-conventional-rail,
+.journey-fallback .trail-conventional-rail {
+  stroke: var(--map-conventional) !important;
+  stroke-width: 6 !important;
+  stroke-dasharray: 2 5 17 5;
+  filter: drop-shadow(0 0 3px rgba(101, 89, 199, 0.55));
+  animation: conventional-rail-rhythm 950ms linear infinite;
+}
+.journey-route-overlay .trail-bus,
+.journey-fallback .trail-bus {
+  stroke: var(--map-bus) !important;
+  stroke-width: 6 !important;
+  stroke-dasharray: 12 9;
+  filter: drop-shadow(0 0 2px rgba(217, 101, 36, 0.5));
+  animation: bus-road-crawl 1350ms linear infinite;
+}
+.journey-route-overlay .trail-active.trail-conventional-rail,
+.journey-route-overlay .trail-active.trail-bus,
+.journey-fallback .trail-active.trail-conventional-rail,
+.journey-fallback .trail-active.trail-bus { stroke-width: 8 !important; }
+.journey-route-overlay .trail-unresolved { stroke-dasharray: 8 7; opacity: 0.72; }
+.journey-route-overlay .trail-tbd-progress {
+  fill: none;
+  stroke: var(--map-past);
+  stroke-width: 5;
+  stroke-dasharray: 3 13;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.journey-route-overlay .trail-transfer-endpoint {
+  fill: none;
+  stroke: var(--map-past);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+.journey-route-overlay .trail-label {
+  fill: var(--map-ink);
+  stroke: var(--map-panel);
+  stroke-width: 4px;
+  paint-order: stroke fill;
+  font-size: 11px;
+  font-weight: 750;
+  text-anchor: middle;
+}
+.journey-route-overlay .trail-label--high-speed-rail {
+  fill: #00647a;
+  font-size: 12px;
+  font-weight: 900;
+}
+.journey-route-overlay .trail-label--conventional-rail { fill: #42369e; font-weight: 850; }
+.journey-route-overlay .trail-label--bus { fill: #9b3f0d; font-weight: 850; }
+.journey-route-overlay .trail-stop-label {
+  fill: var(--map-ink);
+  stroke: var(--map-panel);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font-size: 11px;
+  font-weight: 650;
+}
+.journey-route-overlay .trail-stop { fill: var(--map-panel); stroke: var(--map-route); stroke-width: 2; }
+.journey-route-overlay .trail-stop--uncertain { fill: rgba(199, 68, 47, 0.12); stroke-dasharray: 3 3; }
+.journey-route-overlay .trail-stop--meal-option { stroke-width: 3; filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3)); }
+.journey-route-overlay .trail-stop--meal-planned,
+.journey-route-overlay .trail-stop--meal-recommended { fill: var(--map-meal); stroke: var(--map-panel); }
+.journey-route-overlay .trail-stop--meal-alternative { fill: var(--map-panel); stroke: var(--map-amber); }
+.journey-route-overlay .trail-stop--meal-provisional { stroke-dasharray: 3 2; }
+.journey-route-overlay .trail-stop-label--meal { fill: #174b38; font-weight: 850; }
+.journey-route-overlay .trail-stop-label--meal-alternative { fill: #6d470b; }
+.journey-route-overlay .trail-meal-glyph,
+.journey-fallback .trail-meal-glyph { font-size: 11px; text-anchor: middle; }
+.journey-route-overlay .trail-position { fill: var(--map-route); stroke: var(--map-panel); stroke-width: 3; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.28)); }
+.journey-route-overlay .trail-position--schematic { fill: var(--map-panel); stroke: var(--map-past); stroke-width: 4; }
+.journey-route-overlay .trail-position--meal { fill: none; stroke: var(--map-meal); stroke-width: 3; }
+.journey-route-overlay .trail-position--meal-area { fill: none; stroke: var(--map-amber); stroke-width: 3; stroke-dasharray: 4 3; }
+.journey-route-overlay .trail-position--high-speed-rail,
+.journey-fallback .trail-position--high-speed-rail {
+  fill: var(--map-high-speed-rail-bright) !important;
+  stroke: #ffffff !important;
+  stroke-width: 3 !important;
+  filter: drop-shadow(0 0 4px var(--map-high-speed-rail-bright)) drop-shadow(0 0 10px var(--map-high-speed-rail));
+  animation: high-speed-rail-pulse 650ms ease-in-out infinite alternate;
+}
+.journey-route-overlay .trail-position--conventional-rail,
+.journey-fallback .trail-position--conventional-rail {
+  fill: var(--map-conventional-bright) !important;
+  stroke: var(--map-conventional) !important;
+  stroke-width: 4 !important;
+  filter: drop-shadow(0 0 5px rgba(101, 89, 199, 0.65));
+}
+.journey-route-overlay .trail-position--bus,
+.journey-fallback .trail-position--bus {
+  fill: var(--map-bus-bright) !important;
+  stroke: var(--map-bus) !important;
+  stroke-width: 4 !important;
+  filter: drop-shadow(0 0 5px rgba(217, 101, 36, 0.65));
+}
+.journey-route-overlay .trail-stop-timer-track,
+.journey-fallback .trail-stop-timer-track {
+  fill: rgba(255, 254, 251, 0.74);
+  stroke: rgba(17, 17, 17, 0.2);
+  stroke-width: 5;
+}
+.journey-route-overlay .trail-stop-timer-progress,
+.journey-fallback .trail-stop-timer-progress {
+  fill: none;
+  stroke: var(--map-route);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 100ms linear;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
+}
+.journey-route-overlay .trail-stop-duration-label,
+.journey-fallback .trail-stop-duration-label {
+  fill: var(--map-ink);
+  stroke: var(--map-panel);
+  stroke-width: 4px;
+  paint-order: stroke fill;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+
+@keyframes high-speed-rail-whoosh {
+  to { stroke-dashoffset: -41; }
+}
+
+@keyframes high-speed-rail-pulse {
+  to { filter: drop-shadow(0 0 7px var(--map-high-speed-rail-bright)) drop-shadow(0 0 15px var(--map-high-speed-rail)); }
+}
+
+@keyframes conventional-rail-rhythm {
+  to { stroke-dashoffset: -29; }
+}
+
+@keyframes bus-road-crawl {
+  to { stroke-dashoffset: -21; }
+}
+
+.map-loading,
+.map-warning {
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  left: 16px;
+  max-width: calc(100% - 32px);
+  padding: 9px 12px;
+  border: 1px solid var(--map-line);
+  background: var(--map-panel);
+  box-shadow: 0 6px 18px var(--map-shadow);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.map-recenter {
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  right: 16px;
+  padding: 9px 12px;
+  border: 1px solid var(--map-ink);
+  color: var(--map-ink);
+  background: var(--map-panel);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.journey-detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 14px;
+  border-left: 1px solid var(--map-line);
+  overflow: hidden;
+  transition: background-color 280ms ease;
+}
+
+.journey-detail.is-overnight { background: #f6f7fb; }
+.journey-detail.is-overnight .day-stop-list li.is-current .itinerary-row {
+  background: linear-gradient(90deg, rgba(45, 59, 105, 0.13), transparent 78%);
+}
+.journey-detail.is-overnight .day-stop-list li.is-current::before { background: #39466f; }
+
+.journey-detail__top { flex: 0 0 auto; }
+
+.journey-detail__top h2 {
+  margin: 0;
+  overflow: hidden;
+  font-size: 0.98rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-stops {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 132px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.day-stops__heading {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+  gap: 8px;
+}
+
+.day-stops__heading h3 { margin: 0; }
+
+.day-stops__hint {
+  color: var(--map-muted);
+  font-size: 0.65rem;
+  font-weight: 650;
+}
+
+.show-current-row:not([hidden]) + .day-stops__hint { display: none; }
+
+.show-current-row {
+  padding: 2px 6px;
+  border: 0;
+  color: var(--map-route);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.show-current-row:hover { text-decoration: underline; }
+.show-current-row:focus-visible { outline: 2px solid var(--map-route); outline-offset: 2px; }
+
+.day-stop-viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scroll-padding-block: 6px;
+}
+
+.day-stop-viewport:focus-visible { outline: 2px solid var(--map-route); outline-offset: -2px; }
+
+.stop-countdown {
+  --timer-progress: 360deg;
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(from -90deg, var(--map-route) var(--timer-progress), rgba(98, 98, 98, 0.18) 0);
+  transition: --timer-progress 100ms linear;
+}
+
+.stop-countdown::after {
+  position: absolute;
+  border-radius: inherit;
+  background: var(--map-panel);
+  content: "";
+}
+
+.stop-countdown--small {
+  width: 15px;
+  height: 15px;
+}
+
+.stop-countdown--small::after { inset: 3px; }
+
+.day-stop-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-stop-list li {
+  position: relative;
+  border-bottom: 1px solid var(--map-line);
+  color: var(--map-muted);
+  font-size: 0.78rem;
+}
+
+.itinerary-row {
+  display: grid;
+  grid-template-columns: 88px 18px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 6px 0;
+}
+
+.itinerary-row {
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.itinerary-row:hover { color: var(--map-ink); background: rgba(169, 107, 66, 0.08); }
+.itinerary-row:focus-visible { outline: 2px solid var(--map-route); outline-offset: -2px; }
+.itinerary-row:active { background: rgba(199, 68, 47, 0.12); }
+
+.day-stop-list li.is-current .itinerary-row {
+  padding: 6px 5px 6px 9px;
+  color: var(--map-ink);
+  background: linear-gradient(90deg, rgba(199, 68, 47, 0.1), transparent 78%);
+  font-weight: 750;
+}
+.day-stop-list li.is-current::before {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: 3px;
+  background: var(--map-route);
+  content: "";
+}
+.day-stop-list li.is-complete:not(.is-current) { opacity: 0.62; }
+.stop-time { font-variant-numeric: tabular-nums; }
+.stop-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--map-future); }
+.day-stop-list li.is-current .stop-dot { background: var(--map-route); }
+.stop-event { min-width: 0; }
+.stop-event strong,
+.stop-event small { display: block; }
+.stop-event strong { overflow-wrap: anywhere; }
+.stop-event small { margin-top: 1px; color: var(--map-muted); font-size: 0.66rem; font-weight: 500; }
+.event-stay-label {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 4px;
+  color: #7a3529;
+  background: #f8ddd6;
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.meal-location-status {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.meal-location-status--exact { color: #174b38; background: #dcefe6; }
+.meal-location-status--flexible { color: #6d470b; background: #fff0bf; }
+
+.map-meal-options {
+  display: grid;
+  gap: 5px;
+  padding: 4px 8px 10px 114px;
+}
+
+.map-meal-option {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 7px;
+  width: 100%;
+  padding: 7px;
+  border: 1px solid var(--map-line);
+  color: var(--map-ink);
+  background: var(--map-panel);
+  cursor: pointer;
+  text-align: left;
+}
+.map-meal-option:hover { border-color: var(--map-amber); background: #fff9e8; }
+.map-meal-option:focus-visible { outline: 2px solid var(--map-route); outline-offset: 1px; }
+.map-meal-option--planned,
+.map-meal-option--recommended { border-left: 3px solid var(--map-meal); }
+.map-meal-option__rank { display: grid; width: 22px; height: 22px; place-items: center; border-radius: 50%; color: white; background: var(--map-meal); font-weight: 850; }
+.map-meal-option--alternative .map-meal-option__rank { color: #6d470b; border: 2px solid var(--map-amber); background: #fff5d6; }
+.map-meal-option strong,
+.map-meal-option small { display: block; overflow-wrap: anywhere; }
+.map-meal-option small { margin-top: 2px; color: var(--map-muted); font-size: 0.64rem; line-height: 1.35; }
+.map-meal-option b { color: var(--map-ink); }
+
+.journey-controls {
+  padding: 20px 22px 22px;
+  border-top: 1px solid var(--map-line);
+}
+
+.control-heading,
+.control-actions,
+.range-label,
+.mode-legend {
+  display: flex;
+  align-items: center;
+}
+
+.control-heading { justify-content: space-between; gap: 18px; }
+.control-actions { gap: 13px; }
+
+.play-control {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--map-ink);
+  color: var(--map-panel);
+  background: var(--map-ink);
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.alternative-toggle { font-size: 0.78rem; font-weight: 700; }
+.alternative-toggle input { margin-right: 5px; }
+
+.range-label {
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+  color: var(--map-muted);
+  font-size: 0.72rem;
+}
+
+.range-label span:first-child { color: var(--map-ink); font-weight: 750; }
+
+.journey-range {
+  --range-thumb-size: 18px;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  margin: 4px 0 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+}
+
+.journey-range:active { cursor: grabbing; }
+
+.journey-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 0;
+  background: var(--map-line);
+}
+
+.journey-range::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  margin-top: -7px;
+  border: 2px solid var(--map-panel);
+  border-radius: 50%;
+  background: var(--map-route);
+  box-shadow: 0 0 0 1px var(--map-route);
+}
+
+.journey-range::-moz-range-track { height: 4px; border: 0; border-radius: 0; background: var(--map-line); }
+.journey-range::-moz-range-progress { height: 4px; background: var(--map-past); }
+.journey-range::-moz-range-thumb {
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  border: 2px solid var(--map-panel);
+  border-radius: 50%;
+  background: var(--map-route);
+  box-shadow: 0 0 0 1px var(--map-route);
+}
+
+.trip-range-shell {
+  position: relative;
+  height: 28px;
+  margin-top: 4px;
+}
+
+.journey-range--trip {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.trip-segments {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  right: 9px;
+  bottom: 3px;
+  left: 9px;
+  pointer-events: none;
+}
+
+.trip-segment {
+  position: absolute;
+  top: 3px;
+  height: 16px;
+}
+
+.trip-segment--day {
+  border-right: 1px solid #807b72;
+  border-left: 1px solid #807b72;
+}
+
+.trip-segment--day.is-active {
+  border-color: var(--map-route);
+  background: rgba(199, 68, 47, 0.14);
+  box-shadow: inset 0 2px 0 rgba(199, 68, 47, 0.7), inset 0 -2px 0 rgba(199, 68, 47, 0.7);
+}
+
+.trip-segment--transition,
+.trip-segment--overnight {
+  top: 9px;
+  height: 4px;
+}
+
+.trip-segment--transition {
+  background: var(--map-past);
+}
+
+.trip-segment--overnight {
+  min-width: 2px;
+  background: #39466f;
+}
+
+.trip-segment--transition::after {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  color: var(--map-past);
+  content: "✈";
+  font-size: 0.62rem;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.trip-segment--overnight::after {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  color: #39466f;
+  content: "☾";
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 3px var(--map-panel), 0 0 3px var(--map-panel);
+  transform: translateX(-50%);
+}
+
+.trip-segment.is-active { filter: saturate(1.25); }
+
+.trip-ticks {
+  position: relative;
+  height: 25px;
+  margin: 0 9px;
+}
+
+.trip-tick {
+  position: absolute;
+  top: 0;
+  width: min(42px, 4vw);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  color: var(--map-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.66rem;
+  transform: translateX(-50%);
+}
+
+.trip-tick:focus-visible { outline: 2px solid var(--map-route); outline-offset: 2px; }
+.trip-tick:hover strong { color: var(--map-route); }
+
+.trip-tick strong { color: var(--map-muted); font-variant-numeric: tabular-nums; }
+.trip-tick.is-active strong { color: var(--map-route); font-weight: 900; }
+
+.day-ticks {
+  position: relative;
+  height: 24px;
+  margin: 1px 9px 0;
+  border-top: 1px solid var(--map-line);
+}
+
+.day-tick {
+  position: absolute;
+  top: -1px;
+  width: 1px;
+  height: 8px;
+  background: var(--map-line);
+}
+
+.day-tick span {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  color: var(--map-muted);
+  font-size: 0.62rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.day-tick:first-child span { transform: none; }
+.day-tick:last-child span { transform: translateX(-100%); }
+
+.mode-legend { flex-wrap: wrap; gap: 14px; margin-top: 8px; color: var(--map-muted); font-size: 0.7rem; }
+.mode-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.mode-swatch { display: inline-block; width: 18px; height: 3px; background: var(--map-future); }
+.mode-swatch--upcoming { height: 4px; background: var(--map-future); }
+.mode-swatch--travelled { height: 4px; background: var(--map-past); }
+.mode-swatch--unresolved { height: 0; border-top: 3px dashed var(--map-future); }
+.mode-swatch--high-speed-rail {
+  height: 5px;
+  background: var(--map-high-speed-rail);
+  box-shadow: 0 0 5px var(--map-high-speed-rail-bright), 0 0 10px var(--map-high-speed-rail);
+}
+.mode-swatch--conventional-rail {
+  height: 5px;
+  background: var(--map-conventional);
+  background-image: repeating-linear-gradient(90deg, var(--map-conventional) 0 3px, transparent 3px 6px, var(--map-conventional) 6px 16px, transparent 16px 19px);
+}
+.mode-swatch--bus {
+  height: 5px;
+  background: repeating-linear-gradient(90deg, var(--map-bus) 0 10px, transparent 10px 16px);
+}
+.mode-dot { display: inline-block; width: 9px; height: 9px; border: 2px solid var(--map-panel); border-radius: 50%; background: var(--map-route); box-shadow: 0 0 0 1px var(--map-route); }
+.mode-dot--schematic { border-color: var(--map-past); background: var(--map-panel); box-shadow: none; }
+.mode-meal { display: inline-grid; width: 18px; height: 18px; place-items: center; border: 2px solid var(--map-panel); border-radius: 50%; background: var(--map-meal); box-shadow: 0 0 0 1px var(--map-meal); font-size: 9px; font-style: normal; }
+.mode-meal--alternative { color: #6d470b; border-color: var(--map-amber); background: #fff5d6; box-shadow: none; }
+
+.journey-range:disabled { opacity: 0.42; cursor: not-allowed; }
+
+.maplibregl-ctrl-group { border-radius: 0; }
+
+@media (max-width: 850px) {
+  .journey-stage { grid-template-columns: 1fr; height: auto; }
+  .journey-map-wrap { min-height: 500px; }
+  .journey-detail { border-top: 1px solid var(--map-line); border-left: 0; overflow: visible; }
+  .day-stops { max-height: 420px; }
+  .day-stop-viewport { min-height: 180px; }
+  .map-meal-options { padding-left: 8px; }
+}
+
+@media (max-width: 560px) {
+  .journey-shell { width: 100%; margin: 0; border-right: 0; border-left: 0; box-shadow: none; }
+  .journey-header { align-items: flex-start; padding: 12px 15px; }
+  .journey-header > div { align-items: flex-start; flex-direction: column; gap: 1px; }
+  .journey-nav { align-items: flex-end; flex-direction: column; gap: 6px; }
+  .journey-map-wrap { min-height: 410px; }
+  .journey-detail { padding: 14px 15px; }
+  .journey-controls { padding: 18px 15px 22px; }
+  .control-heading { align-items: flex-start; flex-direction: column; }
+  .control-actions { width: 100%; justify-content: space-between; }
+  .trip-tick { width: 24px; }
+  .trip-tick:nth-child(even):not(.is-active) strong { visibility: hidden; }
+  .overnight-status { right: 12px; bottom: 12px; left: 12px; max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .journey-route-overlay,
+  .overnight-wash,
+  .overnight-status,
+  .journey-detail { transition: none; }
+  .journey-route-overlay .trail-high-speed-rail,
+  .journey-fallback .trail-high-speed-rail,
+  .journey-route-overlay .trail-conventional-rail,
+  .journey-fallback .trail-conventional-rail,
+  .journey-route-overlay .trail-bus,
+  .journey-fallback .trail-bus,
+  .journey-route-overlay .trail-position--high-speed-rail,
+  .journey-fallback .trail-position--high-speed-rail { animation: none; }
+}
+
+@media print {
+  .journey-controls, .map-recenter { display: none; }
+  .journey-shell { width: 100%; margin: 0; box-shadow: none; }
+  .journey-stage { grid-template-columns: 2fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+<a class="map-skip-link" href="#journey-controls">Skip to journey controls</a>
+<main class="journey-shell">
+<header class="journey-header">
+<div>
+<p class="journey-kicker">Mon 10 May 2027</p>
+<h1>Journey map</h1>
+</div>
+<nav aria-label="Page navigation" class="journey-nav">
+<span class="private-indicator" hidden="hidden">Private locations</span>
+<a href="index.html">Itinerary</a>
+<a href="activity-options.html">Activities</a>
+</nav>
+</header>
+
+<section class="journey-stage" aria-label="Journey map and selected movement">
+<div class="journey-map-wrap">
+<div id="journey-map" role="application" aria-label="Interactive map of the selected itinerary day"></div>
+<svg aria-hidden="true" class="journey-route-overlay" id="journey-route-overlay"></svg>
+<div aria-hidden="true" class="overnight-wash"></div>
+<div aria-atomic="true" aria-hidden="true" class="overnight-status" id="overnight-status" role="status">
+<span aria-hidden="true" class="overnight-status__moon">☾</span>
+<span class="overnight-status__copy">
+<strong id="overnight-status-title"></strong>
+<small id="overnight-status-next"></small>
+</span>
+</div>
+<div class="map-loading" id="map-loading" role="status">Loading street map…</div>
+<div class="map-warning" id="map-warning" role="status" hidden>Street map unavailable. Route geometry and timing remain available.</div>
+<button class="map-recenter" id="map-recenter" type="button" hidden>Recenter route</button>
+</div>
+
+<aside class="journey-detail" aria-live="polite">
+<div class="journey-detail__top">
+<h2 id="selected-route-title">Sample Lodge</h2>
+</div>
+
+<section class="day-stops" aria-labelledby="day-stops-heading">
+<div class="day-stops__heading">
+<h3 class="journey-eyebrow" id="day-stops-heading">Itinerary</h3>
+<button class="show-current-row" id="show-current-row" type="button" hidden>Show current row</button>
+<span class="day-stops__hint">Select a row to jump</span>
+</div>
+<div class="day-stop-viewport" id="day-stop-viewport" tabindex="0" aria-label="Scrollable selected day itinerary">
+<ol class="day-stop-list" id="day-stop-list" aria-label="Selected day itinerary"></ol>
+</div>
+</section>
+</aside>
+</section>
+
+<section class="journey-controls" id="journey-controls" aria-label="Journey playback controls">
+<div class="control-heading">
+<div>
+<p class="journey-eyebrow">Trip</p>
+<strong id="trip-position">Day 1 of 1</strong>
+</div>
+<div class="control-actions">
+<label class="alternative-toggle" id="alternative-control" hidden><input id="show-alternatives" type="checkbox"/> Show alternatives</label>
+<button aria-keyshortcuts="Space" aria-pressed="false" class="play-control" id="play-journey" title="Play or pause trip (Spacebar)" type="button">Play trip</button>
+</div>
+</div>
+
+<label class="range-label" for="trip-range"><span>Trip timeline</span><span>Drag smoothly through all 1 days and confirmed flights</span></label>
+<div class="trip-range-shell">
+<div class="trip-segments" id="trip-segments" aria-hidden="true"></div>
+<input class="journey-range journey-range--trip" id="trip-range" min="0" max="1" step="0.001" type="range" value="0"/>
+</div>
+<div class="trip-ticks" id="trip-ticks" role="group" aria-label="Jump to day"></div>
+
+<label class="range-label" for="day-range"><span id="day-range-title">Day timeline</span><span id="day-range-window">18:30–21:30</span></label>
+<input class="journey-range journey-range--day" id="day-range" min="1110" max="1290" step="0.1" type="range" value="1110"/>
+<div class="day-ticks" id="day-ticks" aria-hidden="true"></div>
+<div class="mode-legend" aria-label="Trail progress legend">
+<span><i class="mode-swatch mode-swatch--high-speed-rail" style="--transport-color: #247ba0"></i><span aria-hidden="true">🚄</span> High-speed rail</span><span><i class="mode-swatch mode-swatch--conventional-rail" style="--transport-color: #6559c7"></i><span aria-hidden="true">🚆</span> Conventional rail</span><span><i class="mode-swatch mode-swatch--bus"></i><span aria-hidden="true">🚌</span> Bus road crawl</span>
+<span><i class="mode-swatch mode-swatch--upcoming"></i>Upcoming trail</span>
+<span><i class="mode-swatch mode-swatch--travelled"></i>Travelled trail</span>
+<span><i class="mode-swatch mode-swatch--unresolved"></i>Route TBD · location unknown</span>
+<span><i class="mode-dot"></i>Verified position</span>
+<span><i class="mode-dot mode-dot--schematic"></i>Schematic position</span>
+<span><i aria-hidden="true" class="mode-meal">1</i>Planned / recommended restaurant</span>
+<span><i aria-hidden="true" class="mode-meal mode-meal--alternative">2</i>Nearby alternative</span>
+</div>
+</section>
+</main>
+<noscript>This journey map requires JavaScript for timeline scrubbing.</noscript>
+<script id="journey-data" type="application/json">{"trip":{"title":"Example Coast Itinerary","subtitle":"Mon 10 May","start_date":"2027-05-10","end_date":"2027-05-10","private":false,"transport":{"classifications":{"high_speed_rail":{"icon":"🚄","label":"high-speed rail","short_label":"high-speed rail","map_label":"🚄 High-speed rail","legend_label":"High-speed rail","color":"#247ba0","playback_ms":900,"emphasis":true},"conventional_rail":{"icon":"🚆","label":"conventional rail","short_label":"conventional rail","map_label":"🚆 Conventional rail","legend_label":"Conventional rail","color":"#6559c7","playback_ms":1250}}},"map":{"provider_name":"OpenFreeMap","style_url":"https://tiles.openfreemap.org/styles/liberty","library_css_url":"https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css","library_js_url":"https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.js","library_module_url":"https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.mjs","initial_place_id":"sample-lodge"}},"days":[{"day":1,"window_start":"09:00","window_end":"18:00","stops":[{"id":"day-01-base","place_id":"sample-lodge","role":"lodging_base","start_time":"09:00","end_time":"18:00","activity_refs":["day-01-walk","day-01-lunch","day-01-checkin"],"place":{"id":"sample-lodge","name":"Sample Lodge","coordinates":{"longitude":1.001,"latitude":1.001,"precision":"exact","status":"verified","source_url":"https://example.com/coordinates/lodge","checked_on":"2026-09-26"},"private_override":false}}],"legs":[],"date":"2027-05-10","label":"Mon 10 May","day_type":"sightseeing","pace":"GREEN","walking_distance_meters":0,"walking_duration_minutes":0,"events":[{"id":"day-01-walk","time_label":"09:00–10:00","start_time":"09:00","end_time":"10:00","date":null,"same_day":true,"category":"visit","in_transit":false,"pace_role":"major","title":"Harbour Promenade","places":[{"id":"option-one","name":"Harbour Promenade","coordinates":{"longitude":1.003,"latitude":1.003,"precision":"entrance","status":"verified","source_url":"https://example.com/coordinates/one","checked_on":"2026-09-26"}}]},{"id":"day-01-lunch","time_label":"12:00–13:00","start_time":"12:00","end_time":"13:00","date":null,"same_day":true,"category":"meal","in_transit":false,"pace_role":"recovery","title":"Lunch · Sample Bistro","places":[{"id":"sample-bistro","name":"Sample Bistro","coordinates":{"longitude":1.002,"latitude":1.002,"precision":"entrance","status":"verified","source_url":"https://example.com/coordinates/bistro","checked_on":"2026-09-26"}}],"meal_type":"lunch","venue":{"id":"sample-bistro","name":"Sample Bistro","coordinates":{"longitude":1.002,"latitude":1.002,"precision":"entrance","status":"verified","source_url":"https://example.com/coordinates/bistro","checked_on":"2026-09-26"}},"meal_options":[{"rank":1,"role":"planned","walking_minutes":5,"order_summary":"2× Seasonal plate","evidence_status":"verified","place":{"id":"sample-bistro","name":"Sample Bistro","url":"https://example.com/bistro","coordinates":{"longitude":1.002,"latitude":1.002,"precision":"entrance","status":"verified","source_url":"https://example.com/coordinates/bistro","checked_on":"2026-09-26"}}}]},{"id":"day-01-checkin","time_label":"17:00–18:00","start_time":"17:00","end_time":"18:00","date":null,"same_day":true,"category":"logistics","in_transit":false,"pace_role":"recovery","title":"Check in and rest","places":[{"id":"sample-lodge","name":"Sample Lodge","coordinates":{"longitude":1.001,"latitude":1.001,"precision":"exact","status":"verified","source_url":"https://example.com/coordinates/lodge","checked_on":"2026-09-26"}}]}],"alternatives":[]}],"transitions":[],"fallback_geography":null,"fallback_extent":[0.9,0.9,1.103,1.103]}</script>
+<script type="module">
+const journeyData = JSON.parse(document.getElementById("journey-data").textContent);
+const days = journeyData.days;
+const transitions = journeyData.transitions || [];
+const transportPresentations = journeyData.trip.transport?.classifications || {};
+const mapConfig = journeyData.trip.map || {};
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const elements = {
+  mapWrap: document.querySelector(".journey-map-wrap"),
+  mapContainer: document.getElementById("journey-map"),
+  routeOverlay: document.getElementById("journey-route-overlay"),
+  overnightStatus: document.getElementById("overnight-status"),
+  overnightStatusTitle: document.getElementById("overnight-status-title"),
+  overnightStatusNext: document.getElementById("overnight-status-next"),
+  mapLoading: document.getElementById("map-loading"),
+  mapWarning: document.getElementById("map-warning"),
+  mapRecenter: document.getElementById("map-recenter"),
+  tripRange: document.getElementById("trip-range"),
+  tripSegments: document.getElementById("trip-segments"),
+  tripTicks: document.getElementById("trip-ticks"),
+  tripPosition: document.getElementById("trip-position"),
+  dayRange: document.getElementById("day-range"),
+  dayTicks: document.getElementById("day-ticks"),
+  dayRangeTitle: document.getElementById("day-range-title"),
+  dayRangeWindow: document.getElementById("day-range-window"),
+  selectedRouteTitle: document.getElementById("selected-route-title"),
+  journeyDetail: document.querySelector(".journey-detail"),
+  dayStopViewport: document.getElementById("day-stop-viewport"),
+  dayStopList: document.getElementById("day-stop-list"),
+  showCurrentRow: document.getElementById("show-current-row"),
+  play: document.getElementById("play-journey"),
+  alternativeControl: document.getElementById("alternative-control"),
+  showAlternatives: document.getElementById("show-alternatives")
+};
+
+const emptyCollection = () => ({ type: "FeatureCollection", features: [] });
+const clockToMinutes = (clock) => {
+  const [hour, minute] = clock.split(":").map(Number);
+  return hour * 60 + minute;
+};
+const minutesToClock = (value) => {
+  const rounded = Math.max(0, Math.round(value));
+  return `${String(Math.floor(rounded / 60)).padStart(2, "0")}:${String(rounded % 60).padStart(2, "0")}`;
+};
+const formatDuration = (minutes) => {
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remainder = minutes % 60;
+  return remainder ? `${hours}h ${remainder}m` : `${hours}h`;
+};
+const formatDistance = (meters) => meters < 1000 ? `${meters} m` : `${(meters / 1000).toFixed(meters >= 10_000 ? 1 : 2)} km`;
+const coordinateForStop = (stop) => {
+  const coordinates = stop.place.coordinates;
+  return [coordinates.longitude, coordinates.latitude];
+};
+const exactLocation = (place) => place.private_override || ["exact", "entrance"].includes(place.coordinates.precision);
+const uncertainLodging = (stop) => stop.role === "lodging_base" && !exactLocation(stop.place);
+const stopMap = (day) => new Map(day.stops.map((stop) => [stop.id, stop]));
+const modeLabel = (mode) => ({ walk: "Walk", rail: "Rail", bus: "🚌 Bus", taxi: "Taxi", shuttle: "Shuttle", ferry: "Ferry", flight: "Flight", local_transit: "Hotel transfer" }[mode] || mode);
+const classificationClass = (classification) => classification.replaceAll("_", "-");
+const railPresentations = (leg) => (leg.rail_types || []).map((classification) => transportPresentations[classification]).filter(Boolean);
+const transportVisualMode = (leg) => leg.mode === "rail" && leg.rail_types?.length ? classificationClass(leg.rail_types[0]) : leg.mode === "bus" ? "bus" : null;
+const presentationForVisualMode = (visualMode) => Object.entries(transportPresentations).find(([classification]) => classificationClass(classification) === visualMode)?.[1];
+const emphasizedVisualMode = (visualMode) => presentationForVisualMode(visualMode)?.emphasis === true;
+const transportColor = (visualMode) => presentationForVisualMode(visualMode)?.color || (visualMode === "bus" ? "#d96524" : null);
+const legModeLabel = (leg) => {
+  if (leg.mode !== "rail") return modeLabel(leg.mode);
+  const presentations = railPresentations(leg);
+  if (presentations.length === 1) return presentations[0].map_label;
+  return presentations.map((presentation) => `${presentation.icon} ${presentation.short_label}`).join(" + ");
+};
+
+function buildTimelineSegments() {
+  const segments = [];
+  days.forEach((day, dayIndex) => {
+    segments.push({ kind: "day", dayIndex, weight: 1 });
+    const transition = transitions.find((candidate) => candidate.after_day === day.day);
+    if (transition) {
+      segments.push({ kind: "transition", transition, weight: 0.42 });
+      return;
+    }
+    const nextDay = days[dayIndex + 1];
+    if (!nextDay) return;
+    const lastStop = day.stops.at(-1);
+    const firstStop = nextDay.stops[0];
+    if (lastStop.role === "lodging_base" && firstStop.role === "lodging_base" && lastStop.place.id === firstStop.place.id) {
+      segments.push({ kind: "overnight", dayIndex, nextDayIndex: dayIndex + 1, weight: 0.08 });
+    }
+  });
+  let cursor = 0;
+  segments.forEach((segment) => {
+    segment.start = cursor;
+    cursor += segment.weight;
+    segment.end = cursor;
+  });
+  return { segments, total: cursor };
+}
+
+const timeline = buildTimelineSegments();
+const timelineSegments = timeline.segments;
+const timelineTotal = timeline.total;
+const daySegmentIndexes = new Map(timelineSegments.flatMap((segment, index) => segment.kind === "day" ? [[segment.dayIndex, index]] : []));
+
+let selectedDayIndex = 0;
+let selectedMinute = clockToMinutes(days[0].window_start);
+let activeTimelineIndex = daySegmentIndexes.get(0);
+let activeBoundaryFraction = 0;
+let maplibregl = null;
+let map = null;
+let mapReady = false;
+let fallbackMode = false;
+let autoFollowing = true;
+let lastCameraTarget = null;
+let playbackFrame = null;
+let playbackLastTimestamp = null;
+let playbackStateKey = null;
+let playbackUiTimestamp = 0;
+let playbackCameraHoldUntil = 0;
+let playbackStationaryTiming = null;
+let reducedMotionAccumulator = 0;
+let timelineScrubPointerId = null;
+let resumePlaybackAfterScrub = false;
+let baseMapLoaded = false;
+let baseMapFailureTimer = null;
+let followCurrentRow = true;
+let lastRevealedEventId = null;
+let displayedOvernightKey = null;
+
+const MOVEMENT_PLAYBACK_MS = 1600;
+const BUS_PLAYBACK_MS = 1900;
+const FLIGHT_PLAYBACK_MS = 2600;
+const OVERNIGHT_PLAYBACK_MS = 1200;
+const NON_MOVEMENT_MINUTES_PER_MS = 20 / 110;
+const MIN_STAY_PLAYBACK_MS = 750;
+const STOP_FOCUS_ZOOM = 15;
+const UNCERTAIN_STOP_FOCUS_ZOOM = 12.5;
+const CAMERA_SETTLE_MS = 260;
+const BASE_MAP_FAILURE_GRACE_MS = 10_000;
+const PLAYBACK_UI_INTERVAL_MS = 100;
+const REDUCED_MOTION_STEP_MS = 320;
+
+elements.tripRange.min = "0";
+elements.tripRange.max = String(timelineTotal);
+elements.tripRange.value = "0";
+
+function haversine(left, right) {
+  const radians = Math.PI / 180;
+  const lat1 = left[1] * radians;
+  const lat2 = right[1] * radians;
+  const deltaLat = (right[1] - left[1]) * radians;
+  const deltaLon = (right[0] - left[0]) * radians;
+  const value = Math.sin(deltaLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;
+  return 6_371_000 * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+}
+
+function lineProgress(coordinates, fraction) {
+  if (coordinates.length < 2) return { point: coordinates[0], coordinates };
+  const segments = [];
+  let total = 0;
+  for (let index = 1; index < coordinates.length; index += 1) {
+    const length = haversine(coordinates[index - 1], coordinates[index]);
+    segments.push(length);
+    total += length;
+  }
+  const target = Math.max(0, Math.min(1, fraction)) * total;
+  const completed = [coordinates[0]];
+  let travelled = 0;
+  for (let index = 0; index < segments.length; index += 1) {
+    if (travelled + segments[index] >= target) {
+      const local = segments[index] === 0 ? 0 : (target - travelled) / segments[index];
+      const left = coordinates[index];
+      const right = coordinates[index + 1];
+      const point = [left[0] + (right[0] - left[0]) * local, left[1] + (right[1] - left[1]) * local];
+      completed.push(point);
+      return { point, coordinates: completed };
+    }
+    completed.push(coordinates[index + 1]);
+    travelled += segments[index];
+  }
+  return { point: coordinates.at(-1), coordinates };
+}
+
+function legCoordinates(day, leg) {
+  if (leg.geometry?.coordinates) return leg.geometry.coordinates;
+  const stops = stopMap(day);
+  return [coordinateForStop(stops.get(leg.from_stop)), coordinateForStop(stops.get(leg.to_stop))];
+}
+
+const movementState = (state) => state.kind === "leg" || state.kind === "unresolved_leg";
+const eventStart = (event) => event.start_time ? clockToMinutes(event.start_time) : event.end_time ? clockToMinutes(event.end_time) : null;
+const eventEnd = (event) => event.end_time ? clockToMinutes(event.end_time) : event.start_time ? clockToMinutes(event.start_time) : null;
+const eventDuration = (event) => {
+  const start = eventStart(event);
+  const end = eventEnd(event);
+  return start === null || end === null ? 0 : Math.max(0, end - start);
+};
+const eventClockLabel = (event) => event.start_time && event.end_time
+  ? `${event.start_time}–${event.end_time}`
+  : event.start_time || event.end_time || event.time_label;
+const activeEventsAt = (day, minute) => day.events.filter((event) => {
+  if (!event.same_day) return false;
+  const start = eventStart(event);
+  const end = eventEnd(event);
+  return start !== null && end !== null && end > start && minute >= start && minute < end;
+});
+const primaryEventAt = (day, minute) => activeEventsAt(day, minute)[0] || null;
+const activeMealAt = (day, minute) => activeEventsAt(day, minute).find((event) => event.category === "meal") || null;
+const activeMealOptionsAt = (day, minute) => activeMealAt(day, minute)?.meal_options || [];
+const activeMealLocationAt = (day, state, minute) => {
+  const event = activeMealAt(day, minute);
+  if (!event) return null;
+  const place = event.venue || event.places[0] || (!movementState(state) ? state.stop?.place : null);
+  return place ? { event, place, exact: Boolean(event.venue) } : null;
+};
+const eventProgress = (event, minute) => {
+  const duration = eventDuration(event);
+  if (!duration) return { elapsed: 0, remaining: 0, remainingFraction: 0 };
+  const elapsed = Math.max(0, Math.min(duration, minute - eventStart(event)));
+  return { elapsed, remaining: Math.max(0, duration - elapsed), remainingFraction: Math.max(0, 1 - elapsed / duration) };
+};
+const stationaryEvent = (event) => !event.in_transit;
+const stationaryTimerEventAt = (day, state, minute) => {
+  if (!day || movementState(state)) return null;
+  return activeEventsAt(day, minute).find(stationaryEvent) || null;
+};
+const categoryLabel = (category) => ({ transport: "Travel", meal: "Meal", visit: "Visit", logistics: "Planned stop" }[category] || category);
+const mealTypeLabel = (mealType) => mealType.charAt(0).toUpperCase() + mealType.slice(1);
+const eventCategoryLabel = (event) => event.category === "meal" && event.meal_type
+  ? mealTypeLabel(event.meal_type)
+  : categoryLabel(event.category);
+const mealLocationStatus = (event) => event.category !== "meal"
+  ? ""
+  : event.venue ? event.meal_options.length > 1 ? "Planned + 2 backups" : "Confirmed restaurant" : `${event.meal_options.length} nearby options`;
+const timerDescriptor = (event) => {
+  const title = event.title.split(" · ")[0].trim();
+  if (event.category !== "logistics") return title || categoryLabel(event.category);
+  const wait = title.match(/\bwait for (?:the )?(bus|train|shuttle)\b/i);
+  if (wait) return `Wait for ${wait[1].toLowerCase()}`;
+  if (/\bforward (?:the )?(?:main )?luggage\b/i.test(title)) return "Forward luggage";
+  if (/\bcollect (?:the )?(?:forwarded )?(?:main )?luggage\b|\bcollect bags\b/i.test(title)) return "Collect luggage";
+  if (/\bleave bags\b/i.test(title)) return "Leave bags";
+  if (/\bsecurity\b.*\bimmigration\b/i.test(title)) return "Airport formalities";
+  if (/\bcheck[- ]?in\b/i.test(title)) return "Check in";
+  if (/\brest\b|\brecovery\b/i.test(title)) return "Rest";
+  return title || "Planned stop";
+};
+const timerLabel = (event) => `${timerDescriptor(event)} · ${formatDuration(eventDuration(event))}`;
+
+function displayPoint(day, state, minute = selectedMinute) {
+  if (movementState(state)) return state.point;
+  const meal = activeMealLocationAt(day, state, minute);
+  if (meal) return [meal.place.coordinates.longitude, meal.place.coordinates.latitude];
+  const event = primaryEventAt(day, minute);
+  return event?.places[0] ? [event.places[0].coordinates.longitude, event.places[0].coordinates.latitude] : state.point;
+}
+
+function visibleLocations(day, minute = selectedMinute) {
+  const locations = [];
+  const seen = new Set();
+  const activeMeal = activeMealLocationAt(day, stateAt(day, minute), minute);
+  const activeMealEvent = activeMealAt(day, minute);
+  const mealVenueIds = new Set(day.events.flatMap((event) => (event.meal_options || []).map((option) => option.place.id)));
+  const coincidesWithActiveMeal = (place) => activeMeal &&
+    place.coordinates.longitude === activeMeal.place.coordinates.longitude &&
+    place.coordinates.latitude === activeMeal.place.coordinates.latitude;
+  const append = (stop) => {
+    const id = stop.place.id;
+    if (seen.has(id)) return;
+    seen.add(id);
+    locations.push(stop);
+  };
+  (activeMealEvent?.meal_options || []).forEach((option) => append({
+    role: "meal_option",
+    meal_type: activeMealEvent.meal_type,
+    rank: option.rank,
+    option_role: option.role,
+    evidence_status: option.evidence_status,
+    place: option.place
+  }));
+  day.stops.forEach((stop) => {
+    if (!mealVenueIds.has(stop.place.id) && !coincidesWithActiveMeal(stop.place)) append(stop);
+  });
+  day.events.flatMap((event) => event.places).forEach((place) => {
+    if (!mealVenueIds.has(place.id) && !coincidesWithActiveMeal(place)) append({ role: "activity", place });
+  });
+  return locations;
+}
+
+const mealMarkerStop = (stop) => stop.role === "meal_option";
+const mealMarkerLabel = (stop) => `${stop.rank}. ${stop.place.name} · ${stop.option_role}`;
+
+function stateAt(day, minute) {
+  const activeLeg = day.legs.find((leg) => minute >= clockToMinutes(leg.start_time) && minute < clockToMinutes(leg.end_time));
+  if (activeLeg) {
+    const start = clockToMinutes(activeLeg.start_time);
+    const end = clockToMinutes(activeLeg.end_time);
+    const fraction = end === start ? 1 : (minute - start) / (end - start);
+    if (activeLeg.status === "unresolved") {
+      const coordinates = legCoordinates(day, activeLeg);
+      return { kind: "unresolved_leg", leg: activeLeg, fraction, point: coordinates[0], endpoints: coordinates };
+    }
+    const progress = lineProgress(legCoordinates(day, activeLeg), fraction);
+    return { kind: "leg", leg: activeLeg, fraction, point: progress.point, partial: progress.coordinates };
+  }
+
+  const activeStop = day.stops.find((stop) => minute >= clockToMinutes(stop.start_time) && minute < clockToMinutes(stop.end_time));
+  if (activeStop) return { kind: "stop", stop: activeStop, point: coordinateForStop(activeStop) };
+
+  const preceding = day.stops.filter((stop) => clockToMinutes(stop.end_time) <= minute).at(-1) || day.stops[0];
+  return { kind: "stop", stop: preceding, point: coordinateForStop(preceding) };
+}
+
+function legDistanceMeters(leg) {
+  if (leg.status === "unresolved") return null;
+  if (leg.distance_meters) return leg.distance_meters;
+  return leg.geometry.coordinates.slice(1).reduce(
+    (total, coordinate, index) => total + haversine(leg.geometry.coordinates[index], coordinate),
+    0
+  );
+}
+
+function legLabel(leg) {
+  if (leg.status === "unresolved") return `${legModeLabel(leg)} · route and distance TBD · ${formatDuration(leg.duration_minutes)} allowance`;
+  const approximate = leg.distance_meters ? "" : "~";
+  const duration = leg.duration_minutes ? formatDuration(leg.duration_minutes) : "time TBD";
+  return `${legModeLabel(leg)} · ${approximate}${formatDistance(Math.round(legDistanceMeters(leg)))} · ${duration}`;
+}
+
+function legFeature(leg, properties = {}, day = null) {
+  return {
+    type: "Feature",
+    properties: { id: leg.id, mode: leg.mode, rail_types: leg.rail_types || [], status: leg.status, geometry_kind: leg.geometry_kind, label: legLabel(leg), ...properties },
+    geometry: leg.geometry || { type: "LineString", coordinates: legCoordinates(day, leg) }
+  };
+}
+
+function transitionFeature(transition, properties = {}) {
+  return {
+    type: "Feature",
+    properties: { id: transition.id, mode: "flight", status: transition.status, label: "Confirmed overnight flight", ...properties },
+    geometry: transition.geometry
+  };
+}
+
+function currentJourneyContext() {
+  const segment = timelineSegments[activeTimelineIndex];
+  if (segment.kind === "day") {
+    const day = days[segment.dayIndex];
+    return { segment, segmentIndex: activeTimelineIndex, day, state: stateAt(day, selectedMinute) };
+  }
+  if (segment.kind === "transition") {
+    const progress = lineProgress(segment.transition.geometry.coordinates, activeBoundaryFraction);
+    return {
+      segment,
+      segmentIndex: activeTimelineIndex,
+      state: { kind: "transition", transition: segment.transition, fraction: activeBoundaryFraction, point: progress.point, partial: progress.coordinates }
+    };
+  }
+  const fromDay = days[segment.dayIndex];
+  const toDay = days[segment.nextDayIndex];
+  const stop = fromDay.stops.at(-1);
+  return {
+    segment,
+    segmentIndex: activeTimelineIndex,
+    day: fromDay,
+    state: { kind: "overnight", fromDay, toDay, stop, point: coordinateForStop(stop) }
+  };
+}
+
+function progressCollections(context) {
+  const upcoming = [];
+  const completed = [];
+  timelineSegments.forEach((segment, segmentIndex) => {
+    if (segment.kind === "day") {
+      const candidate = days[segment.dayIndex];
+      candidate.legs.forEach((leg) => {
+        const feature = legFeature(leg, { day: candidate.day }, candidate);
+        if (segmentIndex < context.segmentIndex || (segmentIndex === context.segmentIndex && clockToMinutes(leg.end_time) <= selectedMinute)) completed.push(feature);
+        else upcoming.push(feature);
+      });
+    } else if (segment.kind === "transition") {
+      const feature = transitionFeature(segment.transition);
+      if (segmentIndex < context.segmentIndex) completed.push(feature);
+      else upcoming.push(feature);
+    }
+  });
+  const active = context.state.kind === "leg" ? [{
+    type: "Feature",
+    properties: { id: context.state.leg.id, mode: context.state.leg.mode, rail_types: context.state.leg.rail_types || [] },
+    geometry: { type: "LineString", coordinates: context.state.partial }
+  }] : context.state.kind === "transition" ? [{
+    type: "Feature",
+    properties: { id: context.state.transition.id, mode: "flight" },
+    geometry: { type: "LineString", coordinates: context.state.partial }
+  }] : [];
+  return {
+    upcoming: { type: "FeatureCollection", features: upcoming },
+    completed: { type: "FeatureCollection", features: completed },
+    active: { type: "FeatureCollection", features: active }
+  };
+}
+
+function alternativeFeatures(day) {
+  if (!elements.showAlternatives.checked) return emptyCollection();
+  return {
+    type: "FeatureCollection",
+    features: day.alternatives.flatMap((alternative) => alternative.legs.map((leg) => legFeature(leg)))
+  };
+}
+
+function setSourceData(name, value) {
+  const source = map?.getSource(name);
+  if (source) source.setData(value);
+}
+
+function addJourneyLayers() {
+  if (!map) return;
+  if (!map.getSource("journey-alternatives")) map.addSource("journey-alternatives", { type: "geojson", data: emptyCollection() });
+
+  if (!map.getLayer("journey-alternatives")) map.addLayer({
+    id: "journey-alternatives", type: "line", source: "journey-alternatives",
+    paint: { "line-color": "#8d651d", "line-width": 3, "line-opacity": 0.62, "line-dasharray": [1, 2] }
+  });
+  mapReady = true;
+  elements.mapLoading.hidden = true;
+  renderDay(true);
+}
+
+function applyEnglishLabels() {
+  map.getStyle().layers.forEach((layer) => {
+    const textField = layer.layout?.["text-field"];
+    if (layer.type === "symbol" && textField && JSON.stringify(textField).includes("name")) {
+      map.setLayoutProperty(layer.id, "text-field", ["coalesce", ["get", "name:en"], ["get", "name_en"], ["get", "name:latin"], ""]);
+    }
+  });
+}
+
+function markBaseMapLoaded() {
+  baseMapLoaded = true;
+  if (baseMapFailureTimer) window.clearTimeout(baseMapFailureTimer);
+  baseMapFailureTimer = null;
+}
+
+function activateSvgFallback(message = "Street map unavailable. Showing the route diagram instead.") {
+  if (fallbackMode) return;
+  if (baseMapFailureTimer) window.clearTimeout(baseMapFailureTimer);
+  baseMapFailureTimer = null;
+  elements.mapWarning.textContent = message;
+  if (map) map.remove();
+  map = null;
+  renderSvgFallback();
+}
+
+function scheduleBaseMapFailureCheck() {
+  if (fallbackMode || baseMapLoaded || baseMapFailureTimer) return;
+  baseMapFailureTimer = window.setTimeout(() => {
+    baseMapFailureTimer = null;
+    if (map?.getSource("openmaptiles") && map.isSourceLoaded("openmaptiles")) markBaseMapLoaded();
+    else activateSvgFallback();
+  }, BASE_MAP_FAILURE_GRACE_MS);
+}
+
+function collapseAttributionControl() {
+  const control = elements.mapContainer.querySelector(".maplibregl-ctrl-attrib");
+  if (!(control instanceof HTMLDetailsElement)) return;
+  control.open = false;
+  control.classList.remove("maplibregl-compact-show");
+}
+
+async function initializeMap() {
+  try {
+    maplibregl = await import(mapConfig.library_module_url);
+    const initialView = mapConfig.initial_center
+      ? { center: mapConfig.initial_center, zoom: mapConfig.initial_zoom ?? 4.2 }
+      : { bounds: [[journeyData.fallback_extent[0], journeyData.fallback_extent[1]], [journeyData.fallback_extent[2], journeyData.fallback_extent[3]]], fitBoundsOptions: { padding: 24 } };
+    map = new maplibregl.Map({
+      container: elements.mapContainer,
+      style: mapConfig.style_url,
+      ...initialView,
+      attributionControl: { compact: true },
+      cooperativeGestures: true,
+      renderWorldCopies: false
+    });
+    collapseAttributionControl();
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    map.once("load", () => window.requestAnimationFrame(collapseAttributionControl));
+    map.once("idle", () => {
+      collapseAttributionControl();
+      if (map.getSource("openmaptiles") && map.isSourceLoaded("openmaptiles")) markBaseMapLoaded();
+      else scheduleBaseMapFailureCheck();
+    });
+    map.on("style.load", () => {
+      window.requestAnimationFrame(collapseAttributionControl);
+      applyEnglishLabels();
+      addJourneyLayers();
+    });
+    map.on("move", renderRouteOverlay);
+    map.on("resize", renderRouteOverlay);
+    map.on("sourcedata", (event) => {
+      if (event.sourceId === "openmaptiles" && event.isSourceLoaded) markBaseMapLoaded();
+    });
+    map.on("dragstart", () => suspendAutoFollow());
+    map.on("zoomstart", (event) => { if (event.originalEvent) suspendAutoFollow(); });
+    map.on("error", (event) => {
+      if (event.sourceId === "openmaptiles") {
+        if (!baseMapLoaded) scheduleBaseMapFailureCheck();
+      }
+      else if (mapReady) elements.mapWarning.hidden = false;
+    });
+    window.setTimeout(() => {
+      if (!mapReady && !fallbackMode) activateSvgFallback();
+    }, BASE_MAP_FAILURE_GRACE_MS);
+  } catch (_error) {
+    activateSvgFallback();
+  }
+}
+
+function suspendAutoFollow() {
+  autoFollowing = false;
+  lastCameraTarget = null;
+  elements.mapRecenter.hidden = false;
+}
+
+function currentDay() { return days[selectedDayIndex]; }
+
+function routeTitle(day) {
+  const names = [];
+  day.stops.forEach((stop) => {
+    if (names.at(-1) !== stop.place.name) names.push(stop.place.name);
+  });
+  if (names.length === 1) return names[0];
+  const origin = names[0];
+  const destination = names.at(-1);
+  if (origin !== destination) return `${origin} → ${destination}`;
+  const visits = names.slice(1, -1);
+  return visits.length ? `${visits.join(" + ")} day route` : `${origin} day route`;
+}
+
+function renderTripTicks() {
+  elements.tripTicks.replaceChildren();
+  days.forEach((day, index) => {
+    const segment = timelineSegments[daySegmentIndexes.get(index)];
+    const tick = document.createElement("button");
+    tick.type = "button";
+    tick.className = "trip-tick";
+    tick.setAttribute("aria-label", `Show Day ${day.day}, ${day.label}`);
+    tick.title = `Day ${day.day} · ${day.label} · ${routeTitle(day)}`;
+    tick.style.left = `${((segment.start + segment.weight / 2) / timelineTotal) * 100}%`;
+    tick.dataset.dayIndex = String(index);
+    tick.innerHTML = `<strong>${day.day}</strong>`;
+    tick.addEventListener("click", () => {
+      stopPlayback();
+      resumeCurrentRowFollowing();
+      selectedDayIndex = index;
+      activeTimelineIndex = daySegmentIndexes.get(index);
+      activeBoundaryFraction = 0;
+      selectedMinute = clockToMinutes(day.window_start);
+      autoFollowing = true;
+      elements.mapRecenter.hidden = true;
+      renderDay(true);
+    });
+    elements.tripTicks.appendChild(tick);
+  });
+}
+
+function renderTripSegments() {
+  elements.tripSegments.replaceChildren();
+  timelineSegments.forEach((segment, index) => {
+    const band = document.createElement("i");
+    band.className = `trip-segment trip-segment--${segment.kind}`;
+    band.dataset.segmentIndex = String(index);
+    band.style.left = `${(segment.start / timelineTotal) * 100}%`;
+    band.style.width = `${(segment.weight / timelineTotal) * 100}%`;
+    elements.tripSegments.appendChild(band);
+  });
+}
+
+function syncTripTimelineState() {
+  elements.tripSegments.querySelectorAll(".trip-segment").forEach((band, index) => {
+    band.classList.toggle("is-active", index === activeTimelineIndex);
+  });
+  const activeSegment = timelineSegments[activeTimelineIndex];
+  elements.tripTicks.querySelectorAll(".trip-tick").forEach((tick) => {
+    const isActive = activeSegment.kind === "day" && Number(tick.dataset.dayIndex) === selectedDayIndex;
+    tick.classList.toggle("is-active", isActive);
+    if (isActive) tick.setAttribute("aria-current", "step");
+    else tick.removeAttribute("aria-current");
+  });
+}
+
+function renderDayTicks(day) {
+  elements.dayTicks.replaceChildren();
+  const start = clockToMinutes(day.window_start);
+  const end = clockToMinutes(day.window_end);
+  const eventBoundaries = day.events.filter((event) => event.same_day).flatMap((event) => [event.start_time, event.end_time].filter(Boolean).map(clockToMinutes));
+  const values = [...new Set([start, ...day.legs.map((leg) => clockToMinutes(leg.start_time)), ...eventBoundaries, end])].sort((left, right) => left - right);
+  const width = elements.dayTicks.clientWidth || Math.max(1, elements.dayRange.clientWidth - 18) || 600;
+  const minimumLabelGap = window.innerWidth <= 560 ? 54 : 46;
+  let lastLabelPosition = -Infinity;
+  values.forEach((value, index) => {
+    const position = ((value - start) / Math.max(1, end - start)) * 100;
+    const pixelPosition = position * width / 100;
+    const roomBeforeEnd = width - pixelPosition >= minimumLabelGap;
+    const showLabel = index === 0 || index === values.length - 1 || (pixelPosition - lastLabelPosition >= minimumLabelGap && roomBeforeEnd);
+    const tick = document.createElement("div");
+    tick.className = "day-tick";
+    tick.style.left = `${position}%`;
+    if (showLabel) {
+      tick.innerHTML = `<span>${minutesToClock(value)}</span>`;
+      lastLabelPosition = pixelPosition;
+    }
+    elements.dayTicks.appendChild(tick);
+  });
+}
+
+function transitionIndexAfterDay(day) {
+  return timelineSegments.findIndex((segment) => segment.kind === "transition" && segment.transition.after_day === day.day);
+}
+
+function focusSelectedEvent(eventId) {
+  window.requestAnimationFrame(() => {
+    const row = [...elements.dayStopList.children].find((candidate) => candidate.dataset.eventId === eventId);
+    row?.querySelector(".itinerary-row")?.focus({ preventScroll: true });
+  });
+}
+
+function focusBoundaryPoint(fraction) {
+  window.requestAnimationFrame(() => {
+    elements.dayStopList.querySelector(`[data-boundary-fraction="${fraction}"] .itinerary-row`)?.focus({ preventScroll: true });
+  });
+}
+
+function selectItineraryEvent(day, event) {
+  stopPlayback();
+  followCurrentRow = true;
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  selectedDayIndex = days.findIndex((candidate) => candidate.day === day.day);
+
+  if (!event.same_day) {
+    const transitionIndex = transitionIndexAfterDay(day);
+    if (transitionIndex >= 0) {
+      activeTimelineIndex = transitionIndex;
+      activeBoundaryFraction = 1;
+      renderBoundary(true);
+      focusBoundaryPoint(1);
+      return;
+    }
+  }
+
+  activeTimelineIndex = daySegmentIndexes.get(selectedDayIndex);
+  activeBoundaryFraction = 0;
+  const start = clockToMinutes(day.window_start);
+  const end = clockToMinutes(day.window_end);
+  const eventMinute = eventStart(event) ?? eventEnd(event) ?? start;
+  selectedMinute = Math.max(start, Math.min(end, eventMinute));
+  renderDay(true, false, event.id);
+  focusSelectedEvent(event.id);
+}
+
+function focusMealOption(option) {
+  stopPlayback();
+  const coordinate = [option.place.coordinates.longitude, option.place.coordinates.latitude];
+  if (mapReady && map) {
+    autoFollowing = false;
+    elements.mapRecenter.hidden = false;
+    map[reduceMotion ? "jumpTo" : "easeTo"]({ center: coordinate, zoom: STOP_FOCUS_ZOOM, duration: reduceMotion ? 0 : 300 });
+  }
+}
+
+function renderMealOptions(event) {
+  const panel = document.createElement("div");
+  panel.className = "map-meal-options";
+  panel.setAttribute("aria-label", `${eventCategoryLabel(event)} restaurant options`);
+  event.meal_options.forEach((option) => {
+    const control = document.createElement("button");
+    control.type = "button";
+    control.className = `map-meal-option map-meal-option--${option.role}`;
+    control.innerHTML = `<span class="map-meal-option__rank">${option.rank}</span><span><strong>${option.place.name}</strong><small>${option.role} · ${option.walking_minutes} min walk · ${option.evidence_status}</small><small><b>Order:</b> ${option.order_summary}</small></span>`;
+    control.setAttribute("aria-label", `Focus option ${option.rank}, ${option.place.name}, ${option.role}`);
+    control.addEventListener("click", () => focusMealOption(option));
+    panel.appendChild(control);
+  });
+  return panel;
+}
+
+function renderEvents(day, preferredEventId = null) {
+  elements.dayStopList.replaceChildren();
+  const activeEvents = activeEventsAt(day, selectedMinute);
+  const fallbackEvent = [...day.events].reverse().find((event) => {
+    const start = eventStart(event);
+    return event.same_day && start !== null && start <= selectedMinute;
+  })
+    || day.events.find((event) => event.same_day && eventStart(event) !== null);
+  const preferredEvent = preferredEventId ? day.events.find((event) => event.id === preferredEventId) : null;
+  const currentEvents = preferredEvent ? [preferredEvent] : activeEvents.length ? activeEvents : [fallbackEvent];
+  const activeIds = new Set(currentEvents.filter(Boolean).map((event) => event.id));
+  day.events.forEach((event) => {
+    const item = document.createElement("li");
+    const start = eventStart(event);
+    const end = eventEnd(event);
+    const duration = eventDuration(event);
+    const isCurrent = activeIds.has(event.id);
+    const isComplete = event.same_day && end !== null && selectedMinute >= end;
+    item.dataset.eventId = event.id;
+    if (isCurrent) {
+      item.classList.add("is-current");
+      item.setAttribute("aria-current", "true");
+    }
+    if (isComplete) item.classList.add("is-complete");
+    const hasStayTimer = duration && stationaryEvent(event);
+    const progress = hasStayTimer ? eventProgress(event, selectedMinute).remainingFraction : isComplete ? 0 : 1;
+    const durationLabel = duration ? formatDuration(duration) : "Timed marker";
+    const marker = hasStayTimer
+      ? `<i aria-label="${timerDescriptor(event)} duration ${durationLabel}" class="stop-countdown stop-countdown--small" role="img" style="--timer-progress: ${progress * 360}deg"></i>`
+      : '<i aria-hidden="true" class="stop-dot"></i>';
+    const timingLabel = duration ? (stationaryEvent(event) ? ` <span class="event-stay-label">${timerLabel(event)}</span>` : ` · ${durationLabel}`) : "";
+    const locationStatus = mealLocationStatus(event);
+    const locationLabel = locationStatus
+      ? ` <span class="meal-location-status meal-location-status--${event.venue ? "exact" : "flexible"}">${locationStatus}</span>`
+      : "";
+    const control = document.createElement("button");
+    control.type = "button";
+    control.className = "itinerary-row";
+    control.setAttribute("aria-label", `Skip to ${eventClockLabel(event)}, ${event.title}${locationStatus ? `, ${locationStatus.toLowerCase()}` : ""}`);
+    if (isCurrent) control.setAttribute("aria-current", "true");
+    control.innerHTML = `<span class="stop-time">${eventClockLabel(event)}</span>${marker}<span class="stop-event"><strong>${event.title}</strong><small>${eventCategoryLabel(event)}${locationLabel}${timingLabel}</small></span>`;
+    control.addEventListener("click", () => selectItineraryEvent(day, event));
+    item.appendChild(control);
+    if (isCurrent && event.category === "meal" && event.meal_options?.length) item.appendChild(renderMealOptions(event));
+    elements.dayStopList.appendChild(item);
+  });
+  revealCurrentRow();
+}
+
+function currentEventRow() {
+  return elements.dayStopList.querySelector(".is-current");
+}
+
+function currentRowIsVisible() {
+  const row = currentEventRow();
+  if (!row) return true;
+  const viewportBounds = elements.dayStopViewport.getBoundingClientRect();
+  const rowBounds = row.getBoundingClientRect();
+  return rowBounds.top >= viewportBounds.top + 4 && rowBounds.bottom <= viewportBounds.bottom - 4;
+}
+
+function updateCurrentRowControl() {
+  elements.showCurrentRow.hidden = followCurrentRow || currentRowIsVisible();
+}
+
+function revealCurrentRow(force = false) {
+  const row = currentEventRow();
+  if (!row) {
+    elements.showCurrentRow.hidden = true;
+    lastRevealedEventId = null;
+    return;
+  }
+  if (!followCurrentRow && !force) {
+    updateCurrentRowControl();
+    return;
+  }
+  const eventId = row.dataset.eventId;
+  if (!force && eventId === lastRevealedEventId && currentRowIsVisible()) return;
+  lastRevealedEventId = eventId;
+  const viewportBounds = elements.dayStopViewport.getBoundingClientRect();
+  const rowBounds = row.getBoundingClientRect();
+  if (rowBounds.top < viewportBounds.top + 6) {
+    elements.dayStopViewport.scrollTop -= viewportBounds.top + 6 - rowBounds.top;
+  } else if (rowBounds.bottom > viewportBounds.bottom - 6) {
+    elements.dayStopViewport.scrollTop += rowBounds.bottom - viewportBounds.bottom + 6;
+  }
+  elements.showCurrentRow.hidden = true;
+}
+
+function suspendCurrentRowFollowing() {
+  followCurrentRow = false;
+  window.requestAnimationFrame(updateCurrentRowControl);
+}
+
+function resumeCurrentRowFollowing() {
+  followCurrentRow = true;
+  revealCurrentRow(true);
+}
+
+function updateDetail(day, preferredEventId = null) {
+  elements.selectedRouteTitle.textContent = routeTitle(day);
+  elements.selectedRouteTitle.title = routeTitle(day);
+  renderEvents(day, preferredEventId);
+}
+
+function clearOvernightPresentation() {
+  const wasOvernight = displayedOvernightKey !== null;
+  displayedOvernightKey = null;
+  elements.mapWrap.classList.remove("is-overnight");
+  elements.journeyDetail.classList.remove("is-overnight");
+  elements.overnightStatus.setAttribute("aria-hidden", "true");
+  return wasOvernight;
+}
+
+function showOvernightPresentation(state) {
+  const key = `${state.fromDay.day}:${state.toDay.day}`;
+  const changed = displayedOvernightKey !== key;
+  displayedOvernightKey = key;
+  elements.mapWrap.classList.add("is-overnight");
+  elements.journeyDetail.classList.add("is-overnight");
+  elements.overnightStatus.setAttribute("aria-hidden", "false");
+  const baseName = exactLocation(state.stop.place) ? state.stop.place.name : `${state.stop.place.name} hotel area`;
+  elements.overnightStatusTitle.textContent = `Overnight at ${baseName}`;
+  elements.overnightStatusNext.textContent = `Next: Day ${state.toDay.day} · ${state.toDay.label}`;
+  return changed;
+}
+
+function animateDayDetailEntry() {
+  if (reduceMotion || typeof elements.dayStopList.animate !== "function") return;
+  elements.dayStopList.animate(
+    [{ opacity: 0.55, transform: "translateY(3px)" }, { opacity: 1, transform: "translateY(0)" }],
+    { duration: 280, easing: "ease-out" }
+  );
+}
+
+function selectBoundaryPoint(fraction) {
+  stopPlayback();
+  followCurrentRow = true;
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  activeBoundaryFraction = fraction;
+  renderBoundary(false);
+  focusBoundaryPoint(fraction);
+}
+
+function renderBoundaryStops(items) {
+  elements.showCurrentRow.hidden = true;
+  lastRevealedEventId = null;
+  elements.dayStopList.replaceChildren();
+  items.forEach(({ time, name, fraction }) => {
+    const item = document.createElement("li");
+    const isCurrent = activeBoundaryFraction === fraction;
+    item.dataset.boundaryFraction = String(fraction);
+    if (isCurrent) {
+      item.classList.add("is-current");
+      item.setAttribute("aria-current", "true");
+    }
+    const control = document.createElement("button");
+    control.type = "button";
+    control.className = "itinerary-row";
+    control.setAttribute("aria-label", `Skip to ${time}, ${name}`);
+    if (isCurrent) control.setAttribute("aria-current", "true");
+    control.innerHTML = `<span class="stop-time">${time}</span><i aria-hidden="true" class="stop-dot"></i><span class="stop-event"><strong>${name}</strong><small>Flight endpoint</small></span>`;
+    control.addEventListener("click", () => selectBoundaryPoint(fraction));
+    item.appendChild(control);
+    elements.dayStopList.appendChild(item);
+  });
+}
+
+function updateBoundaryDetail(context) {
+  const state = context.state;
+  elements.alternativeControl.hidden = true;
+  elements.showAlternatives.checked = false;
+  elements.dayRange.disabled = true;
+
+  if (state.kind === "transition") {
+    clearOvernightPresentation();
+    const transition = state.transition;
+    const booking = transition.booking;
+    elements.selectedRouteTitle.textContent = `${transition.from_place.name} → ${transition.to_place.name}`;
+    elements.selectedRouteTitle.title = elements.selectedRouteTitle.textContent;
+    elements.dayRangeTitle.textContent = "Cross-day flight";
+    elements.dayRangeWindow.textContent = booking.date_label;
+    renderBoundaryStops([
+      { time: booking.departure_time, name: transition.from_place.name, fraction: 0 },
+      { time: booking.arrival_time, name: transition.to_place.name, fraction: 1 }
+    ]);
+  } else {
+    selectedDayIndex = context.segment.dayIndex;
+    selectedMinute = clockToMinutes(state.fromDay.window_end);
+    if (showOvernightPresentation(state)) {
+      elements.dayRange.min = String(clockToMinutes(state.fromDay.window_start));
+      elements.dayRange.max = String(selectedMinute);
+      renderDayTicks(state.fromDay);
+      updateDetail(state.fromDay);
+    }
+    elements.dayRange.value = String(selectedMinute);
+    elements.dayRangeTitle.textContent = `Day ${state.fromDay.day} complete`;
+    elements.dayRangeWindow.textContent = `Overnight → Day ${state.toDay.day}`;
+  }
+}
+
+function fitBoundary(context, moveToOvernight = false) {
+  if (!mapReady || !autoFollowing) return;
+  if (context.state.kind === "overnight") {
+    if (!moveToOvernight) return;
+    lastCameraTarget = `${context.segment.kind}:${context.segmentIndex}`;
+    const zoom = Math.max(map.getZoom(), 13);
+    map[reduceMotion ? "jumpTo" : "easeTo"]({ center: context.state.point, zoom, duration: reduceMotion ? 0 : 300 });
+    return;
+  }
+  lastCameraTarget = `${context.segment.kind}:${context.segmentIndex}`;
+  map.fitBounds(boundsForCoordinates(context.state.transition.geometry.coordinates), { padding: 70, maxZoom: 4, duration: reduceMotion ? 0 : 500, linear: true });
+}
+
+function renderBoundary(fit = true) {
+  const context = currentJourneyContext();
+  updateBoundaryDetail(context);
+  syncTripRange();
+  if (mapReady) {
+    renderRouteOverlay();
+    if (fit) fitBoundary(context);
+  } else if (fallbackMode && context.state.kind !== "overnight") {
+    renderSvgFallback();
+  }
+}
+
+function updateMapData(day, state) {
+  setSourceData("journey-alternatives", alternativeFeatures(day));
+  renderRouteOverlay();
+}
+
+function markerVariant(state) {
+  if (state.kind === "transition") return "schematic";
+  if (state.kind === "leg" && (state.leg.geometry_kind === "schematic" || state.leg.status !== "verified")) return "schematic";
+  return "verified";
+}
+
+function renderRouteOverlay() {
+  if (!map || !mapReady || fallbackMode) return;
+  const context = currentJourneyContext();
+  const day = context.day;
+  const state = context.state;
+  const progress = progressCollections(context);
+  const width = elements.mapContainer.clientWidth;
+  const height = elements.mapContainer.clientHeight;
+  if (!width || !height) return;
+  elements.routeOverlay.hidden = false;
+
+  const namespace = "http://www.w3.org/2000/svg";
+  const create = (name, className) => {
+    const node = document.createElementNS(namespace, name);
+    if (className) node.setAttribute("class", className);
+    return node;
+  };
+  const project = (coordinate) => map.project(coordinate);
+  const appendLine = (feature, className) => {
+    const points = feature.geometry.coordinates.map(project);
+    const xs = points.map((point) => point.x);
+    const ys = points.map((point) => point.y);
+    if (Math.max(...xs) < -120 || Math.min(...xs) > width + 120 || Math.max(...ys) < -120 || Math.min(...ys) > height + 120) return;
+    const unresolved = feature.properties.status === "unresolved" ? " trail-unresolved" : "";
+    const visualMode = transportVisualMode(feature.properties);
+    const modeClass = visualMode ? ` trail-${visualMode}` : "";
+    const line = create("polyline", `${className}${unresolved}${modeClass}`);
+    line.setAttribute("points", points.map((point) => `${point.x},${point.y}`).join(" "));
+    elements.routeOverlay.appendChild(line);
+  };
+
+  elements.routeOverlay.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  elements.routeOverlay.replaceChildren();
+  progress.upcoming.features.forEach((feature) => appendLine(feature, "trail-upcoming"));
+  progress.completed.features.forEach((feature) => appendLine(feature, "trail-travelled"));
+  progress.active.features.forEach((feature) => appendLine(feature, "trail-active"));
+
+  (day?.legs || []).forEach((leg, index) => {
+    const point = project(lineProgress(legCoordinates(day, leg), index % 2 === 0 ? 0.38 : 0.62).point);
+    if (point.x < -100 || point.x > width + 100 || point.y < -40 || point.y > height + 40) return;
+    const visualMode = transportVisualMode(leg);
+    const label = create("text", visualMode ? `trail-label trail-label--${visualMode}` : "trail-label");
+    label.setAttribute("x", point.x);
+    label.setAttribute("y", point.y - 8);
+    label.textContent = legLabel(leg);
+    elements.routeOverlay.appendChild(label);
+  });
+
+  if (state.kind === "transition") {
+    const point = project(lineProgress(state.transition.geometry.coordinates, 0.5).point);
+    const label = create("text", "trail-label");
+    label.setAttribute("x", point.x);
+    label.setAttribute("y", point.y - 8);
+    label.textContent = "Confirmed overnight flight";
+    elements.routeOverlay.appendChild(label);
+  }
+
+  const visibleStops = day ? visibleLocations(day) : (state.kind === "transition" ? [
+    { role: "activity", place: state.transition.from_place },
+    { role: "activity", place: state.transition.to_place }
+  ] : [{ role: "lodging_base", place: state.fromDay.stops.at(-1).place }]);
+  visibleStops.forEach((stop) => {
+    const point = project(coordinateForStop(stop));
+    const uncertainBase = uncertainLodging(stop);
+    const mealStop = mealMarkerStop(stop);
+    const circleClass = mealStop
+      ? `trail-stop trail-stop--meal-option trail-stop--meal-${stop.option_role}${stop.evidence_status === "provisional" ? " trail-stop--meal-provisional" : ""}`
+      : uncertainBase ? "trail-stop trail-stop--uncertain" : "trail-stop";
+    const circle = create("circle", circleClass);
+    circle.setAttribute("cx", point.x);
+    circle.setAttribute("cy", point.y);
+    circle.setAttribute("r", mealStop ? "11" : uncertainBase ? "15" : "5");
+    elements.routeOverlay.appendChild(circle);
+    if (mealStop) {
+      const glyph = create("text", "trail-meal-glyph");
+      glyph.setAttribute("x", point.x);
+      glyph.setAttribute("y", point.y + 4);
+      glyph.textContent = String(stop.rank);
+      elements.routeOverlay.appendChild(glyph);
+    }
+    const labelClass = mealStop ? `trail-stop-label trail-stop-label--meal trail-stop-label--meal-${stop.option_role}` : "trail-stop-label";
+    const label = create("text", labelClass);
+    label.setAttribute("x", point.x + (mealStop ? 16 : 8));
+    label.setAttribute("y", point.y - (mealStop ? 12 : 8));
+    label.textContent = mealStop
+      ? mealMarkerLabel(stop)
+      : uncertainBase ? `${stop.place.name} hotel area · location TBD` : stop.place.name;
+    elements.routeOverlay.appendChild(label);
+  });
+
+  if (state.kind === "unresolved_leg") {
+    const endpointPoints = state.endpoints.map(project);
+    const transfer = create("polyline", "trail-tbd-progress");
+    transfer.setAttribute("points", endpointPoints.map((point) => `${point.x},${point.y}`).join(" "));
+    transfer.setAttribute("stroke-dashoffset", String(-state.fraction * 36));
+    elements.routeOverlay.appendChild(transfer);
+
+    endpointPoints.forEach((point, index) => {
+      const endpoint = create("circle", `trail-transfer-endpoint trail-transfer-endpoint--${index === 0 ? "origin" : "destination"}`);
+      endpoint.setAttribute("cx", point.x);
+      endpoint.setAttribute("cy", point.y);
+      endpoint.setAttribute("r", "10");
+      endpoint.setAttribute("opacity", String(index === 0 ? 1 - state.fraction * 0.7 : 0.3 + state.fraction * 0.7));
+      elements.routeOverlay.appendChild(endpoint);
+    });
+  } else {
+    const timerEvent = stationaryTimerEventAt(day, state, selectedMinute);
+    const timer = timerEvent && eventDuration(timerEvent) ? eventProgress(timerEvent, selectedMinute) : null;
+    const position = project(day ? displayPoint(day, state) : state.point);
+    if (timer) {
+      const timerTrack = create("circle", "trail-stop-timer-track");
+      timerTrack.setAttribute("cx", position.x);
+      timerTrack.setAttribute("cy", position.y);
+      timerTrack.setAttribute("r", "16");
+      elements.routeOverlay.appendChild(timerTrack);
+      const timerProgress = create("circle", "trail-stop-timer-progress");
+      timerProgress.setAttribute("cx", position.x);
+      timerProgress.setAttribute("cy", position.y);
+      timerProgress.setAttribute("r", "16");
+      timerProgress.setAttribute("pathLength", "100");
+      timerProgress.setAttribute("stroke-dasharray", "100");
+      timerProgress.setAttribute("stroke-dashoffset", String(100 * (1 - timer.remainingFraction)));
+      elements.routeOverlay.appendChild(timerProgress);
+      const timerText = create("text", "trail-stop-duration-label");
+      timerText.setAttribute("x", position.x + 22);
+      timerText.setAttribute("y", position.y + 20);
+      timerText.textContent = timerLabel(timerEvent);
+      elements.routeOverlay.appendChild(timerText);
+    }
+    const activeMeal = day ? activeMealLocationAt(day, state, selectedMinute) : null;
+    const visualMode = state.kind === "leg" ? transportVisualMode(state.leg) : null;
+    const modeClass = visualMode ? ` trail-position--${visualMode}` : "";
+    const mealClass = activeMeal ? ` trail-position--${activeMeal.exact ? "meal" : "meal-area"}` : "";
+    const current = create("circle", `trail-position trail-position--${markerVariant(state)}${modeClass}${mealClass}`);
+    current.setAttribute("cx", position.x);
+    current.setAttribute("cy", position.y);
+    current.setAttribute("r", activeMeal ? "15" : emphasizedVisualMode(visualMode) ? "10" : "8");
+    elements.routeOverlay.appendChild(current);
+  }
+}
+
+function updateMotionOverlay(context) {
+  if (fallbackMode && !mapReady) {
+    if (context.state.kind === "overnight") return;
+    renderSvgFallback();
+    return;
+  }
+  if (!mapReady || !map) return;
+  const state = context.state;
+  const project = (coordinate) => map.project(coordinate);
+
+  if (state.kind === "leg" || state.kind === "transition") {
+    const active = elements.routeOverlay.querySelector(".trail-active");
+    if (active) {
+      const coordinates = state.partial;
+      active.setAttribute("points", coordinates.map(project).map((point) => `${point.x},${point.y}`).join(" "));
+    }
+  }
+
+  if (state.kind === "unresolved_leg") {
+    const transfer = elements.routeOverlay.querySelector(".trail-tbd-progress");
+    if (transfer) transfer.setAttribute("stroke-dashoffset", String(-state.fraction * 36));
+    const origin = elements.routeOverlay.querySelector(".trail-transfer-endpoint--origin");
+    const destination = elements.routeOverlay.querySelector(".trail-transfer-endpoint--destination");
+    if (origin) origin.setAttribute("opacity", String(1 - state.fraction * 0.7));
+    if (destination) destination.setAttribute("opacity", String(0.3 + state.fraction * 0.7));
+    return;
+  }
+
+  const current = elements.routeOverlay.querySelector(".trail-position");
+  if (!current) return;
+  const day = context.day;
+  const position = project(day ? displayPoint(day, state) : state.point);
+  current.setAttribute("cx", position.x);
+  current.setAttribute("cy", position.y);
+  const activeMeal = day ? activeMealLocationAt(day, state, selectedMinute) : null;
+  const visualMode = state.kind === "leg" ? transportVisualMode(state.leg) : null;
+  const modeClass = visualMode ? ` trail-position--${visualMode}` : "";
+  const mealClass = activeMeal ? ` trail-position--${activeMeal.exact ? "meal" : "meal-area"}` : "";
+  current.setAttribute("class", `trail-position trail-position--${markerVariant(state)}${modeClass}${mealClass}`);
+  current.setAttribute("r", activeMeal ? "15" : emphasizedVisualMode(visualMode) ? "10" : "8");
+  const timerEvent = stationaryTimerEventAt(day, state, selectedMinute);
+  const timer = timerEvent && eventDuration(timerEvent) ? eventProgress(timerEvent, selectedMinute) : null;
+  const timerRings = elements.routeOverlay.querySelectorAll(".trail-stop-timer-track, .trail-stop-timer-progress, .trail-stop-duration-label");
+  if (!timer) {
+    timerRings.forEach((ring) => ring.remove());
+    return;
+  }
+  timerRings.forEach((ring) => {
+    if (ring.tagName.toLowerCase() === "text") {
+      ring.setAttribute("x", position.x + 22);
+      ring.setAttribute("y", position.y + 20);
+    } else {
+      ring.setAttribute("cx", position.x);
+      ring.setAttribute("cy", position.y);
+    }
+  });
+  const timerRing = elements.routeOverlay.querySelector(".trail-stop-timer-progress");
+  if (timerRing && timer) timerRing.setAttribute("stroke-dashoffset", String(100 * (1 - timer.remainingFraction)));
+}
+
+function boundsForCoordinates(coordinates) {
+  const bounds = new maplibregl.LngLatBounds();
+  coordinates.forEach((coordinate) => bounds.extend(coordinate));
+  return bounds;
+}
+
+function stationaryFocus(day, state) {
+  const meal = activeMealLocationAt(day, state, selectedMinute);
+  const event = primaryEventAt(day, selectedMinute);
+  return {
+    point: displayPoint(day, state),
+    place: meal?.place || event?.places[0] || state.stop.place
+  };
+}
+
+function cameraTargetKey(day, state) {
+  if (movementState(state)) return `${state.kind}:${state.leg.id}`;
+  const meal = activeMealAt(day, selectedMinute);
+  if (meal?.meal_options?.length > 1) return `meal-options:${meal.id}`;
+  const { point } = stationaryFocus(day, state);
+  return `stop:${point.map((value) => value.toFixed(5)).join(":")}`;
+}
+
+function fitCurrentState(state, force = false) {
+  if (!mapReady || !autoFollowing) return false;
+  const day = currentDay();
+  const target = cameraTargetKey(day, state);
+  if (!force && target === lastCameraTarget) return false;
+  lastCameraTarget = target;
+  if (movementState(state)) {
+    const maxZoom = state.leg.mode === "walk" ? 17 : state.leg.mode === "flight" ? 5 : 12;
+    map.fitBounds(boundsForCoordinates(legCoordinates(day, state.leg)), { padding: 70, maxZoom, duration: reduceMotion ? 0 : 240, linear: true });
+    return true;
+  }
+  const mealOptions = activeMealOptionsAt(day, selectedMinute);
+  if (mealOptions.length > 1) {
+    map.fitBounds(boundsForCoordinates(mealOptions.map((option) => [option.place.coordinates.longitude, option.place.coordinates.latitude])), { padding: 90, maxZoom: 16, duration: reduceMotion ? 0 : 300, linear: true });
+    return true;
+  }
+  const { point, place } = stationaryFocus(day, state);
+  const zoom = exactLocation(place) ? STOP_FOCUS_ZOOM : UNCERTAIN_STOP_FOCUS_ZOOM;
+  map[reduceMotion ? "jumpTo" : "easeTo"]({ center: point, zoom, duration: reduceMotion ? 0 : 300 });
+  return true;
+}
+
+function recenterRoute() {
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  const segment = timelineSegments[activeTimelineIndex];
+  if (segment.kind === "day") {
+    const state = renderMinute(false);
+    fitCurrentState(state, true);
+  } else {
+    fitBoundary(currentJourneyContext(), true);
+  }
+}
+
+function dayProgressFraction(day, minute = selectedMinute) {
+  const start = clockToMinutes(day.window_start);
+  const end = clockToMinutes(day.window_end);
+  return Math.max(0, Math.min(1, (minute - start) / Math.max(1, end - start)));
+}
+
+function syncTripRange() {
+  const segment = timelineSegments[activeTimelineIndex];
+  if (segment.kind === "day") {
+    const day = currentDay();
+    elements.tripRange.value = String(segment.start + segment.weight * dayProgressFraction(day));
+    elements.tripPosition.textContent = `Day ${day.day} of ${days.length} · ${day.label} · ${minutesToClock(selectedMinute)}`;
+    elements.tripRange.setAttribute("aria-valuetext", `Day ${day.day} of ${days.length}, ${day.label}, ${minutesToClock(selectedMinute)}`);
+  } else if (segment.kind === "transition") {
+    elements.tripRange.value = String(segment.start + segment.weight * activeBoundaryFraction);
+    elements.tripPosition.textContent = segment.transition.before_day ? `Flight to Day ${segment.transition.before_day}` : `Return flight to ${segment.transition.to_place.name}`;
+    elements.tripRange.setAttribute("aria-valuetext", `${elements.tripPosition.textContent}, ${Math.round(activeBoundaryFraction * 100)} percent`);
+  } else {
+    elements.tripRange.value = String(segment.start + segment.weight * activeBoundaryFraction);
+    elements.tripPosition.textContent = `Overnight · Day ${days[segment.dayIndex].day} to Day ${days[segment.nextDayIndex].day}`;
+    elements.tripRange.setAttribute("aria-valuetext", `${elements.tripPosition.textContent}, ${Math.round(activeBoundaryFraction * 100)} percent`);
+  }
+  syncTripTimelineState();
+}
+
+function tripPositionForValue(value) {
+  const bounded = Math.max(0, Math.min(timelineTotal, value));
+  let segmentIndex = timelineSegments.findIndex((segment, index) => bounded < segment.end || index === timelineSegments.length - 1);
+  if (segmentIndex < 0) segmentIndex = timelineSegments.length - 1;
+  const segment = timelineSegments[segmentIndex];
+  const fraction = Math.max(0, Math.min(1, (bounded - segment.start) / segment.weight));
+  if (segment.kind !== "day") return { kind: segment.kind, segmentIndex, fraction };
+  const day = days[segment.dayIndex];
+  const start = clockToMinutes(day.window_start);
+  const end = clockToMinutes(day.window_end);
+  return { kind: "day", segmentIndex, dayIndex: segment.dayIndex, minute: start + fraction * (end - start) };
+}
+
+function renderMinute(fitActive = false, preferredEventId = null) {
+  const day = currentDay();
+  const state = stateAt(day, selectedMinute);
+  elements.dayRange.value = String(selectedMinute);
+  syncTripRange();
+  updateDetail(day, preferredEventId);
+  if (mapReady) updateMapData(day, state);
+  else if (fallbackMode) renderSvgFallback();
+  if (fitActive) fitCurrentState(state);
+  return state;
+}
+
+function renderDay(fit = true, resetToStart = false, preferredEventId = null) {
+  const day = currentDay();
+  const leavingOvernight = clearOvernightPresentation();
+  elements.dayRange.disabled = false;
+  if (resetToStart) selectedMinute = clockToMinutes(day.window_start);
+  elements.dayRange.min = String(clockToMinutes(day.window_start));
+  elements.dayRange.max = String(clockToMinutes(day.window_end));
+  elements.dayRange.value = String(selectedMinute);
+  elements.dayRangeTitle.textContent = `Day ${day.day} timeline`;
+  elements.dayRangeWindow.textContent = `${day.window_start}–${day.window_end}`;
+  elements.alternativeControl.hidden = day.alternatives.length === 0;
+  elements.showAlternatives.checked = false;
+  renderDayTicks(day);
+  lastCameraTarget = null;
+  const state = renderMinute(false, preferredEventId);
+  if (leavingOvernight) animateDayDetailEntry();
+  if (mapReady) {
+    updateMapData(day, state);
+    if (fit) fitCurrentState(state);
+  } else if (fallbackMode) {
+    renderSvgFallback();
+  }
+}
+
+function stopPlayback() {
+  if (playbackFrame) window.cancelAnimationFrame(playbackFrame);
+  playbackFrame = null;
+  playbackLastTimestamp = null;
+  playbackStateKey = null;
+  playbackCameraHoldUntil = 0;
+  playbackStationaryTiming = null;
+  reducedMotionAccumulator = 0;
+  elements.play.textContent = "Play trip";
+  elements.play.setAttribute("aria-pressed", "false");
+}
+
+function playbackKey(segment, state) {
+  if (segment.kind === "transition") return `transition:${segment.transition.id}`;
+  if (segment.kind === "overnight") return `overnight:${segment.dayIndex}`;
+  if (movementState(state)) return `${state.kind}:${state.leg.id}`;
+  const eventIds = activeEventsAt(currentDay(), selectedMinute).map((event) => event.id).join(",");
+  return `stop:${state.stop.id}:events:${eventIds}`;
+}
+
+function nextDayBoundary(day, minute) {
+  const boundaries = [
+    clockToMinutes(day.window_end),
+    ...day.legs.flatMap((leg) => [clockToMinutes(leg.start_time), clockToMinutes(leg.end_time)]),
+    ...day.stops.flatMap((stop) => [clockToMinutes(stop.start_time), clockToMinutes(stop.end_time)]),
+    ...day.events.filter((event) => event.same_day).flatMap((event) => [event.start_time, event.end_time].filter(Boolean).map(clockToMinutes))
+  ].filter((value) => value > minute + 0.0001);
+  return Math.min(...boundaries);
+}
+
+function stationaryPlaybackTiming(day, state) {
+  const timerEvent = stationaryTimerEventAt(day, state, selectedMinute);
+  if (!timerEvent) return null;
+  const endMinute = nextDayBoundary(day, selectedMinute);
+  const minuteSpan = endMinute - selectedMinute;
+  const naturalDurationMs = minuteSpan / NON_MOVEMENT_MINUTES_PER_MS;
+  return {
+    startMinute: selectedMinute,
+    endMinute,
+    elapsedMs: 0,
+    durationMs: Math.max(MIN_STAY_PLAYBACK_MS, naturalDurationMs)
+  };
+}
+
+function advanceTimelineSegment(timestamp) {
+  if (activeTimelineIndex >= timelineSegments.length - 1) {
+    stopPlayback();
+    return false;
+  }
+  activeTimelineIndex += 1;
+  activeBoundaryFraction = 0;
+  playbackStateKey = null;
+  playbackCameraHoldUntil = 0;
+  playbackStationaryTiming = null;
+  reducedMotionAccumulator = 0;
+  const next = timelineSegments[activeTimelineIndex];
+  if (next.kind === "day") {
+    selectedDayIndex = next.dayIndex;
+    selectedMinute = clockToMinutes(currentDay().window_start);
+    renderDay(true);
+    if (mapReady && autoFollowing && !reduceMotion) playbackCameraHoldUntil = timestamp + 480;
+  } else {
+    renderBoundary(true);
+    if (next.kind === "transition" && mapReady && autoFollowing && !reduceMotion) playbackCameraHoldUntil = timestamp + 520;
+  }
+  return true;
+}
+
+function renderPlaybackProgress(timestamp, forceDetail = false) {
+  const context = currentJourneyContext();
+  if (context.segment.kind === "day") {
+    elements.dayRange.value = String(selectedMinute);
+    syncTripRange();
+    if (forceDetail || timestamp - playbackUiTimestamp >= PLAYBACK_UI_INTERVAL_MS) {
+      updateDetail(context.day);
+      playbackUiTimestamp = timestamp;
+    }
+  } else {
+    syncTripRange();
+    if (forceDetail || timestamp - playbackUiTimestamp >= PLAYBACK_UI_INTERVAL_MS) {
+      updateBoundaryDetail(context);
+      playbackUiTimestamp = timestamp;
+    }
+  }
+  updateMotionOverlay(context);
+}
+
+function reducedMotionAdvance(segment, state, delta) {
+  reducedMotionAccumulator += delta;
+  const readableStay = segment.kind === "day" && stationaryTimerEventAt(currentDay(), state, selectedMinute);
+  const stepDuration = readableStay ? MIN_STAY_PLAYBACK_MS : REDUCED_MOTION_STEP_MS;
+  if (reducedMotionAccumulator < stepDuration) return false;
+  reducedMotionAccumulator = 0;
+  if (segment.kind === "transition" || segment.kind === "overnight") {
+    activeBoundaryFraction = 1;
+  } else if (movementState(state)) {
+    selectedMinute = clockToMinutes(state.leg.end_time);
+  } else {
+    selectedMinute = nextDayBoundary(currentDay(), selectedMinute);
+  }
+  return true;
+}
+
+function playbackTick(timestamp) {
+  if (!playbackFrame) return;
+  if (playbackLastTimestamp === null) playbackLastTimestamp = timestamp;
+  const delta = Math.min(100, Math.max(0, timestamp - playbackLastTimestamp));
+  playbackLastTimestamp = timestamp;
+  const segment = timelineSegments[activeTimelineIndex];
+
+  if (segment.kind !== "day") {
+    const context = currentJourneyContext();
+    const key = playbackKey(segment, context.state);
+    if (key !== playbackStateKey) {
+      playbackStateKey = key;
+      renderBoundary(false);
+      playbackUiTimestamp = timestamp;
+    }
+    if (timestamp >= playbackCameraHoldUntil) {
+      if (reduceMotion) {
+        reducedMotionAdvance(segment, context.state, delta);
+      } else {
+        const duration = segment.kind === "transition" ? FLIGHT_PLAYBACK_MS : OVERNIGHT_PLAYBACK_MS;
+        activeBoundaryFraction = Math.min(1, activeBoundaryFraction + delta / duration);
+      }
+      renderPlaybackProgress(timestamp);
+    }
+    if (activeBoundaryFraction >= 1) {
+      renderPlaybackProgress(timestamp, true);
+      if (!advanceTimelineSegment(timestamp)) return;
+    }
+    playbackFrame = window.requestAnimationFrame(playbackTick);
+    return;
+  }
+
+  const day = currentDay();
+  const dayEnd = clockToMinutes(day.window_end);
+  if (selectedMinute >= dayEnd) {
+    if (!advanceTimelineSegment(timestamp)) return;
+    playbackFrame = window.requestAnimationFrame(playbackTick);
+    return;
+  }
+
+  const state = stateAt(day, selectedMinute);
+  const key = playbackKey(segment, state);
+  if (key !== playbackStateKey) {
+    playbackStateKey = key;
+    playbackStationaryTiming = stationaryPlaybackTiming(day, state);
+    renderMinute(false);
+    playbackUiTimestamp = timestamp;
+    if (fitCurrentState(state)) {
+      if (mapReady && autoFollowing && !reduceMotion) playbackCameraHoldUntil = timestamp + CAMERA_SETTLE_MS;
+    }
+  }
+
+  if (timestamp >= playbackCameraHoldUntil) {
+    if (reduceMotion) {
+      reducedMotionAdvance(segment, state, delta);
+    } else if (movementState(state)) {
+      const start = clockToMinutes(state.leg.start_time);
+      const end = clockToMinutes(state.leg.end_time);
+      const presentation = presentationForVisualMode(transportVisualMode(state.leg));
+      const playbackDuration = presentation
+        ? presentation.playback_ms
+        : transportVisualMode(state.leg) === "bus"
+        ? BUS_PLAYBACK_MS
+        : MOVEMENT_PLAYBACK_MS;
+      selectedMinute = Math.min(end, selectedMinute + delta * (end - start) / playbackDuration);
+    } else if (playbackStationaryTiming) {
+      playbackStationaryTiming.elapsedMs = Math.min(
+        playbackStationaryTiming.durationMs,
+        playbackStationaryTiming.elapsedMs + delta
+      );
+      const fraction = playbackStationaryTiming.elapsedMs / playbackStationaryTiming.durationMs;
+      selectedMinute = playbackStationaryTiming.startMinute
+        + fraction * (playbackStationaryTiming.endMinute - playbackStationaryTiming.startMinute);
+    } else {
+      const boundary = nextDayBoundary(day, selectedMinute);
+      selectedMinute = Math.min(boundary, selectedMinute + delta * NON_MOVEMENT_MINUTES_PER_MS);
+    }
+    const nextState = stateAt(day, selectedMinute);
+    if (playbackKey(segment, nextState) === playbackStateKey) {
+      renderPlaybackProgress(timestamp);
+    } else {
+      playbackStateKey = null;
+      playbackStationaryTiming = null;
+      renderMinute(false);
+      playbackUiTimestamp = timestamp;
+    }
+  }
+
+  playbackFrame = window.requestAnimationFrame(playbackTick);
+}
+
+function startPlayback() {
+  const activeSegment = timelineSegments[activeTimelineIndex];
+  if (activeTimelineIndex === timelineSegments.length - 1 && activeSegment.kind === "transition" && activeBoundaryFraction >= 1) {
+    selectedDayIndex = 0;
+    selectedMinute = clockToMinutes(days[0].window_start);
+    activeTimelineIndex = daySegmentIndexes.get(0);
+    activeBoundaryFraction = 0;
+    renderDay(true);
+  }
+  recenterRoute();
+  elements.play.textContent = "Pause trip";
+  elements.play.setAttribute("aria-pressed", "true");
+  playbackLastTimestamp = null;
+  playbackStateKey = null;
+  playbackStationaryTiming = null;
+  playbackUiTimestamp = 0;
+  reducedMotionAccumulator = 0;
+  playbackFrame = window.requestAnimationFrame(playbackTick);
+}
+
+function beginTimelineScrub(event) {
+  if (timelineScrubPointerId !== null || (event.pointerType === "mouse" && event.button !== 0)) return;
+  timelineScrubPointerId = event.pointerId;
+  resumePlaybackAfterScrub = Boolean(playbackFrame);
+  if (resumePlaybackAfterScrub) stopPlayback();
+}
+
+function endTimelineScrub(event) {
+  if (event.pointerId !== timelineScrubPointerId) return;
+  timelineScrubPointerId = null;
+  const shouldResume = resumePlaybackAfterScrub;
+  resumePlaybackAfterScrub = false;
+  if (shouldResume && !playbackFrame) startPlayback();
+}
+
+function followScrubCamera(previousSegmentIndex) {
+  if (!mapReady || !autoFollowing) return;
+  const context = currentJourneyContext();
+  const segmentChanged = context.segmentIndex !== previousSegmentIndex;
+  if (context.segment.kind !== "day") {
+    const adjacentSegment = Math.abs(context.segmentIndex - previousSegmentIndex) === 1;
+    if (segmentChanged) fitBoundary(context, !adjacentSegment);
+    return;
+  }
+  fitCurrentState(context.state);
+}
+
+function fallbackViewportCoordinates(context) {
+  if (!context.day) return context.state.kind === "transition" ? context.state.transition.geometry.coordinates : [context.state.point];
+  if (movementState(context.state)) return legCoordinates(context.day, context.state.leg);
+  const mealOptions = activeMealOptionsAt(context.day, selectedMinute);
+  if (mealOptions.length > 1) return mealOptions.map((option) => [option.place.coordinates.longitude, option.place.coordinates.latitude]);
+  const { point, place } = stationaryFocus(context.day, context.state);
+  const radius = exactLocation(place) ? 0.012 : 0.05;
+  return [
+    [point[0] - radius, point[1] - radius],
+    [point[0] + radius, point[1] + radius]
+  ];
+}
+
+function renderSvgFallback() {
+  fallbackMode = true;
+  mapReady = false;
+  elements.routeOverlay.hidden = true;
+  elements.routeOverlay.replaceChildren();
+  elements.mapLoading.hidden = true;
+  elements.mapWarning.hidden = false;
+  const context = currentJourneyContext();
+  const day = context.day;
+  const state = context.state;
+  const width = Math.max(320, elements.mapContainer.clientWidth);
+  const height = Math.max(360, elements.mapContainer.clientHeight);
+  const coordinates = fallbackViewportCoordinates(context);
+  const longitudes = coordinates.map((coordinate) => coordinate[0]);
+  const latitudes = coordinates.map((coordinate) => coordinate[1]);
+  let minLon = Math.min(...longitudes);
+  let maxLon = Math.max(...longitudes);
+  let minLat = Math.min(...latitudes);
+  let maxLat = Math.max(...latitudes);
+  if (minLon === maxLon) { minLon -= 0.1; maxLon += 0.1; }
+  if (minLat === maxLat) { minLat -= 0.1; maxLat += 0.1; }
+  const lonPad = (maxLon - minLon) * 0.15;
+  const latPad = (maxLat - minLat) * 0.15;
+  minLon -= lonPad; maxLon += lonPad; minLat -= latPad; maxLat += latPad;
+  const project = ([longitude, latitude]) => [38 + ((longitude - minLon) / (maxLon - minLon)) * (width - 76), 38 + ((maxLat - latitude) / (maxLat - minLat)) * (height - 76)];
+  const namespace = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(namespace, "svg");
+  svg.classList.add("journey-fallback");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", day ? `Fallback route map for day ${day.day}` : state.kind === "transition" ? "Fallback route map for confirmed flight" : "Fallback overnight lodging location");
+  (day?.legs || []).forEach((leg) => {
+    const coordinates = legCoordinates(day, leg);
+    const path = document.createElementNS(namespace, "polyline");
+    const visualMode = transportVisualMode(leg);
+    if (visualMode) path.classList.add(`trail-${visualMode}`);
+    path.setAttribute("points", coordinates.map(project).map((point) => point.join(",")).join(" "));
+    path.setAttribute("fill", "none");
+    const modeStroke = transportColor(visualMode);
+    path.setAttribute("stroke", modeStroke || (clockToMinutes(leg.end_time) < selectedMinute ? "#245f73" : "#a96b42"));
+    path.setAttribute("stroke-width", visualMode ? "6" : leg.mode === "walk" ? "5" : "3");
+    if (leg.status === "unresolved") path.setAttribute("stroke-dasharray", "7 6");
+    svg.appendChild(path);
+
+    const [labelX, labelY] = project(lineProgress(coordinates, 0.5).point);
+    const label = document.createElementNS(namespace, "text");
+    label.setAttribute("x", labelX);
+    label.setAttribute("y", labelY - 7);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("paint-order", "stroke");
+    label.setAttribute("stroke", "#fffefb");
+    label.setAttribute("stroke-width", "4");
+    label.setAttribute("fill", "#111111");
+    label.setAttribute("font-size", "11");
+    label.textContent = legLabel(leg);
+    svg.appendChild(label);
+  });
+  if (state.kind === "transition") {
+    const path = document.createElementNS(namespace, "polyline");
+    path.setAttribute("points", state.transition.geometry.coordinates.map(project).map((point) => point.join(",")).join(" "));
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "#a96b42");
+    path.setAttribute("stroke-width", "4");
+    svg.appendChild(path);
+    const travelled = document.createElementNS(namespace, "polyline");
+    travelled.setAttribute("points", state.partial.map(project).map((point) => point.join(",")).join(" "));
+    travelled.setAttribute("fill", "none");
+    travelled.setAttribute("stroke", "#245f73");
+    travelled.setAttribute("stroke-width", "6");
+    svg.appendChild(travelled);
+
+    const [labelX, labelY] = project(lineProgress(state.transition.geometry.coordinates, 0.5).point);
+    const label = document.createElementNS(namespace, "text");
+    label.setAttribute("x", labelX);
+    label.setAttribute("y", labelY - 7);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("paint-order", "stroke");
+    label.setAttribute("stroke", "#fffefb");
+    label.setAttribute("stroke-width", "4");
+    label.setAttribute("fill", "#111111");
+    label.setAttribute("font-size", "11");
+    label.textContent = "Confirmed overnight flight";
+    svg.appendChild(label);
+  }
+  if (state.kind === "leg") {
+    const travelled = document.createElementNS(namespace, "polyline");
+    const visualMode = transportVisualMode(state.leg);
+    if (visualMode) travelled.classList.add(`trail-${visualMode}`, "trail-active");
+    travelled.setAttribute("points", state.partial.map(project).map((point) => point.join(",")).join(" "));
+    travelled.setAttribute("fill", "none");
+    travelled.setAttribute("stroke", transportColor(visualMode) || "#245f73");
+    travelled.setAttribute("stroke-width", visualMode ? "8" : "6");
+    svg.appendChild(travelled);
+  }
+  if (state.kind === "unresolved_leg") {
+    const endpointPoints = state.endpoints.map(project);
+    const transfer = document.createElementNS(namespace, "polyline");
+    transfer.setAttribute("points", endpointPoints.map((point) => point.join(",")).join(" "));
+    transfer.setAttribute("fill", "none");
+    transfer.setAttribute("stroke", "#245f73");
+    transfer.setAttribute("stroke-width", "5");
+    transfer.setAttribute("stroke-dasharray", "3 13");
+    transfer.setAttribute("stroke-dashoffset", String(-state.fraction * 36));
+    svg.appendChild(transfer);
+    endpointPoints.forEach(([x, y], index) => {
+      const endpoint = document.createElementNS(namespace, "circle");
+      endpoint.setAttribute("cx", x); endpoint.setAttribute("cy", y); endpoint.setAttribute("r", "10");
+      endpoint.setAttribute("fill", "none"); endpoint.setAttribute("stroke", "#245f73"); endpoint.setAttribute("stroke-width", "3");
+      endpoint.setAttribute("opacity", String(index === 0 ? 1 - state.fraction * 0.7 : 0.3 + state.fraction * 0.7));
+      svg.appendChild(endpoint);
+    });
+  }
+  const visibleStops = day ? visibleLocations(day) : (state.kind === "transition" ? [
+    { role: "activity", place: state.transition.from_place },
+    { role: "activity", place: state.transition.to_place }
+  ] : [{ role: "lodging_base", place: state.fromDay.stops.at(-1).place }]);
+  visibleStops.forEach((stop) => {
+    const [x, y] = project(coordinateForStop(stop));
+    const uncertainBase = uncertainLodging(stop);
+    const mealStop = mealMarkerStop(stop);
+    if (uncertainBase) {
+      const halo = document.createElementNS(namespace, "circle");
+      halo.setAttribute("cx", x); halo.setAttribute("cy", y); halo.setAttribute("r", "15");
+      halo.setAttribute("fill", "rgba(169, 107, 66, 0.14)"); halo.setAttribute("stroke", "#a96b42");
+      halo.setAttribute("stroke-width", "2"); halo.setAttribute("stroke-dasharray", "5 4");
+      svg.appendChild(halo);
+    }
+    const circle = document.createElementNS(namespace, "circle");
+    circle.setAttribute("cx", x); circle.setAttribute("cy", y); circle.setAttribute("r", mealStop ? "11" : uncertainBase ? "3" : "5");
+    circle.setAttribute("fill", mealStop && stop.option_role !== "alternative" ? "#246c50" : "#fffefb");
+    circle.setAttribute("stroke", mealStop ? stop.option_role === "alternative" ? "#94600f" : "#fffefb" : "#c7442f");
+    circle.setAttribute("stroke-width", mealStop ? "3" : "2");
+    if (mealStop && stop.evidence_status === "provisional") circle.setAttribute("stroke-dasharray", "3 2");
+    svg.appendChild(circle);
+
+    if (mealStop) {
+      const glyph = document.createElementNS(namespace, "text");
+      glyph.setAttribute("class", "trail-meal-glyph");
+      glyph.setAttribute("x", x); glyph.setAttribute("y", y + 4);
+      glyph.textContent = String(stop.rank);
+      svg.appendChild(glyph);
+    }
+    const label = document.createElementNS(namespace, "text");
+    label.setAttribute("x", x + (mealStop ? 16 : 9)); label.setAttribute("y", y - (mealStop ? 12 : 9));
+    label.setAttribute("paint-order", "stroke"); label.setAttribute("stroke", "#fffefb");
+    label.setAttribute("stroke-width", "4"); label.setAttribute("fill", mealStop ? stop.option_role === "alternative" ? "#6d470b" : "#174b38" : "#111111");
+    label.setAttribute("font-size", "11"); label.setAttribute("font-weight", mealStop ? "850" : "650");
+    label.textContent = mealStop
+      ? mealMarkerLabel(stop)
+      : uncertainBase ? `${stop.place.name} hotel area · location TBD` : stop.place.name;
+    svg.appendChild(label);
+  });
+  if (state.kind !== "unresolved_leg") {
+    const [markerX, markerY] = project(day ? displayPoint(day, state) : state.point);
+    const timerEvent = stationaryTimerEventAt(day, state, selectedMinute);
+    const timer = timerEvent && eventDuration(timerEvent) ? eventProgress(timerEvent, selectedMinute) : null;
+    if (timer) {
+      const timerTrack = document.createElementNS(namespace, "circle");
+      timerTrack.setAttribute("class", "trail-stop-timer-track");
+      timerTrack.setAttribute("cx", markerX); timerTrack.setAttribute("cy", markerY); timerTrack.setAttribute("r", "16");
+      svg.appendChild(timerTrack);
+      const timerProgress = document.createElementNS(namespace, "circle");
+      timerProgress.setAttribute("class", "trail-stop-timer-progress");
+      timerProgress.setAttribute("cx", markerX); timerProgress.setAttribute("cy", markerY); timerProgress.setAttribute("r", "16");
+      timerProgress.setAttribute("pathLength", "100"); timerProgress.setAttribute("stroke-dasharray", "100");
+      timerProgress.setAttribute("stroke-dashoffset", String(100 * (1 - timer.remainingFraction)));
+      svg.appendChild(timerProgress);
+      const timerText = document.createElementNS(namespace, "text");
+      timerText.setAttribute("class", "trail-stop-duration-label");
+      timerText.setAttribute("x", markerX + 22); timerText.setAttribute("y", markerY + 20);
+      timerText.textContent = timerLabel(timerEvent);
+      svg.appendChild(timerText);
+    }
+    const current = document.createElementNS(namespace, "circle");
+    const activeMeal = day ? activeMealLocationAt(day, state, selectedMinute) : null;
+    const visualMode = state.kind === "leg" ? transportVisualMode(state.leg) : null;
+    if (visualMode) current.classList.add(`trail-position--${visualMode}`);
+    if (activeMeal) current.classList.add(`trail-position--${activeMeal.exact ? "meal" : "meal-area"}`);
+    current.setAttribute("cx", markerX); current.setAttribute("cy", markerY); current.setAttribute("r", activeMeal ? "15" : emphasizedVisualMode(visualMode) ? "10" : "8");
+    const schematic = markerVariant(state) === "schematic";
+    current.setAttribute("fill", activeMeal ? "none" : schematic ? "#fffefb" : "#c7442f");
+    current.setAttribute("stroke", activeMeal ? activeMeal.exact ? "#246c50" : "#94600f" : schematic ? "#245f73" : "#fffefb");
+    current.setAttribute("stroke-width", activeMeal ? "3" : schematic ? "4" : "3");
+    if (activeMeal && !activeMeal.exact) current.setAttribute("stroke-dasharray", "4 3");
+    svg.appendChild(current);
+  }
+  elements.mapContainer.replaceChildren(svg);
+}
+
+elements.tripRange.addEventListener("input", () => {
+  stopPlayback();
+  resumeCurrentRowFollowing();
+  const position = tripPositionForValue(Number(elements.tripRange.value));
+  const previousSegment = activeTimelineIndex;
+  activeTimelineIndex = position.segmentIndex;
+  activeBoundaryFraction = position.fraction || 0;
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  if (position.kind === "day") {
+    const dayChanged = position.dayIndex !== selectedDayIndex || previousSegment !== position.segmentIndex;
+    selectedDayIndex = position.dayIndex;
+    selectedMinute = position.minute;
+    if (dayChanged) renderDay(false); else renderMinute(false);
+  } else {
+    renderBoundary(false);
+  }
+  followScrubCamera(previousSegment);
+});
+
+elements.tripRange.addEventListener("change", () => {
+  const segment = timelineSegments[activeTimelineIndex];
+  if (segment.kind === "day") {
+    const state = renderMinute(false);
+    fitCurrentState(state);
+  } else {
+    fitBoundary(currentJourneyContext(), true);
+  }
+});
+
+elements.dayRange.addEventListener("input", () => {
+  stopPlayback();
+  resumeCurrentRowFollowing();
+  const previousSegment = activeTimelineIndex;
+  activeTimelineIndex = daySegmentIndexes.get(selectedDayIndex);
+  activeBoundaryFraction = 0;
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  selectedMinute = Number(elements.dayRange.value);
+  renderMinute(false);
+  followScrubCamera(previousSegment);
+});
+
+elements.dayRange.addEventListener("change", () => {
+  autoFollowing = true;
+  elements.mapRecenter.hidden = true;
+  renderMinute(true);
+});
+
+[elements.tripRange, elements.dayRange].forEach((range) => {
+  range.addEventListener("pointerdown", beginTimelineScrub);
+});
+window.addEventListener("pointerup", endTimelineScrub);
+window.addEventListener("pointercancel", endTimelineScrub);
+
+elements.play.addEventListener("click", () => {
+  if (playbackFrame) {
+    stopPlayback();
+  } else {
+    resumeCurrentRowFollowing();
+    startPlayback();
+  }
+});
+elements.dayStopViewport.addEventListener("wheel", suspendCurrentRowFollowing, { passive: true });
+elements.dayStopViewport.addEventListener("touchstart", suspendCurrentRowFollowing, { passive: true });
+elements.dayStopViewport.addEventListener("pointerdown", suspendCurrentRowFollowing);
+elements.dayStopViewport.addEventListener("scroll", () => {
+  if (!followCurrentRow) window.requestAnimationFrame(updateCurrentRowControl);
+}, { passive: true });
+elements.dayStopViewport.addEventListener("keydown", (event) => {
+  if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(event.key)) suspendCurrentRowFollowing();
+});
+elements.showCurrentRow.addEventListener("click", () => {
+  elements.dayStopViewport.focus({ preventScroll: true });
+  resumeCurrentRowFollowing();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.code !== "Space" || event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
+  if (event.target instanceof Element && event.target.closest("input:not([type='range']), textarea, select, button, a[href], [contenteditable='true']")) return;
+  event.preventDefault();
+  playbackFrame ? stopPlayback() : startPlayback();
+});
+elements.showAlternatives.addEventListener("change", () => {
+  const day = currentDay();
+  setSourceData("journey-alternatives", alternativeFeatures(day));
+  if (fallbackMode && !mapReady) renderSvgFallback();
+});
+elements.mapRecenter.addEventListener("click", recenterRoute);
+
+renderTripSegments();
+renderTripTicks();
+renderDay(false);
+initializeMap();
+
+</script>
+</body>
+</html>

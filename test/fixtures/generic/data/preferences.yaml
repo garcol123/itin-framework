@@ -1,0 +1,7 @@
+---
+schema_version: 1
+preferences:
+  pace: relaxed
+  minimum_transfer_buffer_minutes: 15
+  priorities: [Relaxed walking, Local culture]
+  optimization_rules: [Preserve hard constraints, Prefer geographically coherent days]

@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/meal_options.schema.json",
+  "title": "Curated meal opportunities",
+  "type": "object",
+  "required": ["schema_version", "checked_on", "exchange_rate", "ranking", "image_sources", "days"],
+  "properties": {
+    "schema_version": { "const": 3 },
+    "checked_on": { "$ref": "#/$defs/date" },
+    "exchange_rate": {
+      "type": "object",
+      "required": ["base_currency", "quote_currency", "quote_per_base_rate", "as_of", "source_name", "source_url", "source_rates", "derivation", "status"],
+      "properties": {
+        "base_currency": { "$ref": "#/$defs/currency" },
+        "quote_currency": { "$ref": "#/$defs/currency" },
+        "quote_per_base_rate": { "type": "number", "minimum": 0 },
+        "as_of": { "$ref": "#/$defs/date" },
+        "source_name": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "format": "uri" },
+        "source_rates": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "additionalProperties": { "type": "number", "minimum": 0 }
+        },
+        "derivation": { "type": "string", "minLength": 1 },
+        "status": { "const": "verified" }
+      },
+      "additionalProperties": false
+    },
+    "ranking": {
+      "type": "object",
+      "required": ["route_fit_percent", "service_reliability_percent", "food_preference_fit_percent", "evidence_confidence_percent", "tie_breakers", "routine_detour_maximum_minutes", "distinctive_third_detour_maximum_minutes", "absolute_detour_maximum_minutes", "global_venue_reuse"],
+      "properties": {
+        "route_fit_percent": { "const": 45 },
+        "service_reliability_percent": { "const": 25 },
+        "food_preference_fit_percent": { "const": 20 },
+        "evidence_confidence_percent": { "const": 10 },
+        "tie_breakers": { "type": "array", "items": { "enum": ["incremental_detour_minutes", "maximum_queue_minutes"] }, "minItems": 2, "uniqueItems": true },
+        "routine_detour_maximum_minutes": { "const": 15 },
+        "distinctive_third_detour_maximum_minutes": { "const": 15 },
+        "absolute_detour_maximum_minutes": { "const": 20 },
+        "global_venue_reuse": { "const": "forbidden-except-protected" }
+      },
+      "additionalProperties": false
+    },
+    "image_sources": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "#/$defs/id" },
+      "additionalProperties": { "type": "string", "format": "uri" }
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["day", "summary", "slots"],
+        "properties": {
+          "day": { "type": "integer", "minimum": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "slots": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/slot" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "date": { "type": "string", "format": "date" },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "slot": {
+      "type": "object",
+      "required": ["id", "meal", "time_label", "location", "status", "itinerary_activity_ref", "context", "options"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "meal": { "enum": ["breakfast", "lunch", "dinner"] },
+        "time_label": { "type": "string", "minLength": 1 },
+        "location": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["scheduled", "fixed"] },
+        "itinerary_activity_ref": { "$ref": "#/$defs/id" },
+        "context": { "type": "string", "minLength": 1 },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/recommendation" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["id", "rank", "place_id", "category", "best_for", "reason", "price_tier", "image_id", "stay_minutes", "queue_minutes", "route_fit", "order_for_two", "reservation", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "rank": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "place_id": { "$ref": "#/$defs/id" },
+        "category": { "$ref": "#/$defs/id" },
+        "best_for": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "price_tier": { "enum": ["budget", "midrange", "premium"] },
+        "image_id": { "$ref": "#/$defs/id" },
+        "stay_minutes": { "$ref": "#/$defs/stay_minutes" },
+        "queue_minutes": { "$ref": "#/$defs/queue_minutes" },
+        "route_fit": { "$ref": "#/$defs/route_fit" },
+        "order_for_two": { "$ref": "#/$defs/order_for_two" },
+        "reservation": { "enum": ["not-required", "recommended", "required", "not-available"] },
+        "operating_hours": { "$ref": "#/$defs/operating_hours" },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evidence" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "stay_minutes": {
+      "type": "object",
+      "required": ["minimum", "recommended", "maximum"],
+      "properties": {
+        "minimum": { "type": "integer", "minimum": 10 },
+        "recommended": { "type": "integer", "minimum": 10 },
+        "maximum": { "type": "integer", "minimum": 10 }
+      },
+      "additionalProperties": false
+    },
+    "queue_minutes": {
+      "type": "object",
+      "required": ["typical", "maximum"],
+      "properties": {
+        "typical": { "type": "integer", "minimum": 0 },
+        "maximum": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "route_fit": {
+      "type": "object",
+      "required": ["anchor_place_id", "walking_minutes", "incremental_detour_minutes", "status", "source_url", "checked_on"],
+      "properties": {
+        "anchor_place_id": { "$ref": "#/$defs/id" },
+        "from_activity_ref": { "$ref": "#/$defs/id" },
+        "to_activity_ref": { "$ref": "#/$defs/id" },
+        "walking_distance_meters": { "type": "integer", "minimum": 0 },
+        "walking_minutes": { "type": "integer", "minimum": 0 },
+        "direct_flow_minutes": { "type": "integer", "minimum": 0 },
+        "via_venue_flow_minutes": { "type": "integer", "minimum": 0 },
+        "incremental_detour_minutes": { "type": "integer", "minimum": 0 },
+        "provider": { "type": "string", "minLength": 1 },
+        "verification_note": { "type": "string", "minLength": 12 },
+        "distance_exception": {
+          "type": "object",
+          "required": ["reason"],
+          "properties": { "reason": { "type": "string", "minLength": 12 } },
+          "additionalProperties": false
+        },
+        "status": { "enum": ["verified", "provisional"] },
+        "source_url": { "type": "string", "format": "uri" },
+        "checked_on": { "$ref": "#/$defs/date" }
+      },
+      "additionalProperties": false
+    },
+    "order_for_two": {
+      "type": "object",
+      "required": ["strategy", "items", "popularity_basis", "estimated_total_spend", "note"],
+      "properties": {
+        "strategy": { "const": "balanced-variety" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["name", "quantity", "sharing"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "quantity": { "type": "integer", "minimum": 1 },
+              "sharing": { "enum": ["individual", "shared"] },
+              "unit_price": { "$ref": "#/$defs/unit_price" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "popularity_basis": { "type": "string", "minLength": 12 },
+        "estimated_total_spend": {
+          "type": "object",
+          "required": ["amount", "currency", "status", "includes", "note"],
+          "properties": {
+            "amount": { "type": "integer", "minimum": 0 },
+            "currency": { "$ref": "#/$defs/currency" },
+            "status": { "enum": ["verified", "provisional"] },
+            "includes": { "const": "recommended-food-order" },
+            "note": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "note": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["kind", "url", "checked_on", "status"],
+      "properties": {
+        "kind": { "enum": ["official-menu", "official-venue", "official-guide", "independent-guide", "traveler-report"] },
+        "title": { "type": "string", "minLength": 1 },
+        "supports": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "checked_on": { "$ref": "#/$defs/date" },
+        "status": { "enum": ["verified", "provisional"] }
+      },
+      "additionalProperties": false
+    },
+    "unit_price": {
+      "type": "object",
+      "required": ["amount", "currency", "status", "source_url", "checked_on"],
+      "properties": {
+        "amount": { "type": "integer", "minimum": 0 },
+        "currency": { "$ref": "#/$defs/currency" },
+        "status": { "enum": ["verified", "provisional"] },
+        "source_url": { "type": "string", "format": "uri" },
+        "checked_on": { "$ref": "#/$defs/date" }
+      },
+      "additionalProperties": false
+    },
+    "operating_hours": {
+      "type": "object",
+      "required": ["visit_date", "meal_window", "published_window", "compatible", "status", "source_url", "checked_on"],
+      "properties": {
+        "visit_date": { "type": "string", "minLength": 1 },
+        "meal_window": { "type": "string", "minLength": 1 },
+        "published_window": { "type": "string", "minLength": 1 },
+        "compatible": { "const": true },
+        "status": { "enum": ["verified", "provisional"] },
+        "source_url": { "type": "string", "format": "uri" },
+        "checked_on": { "$ref": "#/$defs/date" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

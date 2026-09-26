@@ -1,0 +1,6 @@
+---
+schema_version: 1
+locations:
+  sample-lodge:
+    longitude: 1.001
+    latitude: 1.001

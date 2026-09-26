@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- GENERATED FILE: edit data/*.yaml or src/*, then run ruby bin/build. -->
+<html lang="<%= h(site.fetch("locale")) %>">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="<%= h(page_metadata.fetch("description")) %>" name="description"/>
+<meta content="<%= h(page_metadata.fetch("social_title")) %>" property="og:title"/>
+<meta content="<%= h(page_metadata.fetch("social_description")) %>" property="og:description"/>
+<meta content="website" property="og:type"/>
+<% if social_image_url -%><meta content="<%= h(social_image_url) %>" property="og:image"/><% end -%>
+<meta content="summary_large_image" name="twitter:card"/>
+<title><%= h(page_metadata.fetch("title")) %></title>
+<style>
+<%= styles %>
+</style>
+</head>
+<body>
+<a class="skip-link" href="#options">Skip to activity options</a>
+<header class="site-header">
+  <a class="wordmark" href="index.html"><span><%= h(site.dig("branding", "wordmark_primary")) %></span> / <%= h(site.dig("branding", "wordmark_secondary")) %></a>
+  <nav aria-label="Trip pages">
+    <a href="index.html">Itinerary</a>
+    <a href="journey-map.html">Journey map</a>
+    <a aria-current="page" href="activity-options.html">Choose activities</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow">Your trip, your call</p>
+      <h1>Choose what<br/><em>matters.</em></h1>
+      <p class="hero__lede">See the experiences already in your itinerary beside standout alternatives near every stop. Tick and untick freely—every addition and removal is made obvious, and your draft stays in this browser.</p>
+    </div>
+    <div class="hero__summary" aria-label="Selection summary">
+      <div><strong data-total-count=""><%= option_count %></strong><span>ideas to compare</span></div>
+      <div><strong data-itinerary-count=""><%= selected_count %></strong><span>in the itinerary</span></div>
+      <div><strong data-draft-count=""><%= selected_count %></strong><span>in your draft</span></div>
+      <div><strong data-added-count="">0</strong><span>newly added</span></div>
+      <div><strong data-removed-count="">0</strong><span>removed</span></div>
+    </div>
+  </section>
+
+  <section class="how-it-works" aria-label="How selections work">
+    <div><span class="legend-check" aria-hidden="true">✓</span><p><strong>Already picked</strong> means it begins in the current executable itinerary.</p></div>
+    <div><span class="legend-removed" aria-hidden="true">−</span><p><strong>Removed</strong> turns red and is visibly crossed out.</p></div>
+    <div><span class="legend-added" aria-hidden="true">+</span><p><strong>Newly added</strong> gets a green highlight and glow.</p></div>
+    <div><span class="legend-community" aria-hidden="true">R</span><p><strong>Reddit favourite</strong> marks traveler recommendations rather than tourism-board curation.</p></div>
+    <p class="how-it-works__note">Changing a box creates a planning draft only; it does not rewrite the itinerary. “Copy my picks” includes the full draft plus explicit additions and removals.</p>
+  </section>
+
+  <div class="explorer-shell">
+    <aside class="explorer-nav" aria-label="Locations">
+      <p>Jump to</p>
+      <% destinations.each_with_index do |destination, index| -%>
+      <a href="#<%= h(destination.fetch("place_id")) %>"><span><%= format("%02d", index + 1) %></span><%= h(place(destination.fetch("place_id")).fetch("name")) %></a>
+      <% end -%>
+    </aside>
+
+    <div class="explorer-main">
+      <section class="toolbar" aria-label="Activity controls">
+        <label class="search-control">
+          <span>Search ideas</span>
+          <input autocomplete="off" data-search="" placeholder="Temple, garden, market…" type="search"/>
+        </label>
+        <div class="filter-control" aria-label="Filter activity options">
+          <button aria-pressed="true" data-filter="all" type="button">All</button>
+          <button aria-pressed="false" data-filter="selected" type="button">In itinerary</button>
+          <button aria-pressed="false" data-filter="alternative" type="button">Existing alternatives</button>
+          <button aria-pressed="false" data-filter="unscheduled" type="button">Other ideas</button>
+          <button aria-pressed="false" data-filter="community" type="button">Reddit favourites</button>
+          <button aria-pressed="false" data-filter="changed" type="button">Changed</button>
+        </div>
+        <div class="draft-actions"><button class="copy-button" data-copy="" type="button">Copy my picks</button><button class="reset-button" data-reset="" type="button">Reset</button></div>
+      </section>
+
+      <div id="options">
+        <% destinations.each_with_index do |destination, destination_index| -%>
+        <% destination_place_id = destination.fetch("place_id") -%>
+        <section class="destination" id="<%= h(destination_place_id) %>">
+          <header class="destination__header">
+            <p class="destination__number"><%= format("%02d", destination_index + 1) %></p>
+            <div>
+              <h2><%= h(place(destination_place_id).fetch("name")) %></h2>
+              <p><%= h(destination.fetch("summary")) %></p>
+              <p class="planning-note"><strong>Planning note:</strong> <%= h(destination.fetch("planning_note")) %></p>
+              <a href="<%= h(destination.dig("recommendation_source", "url")) %>" rel="noopener noreferrer" target="_blank">Curated with <%= h(destination.dig("recommendation_source", "name")) %> ↗</a>
+            </div>
+          </header>
+
+          <div class="activity-grid">
+            <% destination.fetch("options").each_with_index do |option, option_index| -%>
+            <% option_place_id = option.fetch("place_id") -%>
+            <% state = option_state(option_place_id) -%>
+            <% option_place = place(option_place_id) -%>
+            <% image = option_image(destination, option) -%>
+            <article class="activity-card<%= option["community_source"] ? " is-community" : "" %>" data-card="" data-change="<%= selected?(option_place_id) ? "already-picked" : "available" %>" data-community="<%= !!option["community_source"] %>" data-destination="<%= h(place(destination_place_id).fetch("name")) %>" data-label="<%= h(option_place.fetch("name")) %>" data-name="<%= h([option_place.fetch("name"), option.fetch("category"), option_place.fetch("description")].join(" ").downcase) %>" data-state="<%= state %>">
+              <figure class="activity-card__media">
+                <img alt="<%= h(image.fetch("alt")) %>" decoding="async" height="720" loading="<%= destination_index.zero? && option_index < 2 ? "eager" : "lazy" %>" src="<%= h(image.fetch("path")) %>" width="1080"/>
+                <% if option["community_source"] -%><span class="community-ribbon">People’s pick · <%= h(option.dig("community_source", "platform")) %></span><% end -%>
+                <a href="<%= h(image.fetch("source_url")) %>" rel="noopener noreferrer" target="_blank">Photo source ↗</a>
+              </figure>
+              <div class="activity-card__body">
+                <div class="activity-card__topline">
+                  <span class="category"><%= h(category_label(option.fetch("category"))) %></span>
+                  <label class="pick-control">
+                    <input <%= 'checked="checked"' if selected?(option_place_id) %> aria-label="Pick <%= h(option_place.fetch("name")) %>" data-default="<%= selected?(option_place_id) %>" type="checkbox" value="<%= h(option_place_id) %>"/>
+                    <span><span class="pick-control__box" aria-hidden="true"></span><span class="pick-control__label">Pick</span></span>
+                  </label>
+                </div>
+                <p class="change-status" data-change-status=""><%= selected?(option_place_id) ? "Already picked" : "Available" %></p>
+                <h3><a href="<%= h(google_url(option_place_id, destination_place_id)) %>" rel="noopener noreferrer" target="_blank"><%= h(option_place.fetch("name")) %> <span aria-hidden="true">↗</span></a></h3>
+                <p class="activity-card__description"><%= h(option_place.fetch("description")) %></p>
+                <section class="duration-guidance" aria-label="Recommended relaxed visit duration">
+                  <p class="duration-guidance__heading"><span>Relaxed visit</span><strong><%= h(relaxed_visit(option_place_id).fetch("duration")) %></strong></p>
+                  <p><%= h(relaxed_visit(option_place_id).fetch("description")) %></p>
+                </section>
+                <% if option["community_source"] -%>
+                <aside class="community-proof">
+                  <p><strong>Traveler signal:</strong> <%= h(option.dig("community_source", "note")) %></p>
+                  <a href="<%= h(option.dig("community_source", "url")) %>" rel="noopener noreferrer" target="_blank">Read the Reddit discussion ↗</a>
+                </aside>
+                <% end -%>
+                <div class="schedule-note schedule-note--<%= state %>">
+                  <% if schedule_notes(option_place_id).any? -%>
+                    <% schedule_notes(option_place_id).each do |note| -%><p><%= h(note) %></p><% end -%>
+                  <% else -%>
+                    <p>Not currently scheduled</p>
+                  <% end -%>
+                </div>
+                <% if option["note"] -%><p class="option-note"><%= h(option.fetch("note")) %></p><% end -%>
+                <a class="recommendation-link" href="<%= h(option.fetch("source_url")) %>" rel="noopener noreferrer" target="_blank"><%= option["community_source"] ? "Practical details" : "Guide / official details" %> ↗</a>
+              </div>
+            </article>
+            <% end -%>
+          </div>
+          <p class="empty-state" data-empty="" hidden="hidden">No ideas in this location match the current filters.</p>
+        </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+  <p class="no-results" data-no-results="" hidden="hidden">No activities match that search and filter.</p>
+</main>
+<div aria-live="polite" class="toast" data-toast="" hidden="hidden"></div>
+<script id="activity-config" type="application/json"><%= chooser_config_json %></script>
+<script>
+<%= script %>
+</script>
+</body>
+</html>

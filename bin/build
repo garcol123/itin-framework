@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require_relative "../lib/itinerary/cli"
+
+options = {}
+parser = OptionParser.new do |option_parser|
+  option_parser.banner = "Usage: ruby bin/build --trip TRIP_PATH"
+  Itinerary::CLI.add_trip_option(option_parser, options)
+end
+parser.parse!
+abort parser.to_s unless ARGV.empty?
+
+root = Itinerary::CLI.resolve_trip(options[:trip])
+store = Itinerary::CLI.store(root)
+validator = Itinerary::Validator.new(store)
+issues = validator.validate
+issues.each { |issue| warn issue }
+abort "Build stopped because trip data has validation errors." if validator.errors?
+
+outputs = {
+  "index.html" => Itinerary::Renderer.new(store).render,
+  "journey-map.html" => Itinerary::JourneyMapRenderer.new(store).render,
+  "activity-options.html" => Itinerary::ActivityOptionsRenderer.new(store).render
+}
+
+outputs.each do |filename, output|
+  destination = File.join(root, filename)
+  File.write(destination, output, encoding: "UTF-8")
+  puts "Generated #{destination} from canonical sources (#{output.bytesize} bytes)."
+end

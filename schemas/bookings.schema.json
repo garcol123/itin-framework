@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/bookings.schema.json",
+  "title": "Bookings and reservations",
+  "type": "object",
+  "required": ["schema_version", "bookings"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "bookings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "status"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "kind": { "enum": ["flight", "timed_entry", "rail", "bus", "shuttle", "rail_and_entry", "accommodation"] },
+          "status": { "enum": ["confirmed", "required", "planned", "optional", "cancelled"] },
+          "activity_id": { "$ref": "#/$defs/id" },
+          "activity_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+          "place_id": { "$ref": "#/$defs/id" },
+          "depends_on": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+          "instructions": { "type": "string", "minLength": 1 },
+          "date_label": { "type": "string" },
+          "departure_date": { "type": "string", "format": "date" },
+          "arrival_date": { "type": "string", "format": "date" },
+          "origin": { "type": "string" },
+          "departure_time": { "$ref": "#/$defs/clock" },
+          "destination": { "type": "string" },
+          "arrival_time": { "$ref": "#/$defs/clock" },
+          "description": { "type": "string" },
+          "all_times_local": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "clock": { "type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+  }
+}

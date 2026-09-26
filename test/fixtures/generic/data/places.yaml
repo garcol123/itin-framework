@@ -1,0 +1,31 @@
+---
+schema_version: 1
+places:
+  sample-city:
+    name: Sample City
+    description: The fictional center of this framework fixture.
+    url: https://example.com/city
+    kind: place
+    coordinates: {longitude: 1.0, latitude: 1.0, precision: neighborhood, status: verified, source_url: https://example.com/coordinates/city, checked_on: '2026-09-26'}
+  sample-lodge:
+    name: Sample Lodge
+    description: A fictional lodging base.
+    url: https://example.com/lodge
+    kind: hotel
+    coordinates: {longitude: 1.001, latitude: 1.001, precision: exact, status: verified, source_url: https://example.com/coordinates/lodge, checked_on: '2026-09-26'}
+  sample-bistro:
+    name: Sample Bistro
+    description: A fictional fixed lunch venue.
+    url: https://example.com/bistro
+    kind: restaurant
+    coordinates: {longitude: 1.002, latitude: 1.002, precision: entrance, status: verified, source_url: https://example.com/coordinates/bistro, checked_on: '2026-09-26'}
+  option-one:
+    name: Harbour Promenade
+    description: A fictional waterside walk.
+    url: https://example.com/one
+    kind: attraction
+    coordinates: {longitude: 1.003, latitude: 1.003, precision: entrance, status: verified, source_url: https://example.com/coordinates/one, checked_on: '2026-09-26'}
+  option-two: {name: Civic Gallery, description: A fictional local gallery., url: https://example.com/two, kind: attraction}
+  option-three: {name: Hill Garden, description: A fictional quiet garden., url: https://example.com/three, kind: attraction}
+  option-four: {name: Makers Hall, description: A fictional craft space., url: https://example.com/four, kind: attraction}
+  option-five: {name: Old Market, description: A fictional covered market., url: https://example.com/five, kind: attraction}
