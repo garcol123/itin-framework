@@ -1,0 +1,45 @@
+name: Publish Japan 2026
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - uses: actions/configure-pages@v5
+
+      - name: Build Japan site
+        run: |
+          ruby bin/build-site --trip examples/japan
+          # The metadata renderer resolves public/og.png at the site root.
+          cp examples/japan/public/og.png examples/japan/dist/client/og.png
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: examples/japan/dist/client
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
