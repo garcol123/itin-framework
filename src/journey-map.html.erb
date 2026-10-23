@@ -11,6 +11,7 @@
 <% if social_image_url -%><meta content="<%= h(social_image_url) %>" property="og:image"/><% end -%>
 <meta content="summary_large_image" name="twitter:card"/>
 <title><%= h(page_metadata.fetch("title")) %></title>
+<%= ERB.new(@store.framework_root.join("src", "access-gate.html.erb").read(encoding: "UTF-8"), trim_mode: "-", eoutvar: "_access_gate_html").result(binding) %>
 <link href="<%= h(site.dig("map", "library_css_url")) %>" rel="stylesheet"/>
 <style>
 <%= styles %>
