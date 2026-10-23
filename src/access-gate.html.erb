@@ -1,0 +1,15 @@
+<% if (gate = @store.site_metadata["access_gate"]) -%>
+<style>
+<%= @store.framework_root.join("src", "access-gate.css").read(encoding: "UTF-8") %>
+</style>
+<script>
+//<![CDATA[
+(() => {
+  const expected = <%= JSON.generate(gate.fetch("password")).gsub("<", '\u003c') %>;
+  const storageKey = <%= JSON.generate("#{@store.site_metadata.fetch('storage_namespace')}-access-v1") %>;
+  const tripTitle = <%= JSON.generate(@store.site_metadata.fetch("title")).gsub("<", '\u003c') %>;
+<%= @store.framework_root.join("src", "access-gate.js").read(encoding: "UTF-8") %>
+})();
+//]]>
+</script>
+<% end -%>
