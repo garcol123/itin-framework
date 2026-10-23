@@ -11,6 +11,14 @@
     "locale": { "type": "string", "minLength": 2 },
     "title": { "type": "string", "minLength": 1 },
     "subtitle": { "type": "string", "minLength": 1 },
+    "access_gate": {
+      "type": "object",
+      "required": ["password"],
+      "properties": {
+        "password": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
     "destination": {
       "type": "object",
       "required": ["name", "search_hint", "timezones"],
