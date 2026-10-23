@@ -46,3 +46,14 @@ new trips use an empty list.
 The public map serializes only canonical public coordinates. `build_map --private`
 validates an ignored override file and writes a separately ignored page. Runtime
 pages contain no router calls, API keys, secrets, or machine paths.
+
+## Optional browser password prompt
+
+Set `access_gate.password` in a trip's `site.yaml` to add the shared password
+prompt to its itinerary, activity chooser, and journey map. Successful entry is
+remembered in session storage for the current tab and trip; changing the password
+invalidates that stored entry. Trips without this setting remain open.
+
+This is a casual front-end deterrent. The password and itinerary remain in the
+public static source, and disabling JavaScript bypasses the prompt. Private
+location files must still be excluded from every deployment.
