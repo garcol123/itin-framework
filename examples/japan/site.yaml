@@ -5,6 +5,8 @@ storage_namespace: japan-2026
 locale: en-AU
 title: Japan Itinerary
 subtitle: Fri 23 Oct to Fri 6 Nov
+access_gate:
+  password: japan2026
 destination:
   name: Japan
   search_hint: Japan
@@ -23,7 +25,7 @@ currencies:
       decimals: 0
       symbol_position: before
 metadata:
-  site_url: https://rogers-japan-2026-activity-chooser.muddy-puppy-8706.chatgpt.site
+  site_url: https://garcol123.github.io/itin-framework
   social_image: public/og.png
   pages:
     itinerary:
